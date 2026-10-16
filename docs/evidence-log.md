@@ -33,8 +33,7 @@ Correction checks use `rg` to find stale tool/file references and project-owned 
 ## Submission evidence still needed
 
 - Supplied [early mockup](early-mockup.png) is embedded in the report and visually reviewed; any later behavioral walkthrough must distinguish static design from working interactions.
-- Repository URL and approved commit identifying the submitted version.
-- Fill the repository/commit placeholders in [the Part 3.1 report](../report.md).
+- Repository URL and user-supplied commit `d52a6803e80ee5397ca0854694d385f9afe09f9d` are linked in [the Part 3.1 report](../report.md). Confirm remote availability and instructor access.
 - Student review of research summaries and AI-use disclosure.
 
 ## Part 1 report assembly
@@ -62,3 +61,23 @@ The image was opened with the local image viewer and visually inspected. It depi
 The previously empty handoffs directory now contains [current.md](../handoffs/current.md), covering current status, user writing preferences, confirmed scope, image observations, unresolved implementation details, and verification boundaries. README, agent rules, design notes, and AI-use disclosure now link or identify the supplied image rather than saying it is missing.
 
 Inspection commands: `cat`, `rg --files`, `rg -n`, and `ls -la handoffs`; file changes used a shell heredoc and `apply_patch`. Project-owned Python verifies length, sections, questions, removed text, R/D rows, PNG signature/dimensions, and local Markdown references. Application behavior and Mermaid rendering are not verified in this update.
+
+## Concise individual report and repository link
+
+At the user's request, the report now uses individual first-person wording, removes collective authorship references, and reduces repeated references to the assignment description. The R/D findings remain attributed with one direct source link. Scope was shortened from 668 to 438 words; the report is now 1,391 words. Early mock up explains that the user described each screen's flow and layout to generate the images with ChatGPT image generation.
+
+The supplied repository URL, `https://github.com/jclee2044/mental-health-app.git`, is linked in the report, README, and current handoff. The URL was not independently inspected and no local remote was configured. AI-use disclosure and the handoff reflect the latest writing and image-generation details. Inspection used `cat` and `sed`; changes used project-owned Python and `apply_patch`. Local verification checks the wording removals, length, image link, repository link, retained study findings, and Markdown file references. No application checks or external repository operations were run.
+
+## Part 1 submission check and supplied commit
+
+The user supplied `d52a6803e80ee5397ca0854694d385f9afe09f9d`. Read-only Git inspection confirmed that the commit exists locally and includes the scaffold, design/research notes, AI-use file, evidence log, handoff, and mockup image. The repository has an origin matching the supplied URL. `report.md` is intentionally ignored for separate upload. Working documentation edits are newer than the supplied commit; no commit or push was made during this check.
+
+The report now links the commit and uses commit-pinned GitHub document/raw-image URLs, so its references do not rely on the local project directory. `git cat-file -e` confirmed each linked file exists in that tree. Part 1 coverage was reviewed against the local requirements: concept/flow, model role, proposed data, research rationale, personalization/user control, unresolved questions, and current documentation are present. A working app, fifteen-scenario evaluation, and demonstration recordings belong to later milestones.
+
+Inspection commands included `cat`, `sed`, `git rev-parse`, `git status --short`, `git show --stat --oneline`, `git check-ignore -v`, `git log -1`, `git remote -v`, and `git cat-file -e`. Edits used project-owned Python and `apply_patch`; final structural checks use the same Python environment. Remote push status, instructor permissions, and uploaded Markdown/image/Mermaid rendering remain unverified.
+
+## Track and publish the report
+
+The user explicitly authorized removing the report ignore rule, committing/pushing the report and documentation, and updating the report's commit ID. Only `/report.md` and its comment were removed from `.gitignore`; generated files and secrets remain excluded. The first commit captures the report and current documentation; a follow-up reference commit records that content commit's hash and pins the file URLs to it. This avoids an impossible self-referential commit hash. Changes are limited to `.gitignore`, `report.md`, README, AI-use disclosure, evidence log, and current handoff.
+
+Checks include reviewed Git diffs, explicit staging scope, Markdown targets, report content/structure, and report ignore status. No dependencies, source behavior, or application tests changed. Commit/push results are checked through Git and the remote ref; instructor permissions and submission rendering remain separate checks.

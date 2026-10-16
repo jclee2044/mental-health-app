@@ -4,14 +4,17 @@
 
 Part 3.1 Research and Design. Read [AGENTS.md](../AGENTS.md), [README](../README.md), and [the assignment](../docs/assignment-description.md) before work. Detailed decisions are in [design notes](../docs/design-notes.md), sources in [research notes](../docs/research-notes.md), and work evidence in [the evidence log](../docs/evidence-log.md).
 
-[report.md](../report.md) is the current submission draft. It includes the simple nine-node Mermaid flow, all ten R/D findings, references, and the supplied [early mockup](../docs/early-mockup.png). Repository/commit fields remain placeholders. No app-specific interface, backend, API integration, SQLite records, or live chat has been implemented. The prior scaffold verification is recorded in README. Git identity and the initial commit still require their documented checkpoint and approval.
+[report.md](../report.md) is the current submission draft. It includes the simple nine-node Mermaid flow, all ten R/D findings, references, and the supplied [early mockup](../docs/early-mockup.png). The user supplied [the repository URL](https://github.com/jclee2044/mental-health-app.git) and [commit d52a680](https://github.com/jclee2044/mental-health-app/commit/d52a6803e80ee5397ca0854694d385f9afe09f9d). That commit exists locally; all report-linked project files are in its tree. The report's document and image URLs are pinned to it so the separately uploaded Markdown file does not depend on local relative paths. Remote availability and instructor permissions remain unchecked.
+
+The repository and origin now exist; the old initial-commit TODO is historical. The user has now explicitly authorized removing `report.md` from `.gitignore`, committing/pushing the report and current documentation, and updating its commit ID. The report is tracked and can also be uploaded separately. Save the content commit's hash in a follow-up reference commit rather than attempting self-reference. No app-specific interface, backend, API integration, SQLite records, or live chat has been implemented. Prior scaffold checks remain in README.
 
 ## User writing preferences
 
 - Prioritize the user's own phrasing, content, first-person voice, and tone; requested balance is roughly 75% user material with AI support, not a measured authorship claim.
 - Keep feature descriptions together in Scope. Retain Research notes, Design considerations with R/D findings, a simple Flow diagram, Early mock up, and Open questions.
 - No feature-by-feature subsections, complex flowchart, mockup table, or NLP-evidence paragraph in the report.
-- Latest report is 1,619 words, about 74% of the preceding 2,198-word draft. Five requested questions and the submission-reminder closing paragraph were removed. The five remaining questions concern affective/adaptive UI, anxiety/stress metrics, baselines, eye-tracking consent/reliability, and slider/graph effort.
+- Latest report is 1,391 words; Scope was shortened from 668 to 438 words. No collective authorship references in the report; use the user's first-person voice. Keep direct references to the assignment description minimal while retaining the study findings and their attribution.
+- Five requested questions and the submission-reminder closing paragraph remain removed. The five remaining questions concern affective/adaptive UI, anxiety/stress metrics, baselines, eye-tracking consent/reliability, and slider/graph effort.
 
 ## Confirmed design
 
@@ -25,7 +28,7 @@ Part 3.1 Research and Design. Read [AGENTS.md](../AGENTS.md), [README](../README
 
 ## Mockup evidence
 
-The user generated `docs/early-mockup.png` with ChatGPT image generation, not Figma Make. The unused tool-specific prompt was removed; do not recreate it. The image is embedded with a repository-relative path so it travels with the repository. It was visually inspected, not modified.
+The user described the flows and layouts for each individual screen to generate the images with ChatGPT's image generation tool. The report's Early mock up section now explains that process. The output is `docs/early-mockup.png`, not a Figma Make artifact. The unused tool-specific prompt was removed; do not recreate it. The standalone report embeds the image through a raw GitHub URL pinned to the supplied commit; source documentation uses local links. It was visually inspected, not modified. The exact generation prompt and model identifier remain unrecorded.
 
 The board shows the main activities and secondary states. The Help panel still says the country/number is pending, while the user confirmed U.S. resources and the design notes record the verified crisis-counseling/emergency-services distinction. The graph also says its axes are provisional, although pleasantness/energy are confirmed. Reconcile those annotations when refining the interface; do not treat the image as a new requirements change. Static imagery does not verify navigation, animation, persistence, accessibility, or failure handling.
 

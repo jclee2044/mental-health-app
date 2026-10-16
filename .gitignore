@@ -40,9 +40,6 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Local coursework submission report
-/report.md
-
 # Private keys and credential files
 *.pem
 *.key

@@ -2,6 +2,8 @@
 
 IST 402 Assignment 3: a localhost coursework prototype exploring short, user-controlled mental health skills experiences informed by the supplied R1–R4 and D1–D6 study findings. The source of truth is [the assignment](docs/assignment-description.md). Test only with fictional scenarios; this prototype must not be offered as a mental health support tool or claim to provide therapy, diagnosis, or monitoring.
 
+Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app.git) (URL supplied by the user; local remote configuration was not changed).
+
 ## Part 3.1 research and design
 
 Current milestone: Research and Design, due October 15, 2026 at 11:59 PM Eastern. The imagined audience includes people experiencing anxiety or intrusive thoughts who face cost or apprehension barriers to therapy. This motivation informs the design; actual use remains fictional coursework testing.
@@ -12,14 +14,14 @@ Optional appearance preferences cover accent color, text size, and reduced motio
 
 | Deliverable | Location and status |
 | --- | --- |
-| Part 1 report | [report.md](report.md); includes the simple flow diagram, embedded mockup, and repository/commit placeholders |
+| Part 1 report | [report.md](report.md); tracked submission file with direct GitHub documentation/image links |
 | Low-fidelity wireframes | [Early mockup](docs/early-mockup.png), created with ChatGPT image generation; static review board |
 | Design decisions and flow | [Design notes](docs/design-notes.md); research traceability, timing budget, data proposal, model boundaries, tradeoffs, and TODOs |
 | Additional research | [Research notes](docs/research-notes.md); studies, official resources, design implications, and evidence limits |
 | Agent rules | [AGENTS.md](AGENTS.md); durable project rules and current design boundaries |
 | AI use and evidence | [AI-USE.md](AI-USE.md) and [evidence log](docs/evidence-log.md) |
 | Current handoff | [handoffs/current.md](handoffs/current.md); current scope, writing preferences, image review, and next work |
-| Design evidence and submission | Mockup linked; TODO: complete the report's repository and commit placeholders |
+| Design evidence and submission | Mockup and repository linked; the report records the reviewed content commit |
 
 The user used ChatGPT's image generation tool to create the low-fidelity wireframes. The supplied review board has been visually inspected and linked in the report. Its Help panel still shows a pending-number placeholder; the confirmed design uses separate U.S. crisis-counseling and emergency-services options. Static images do not demonstrate working navigation or animation. No project-specific UI, backend, model, SQLite persistence, or API integration has been implemented. Existing setup evidence below records earlier scaffold checks and is not a new verification of application behavior.
 
@@ -187,4 +189,4 @@ Proposed commit: `chore: initialize verified FastAPI and Vue scaffold`. Scope: r
 - TODO: implement and verify independent persistent Help, failure/exit behavior, fixed breathing steps, and conversation/session history in a later milestone.
 - TODO: measure guided exercise duration (no more than 90 seconds at the intended pace), including application delays and stated response assumptions; report entry/setup separately. The current breathing budget is a proposal, not a measured result. No forced chat timeout is planned.
 - TODO: create the required fictional evaluation scenarios and repeatable checks; update AI-use disclosure and evidence with actual results as work proceeds.
-- TODO: select a repository remote and submission links when requested; setup does not configure or push a remote.
+- The report records the Part 1 content commit and uses file links pinned to it. A follow-up reference commit saves that hash in the report; no commit can contain its own hash. Confirm instructor access before uploading the report.
