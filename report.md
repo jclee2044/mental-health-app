@@ -18,9 +18,9 @@ The planned stack is Vue, FastAPI, Python, and SQLite, saving logs, conversation
 
 Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app.git)
 
-Submitted version: [d52a6803e80ee5397ca0854694d385f9afe09f9d](https://github.com/jclee2044/mental-health-app/commit/d52a6803e80ee5397ca0854694d385f9afe09f9d)
+Submitted version: [084981b0d18982257ee70371200c700fd6ba650c](https://github.com/jclee2044/mental-health-app/commit/084981b0d18982257ee70371200c700fd6ba650c)
 
-Documentation: [README](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/README.md), [AGENTS.md](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/AGENTS.md), [design notes](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/docs/design-notes.md), [research notes](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/docs/research-notes.md), [evidence log](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/docs/evidence-log.md), and [AI-use disclosure](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/AI-USE.md). The current work is research, design, and static mockups, not implemented application behavior.
+Documentation: [README](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/README.md), [AGENTS.md](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/AGENTS.md), [design notes](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/docs/design-notes.md), [research notes](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/docs/research-notes.md), [evidence log](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/docs/evidence-log.md), and [AI-use disclosure](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/AI-USE.md). The current work is research, design, and static mockups, not implemented application behavior.
 
 ## Research notes
 
@@ -40,7 +40,7 @@ Additional references inform the design:
 - Fitzpatrick, Darcy, and Vierhile (2017), [Woebot trial](https://mental.jmir.org/2017/2/e19/): an early example of conversational CBT delivery, involving a different system from my open-ended chat.
 - The Centre for Clinical Interventions' [anxiety resources](https://www.cci.health.wa.gov.au/Resources/For-Clinicians/Anxiety) provide material on thought diaries and thinking styles. Lewis et al. (2020), [RAG](https://arxiv.org/abs/2005.11401), provides the technical basis for supplying retrieved context.
 
-Fuller references are in the [research notes](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/docs/research-notes.md). These inform the design rather than establish clinical effectiveness.
+Fuller references are in the [research notes](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/docs/research-notes.md). These inform the design rather than establish clinical effectiveness.
 
 ## Design considerations
 
@@ -48,7 +48,7 @@ I'm planning to make the app have an affective UI, with custom colors and styles
 
 I want to research other metrics for measuring emotional state and stress level, and create an emotional/behavioral baseline so the app can measure deviation instead of treating every user as the same. Those remain longer-term questions. I'm still ideating and planning to refine my ideas adversarially with ChatGPT as well.
 
-The [R1–R4 and D1–D6 study findings](https://github.com/jclee2044/mental-health-app/blob/d52a6803e80ee5397ca0854694d385f9afe09f9d/docs/assignment-description.md) inform these choices:
+The [R1–R4 and D1–D6 study findings](https://github.com/jclee2044/mental-health-app/blob/084981b0d18982257ee70371200c700fd6ba650c/docs/assignment-description.md) inform these choices:
 
 | Finding | Design decision |
 | --- | --- |
@@ -84,7 +84,7 @@ The user can save after plotting their feeling, return home, or leave at any tim
 
 I described the flow and layout for each individual screen, including the elements it should contain and how the user would move through it. I used those descriptions with ChatGPT's image generation tool to generate the low-fidelity screen images below. They show the intended experience, not working navigation or animation.
 
-![Early low-fidelity mockup showing the home screen, emotion log, graph, calendar, breathing, chat, appearance settings, and Help panel](https://raw.githubusercontent.com/jclee2044/mental-health-app/d52a6803e80ee5397ca0854694d385f9afe09f9d/docs/early-mockup.png)
+![Early low-fidelity mockup showing the home screen, emotion log, graph, calendar, breathing, chat, appearance settings, and Help panel](https://raw.githubusercontent.com/jclee2044/mental-health-app/084981b0d18982257ee70371200c700fd6ba650c/docs/early-mockup.png)
 
 ## Open questions
 
