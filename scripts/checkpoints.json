@@ -1,0 +1,14 @@
+{
+  "interface": [
+    ".gitignore", "frontend/index.html", "frontend/package.json", "frontend/vite.config.js",
+    "frontend/pwa", "frontend/public/icon.svg", "frontend/public/icon-192.png", "frontend/public/icon-512.png", "frontend/public/manifest.webmanifest",
+    "frontend/src/App.vue", "frontend/src/main.js", "frontend/src/styles.css", "frontend/src/features.js", "frontend/src/dates.js", "frontend/src/pwa.js",
+    "frontend/src/components", "frontend/src/views", "frontend/src/composables/usePreferences.js", "frontend/src/features/.gitkeep", "frontend/tests",
+    "scripts/checkpoints.json", "scripts/checkpoint-base.txt", "scripts/verify_checkpoints.py", "scripts/stage_checkpoint.py", "docs/architecture.md", "docs/implementation-checkpoints.md", "docs/checkpoints/interface.md"
+  ],
+  "emotion": [
+    "backend/app/__init__.py", "backend/app/main.py", "backend/app/database.py", "backend/app/errors.py", "backend/app/middleware.py", "backend/app/features/__init__.py",
+    "backend/pytest.ini", "backend/tests", "backend/app/features/emotion", "frontend/src/api", "frontend/src/features/emotion", "docs/api-contract.md"
+  ],
+  "breathing": ["backend/app/features/breathing", "frontend/src/features/breathing"]
+}

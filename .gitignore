@@ -19,6 +19,7 @@ dist-ssr/
 coverage/
 *.log
 .npm-cache/
+.checkpoints/
 
 # Secrets and local runtime data (manifests and lockfiles stay tracked)
 .env
