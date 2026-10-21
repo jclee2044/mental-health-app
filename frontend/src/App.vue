@@ -42,7 +42,6 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
     <a class="skip-link" href="#main-content" @click.prevent="main?.focus()">Skip to content</a>
     <header class="site-header">
       <button class="brand" aria-label="Still home" @click="go('home')"><AppIcon name="leaf" /><span>still<span class="brand-dot">.</span></span></button>
-      <span class="header-caption">A little space for yourself</span>
       <button class="emergency-button" @click="openEmergency"><AppIcon name="plus" /> Emergency</button>
     </header>
     <main id="main-content" ref="main" tabindex="-1" :aria-label="title">
@@ -51,7 +50,7 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
         <button class="text-button" @click="splash = false">Skip introduction <span aria-hidden="true">→</span></button>
       </section>
       <template v-else>
-        <div v-if="screen !== 'home'" class="page-top"><button class="text-button" @click="go('home')"><AppIcon name="arrow-left" /> Home</button><span class="eyebrow">{{ title }}</span></div>
+        <div v-if="screen !== 'home'" class="page-top"><button class="text-button" @click="go('home')"><AppIcon name="arrow-left" /> Home</button></div>
         <HomeView v-if="screen === 'home'" @navigate="go" />
         <ChatView v-else-if="screen === 'chat'" @end="go('home')" />
         <component :is="activeFeature.routes[screen]" v-else-if="activeFeature" v-bind="activeFeature.props(screen)" v-on="activeFeature.events" @emergency="openEmergency" />

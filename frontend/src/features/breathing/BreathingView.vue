@@ -93,7 +93,6 @@ function toggleSound() {
 </script>
 <template>
   <section class="breathing-page narrow-page page-enter">
-    <p class="eyebrow">{{ state === 'ready' ? 'One minute · Just breathe' : state === 'completed' ? 'Exercise complete' : 'Your pace, one breath at a time' }}</p>
     <h1 aria-live="polite">{{ heading }}</h1>
     <p class="breathing-description">{{ state === 'ready' ? 'Breathe in for 4 seconds, then out for 6. No holds.' : state === 'paused' ? pauseReason : state === 'completed' ? 'You’ve finished the breathing exercise.' : cue.phase === 'countdown' ? 'Find a comfortable position.' : props.reducedMotion ? 'Let the words carry the pace.' : 'Follow the circle, gently.' }}</p>
     <div class="breathing-stage"><div class="breathing-guide-ring"></div><div class="breathing-circle" :style="{transform:`scale(${circleScale})`}" :data-phase="cue.phase" :data-scale="circleScale.toFixed(3)"><AppIcon v-if="state === 'ready'" name="wind" /><AppIcon v-else-if="state === 'completed'" name="check" /><AppIcon v-else-if="state === 'paused'" name="pause" /></div><div v-if="state === 'running'" class="breathing-count" aria-hidden="true">{{ cue.count }}</div></div>

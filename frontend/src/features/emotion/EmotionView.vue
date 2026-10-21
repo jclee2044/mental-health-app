@@ -52,7 +52,6 @@ async function save() {
 <template>
   <section class="narrow-page emotion-page page-enter">
     <template v-if="step < 3">
-      <div class="step-indicator" aria-label="Entry progress"><span :class="{current:step===1}">01 <span>Notice</span></span><i></i><span :class="{current:step===2}">02 <span>Place</span></span></div>
       <template v-if="step === 1">
         <h1>How are you<br><em>feeling today?</em></h1><p class="small">A moment to notice. No explanation needed.</p>
         <div class="feeling-bubble" :style="{background: draft.color || '#d7dfd0'}" aria-hidden="true"><AppIcon name="leaf" /></div>
@@ -75,6 +74,6 @@ async function save() {
       </template>
       <div class="form-links"><button class="text-button" @click="emit('navigate','history')">View past logs</button><button class="text-button" @click="emit('navigate','home')">Leave without saving</button></div>
     </template>
-    <template v-else><div class="saved-state"><span class="saved-mark"><AppIcon name="check" /></span><p class="eyebrow">A moment, remembered</p><h1>Entry saved.</h1><p>You can come back to it whenever you like.</p><button class="button full-width" @click="emit('navigate','home')">Home</button><button class="button secondary full-width" @click="emit('navigate','history')">View past logs</button></div></template>
+    <template v-else><div class="saved-state"><span class="saved-mark"><AppIcon name="check" /></span><h1>Entry saved.</h1><p>You can come back to it whenever you like.</p><button class="button full-width" @click="emit('navigate','home')">Home</button><button class="button secondary full-width" @click="emit('navigate','history')">View past logs</button></div></template>
   </section>
 </template>
