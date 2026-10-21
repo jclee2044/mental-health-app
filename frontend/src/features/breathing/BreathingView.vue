@@ -4,11 +4,12 @@ import AppIcon from '../../components/AppIcon.vue'
 import { BreathingClock, PATTERN, phaseAt } from './clock.js'
 import { localDate } from '../../dates.js'
 import { BreathAudio } from './audio.js'
+import { decodeRecordings } from './recordings.js'
 const props = defineProps({ interrupted: Boolean, reducedMotion: Boolean })
 const emit = defineEmits(['navigate', 'record', 'start'])
-const audio = new BreathAudio()
+const audio = new BreathAudio(undefined, decodeRecordings)
 const soundEnabled = ref(true)
-const soundStatus = ref('Soft inhale & exhale sounds')
+const soundStatus = ref('Recorded inhale & exhale')
 let audioKey = ''
 const clock = new BreathingClock()
 const state = ref('ready')
@@ -75,7 +76,7 @@ const circleScale = computed(() => {
   return cue.value.phase === 'inhale' ? .78 + .6 * progress : 1.38 - .6 * progress
 })
 async function unlockSound() {
-  try { await audio.unlock(); audioKey = ''; soundStatus.value = 'Soft inhale & exhale sounds'; syncAudio() }
+  try { await audio.unlock(); audioKey = ''; soundStatus.value = 'Recorded inhale & exhale'; syncAudio() }
   catch { soundStatus.value = 'Sound unavailable. Follow the words and circle.' }
 }
 function syncAudio() {

@@ -1,50 +1,48 @@
-// Original synthesized airy cues; no downloads, recordings, microphone, or speech service.
 export class BreathAudio {
-  constructor(createContext = () => new (window.AudioContext || window.webkitAudioContext)()) {
+  constructor(createContext = () => new (window.AudioContext || window.webkitAudioContext)(), loadRecordings = async () => ({})) {
     this.createContext = createContext
+    this.loadRecordings = loadRecordings
     this.context = null
+    this.buffers = null
+    this.loading = null
     this.nodes = []
+    this.closed = false
   }
   async unlock() {
+    if (this.closed) throw new Error('Audio is closed.')
     this.context ??= this.createContext()
-    if (this.context.state === 'suspended') await this.context.resume()
-    if (this.context.state !== 'running') throw new Error('Audio is unavailable.')
+    // Resume during the initiating user gesture, before waiting for decoding.
+    const resumed = this.context.state === 'suspended' ? this.context.resume() : Promise.resolve()
+    this.loading ??= this.loadRecordings(this.context).catch(error => { this.loading = null; throw error })
+    const [, buffers] = await Promise.all([resumed, this.loading])
+    if (this.closed || this.context.state !== 'running') throw new Error('Audio is unavailable.')
+    for (const [phase, duration] of [['inhale', 4], ['exhale', 6]]) {
+      if (phase === 'inhale' && !buffers[phase]) continue
+      if (!buffers[phase] || Math.abs(buffers[phase].duration - duration) > .02) throw new Error('Breathing recording is unavailable.')
+    }
+    this.buffers = buffers
   }
   play(phase, progress = 0) {
     this.stop()
-    if (!this.context || this.context.state !== 'running') return false
-    if (!['inhale', 'exhale'].includes(phase)) return false
+    if (this.closed || !this.buffers || this.context?.state !== 'running') return false
+    if (!['inhale', 'exhale'].includes(phase) || !this.buffers[phase]) return false
     const ctx = this.context
     const duration = phase === 'inhale' ? 4 : 6
-    const startProgress = Math.max(0, Math.min(.999, progress))
-    const remaining = duration * (1 - startProgress)
-    const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * duration), ctx.sampleRate)
-    const samples = buffer.getChannelData(0)
-    let seed = 12345, smooth = 0
-    for (let i = 0; i < samples.length; i++) {
-      seed = (seed * 16807) % 2147483647
-      smooth = .6 * smooth + .4 * (seed / 1073741823.5 - 1)
-      samples[i] = smooth
-    }
+    const offset = duration * Math.max(0, Math.min(1, progress))
+    const remaining = duration - offset
+    if (remaining <= 0) return false
     const source = ctx.createBufferSource()
-    source.buffer = buffer
-    const filter = ctx.createBiquadFilter()
-    filter.type = 'bandpass'; filter.Q.value = .65
-    const low = phase === 'inhale' ? 500 : 1400
-    const high = phase === 'inhale' ? 1400 : 500
-    filter.frequency.setValueAtTime(low + (high - low) * startProgress, ctx.currentTime)
-    filter.frequency.linearRampToValueAtTime(high, ctx.currentTime + remaining)
+    source.buffer = this.buffers[phase]
     const gain = ctx.createGain()
+    const fade = Math.min(.04, remaining / 2)
     gain.gain.setValueAtTime(0, ctx.currentTime)
-    for (let step = 1; step <= 40; step++) {
-      const fraction = step / 40
-      const position = startProgress + (1 - startProgress) * fraction
-      gain.gain.linearRampToValueAtTime(.22 * Math.sin(Math.PI * position), ctx.currentTime + remaining * fraction)
-    }
-    source.connect(filter); filter.connect(gain); gain.connect(ctx.destination)
-    source.start(ctx.currentTime, duration * startProgress)
+    gain.gain.linearRampToValueAtTime(.65, ctx.currentTime + fade)
+    gain.gain.setValueAtTime(.65, ctx.currentTime + remaining - fade)
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + remaining)
+    source.connect(gain); gain.connect(ctx.destination)
+    source.start(ctx.currentTime, offset)
     source.stop(ctx.currentTime + remaining)
-    this.nodes = [source, filter, gain]
+    this.nodes = [source, gain]
     return true
   }
   stop() {
@@ -52,5 +50,5 @@ export class BreathAudio {
     for (const node of this.nodes) { try { node.disconnect() } catch { /* Already disconnected. */ } }
     this.nodes = []
   }
-  close() { this.stop(); this.context?.close().catch(() => {}) }
+  close() { this.closed = true; this.stop(); this.buffers = null; this.context?.close().catch(() => {}) }
 }

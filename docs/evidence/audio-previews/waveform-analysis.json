@@ -1,0 +1,35 @@
+{
+  "source": "Freesound 622601 by beerre, CC0",
+  "excluded_opening_seconds": 10,
+  "analysis_window_seconds": [
+    10,
+    31
+  ],
+  "rms_window_ms": 20,
+  "reference_noise_floor_dbfs": -52.48,
+  "regions": [
+    {
+      "label": "A / confirmed exhale",
+      "start": 12.5,
+      "end": 15.6
+    },
+    {
+      "label": "B / confirmed exhale",
+      "start": 25.35,
+      "end": 28.9
+    }
+  ],
+  "limits": "User identifies opening as handling noise and breathing after about 10s. RMS locates sound envelopes, not physiological inhale/exhale identity. Natural-speed cuts; no stretch, no claim of listening.",
+  "final_selection": {
+    "inhale_source_seconds": [
+      7,
+      10
+    ],
+    "exhale_source_seconds": [
+      25.35,
+      28.9
+    ],
+    "phase_identity_source": "User listening feedback; not inferred from RMS",
+    "processing": "Inhale: 75% speed, 3s -> 4s. Exhale: 71% speed, 3.55s -> 5s, then 1s silence. Both: slightly lowered pitch, source-edge fades and AAC compression."
+  }
+}
