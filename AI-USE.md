@@ -71,3 +71,71 @@ Verified preparation: original interior sample bytes preserved apart from source
 The user requested committing the changes. Codex reran `backend/.venv/bin/python scripts/verify_checkpoints.py`; all three isolated cumulative snapshots passed (interface: 4 frontend tests; emotion: 4 frontend/7 backend; breathing: 13 frontend/9 backend), plus non-mutating lint and production builds at each stage. The existing upstream TestClient/httpx deprecation warning remains. These checks validate build/module boundaries and deterministic scheduling, not subjective audio quality or phone installation.
 
 Created UI-only commit `161ad59` after checking its 13 staged paths and confirming it excluded recorded-audio changes. Prepared a separate recorded-audio commit with source/license credits, preparation script, scheduling tests, audition evidence and these recent disclosure/log entries. Used an index-only patch for the mixed breathing view so the UI and audio changes remain separate. Older assignment/implementation documentation edits remain in the working tree; recent log appendices are staged independently. Commands include reviewed `git status`, `git diff`, checkpoint verifier, scoped `git add`, `git apply --cached`, `git diff --cached --check`, index-content assertions, scoped text scanning, `git commit` and final Git inspection. No push, history rewrite, dependency installation, process stop/restart or new browser test.
+
+
+## Breathing hold requirement — October 27, 2026
+
+At the user's request, Codex changed guided breathing to require a continuous
+circle hold (primary pointer or Space/Enter) across countdown and six fixed
+4-in/6-out cycles. Early release/cancel ends the exercise via the existing record
+and Home navigation path; release after completion preserves completion. Pointer
+capture, input ownership/key-repeat guards, keyboard blur, window blur, hidden
+page and Emergency cancellation prevent unattended continuation. Pointer holds
+can still use Pause/Resume with another input; releasing while paused ends.
+Mute, reduced motion and request-independent pacing remain. No dependencies,
+API/schema or checkpoint manifest changes, staging, commits, provider calls,
+microphone access or real call actions.
+
+Changed: frontend/src/features/breathing/BreathingView.vue, styles.css, README.md;
+added hold.js and tests/hold.test.js; appended AI-USE.md and docs/evidence-log.md.
+Existing unrelated work (including SessionHistoryView.vue) was preserved.
+Commands/checks: cat/rg/Git reads; project Python file edits; npm --prefix frontend
+test (72 passing); npm --prefix frontend run build (passed); targeted npm exec
+--offline -- eslint ... --no-cache (passed); git diff --check (passed).
+backend/.venv/bin/python scripts/verify_checkpoints.py --stage breathing passed:
+19 isolated frontend tests, non-mutating Oxlint/ESLint, production build and
+9 backend tests. One existing Starlette/httpx deprecation warning; no dependency
+change. Evidence: .checkpoints/20261027-160231-561600/results.json (ignored).
+Unverified/TODO: physical mouse/touch/pen and assistive-technology browser checks,
+audio listening and new real-time full-duration interaction. Tests use mocked
+input/clock behavior and do not establish clinical benefit or device usability.
+
+
+### Breathing text and remaining time — October 27, 2026
+
+User requested clearer start instructions and time remaining. Updated
+BreathingView.vue and styles.css with prominent “Tap and hold” text, an in-circle
+start label, release-to-end explanation, a 3-second preparation explanation,
+63-second total and seconds-remaining timer (including countdown, frozen during
+pauses), plus completion/release wording and keyboard guidance. Existing pace
+and hold behavior remain. No dependencies or contracts changed.
+Commands/checks: npm --prefix frontend run build; npm --prefix frontend test
+(72 passing); targeted non-mutating ESLint; git diff --check. CUA reloaded the
+local app and opened Guided breathing; accessibility text and screenshot confirm
+new ready-state instructions, 63-second total and visible Emergency. Screenshot:
+docs/evidence/breathing-hold-instructions.png. Active countdown/full-duration
+browser run and physical touch/assistive-technology checks remain unverified.
+No provider/microphone/call actions. AI assistance: Codex authored the copy,
+remaining-time computation and CSS using existing project tools.
+
+
+### Breathing timer correction — October 27, 2026
+
+User requested removing the visible keyboard note and excluding preparation from
+time remaining. Codex updated BreathingView.vue: 60 seconds of breathing remains
+during the separate 3-second countdown, then decreases during the fixed six
+cycles. The underlying 63-second sequence and duration records remain accurate.
+Keyboard hold support remains; only its visible explanatory paragraph was removed.
+Checks: npm --prefix frontend run build, npm --prefix frontend test (72 passed),
+targeted non-mutating ESLint and git diff --check passed. CUA reload confirmed
+60-second ready display and removed paragraph; screenshot is
+ docs/evidence/breathing-active-time.png. Active full-duration browser run remains
+unverified. No dependencies/API changes or live model/microphone/call actions.
+
+
+Commit verification: reran backend/.venv/bin/python
+scripts/verify_checkpoints.py --stage breathing on the final timer/copy version:
+19 isolated frontend tests, Oxlint/ESLint, production build and 9 backend tests
+passed. Existing Starlette/httpx deprecation warning only. Evidence:
+.checkpoints/20261027-193319-380416/results.json. Commit scope excludes unrelated
+pre-existing application, chat, session-history and documentation work.

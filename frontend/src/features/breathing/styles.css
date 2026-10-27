@@ -18,3 +18,15 @@
 .sound-control .text-button { font-size: .75rem; } .sound-control .small { font-size: .65rem; }
 .breathing-circle { will-change: transform; }
 .reduce-motion .breathing-circle { will-change: auto; }
+
+/* Capture keeps a shrinking circle from dropping an existing hold. */
+button.breathing-circle { border: 0; padding: 0; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; cursor: pointer; }
+button.breathing-circle:focus-visible { outline: 3px solid #365d4d; outline-offset: 6px; }
+.breathing-guide-ring { pointer-events: none; }
+
+.breathing-hold-instructions { margin: 20px auto 12px; font-size: 1rem; }
+.breathing-hold-instructions span { display: block; margin-top: 6px; font-size: .85rem; }
+.breathing-circle-label { display: grid; justify-items: center; gap: 5px; color: #304d3c; font-size: .9rem; }
+.breathing-circle-label > span { font-size: .8rem; }
+.breathing-time { margin: 8px 0 0; font-size: 1.35rem; font-variant-numeric: tabular-nums; color: #304d3c; }
+.breathing-time span { display: block; margin-top: 5px; font-size: .75rem; color: var(--muted); }
