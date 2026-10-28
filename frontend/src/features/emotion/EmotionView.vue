@@ -53,14 +53,14 @@ async function save() {
   <section class="narrow-page emotion-page page-enter">
     <template v-if="step < 3">
       <template v-if="step === 1">
-        <h1>How are you<br><em>feeling today?</em></h1><p class="small">A moment to notice. No explanation needed.</p>
-        <div class="feeling-bubble" :style="{background: draft.color || '#d7dfd0'}" aria-hidden="true"><AppIcon name="leaf" /></div>
+        <h1>How are you<br><em>feeling today?</em></h1>
+        <div class="feeling-bubble" :style="{background: draft.color || 'var(--lavender)'}" aria-hidden="true"><AppIcon name="breath" /></div>
         <form novalidate @submit.prevent="next">
           <fieldset><legend>Choose a feeling <span class="required-note">Required</span></legend><div class="feeling-options"><label v-for="(feeling,index) in feelings" :key="feeling" :class="{selected:draft.feeling===index+1}"><input v-model="draft.feeling" type="radio" name="feeling" :value="index+1"><span>{{ feeling }}</span></label></div><p v-if="fields.feeling" class="field-error" role="alert">{{ fields.feeling }}</p></fieldset>
           <fieldset><legend>Choose a color <span class="required-note">Required</span></legend><div class="swatches"><button v-for="color in colors" :key="color.value" type="button" class="swatch" :style="{'--swatch':color.value}" :aria-label="color.name" :aria-pressed="draft.color===color.value" @click="draft.color=color.value"><AppIcon v-if="draft.color===color.value" name="check" /></button><label class="custom-color" aria-label="Custom color"><input type="color" aria-label="Custom color" :value="draft.color || '#8fa98d'" @input="draft.color=$event.target.value"><span aria-hidden="true">+</span></label></div><p class="small muted color-hint">Your color, your meaning.</p><p v-if="fields.color" class="field-error" role="alert">{{ fields.color }}</p></fieldset>
           <label for="color-meaning">What does this color mean to you? <span class="optional">Optional</span></label><input id="color-meaning" v-model="draft.color_meaning" type="text" maxlength="80" placeholder="A word or two, if you like">
           <label for="entry-note">Anything you’d like to add? <span class="optional">Optional</span></label><textarea id="entry-note" v-model="draft.note" rows="3" maxlength="2000" placeholder="Leave a little note for yourself…"></textarea>
-          <button class="button full-width form-next" type="submit">Continue <AppIcon name="arrow-right" /></button>
+          <div class="button-row form-next"><button class="button secondary" type="button" @click="emit('navigate','home')">Cancel</button><button class="button" type="submit">Continue <AppIcon name="arrow-right" /></button></div>
         </form>
       </template>
       <template v-else>
@@ -72,8 +72,8 @@ async function save() {
         <p v-for="(message,key) in fields" :key="key" class="field-error" role="alert">{{ message }}</p><p v-if="error" class="error-banner" role="alert">{{ error }} Your entry is still here.</p>
         <div class="button-row"><button class="button secondary" :disabled="saving" @click="step=1">Back</button><button class="button" :disabled="saving" @click="save">{{ saving ? 'Saving…' : entry ? 'Save changes' : 'Save entry' }}</button></div>
       </template>
-      <div class="form-links"><button class="text-button" @click="emit('navigate','history')">View past logs</button><button class="text-button" @click="emit('navigate','home')">Leave without saving</button></div>
+      <div class="form-links"><button class="history-button" type="button" aria-label="View past logs" title="View past logs" @click="emit('navigate','history')"><AppIcon name="history" /></button><button v-if="step === 2" class="text-button" @click="emit('navigate','home')">Leave without saving</button></div>
     </template>
-    <template v-else><div class="saved-state"><span class="saved-mark"><AppIcon name="check" /></span><h1>Entry saved.</h1><p>You can come back to it whenever you like.</p><button class="button full-width" @click="emit('navigate','home')">Home</button><button class="button secondary full-width" @click="emit('navigate','history')">View past logs</button></div></template>
+    <template v-else><div class="saved-state"><span class="saved-mark"><AppIcon name="check" /></span><h1>Entry saved.</h1><p>You can come back to it whenever you like.</p><button class="history-button" type="button" aria-label="View past logs" title="View past logs" @click="emit('navigate','history')"><AppIcon name="history" /></button></div></template>
   </section>
 </template>

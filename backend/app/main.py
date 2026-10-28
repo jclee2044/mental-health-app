@@ -34,7 +34,7 @@ def create_app(db_path=None, frontend_dist=None):
             pass
         yield
 
-    app = FastAPI(title="Still API", lifespan=lifespan)
+    app = FastAPI(title="inspire API", lifespan=lifespan)
     app.add_middleware(NoStoreMiddleware)
     for module in pkgutil.iter_modules(features.__path__):
         if module.ispkg:
