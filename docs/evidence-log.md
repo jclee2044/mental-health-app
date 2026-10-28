@@ -1,5 +1,84 @@
 # Curated design evidence log
 
+## Guided breathing submission preparation — October 26, 2026
+
+Request: confirm SQLite breathing records, implement minimal changes in dependency
+order for Part 3.2, and explain browser/database validation. Read AGENTS, README,
+assignment, design/research notes, handoff, contracts, current code/tests and prior
+evidence. Read-only normal DB inspection found 10 breathing sessions (3 completed,
+7 ended), one emotion entry and no chat tables before startup of the new storage.
+No personal contents were read. Existing uncommitted/untracked work was preserved.
+
+Implemented contract/schema/domain/storage first, then HTTP registration/routes,
+then frontend endpoint wrappers, navigation-surviving save coordinator, read-only
+history/deletion and verification. Completed typed pairs save in one SQLite
+transaction with server timestamps and stable IDs. Retry cannot call a model or
+overwrite a changed pair. Provider generation remains usable without SQLite.
+No automatic old-history retrieval, voice transcript persistence or dependencies.
+
+Browser evidence: actual production app and SQLite with a replaced mock provider,
+separate ignored submission-demo.sqlite3. Typed pairs survived reload and server
+restart. Temporary SQLite triggers simulated chat/breathing failures; both were
+removed. Save errors were visible/retryable after navigation, and retry HTTP
+repeated only PUT with the original IDs. A mock reply failure retained the draft
+without inventing/saving an assistant reply. Delete confirmation/Cancel and
+Emergency over it worked; actual deletion only exercised on temporary test DBs.
+Breathing completed 60s active/63s sequence/66.6121s instruction-to-finish, no
+pauses; Emergency on a repeat required explicit Resume, and End saved partial
+status. With only this task's mock server stopped, cached shell/Emergency worked
+and history failed explicitly. Restart restored all three session rows and two
+conversations/four mock messages. No call link or microphone selected. Screenshot,
+curated HTTP and read-only SQL output links: docs/part32-verification.md.
+
+Observed checks: full backend 157 passed (existing Starlette/httpx warning), full
+frontend 66 passed, non-mutating Oxlint/ESLint and production build passed (51
+modules), all original cumulative isolated checkpoints passed with unchanged
+manifest. Final checkpoint copy: docs/evidence/part32-checkpoints.json. First
+malformed-Unicode test failed before HTTP serialization; escaped JSON now tests
+the server's 422. An npm prefix/working-directory mistake was corrected and the
+checks passed. The sandbox blocked the first localhost bind; approved launch
+succeeded. Nonmatching initial contract/document patches applied nothing; targeted
+patches succeeded. Browser review prompted stale Home copy correction and showing
+instruction/sequence timing in saved breathing history. Another chat updated
+environment-loading docs and its own server during this task; those edits and
+that process were preserved.
+
+Commands/tools: pwd, rg --files/rg -n, cat/sed/head/tail, git status/diff/check-ignore;
+apply_patch; project Python with pathlib/sqlite3/ast/json/importlib; project pytest;
+npm test/build and non-mutating lint; scripts/verify_checkpoints.py;
+scripts/serve_submission_demo.py; scripts/inspect_submission_db.py;
+CUA DOM/accessibility/screenshot controls and read-only console logs. No global
+or project dependency installs, external calls, staging, commits or push. Only
+the mock process started here was stopped/restarted and is stopped at teardown.
+The pages:write-page skill guided local documentation; no Page was created.
+
+Files changed in this increment: backend/app/features/voice/{PERSISTENCE.md,
+CONTRACT.md,__init__.py,domain.py,schemas.py,routes.py,storage.py,tests/test_persistence.py};
+frontend/src/features/chat/{api.js,useChat.js,ChatView.vue,index.js,styles.css,
+README.md,useConversationRecords.js,ChatSaveNotice.vue,useConversationHistory.js,
+ConversationHistoryView.vue,tests/fakes.js,tests/api.test.js,tests/persistence.test.js};
+frontend/src/{App.vue,views/HomeView.vue,features/breathing/SessionHistoryView.vue};
+scripts/{serve_submission_demo.py,inspect_submission_db.py};
+docs/{part32-validation.md,part32-verification.md,api-contract.md,architecture.md,
+evidence-log.md,evidence/part32-*}; submissions/part3.2/report.md; README.md,
+AGENTS.md, AI-USE.md and handoffs/current.md. Root Part 3.1 report and original
+checkpoint scopes were preserved. SQLite files/builds remain ignored.
+
+Outstanding user evidence: real fictional typed model contribution, model ID,
+separate setup time, recording/access links and reviewed/pushed submission commit.
+The local report draft marks these TODOs; tests/mocks establish software behavior,
+not generated quality, acoustic performance or clinical safety. Failed-save
+queues remain memory-only; no historical personalization/RAG/voice persistence.
+Clean install, native phone and comprehensive accessibility remain unverified.
+
+## Assignment consistency review — October 21, 2026
+
+The user supplied a Canvas assignment-page text export and requested a consistency/update check. A line-by-line comparison against `docs/assignment-description.md` found exactly one content addition: optional use of online datasets/resources to learn sample conversations, with a Kaggle example. The local assignment now includes that sentence and URL; Canvas navigation and its “Links to an external site.” label were omitted. All other assignment text, deadlines, findings, technical expectations, timing, evaluation, and submission requirements match the supplied copy. This does not establish when the sentence was added or whether Canvas changed after the export.
+
+README, AGENTS.md, design/research notes, report, and current handoff were reviewed for consistency. Local Git history and tracked files confirm that the initial commit is complete, `origin` is configured, and the report is tracked. Stale present-tense setup claims in README and the initial-commit TODO in design notes were corrected. Historical entries below describe earlier states. Existing mockup placeholders, unresolved design choices, and unimplemented milestone requirements remain explicitly documented; this check does not resolve them. The dataset suggestion is optional and does not require a dataset, model training, or ingestion. Dataset contents and rights were not evaluated.
+
+Commands: `pwd`, `rg --files`, `rg -n`, `cat`, `head`, `tail`, `git status --short`, `git log -3 --oneline`, `git ls-files report.md`, `git remote -v`, `git diff`, and `git diff --check`; project-owned Python with `pathlib`, `re`, and `difflib` compares the assignment after removing the Canvas link label and checks changed Markdown files. Edits use `apply_patch` and project-owned Python. Files changed: assignment description, README, design notes, AI-use disclosure, and this log. No live Canvas/remote verification, application tests, dataset downloads, installations, processes, commits, or pushes are part of this review.
+
 ## Repository publication preparation — October 15, 2026
 
 The user requested ignoring `report.md`, checking for API keys or similar secrets, and committing/pushing the project. The report remains a local file; links to it in repository documentation therefore refer to a separately supplied submission draft. `.gitignore` also excludes common private-key and credential-file names. Candidate text files were scanned for provider tokens, private-key headers, credential URLs, assigned secrets, JWTs, and high-entropy literals outside lockfile integrity hashes. No findings were returned. The mockup was visually reviewed for credentials; no visible credentials were found. Pattern scanning is limited and cannot prove the absence of all secrets.
@@ -84,6 +163,28 @@ Checks include reviewed Git diffs, explicit staging scope, Markdown targets, rep
 
 Content commit `084981b0d18982257ee70371200c700fd6ba650c` (`docs: track Part 1 report and finalize submission documentation`) was created and successfully pushed to `origin/main`. The report was then updated to reference that commit, including its direct GitHub document and raw-image links. A follow-up reference commit saves those updates without changing the design content. The report is tracked; environments, dependency directories, builds, caches, and credentials remain ignored.
 
+## Working iteration and independent commit scopes — October 21, 2026
+
+The user authorized implementation of the agreed five-stage plan, then clarified that the initial interface, emotion log and guided breathing must be separately committable. The implementation now self-registers feature folders in Vue and FastAPI. Each feature owns its routes, request wrappers, domain logic, storage SQL, styles, tests and contract. Emotion history no longer imports/request breathing history. Shared middleware owns no business logic. See [architecture](architecture.md), [checkpoint scopes](implementation-checkpoints.md), and [observed verification](iteration-verification.md).
+
+Observed: interface-only snapshot passed 4 frontend tests, both lints and production build; emotion snapshot passed 4 frontend/7 backend tests plus lints/build; breathing snapshot passed 10 frontend/9 backend tests plus lints/build. Snapshots are generated from the recorded scaffold commit plus exact cumulative manifest paths, excluding later modules. `stage_checkpoint.py interface` was run without `--stage`, and the real Git index remained empty. No commit/push or dependency change occurred.
+
+Browser evidence includes required feeling/color/graph validation, keyboard graph selection, save/edit/reload of fictional entries, Emergency over a delete dialog, preservation of an unsaved draft after deliberately stopping FastAPI, breathing pause/end/repeat, 63.0s countdown-plus-breathing sequences, 63.1s/64.0s instruction-to-finish observations, synchronized rendered audio/circle phases, mute/reduced motion, production PWA readiness, offline reload/history failure, offline breathing, and a successful explicit session-save retry after server recovery. These checks do not establish clinical effects, audible quality, native installation or live-model behavior. No real calls or live-model requests were made.
+
+Revised approach: initial feature imports and combined history would have broken separate commits. Independent module registration and history screens corrected it, and actual isolated builds now establish that later module files are unnecessary. Other failures/corrections and the full fictional scenario matrix are recorded in iteration verification. Commands/file scopes and limitations are there rather than duplicating a full chat transcript. Root documentation preserves pre-existing edits and is intentionally separate from the three staging scopes.
+
+Final teardown: stopped only task-owned FastAPI/Vite sessions after verification. SQLite inspection found one fictional entry, two completed sessions at 60s active breathing and four ended sessions. Git diff whitespace checks passed and the index remained empty. Final screenshot: `docs/evidence/interface.jpg`; checkpoint summary: `docs/evidence/checkpoints.json`. The verifier also passed from the interface-only snapshot and skipped missing emotion/breathing modules.
+
+## Separate implementation commits — October 21, 2026
+
+At the user's explicit request, created three local commits in order: `415310c` responsive interface/Emergency/PWA shell (31 files), `b003173` emotion log and shared FastAPI/SQLite/client foundations (25 files), `f9f7782` guided-breathing frontend/backend modules (19 files). Each commit's changed paths were checked against `scripts/checkpoints.json`; the interface tree contains neither feature, and the emotion tree contains no breathing module. No push or history rewrite occurred. Root documentation and untracked full-session evidence remain unstaged, preserving the agreed feature-only scopes.
+
+Before committing, `scripts/verify_checkpoints.py` passed all three isolated builds: interface 4 frontend tests; emotion 4 frontend/7 backend; breathing 10 frontend/9 backend; non-mutating Oxlint/ESLint and production builds passed at each stage. Backend tests retain the known upstream httpx deprecation warning. Scoped text was checked for common private-key/provider-token patterns with no findings; this is not a guarantee of secret absence. Staged whitespace checks found two trailing-blank-line issues in emotion files; these were normalized before committing, with no semantic change. File scopes, dependency declarations and runtime data exclusions were reviewed. The index was empty after the commits.
+
+Commands: `cat`, `rg`, `git status --short`, `git log`, `git diff --cached`, `git diff --check`, project-owned Python scans and scope assertions, `scripts/verify_checkpoints.py`, `scripts/stage_checkpoint.py <scope> --stage`, explicit-path `git add` for the two whitespace corrections, three separate `git commit -m` calls, `git diff-tree`, `git cat-file`, and `git rev-parse`. The first sandboxed staging attempt could not write the index; the authorized exact staging operations succeeded with sandbox escalation. No machine/dependency installation, browser retesting, or server/process changes were part of this commit task.
+
+Chat preparation remains open: provider/model and data transmission/call budget; approved role/content/corpus and the proposed pattern review; conversation/message schema, retention/deletion and explicit historical-context consent; a registered chat feature replacing the shell stub; configurable chat request timeout/errors/cancellation and idempotent retry semantics; mocked behavior tests before bounded live calls. These are existing design decisions and code gaps, not a newly approved chat scope.
+
 ## Remove eyebrows and find human breathing audio — October 21, 2026
 
 Request: remove eyebrow text throughout; find gentle human inhale/exhale recordings instead of the original synthesized noise cues. Removed decorative heading labels, repeated route/header text, Home card overlines, art labels and emotion's numbered strip across the shell and feature modules. Kept selected-day information as a regular history heading. Updated shared/emotion/breathing CSS and kept the dialog close control aligned right.
@@ -139,6 +240,439 @@ Verified preparation: original interior sample bytes preserved apart from source
 The user requested committing the changes. Codex reran `backend/.venv/bin/python scripts/verify_checkpoints.py`; all three isolated cumulative snapshots passed (interface: 4 frontend tests; emotion: 4 frontend/7 backend; breathing: 13 frontend/9 backend), plus non-mutating lint and production builds at each stage. The existing upstream TestClient/httpx deprecation warning remains. These checks validate build/module boundaries and deterministic scheduling, not subjective audio quality or phone installation.
 
 Created UI-only commit `161ad59` after checking its 13 staged paths and confirming it excluded recorded-audio changes. Prepared a separate recorded-audio commit with source/license credits, preparation script, scheduling tests, audition evidence and these recent disclosure/log entries. Used an index-only patch for the mixed breathing view so the UI and audio changes remain separate. Older assignment/implementation documentation edits remain in the working tree; recent log appendices are staged independently. Commands include reviewed `git status`, `git diff`, checkpoint verifier, scoped `git add`, `git apply --cached`, `git diff --cached --check`, index-content assertions, scoped text scanning, `git commit` and final Git inspection. No push, history rewrite, dependency installation, process stop/restart or new browser test.
+
+
+## Backend voice session broker — October 22, 2026
+
+User scope: add GET /api/voice/config and POST /api/voice/sessions only; use gpt-live-1 at POST /v1/live/sessions, server-owned configuration, store: false, no tools, finite timeout, no retry, minimal event permissions, validated projected responses, sanitized failures and mocked checks. Stop after the focused checks pass. No identity records exist, so profile/owner IDs are rejected rather than invented.
+
+Changed: backend/app/features/voice/ (__init__, settings, domain, schemas, routes, provider, CONTRACT and mocked tests); backend/app/main.py now permits stateless registrations returning None. Updated AGENTS, README, architecture, API index, AI-use disclosure, this log and the current handoff. No frontend/checkpoint/dependency files changed. Earlier root documentation/evidence edits were already present and remain separate from this work.
+
+Observed: 77 focused checks passed in 0.48s, one existing TestClient/httpx deprecation warning. Tests cover absent/configured credentials without secret exposure, rejected browser configuration and unneeded IDs, malformed/oversized SDP/JSON, streamed body bounds, projected success, server policy/allowlists, upstream failures/timeouts and malformed/bounded responses, no redirects/retries and feature/shell boundaries. Provider HTTP is mocked; HTTPConnection/HTTPSConnection connect methods have tripwires. No paid call occurred.
+
+Commands: pwd/rg/cat/sed/tail and Git status/diff inspection; apply_patch; project Python documentation append; PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python -m pytest -p no:cacheprovider -q -c backend/pytest.ini backend/app/features/voice/tests backend/tests/test_boundaries.py backend/tests/test_shell.py; git diff --check (passed). Official Live creation/WebRTC/session-management documentation was searched and read. Some documentation patch attempts failed their context verification and were corrected before the test run; no application test failures occurred.
+
+Limits: no frontend/build/checkpoint/browser or paid-provider test was run for this backend-only increment. Configured means a usable header-shaped key exists, not that OpenAI accepts it. The timeout bounds socket I/O; it is not a strict total deadline. The reported 300s policy is not provider expiry/cost enforcement. store: false is not a no-retention/no-training promise. Lifecycle termination/reconciliation, transcript storage, client event handling and crisis/pre-playback policy evaluation remain TODOs. No process started/stopped, dependency change, staging, commit or push. Work stopped after focused verification, apart from recording these results.
+
+
+## Separate Live and delegated Responses prompts — October 22, 2026
+
+The user authorized server-owned gpt-live-1 speaking instructions and separate delegated Responses instructions using VOICE_BACKEND_MODEL. Prompts now live in backend/app/features/voice/prompts.py (LIVE_INSTRUCTIONS and BACKEND_INSTRUCTIONS); settings.py maps them to session.instructions and session.delegation.responses.instructions. VOICE_BACKEND_MODEL has no automatic default and is required alongside OPENAI_API_KEY for configured status. Delegated tools remain empty with tool_choice none; browser permissions are unchanged. Emergency remains independent in existing application code. No audio or transcripts are saved by this feature.
+
+Observed: 88 focused mocked backend tests passed in 0.54s, plus git diff --check. The existing TestClient/httpx deprecation warning remains. Tests cover correct prompt/model wiring, missing/invalid backend model and rejected browser overrides along with prior broker/layer/shell cases. Live prompt behavior, delegated model availability and spoken quality remain unverified; no paid calls or browser checks occurred. Official Live prompting/delegation references were read with the OpenAI Docs skill. No new dependencies, frontend/checkpoint/database changes, process operations, staging or commits.
+
+Changed this increment: voice/prompts.py, voice/settings.py, voice/provider.py, voice/tests/test_voice.py, voice/CONTRACT.md, AGENTS.md, README.md, AI-USE.md, docs/evidence-log.md and handoffs/current.md. Prior edits were preserved. Commands: cat/sed/rg and git status/diff inspection; apply_patch; project Python documentation updates; PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python -m pytest -p no:cacheprovider -q -c backend/pytest.ini backend/app/features/voice/tests backend/tests/test_boundaries.py backend/tests/test_shell.py; git diff --check. Prompt text expresses intended boundaries, not evidence that the model obeys them or a replacement for application-owned controls. Work stopped after reporting final prompt locations/wording.
+
+
+## Native voice UI and independent text fallback — October 26, 2026
+
+The user authorized adding opt-in native WebRTC to the existing Chat interface, then explicitly approved a minimal typed-message endpoint after inspection showed text chat was still a disabled placeholder. The new frontend chat feature self-registers, preserving the old shell fallback and existing visual language. No microphone or configuration request occurs on mount; only the microphone action initiates voice. Text sends through its own HTTP endpoint without microphone/WebRTC.
+
+Implementation: getUserMedia requests audio:true/video:false; the oai-events channel/handlers are created before the offer; final local SDP is posted only after complete ICE gathering; returned SDP is applied and Active waits for matching session.started. Permission/connecting/active/muted/closing/closed/error states are rendered. Remote audio play failures expose a gesture-driven Enable assistant audio action. Local microphone transmission is disabled until readiness and immediately during mute; unmute waits for the matching acknowledgment. Stop releases capture/playback immediately, attempts session.close and waits at most 2s for confirmation before reporting unconfirmed finalization. Navigation/unmount, overlays/Emergency, hidden document/pagehide, terminal failures, ignored permission prompts and stale async completions have explicit cleanup. Startup/command/duration timers are bounded; no automatic retries/reconnect or forced text-chat exit.
+
+The stateless backend voice feature also owns POST /api/chat/messages (user-approved scope), reusing its server-owned backend model/prompt and bounded HTTP adapter, without sibling-feature imports. JSON/history and provider replies are bounded/validated; no tools, browser settings, saved-record access or automatic retries. Both standalone Responses and Live retain store:false without a general provider-retention claim. Frontend HTTP stays in the shared client, whose original default timeout is preserved while voice/text use 15s. Text context is recent completed typed messages only; voice captions and typed provider context are separate, explicitly disclosed. Messages/captions/drafts are transient and clear on leaving chat. No audio recording or transcript/database/local-storage persistence.
+
+Observed: full frontend Node run passed 42 tests, including fake media/peer/audio/timer/API lifecycle checks, shared-wrapper fake HTTP, typed fallback after voice denial/failure and actual Vue SFC server rendering under mocked states for all seven states with enabled typing/End chat. This is not a real browser/device observation. Focused backend run passed 106 tests in 0.70s, with the existing TestClient/httpx deprecation warning. Typed/provider HTTP is mocked with connection tripwires. Non-mutating Oxlint and ESLint, production Vite build (46 modules), and git diff --check passed. All original checkpoints passed independently: interface 4 frontend tests; emotion 4 frontend/7 backend; breathing 13 frontend/9 backend, with both linters/builds at each stage. Checkpoint evidence: .checkpoints/20261026-091349-167634/results.json. Existing scopes omit the new voice/chat modules; full-checkout checks above cover those separately. No evidence of live-model quality or clinical effectiveness is claimed.
+
+Files this increment: frontend/src/features/chat/ (presentation, API declarations, browser controller, transient composable/domain rules, styles, registration, README and mocks/tests); frontend/src/App.vue, frontend/src/api/client.js, frontend/src/components/AppIcon.vue, frontend/tests/boundaries.test.js; backend/app/features/voice/{__init__.py,domain.py,http.py,provider.py,routes.py,schemas.py,tests/test_text.py,CONTRACT.md}; AGENTS.md, README.md, docs/architecture.md, docs/api-contract.md, AI-USE.md, this log and handoffs/current.md. Prior prompts/settings and unrelated working-tree/evidence changes were preserved. The checkpoint manifest and dependency manifests/lockfiles were unchanged. Only ignored build/checkpoint output was generated.
+
+Commands: repository pwd/rg/cat/sed and Git status/diff reads; official OpenAI WebRTC/Live/Responses and MDN playback/track documentation lookup through the OpenAI Docs workflow; apply_patch and project Python documentation writes; node --test src/features/chat/tests/voice.test.js src/features/chat/tests/chat.test.js; npm --prefix frontend test; frontend npm exec --offline -- oxlint . and npm exec --offline -- eslint . --no-cache; npm --prefix frontend run build; PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python -m pytest -p no:cacheprovider -q -c backend/pytest.ini backend/app/features/voice/tests backend/tests/test_boundaries.py backend/tests/test_shell.py; PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python scripts/verify_checkpoints.py; git diff --check. An initial contract/README patch had a context mismatch and was corrected before final verification; no application checks failed in this increment.
+
+Limits/stop: no real microphone, browser permission/autoplay/audio listening check, provider/model call, resource call, dependency/machine installation, server process, staging/commit/push or deployment. Existing unrelated processes/records were untouched. Provider availability, real ICE/NAT behavior, browser suspension/crash cleanup and final cost reconciliation remain unverified. The server's 300-second policy now has client handling, not hard provider billing enforcement. Work stopped after the requested mocked verification and documentation.
+
+
+## Local Mute, End and stale-session cleanup — October 26, 2026
+
+The user requested microphone-only Mute/Unmute, bounded End, duplicate-action guards,
+cleanup on every exit/Emergency/duration path, fresh sessions and late-result closure.
+Codex retained native WebRTC and existing presentation/text fallback. Local track toggles
+leave assistant audio/session/billing running; visible copy states this. The browser
+allowlist is narrowed to session.close plus used server events. End stops capture and
+playback immediately, sends close once, and waits at most 2s for session.closed before
+releasing transports/listeners/timers. Exits release immediately. Lifecycle wiring is
+shared between the real component and fake event targets. A fresh Start clears prior
+captions and supplies empty provider input; no audio/transcript persistence was added.
+
+The necessary server-owned POST /api/voice/sessions/{id}/end accepts only empty JSON and
+process-known validated IDs. A framework-free, locked in-memory ledger deduplicates
+close requests; no SQLite changes. It issues one fixed-URL hangup POST with server key,
+a 3s I/O timeout, no redirects/retries, accepting empty-result 200/204 and projecting
+204 or concurrent 202. Unknown IDs and malformed configuration are rejected; failures
+are sanitized and never automatically retried. The frontend uses 5s-bounded keepalive
+HTTP for failed/immediate/unacknowledged closes and late creation IDs. Already-sent
+creation requests remain readable within their 15s timeout after End. Late results
+cannot apply SDP or alter a newer/disposed UI. FastAPI also attempts close when it
+observes that a creation requester disconnected after provider success.
+
+Observed: npm --prefix frontend test passed 54 tests. Focused backend pytest passed
+129 tests in 0.73s with the existing TestClient/httpx deprecation warning only. Mocks
+cover duplicate Start/repeated End, local mute preserving playback/session/timers,
+normal ack versus 2s timeout, late answer after End/unmount/newer active conversation,
+failed close without retry, unmount, hash navigation, pagehide, beforeunload, hidden
+page, Emergency and duration cleanup. Backend mocks cover allowlisted close IDs,
+strict empty body, bounded/sanitized failure, idempotent/concurrent close, disconnected
+creation and reused ID rejection. A real temporary SQLite dump was unchanged before
+and after mocked voice creation/end. Real HTTP connections have test tripwires.
+Non-mutating Oxlint and ESLint passed; production build passed (47 modules). All
+original isolated checkpoints passed tests/linters/builds under the unchanged manifest
+(interface 4 frontend; emotion 4 frontend/7 backend; breathing 13 frontend/9 backend).
+Evidence: .checkpoints/20261026-092831-615878/results.json. Full-checkout checks cover
+chat separately because original checkpoint scopes exclude it. git diff --check passed.
+
+Files this refinement: frontend/src/features/chat/{ChatView.vue,voice.js,lifecycle.js,
+useChat.js,api.js,README.md,tests/fakes.js,tests/voice.test.js,tests/chat.test.js,
+tests/view.test.js,tests/api.test.js}; frontend/src/api/client.js;
+backend/app/features/voice/{lifecycle.py,provider.py,routes.py,settings.py,CONTRACT.md,
+tests/test_voice.py}; AGENTS.md, README.md, docs/api-contract.md, docs/architecture.md,
+AI-USE.md, docs/evidence-log.md and handoffs/current.md. Earlier unrelated dirty files,
+server prompts, schemas, dependency/checkpoint manifests and historical report were
+preserved. No stage/commit/push or server process operations occurred.
+
+Commands: rg/cat/Git inspection; apply_patch and project Python documentation writes;
+official OpenAI Live creation/management/hangup documentation lookup using the existing
+OpenAI Docs workflow; npm --prefix frontend test; frontend npm exec --offline -- oxlint .;
+npm exec --offline -- eslint . --no-cache (also focused reruns after test edits);
+npm --prefix frontend run build; backend/.venv/bin/python -m pytest -p no:cacheprovider
+-q -c backend/pytest.ini backend/app/features/voice/tests backend/tests/test_boundaries.py
+backend/tests/test_shell.py; backend/.venv/bin/python scripts/verify_checkpoints.py;
+git diff --check. Documentation patch context mismatches were corrected; no application
+check failed. No dependency installation, paid call, microphone/browser/resource-call
+operation, listening test, machine change or deployment.
+
+Limits/TODO: the official hangup reference describes SIP; the general management guide
+names hangup as a closure mechanism. WebRTC use for orphan cleanup is an unverified
+assumption, not a claimed live result. Without session.closed the UI conservatively
+reports finalization unconfirmed, including after fallback HTTP success. Keepalive and
+disconnect detection cannot guarantee delivery/termination across crashes or races;
+unknown IDs after creation timeout cannot be closed. The process-local ledger is not
+authentication, is lost on restart, and needs bounded retention/multiworker ownership
+before broader use. No hard provider expiry/cost enforcement, retention guarantee,
+clinical effectiveness or live model/device compatibility is established. Audio and
+transcripts stay out of the application database; store:false remains only a session
+retrieval setting. Work stopped after reporting the requested mocked results.
+
+
+## Verification rerun and prepared live checklist — October 26, 2026
+
+The user requested all existing backend checks, the frontend production build,
+focused voice mock review, and exact manual steps for a single conversation under
+60s without starting a paid call. Read project instructions/README, assignment,
+design/research notes, source/tests and prompt/settings locations. Official OpenAI
+Live management/hangup references were rechecked with the OpenAI Docs workflow.
+No runtime/test/model/prompt changes or real environment credential lookup were
+needed. No provider key tool was available; all automated provider access is mocked.
+
+Observed commands/results from the repository root unless stated:
+- backend/.venv/bin/python -m pytest -p no:cacheprovider -q -c backend/pytest.ini backend/tests backend/app/features: 134 passed in 0.74s; existing TestClient/httpx deprecation warning only.
+- From frontend/: node --test src/features/chat/tests/voice.test.js src/features/chat/tests/chat.test.js src/features/chat/tests/api.test.js src/features/chat/tests/view.test.js: 41 passed, 144.5ms.
+- npm --prefix frontend run build: passed, 47 modules transformed, 87ms.
+- git diff --check and project Python local-link/model-prompt checks: passed.
+
+The six requested mock cases all passed: missing key/backend-model configuration
+(no provider call), microphone denial, ordered offer/complete ICE/answer/readiness,
+Mute preserving playback/session versus bounded End, sanitized provider failure,
+and text replies after voice failure/denial. Existing duplicate Start/repeated End,
+late results and every lifecycle cleanup mock also passed; SQLite dump remained
+unchanged in mocked voice creation/end. Provider tests include real-connection
+tripwires. Native browser objects/HTTP/timers are fake and Vue is server-rendered;
+these observations do not establish real permissions, devices or model behavior.
+
+Created docs/voice-verification.md with command results, source/model/prompt map,
+cleanup/persistence detail and a manual-only one-attempt script. Start includes
+permission/setup time; abort if not Active by 15s, use fictional greeting and
+spoken interruption, Mute at 25s, Unmute at 30s, End by 45s and verify this site's
+active microphone-use indicator is off by 55s. Saved permission can remain.
+The deadline is not provider expiry/billing enforcement. No second attempt or
+typed provider send is part of the plan. Record metadata/outcomes only, no audio,
+transcript, credentials, SDP or provider-body evidence. The live checklist remains
+planned; no live results or microphone release observations were fabricated.
+
+Files changed this pass: docs/voice-verification.md (new), README.md,
+frontend/src/features/chat/README.md, AI-USE.md, docs/evidence-log.md and
+handoffs/current.md. Ignored frontend/dist was regenerated. Existing code/tests,
+server prompts/settings, checkpoint/dependency manifests, schemas and unrelated
+dirty files were preserved. Additional commands: rg/cat/nl/Git inspection,
+apply_patch/project Python documentation writes and official-domain search/read.
+No new code/dependency/checkpoint lint run was necessary for these prose changes;
+prior lifecycle increment checks remain recorded separately.
+
+Unverified: actual configured backend model/key access, ICE/NAT/browser autoplay,
+spoken interruption/quality/caption accuracy, prompt adherence and delegation,
+real device release, provider finalization/billing and retention/account controls.
+The SIP-described hangup endpoint remains an unverified WebRTC fallback assumption;
+crashes/suspension/unknown IDs/disconnect races and the single-process unbounded
+ledger require further work before wider use. store:false remains retrieval-only,
+with no general retention promise. Current audio/transcripts/typed messages have
+no application persistence; in-memory ID/outcome tracking is not SQLite/auth.
+No server, microphone, browser, paid provider/resource call, dependency install,
+process stop, staging/commit/push or deployment occurred. Original checkpoints
+were not rerun for documentation-only changes. Stopped after reporting evidence
+and the prepared manual procedure.
+
+
+## Shared spoken/typed conversation and opened UI — October 26, 2026
+
+The user authorized continuing the speech-bubble and shared-context refinements,
+then opening the application. This supersedes the earlier clear-captions-on-Start
+and separate provider contexts. No new dependencies, persistence or paid calls.
+Voice Start still requires a microphone gesture and creates a fresh provider
+transport/session; only bounded current-chat user/assistant history is passed.
+No stored record lookup, fork, developer role or browser policy/configuration.
+
+Changed behavior: speech fragments are sorted by session timeline and re-grouped
+on a speaker change after a timeline gap, or >=1s silence. Overlapping/contiguous
+speech may continue through a backchannel. Late fragments can split previously
+merged groups, without dropping spaces/repeated words or duplicating events.
+Exact utterance boundaries remain heuristic because Live provides no completed-
+turn marker. Both modes preserve the visible bubbles. Text sends stop capture
+immediately and include recent voice captions/completed typed messages; selecting
+the microphone again supplies the same recent conversation as startup history.
+This is shared conversational context across transport changes, not simultaneous
+text injection into active Live. Pending/failed typed messages are excluded.
+Context is at most 16 whole messages / 6,000 UTF-8 bytes; older/oversized context
+can be omitted. Captions remain approximate and do not confirm audio playback.
+
+The server accepts optional history on POST /api/voice/sessions, strictly validates
+roles/content/bounds, then projects user input_text / assistant output_text parts
+into session.input. All model/prompt/URL/tools/store/allowlist policy remains
+server-owned. Both prompt layers now warn about approximate/interrupted/unheard
+prior captions; their reviewed scope and independent Emergency controls remain.
+No database/local-storage/audio recording/transcript persistence was introduced.
+
+Observed: 59 frontend tests passed in 149.5ms; all backend checks passed (143 in
+0.82s, existing TestClient/httpx warning). New mocks cover short alternating
+exchanges, overlapping backchannels, timeline pauses/interruption, late speaker
+changes/out-of-order fragments, shared voice→text→voice context, preserved bubbles,
+role/completion/UTF-8 limits and server history projection/rejection. Prior denial,
+missing-config/provider failure, text fallback, late answer and cleanup tests pass.
+Non-mutating Oxlint/ESLint passed. Production build passed (47 modules, 95ms).
+Original isolated checkpoint tests/linters/builds all passed under the unchanged
+manifest: interface 4 frontend; emotion 4 frontend/7 backend; breathing 13 frontend/
+9 backend. Evidence .checkpoints/20261026-094642-478540/results.json. These original
+scopes omit chat/voice, tested separately in the full checkout above.
+
+Opened http://127.0.0.1:8000/#chat in the visible Codex browser and kept it as a
+user deliverable. Browser accessibility/screenshot show Support chat, Closed /
+Microphone off, Start voice, enabled message field, independent Emergency/End
+chat and updated shared-context disclosure. No microphone, Send or resource-call
+action was clicked. Screenshot: docs/evidence/chat-interface.jpg. This observes
+initial UI rendering only, not real speech, provider replies or microphone release.
+Local GET /api/voice/config returned unconfigured, duration_seconds 300; no secret
+was read or provider request made. Both backend environment values are still
+required before real chat can work. No mock bubbles were presented as live output.
+
+Files changed: frontend/src/features/chat/{domain.js,useChat.js,voice.js,api.js,
+ChatView.vue,README.md,tests/chat.test.js,tests/fakes.js,tests/api.test.js};
+backend/app/features/voice/{domain.py,schemas.py,routes.py,settings.py,provider.py,
+prompts.py,CONTRACT.md,tests/test_voice.py}; AGENTS.md, README.md,
+docs/voice-verification.md, AI-USE.md, docs/evidence-log.md, handoffs/current.md,
+and docs/evidence/chat-interface.jpg. Existing unrelated dirty files were preserved;
+no staging/commit/push. Ignored build/checkpoint output and local SQLite startup
+files were generated; no conversation records were saved.
+
+Commands: repository cat/rg/nl/Git inspection; official OpenAI Live management
+search/read using OpenAI Docs; apply_patch/project Python edits; npm --prefix
+frontend test; backend/.venv/bin/python -m pytest -p no:cacheprovider -q -c
+backend/pytest.ini backend/tests backend/app/features; frontend npm exec --offline
+-- oxlint . and npm exec --offline -- eslint . --no-cache; npm --prefix frontend
+run build; backend/.venv/bin/python scripts/verify_checkpoints.py; git diff --check;
+project Python documentation-link/screenshot validation. FastAPI server command:
+backend/.venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1
+--port 8000. Sandboxed bind was denied; the authorized escalated retry started
+PID 3009 (tool session 45440), left running for user review. Read-only local curl
+also required an escalated retry after sandbox networking failed. No automatic
+approval rejection occurred. Existing unrelated processes were not stopped.
+Codex open_in_codex returned queued; CUA createBrowserTab opened and visibly
+verified the actual page, then saved the screenshot and marked the tab deliverable.
+
+Still unverified: live voice/model access, acoustic interruption, exact turn/caption
+accuracy, autoplay/audio quality and history fidelity, provider finalization/billing
+and orphan WebRTC hangup compatibility. The 6,000-byte budget is conservative;
+actual rendered token count was not measured. Unknown IDs/crashes/suspension and
+single-process ledger limitations remain in the contract. No retention promise
+follows from store:false. No clinical/live safety result is claimed. Work ends
+with the requested local interface open and the microphone off.
+
+Final review: clarified the UI disclosure to say this app does not save messages, avoiding a provider-retention implication. All seven SFC rendering mocks and the production build passed again (47 modules, 82ms); the browser was reloaded and the final copy verified. Screenshot bytes were JPEG, so the initially incorrect .png filename/assertion was corrected to .jpg and verified. Final local-link and whitespace checks passed.
+
+## Chat communication research on October 26 2026
+
+Request: use web search to research leading mental health chatbots, their spoken
+and written communication, responses to suicidal intimations and other edge cases,
+and therapist communication training, to identify system-prompt contents. Targeted
+clarification: the user selected both adults and teenagers and requested dynamic
+adaptation. This task researches that behavior; it does not implement age input,
+passive sensing, UI adaptation, or a clinical support service.
+
+Evidence/decisions: created docs/chatbot-communication-research.md and appended a
+pointer to docs/research-notes.md. The brief compares Wysa, Ebb, Ash, Limbic,
+Therabot, historical Woebot and historical Youper; separates product claims,
+original studies and proposed design interpretations; includes original fictional
+response examples, an unapplied prompt draft, current-prompt gap analysis and
+24 planned scenarios with three cross-case checks. The independent Emergency route,
+fictional-only coursework scope, user control, fixed skill steps and existing
+implementation/checkpoint boundaries remain intact. AI-USE.md records tools,
+model-identifier limits and the student's source-review responsibility.
+
+Revised assumptions: older best-chatbot lists were unsuitable as current product
+evidence. Official pages confirmed Woebot's June 30, 2025 retirement and Youper's
+September 30, 2026 shutdown. Ash's headline claims were narrowed using the August
+2026 revised preprint abstract, which distinguishes its audit pipeline from a
+600-conversation random sample containing six clinician-confirmed suicide-risk
+cases. Resource provision in a sample is not proof of universal detection or harm
+prevention. Therapist training was translated into observable communication
+behaviors; listing modalities in a prompt does not reproduce clinical training.
+
+Access/verification limits: the Therabot journal full text and some WHO/SAMHSA/NICE
+pages returned 403 responses or challenges; accessible official summaries, indexed
+recommendations and alternative official guidance were used only for supported
+claims, with limitations recorded. The Common Sense Media PDF methodology and
+relevant sections were reviewed as parsed text. No access control was bypassed.
+The local-hotline lookup supplied U.S. crisis-counseling details; National 911
+Program guidance supports the separate emergency-services role. No calls were
+placed, and demonstrations must simulate calling.
+
+Commands run: pwd; rg --files with targeted document/source patterns; cat, sed,
+tail and wc for required project documents and current prompts; git status --short;
+apply_patch; and backend/.venv/bin/python inline scripts using pathlib, re, json and
+hashlib. Checks passed: local Markdown links resolve in the new brief and research
+notes; fences are balanced; trailing newlines/whitespace are valid; scenario IDs
+are exactly F01 through F24; proposed scenarios are explicitly not run; six
+protected source/configuration files match pre-task hashes; and git diff --check
+-- docs/chatbot-communication-research.md docs/research-notes.md AI-USE.md
+docs/evidence-log.md reports no whitespace errors. Final documentation checks are
+repeated after this entry. Existing unrelated working-tree changes are preserved.
+
+Files changed by this research task only: docs/chatbot-communication-research.md,
+docs/research-notes.md, AI-USE.md and docs/evidence-log.md. No application tests or
+builds were needed for these prose-only edits. No runtime prompt change, acoustic
+comparison, competitor behavioral trial, real user evaluation, paid model call,
+microphone use, dependency change, process start/stop, staging, commit or push.
+
+## Research informed system prompts on October 26 2026
+
+Request and steering: create the system prompts from the research; follow the
+user's middle between reflection while explaining and answers/interpretations
+when asked. Include both the short “figuring it out?” echo and fuller reflection
+of the user's dog/play example. The attached Echo Technique notes supplied style
+context; neurological/universal/influence claims remain unverified. Reflection
+supports accurate understanding and correction, without a resistance-removal or
+disclosure-maximization goal. The user's subsequent RAG question was answered:
+basic conversation rules/examples stay in the prompt; longer reviewed technique
+cards remain a proposed corpus. No retrieval implementation was requested or added.
+
+Implementation: prompts.py shares conversation and minimum-safety text between
+distinct LIVE_INSTRUCTIONS and BACKEND_INSTRUCTIONS. Live adds delivery,
+backchannels, interruptions and the existing SpawnThinking delegation policy;
+Responses adds reviewed scope, permission, adaptation, privacy and nuanced cases.
+The prompts allow zero follow-up questions, distinguish rhetorical questions from
+requests for advice, preserve negation, accept corrections and prioritize immediate
+safety over echoing. Explicit practical requests receive answers; specific activity
+or reframe requests can provide permission, while general questions do not authorize
+an exercise. Guided reframing/Sleight of Mouth implementation remains unapproved.
+The typed wrapper now follows the conversation policy instead of potentially
+pushing every reply toward a direct-answer posture. The existing typed HTTP test
+checks that the complete backend policy is actually sent.
+
+Readable artifact: docs/chat-system-prompt.md has exact copies of the effective
+source prompts, prompt/RAG responsibilities, attachment/evidence limits and 15
+planned fictional review cases. No generated response was observed for those cases.
+The research brief has a subsequent-implementation pointer; historical Part 3.1
+report and research draft were preserved. Root/current verification/handoff docs
+record the new policy and the need for a backend restart/fresh session to load it.
+No existing process was restarted, stopped or assumed to have hot-reloaded.
+
+Official source: https://developers.openai.com/api/docs/guides/live-prompting and
+https://developers.openai.com/api/reference/resources/live/methods/create were
+searched/opened for the existing model and prompt split. An attempted Markdown
+view returned unsupported content type; the normal official page and relevant
+passages were available. No latest-model resolver, model migration or new API
+surface was used. Local-hotline lookup preceded any helpline information; runtime
+prompts reference the existing independent crisis-counseling route and distinguish
+U.S. emergency medical/danger response. All resource actions remain simulated.
+
+Revisions: an initial apply_patch request attempted delete/add of the same file
+and was rejected before any edit. A targeted update succeeded. A first longer
+Live wording was tightened, preserving the user's two examples and shared safety
+rules. Source checks report Live 859 words / backend 1522 words; rendered provider
+token count and latency were not measured. Detailed procedures stay with Responses.
+
+Observed verification: the first full backend mock run passed 143 tests in 0.78s;
+after the final source revisions, the same suite passed 143 in 0.82s. Both had the
+existing Starlette/TestClient httpx deprecation warning; no dependency was changed
+to suppress it. Live/text provider HTTP is mocked with connection tripwires.
+Python checks passed for syntax, trailing newlines/whitespace, balanced fences,
+resolved local links, two exact effective-prompt copies and P01–P15 scenario IDs.
+Original checkpoint manifest, frontend chat view and dependency manifests/lockfile
+match the previously recorded hashes. git diff --check passed. Final doc checks
+are repeated after these log entries. These checks do not establish prompt
+obedience, speech quality, timing, clinical safety or provider availability.
+
+Commands: pwd; rg --files / rg -n; cat, sed, tail and head for required project
+sources, the supplied attachment and relevant skill instructions; git status
+--short; apply_patch; backend/.venv/bin/python inline scripts with pathlib, ast,
+importlib.util, re, hashlib and json; backend/.venv/bin/python -m pytest -p
+no:cacheprovider -q -c backend/pytest.ini backend/tests backend/app/features;
+git diff --check. The full frontend build/linters/checkpoints were not rerun
+because frontend source, boundaries, dependency declarations and manifest are
+unchanged. Official web calls and file-panel opening are separate tool actions.
+
+Files changed in this increment: backend/app/features/voice/prompts.py,
+backend/app/features/voice/provider.py, backend/app/features/voice/tests/test_text.py,
+backend/app/features/voice/CONTRACT.md, docs/chat-system-prompt.md,
+docs/chatbot-communication-research.md, docs/voice-verification.md, AGENTS.md,
+README.md, handoffs/current.md, AI-USE.md and docs/evidence-log.md. Existing unrelated
+working-tree edits remain preserved. No frontend/RAG/database/schema changes,
+installations, real model/microphone/resource calls, process changes, staging,
+commit or push. Age eligibility, RAG review/rights and live fictional content tests
+remain TODOs.
+
+
+## Load the existing root .env at launch — October 26, 2026
+
+The user reported that both required settings already existed in .env. Confirmed
+root .env contains nonempty OPENAI_API_KEY and VOICE_BACKEND_MODEL, and dotenv-
+parsed values pass local settings shape checks, without displaying values. The
+app reads process environment at startup; the earlier Uvicorn launch omitted
+--env-file, so the file was not loaded. No app-level dotenv loader was added.
+The project environment already has python-dotenv transitively; installed Uvicorn
+--help confirms --env-file support. No dependency or secret file was changed.
+
+Original task server PID 3009/session 45440 no longer exists. Port 8000 currently
+belongs to a different process (12245), which was left running under the project's
+stop-only-owned-process rule. Attempting this task's .env-loaded server on 8001
+failed because that port is also occupied; the attempted process shut itself
+down. Launched with --port 0 instead: FastAPI PID 15843, tool session 17498,
+http://127.0.0.1:51278. Exact successful command from project root:
+backend/.venv/bin/python -m uvicorn app.main:app --app-dir backend --env-file .env
+--host 127.0.0.1 --port 0. Local binding/GET used approved sandbox escalation.
+No unrelated process was stopped and no machine configuration changed.
+
+Observed GET /api/voice/config on the new server returned exactly
+{"status":"configured","duration_seconds":300}. This is local configuration
+presence/shape only, not proof of account/model access, credit or paid behavior.
+Opened http://127.0.0.1:51278/#chat as a new visible deliverable tab, preserving
+existing tabs/drafts; accessibility confirms Chat / Closed / Microphone off and
+Start voice/composer. No microphone, Send or resource action was clicked, and
+no provider request was made. Existing source/current build from other work was
+preserved, including its latest typed-chat persistence UI; none of that was
+implemented or reverified by this configuration fix.
+
+Files changed: README.md documents the explicit root --env-file launch and
+occupied-port handling; backend/app/features/voice/CONTRACT.md clarifies app
+versus Uvicorn dotenv loading; docs/voice-verification.md updates manual preflight;
+AI-USE.md, docs/evidence-log.md and handoffs/current.md record this result.
+Commands: cat/rg/sed/Git status reads, project Python name/presence/shape checks
+with redacted output, Uvicorn --help, lsof listener/cwd inspection, attempted old
+session read (not found), ps attempt (sandbox denied; no escalation needed),
+Uvicorn launches and local curl config GET, apply_patch/project Python document
+writes, git diff --check and documentation-link checks. No code/tests/build,
+dependency manifests, .env contents or account settings were changed; no broad
+application rerun, paid call, recording, staging/commit/push or deployment.
+The new task-owned server remains running for review. Actual voice/text provider
+behavior remains unverified. No key or selected model value was printed.
+
+Documentation scan note: whitespace checks passed. The broader local-link scan found an existing README target docs/part32-verification.md missing in the current checkout (the unrelated Part 3.2 work is outside this fix). TODO: reconcile that pre-existing link; it was not changed or reported as passing. No new local link was introduced by the dotenv documentation changes.
 
 
 ## Breathing hold requirement — October 27, 2026
@@ -537,3 +1071,137 @@ git diff --cached --check. Existing Starlette/httpx warning only. No dependencie
 paid calls, microphones, staging-all command or push. Earlier checkpoint commits
 remain separate; their manifest was not changed. Live provider/audio behavior is
 not established by these checks.
+
+
+### inspire visual rebrand — October 28, 2026
+
+User-authorized rebrand applied across the existing interface after image-tool
+inspection of both complete supplied references and reading the brief. Cream,
+lavender, rounded cards, sans-serif type and static edge waves follow the UI
+reference; #6134be violet uses only the second photo's color direction. Lowercase
+inspire uses lilac in/violet spire. Existing accents and stored preferences are
+preserved, with Violet as the new default. Normal records and previous changes
+were preserved. Only backend brand strings changed; contracts/policy did not.
+
+Observed: 97 frontend and 187 backend tests, full non-mutating lint, production
+build and all original isolated checkpoints passed. Browser checks covered the
+seven routes at 320/391/1280 CSS px, larger text at 320px, dialogs, fictional
+emotion save, early breathing release, mock reply failure/recovery and saved chat
+review. No horizontal overflow; Emergency stayed available and no call was placed.
+The initially lighter muted token failed contrast on lavender and was darkened;
+21 declared contrast pairs pass. Direct sips SVG rasterization failed; the
+macOS framework generator succeeded. Initial sandbox bind failed; an approved
+separate mock server used an available port. No dependencies/provider/microphone
+calls/staging/commit/push/deployment. See docs/inspire-theme.md for exact files,
+commands, screenshots, checkpoint result path and verification limitations.
+
+
+### Softer inspire theme and responsive refinement — October 28, 2026
+
+User requested thinner inspire text, softer purples, minimal other colors and
+dynamic desktop/mobile support. Codex changed shared tokens, wordmark weight
+750→400, icons and Home sage/peach accents. Added reduced-motion-aware hover/press
+feedback and tablet sizing; removed a forced heading break after phone review.
+Prior Violet follows the new shade; other settings persist. No domain/API/data
+behavior or dependencies changed. 97 frontend tests, lint, build and isolated
+checkpoints pass. All seven routes fit six widths (320–1280px) and 320px larger
+text. Keyboard focus, reduced motion, Emergency and 27 contrast pairs checked.
+No live provider/microphone calls or records created; backend tests not rerun.
+See docs/inspire-theme.md for files, commands, screenshots and limitations.
+
+
+### Breathing swish and header correction — October 28, 2026
+
+User supplied a simple curled-stroke image for a small wind/breathing symbol beside
+inspire and requested smooth waves without the color block beside Emergency.
+Codex authored an inline SVG curl in BrandWordmark.vue and updated shared CSS:
+transparent header, local rounded control backgrounds and narrow-screen spacing.
+No image generation, new dependencies, APIs, data or feature behavior changes.
+97 frontend tests, full lint, build and isolated checkpoint builds pass. Desktop
+and 320/391px phone review, 320px larger text and Emergency panel verified; no
+calls/microphone/records. Files, commands, screenshots and limits are recorded
+in docs/inspire-theme.md's latest section.
+
+
+### Compact spacing and logo Home navigation — October 28, 2026
+
+User requested tighter logo-to-body spacing and no separate Home links. Codex
+removed the shell Home row and redundant completion/fallback Home buttons,
+reduced header/main/success spacing, and preserved explicit exits. Browser review
+exposed automatic main-focus scrolling headings behind the sticky logo; route
+focus now prevents that scroll and resets to top. All seven routes checked at
+320/391/1280px: no overflow/obscured headings/Home buttons. 97 frontend tests,
+lint/build, original checkpoints and whitespace checks pass. Existing configured
+review server remains running on port 55805; app refreshed and left open. No
+provider/microphone calls or record changes. Files/commands/screenshots and
+unverified physical-device/live behavior are recorded in docs/inspire-theme.md.
+
+
+### Revised breathing mark and emotion Cancel row — October 28, 2026
+
+User supplied a revised two-stroke icon reference and annotated removal of the
+introductory sentence plus an off-white half-width Cancel beside Continue. Codex
+authored the vector in shared AppIcon, reused it in BrandWordmark and the emotion
+bubble, and replaced SVG/PNG/ICO app assets through the system Swift generator.
+No leaf geometry remains active. Removed the sentence and converted first-step
+Cancel/Continue to equal grid columns; graph/required fields remain intact.
+Observed equal buttons/no overflow at 320/391/768/1280px and 320px larger text,
+required-field validation, cancellation/blank reentry and matching mark paths.
+97 frontend tests, lint/build and original checkpoints pass. No dependencies,
+provider/microphone calls, saves, staging or publication. Files/commands,
+screenshots and physical-device/install limitations: docs/inspire-theme.md.
+
+
+### Short stroke and Home copy refinement — October 28, 2026
+
+User requested the logo's short stroke lower/left and two explicit Home text
+changes. Codex moved that stroke consistently in shared/vector/raster icon
+assets, used the supplied introduction verbatim and removed the lower note.
+97 frontend tests, lint/build, isolated checkpoints and whitespace pass; desktop
+and 320px visual review confirmed the text/mark and no horizontal overflow.
+Commands/files/evidence/limits: docs/inspire-theme.md. No dependencies, saves,
+provider/microphone calls, staging, commit or publishing. App refreshed/open.
+
+
+### Home shadows and illustration color — October 28, 2026
+
+User annotations requested shadows for Home cards/illustration and a different
+disc color. Codex changed shared styles.css to off-white for the disc and subtle
+layered shadows. Desktop/384px review, lint/build, original checkpoints and
+whitespace checks pass. No behavior/dependency/data/live-call changes; full
+domain/backend tests not rerun. Commands/files/screenshots: docs/inspire-theme.md.
+
+
+### Breathing copy, Home alignment and shared history icons — October 28, 2026
+
+User annotated two breathing text removals, Home cards extending to the art's
+bottom and icon-only history shortcuts throughout. Codex implemented these in
+feature-owned presentation/shared styles and AppIcon, with accessible labels,
+44px controls and unchanged breathing clock/exits. 97 frontend tests, lint/build,
+original checkpoints and whitespace pass. Browser checks at 320/768/1280px found
+no overflow, aligned desktop/tablet card bottoms and working history destinations.
+No saves, dependencies, provider/microphone calls or publication. Files/commands,
+screenshots and unverified full-run/device behavior: docs/inspire-theme.md.
+
+
+### October 28, 2026 — breathing instruction shortcut
+
+Moved breathing history beside the start instruction and removed the default recorded-audio label while retaining errors and mute guidance. Changed BreathingView.vue and breathing/styles.css; documented in docs/inspire-theme.md. Production build, 97 frontend tests, full offline lint, three isolated checkpoints and diff whitespace checks passed. Browser inspected at 759px and 320px, no overflow; screenshots and checkpoint JSON in docs/evidence/inspire/breath-header-*. No timed exercise, real audio/microphone/provider request, record save or full backend suite in this increment.
+
+
+### October 28, 2026 — centered breathing instructions
+
+Balanced the instruction layout, moved/reduced history, and consolidated the ready cycle/duration summary. Active feedback retained. Changed breathing BreathingView.vue/styles.css; details in docs/inspire-theme.md. Build, 97 frontend tests, offline lint, three isolated checkpoints and diff whitespace check passed. Browser observed at 759px/266px with no overflow; screenshots/checkpoint JSON in docs/evidence/inspire/breath-alignment-*. No real exercise, microphone/provider call, save, physical-device or full backend test.
+
+
+### October 28, 2026 — breathing heading copy
+
+Changed the ready heading in frontend/src/features/breathing/BreathingView.vue to the user-requested “take a breath, it'll help”. Active exercise headings are unchanged. Commands: npm --prefix frontend run build (passed), git diff --check (passed). Refreshed idle browser and verified the heading; screenshot docs/evidence/inspire/breath-heading.png. No exercise or provider/microphone action. Tests/checkpoints not rerun for this copy-only change.
+
+
+October 28 copy correction: ready heading in frontend/src/features/breathing/BreathingView.vue now reads “Take a breath, it'll help.” per user. Production build and git diff --check passed; browser refreshed and verified, breath-heading.png updated. Tests not rerun for capitalization/punctuation only.
+
+
+### October 28, 2026 — publication preparation
+
+User requested committing all changes and pushing. Reviewed the 98 pending files, remote state, feature scopes, fictional submission evidence and credential/size scan (no potential credentials or files over 10 MB found). Verification: 187 backend tests and 97 frontend tests passed, offline Oxlint/ESLint, production build, all three isolated checkpoints and git diff --check passed. Backend tests emit the existing Starlette/httpx deprecation warning. Commands: git fetch origin; backend/.venv/bin/python -m pytest backend -q; npm --prefix frontend test; npm --prefix frontend run build; npm exec --offline -- oxlint .; npm exec --offline -- eslint . --no-cache (from frontend); backend/.venv/bin/python scripts/verify_checkpoints.py. Evidence: docs/evidence/inspire/prepush-checkpoints.json. Commit sequence preserves interface, emotion and breathing scopes, then chat and submission documentation/helpers. Existing draft submission TODOs remain; no paid calls, microphone or new browser behavior checks in this preparation.

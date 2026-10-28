@@ -81,3 +81,20 @@ The local-hotline lookup returned the [988 Suicide & Crisis Lifeline](https://98
 The strongest fit is brief dimensional self-report, a simple breathing cue, and carefully sourced conversational content. The evidence does not validate the combined interface, infer emotions from colors, establish superiority to STAI, validate fourteen NLP patterns, or justify deployment to people in distress.
 
 Before implementation, resolve the feeling-slider labels, burden of three required logging inputs, history-context consent, provider/data transmission, approved corpus and rights, reply-setting values, and crisis/reassurance response policies. Adaptive UI remains open. Mouse-click and eye-tracking papers mentioned in the earlier discussion were not supplied or used as evidence; passive sensing remains deferred.
+
+## Subsequent chat communication research on October 26 2026
+
+The user requested extensive web research on leading mental health chatbots,
+spoken/written communication, therapist training, suicide-related language, and
+edge cases to inform a future system-prompt revision. The user clarified that
+research should cover adults and teenagers and dynamic adaptation. The
+[communication research brief](chatbot-communication-research.md) compares seven
+systems, distinguishes product claims from study findings, translates professional
+communication guidance into bounded proposals, and includes an unapplied prompt
+draft plus 24 fictional evaluation scenarios. All scenario results remain not run.
+
+The proposed adaptation uses stated age, preferences, and supplied context;
+eligibility, any age input, and UI adaptation remain separate decisions. The
+research does not change application prompts or establish suitability for minors.
+The Part 3.1 findings above remain historical. Source access, acoustic verification,
+and clinical evidence limits are recorded in the new brief.

@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-28",
+  "colors": {
+    "cream": "#fbf8f1",
+    "paper": "#fffdf8",
+    "ink": "#40364e",
+    "violet": "#70518e",
+    "brand-lilac": "#9276aa",
+    "muted": "#5c4d67",
+    "line": "#dfd5e7",
+    "control-line": "#9b86af",
+    "lavender": "#eee7f4",
+    "lilac": "#e0d3ec",
+    "surface-soft": "#f5f0f8",
+    "sage-soft": "#eaf0e9",
+    "peach-soft": "#f8ece1",
+    "danger": "#91473e",
+    "danger-soft": "#fff1e9",
+    "danger-line": "#bd8175",
+    "white": "#ffffff"
+  },
+  "checks": [
+    {
+      "foreground": "violet",
+      "background": "cream",
+      "ratio": 6.08,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "paper",
+      "ratio": 6.34,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "lavender",
+      "ratio": 5.33,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "lilac",
+      "ratio": 4.51,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "surface-soft",
+      "ratio": 5.74,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "sage-soft",
+      "ratio": 5.57,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "peach-soft",
+      "ratio": 5.55,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "cream",
+      "ratio": 10.67,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "paper",
+      "ratio": 11.13,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "lavender",
+      "ratio": 9.36,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "lilac",
+      "ratio": 7.92,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "surface-soft",
+      "ratio": 10.08,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "sage-soft",
+      "ratio": 9.77,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "peach-soft",
+      "ratio": 9.74,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "cream",
+      "ratio": 7.3,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "paper",
+      "ratio": 7.62,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "lavender",
+      "ratio": 6.4,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "lilac",
+      "ratio": 5.42,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "surface-soft",
+      "ratio": 6.89,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "sage-soft",
+      "ratio": 6.69,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "peach-soft",
+      "ratio": 6.66,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "white",
+      "background": "violet",
+      "ratio": 6.45,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "brand-lilac",
+      "background": "cream",
+      "ratio": 3.67,
+      "minimum": 3
+    },
+    {
+      "foreground": "control-line",
+      "background": "paper",
+      "ratio": 3.22,
+      "minimum": 3
+    },
+    {
+      "foreground": "control-line",
+      "background": "cream",
+      "ratio": 3.08,
+      "minimum": 3
+    },
+    {
+      "foreground": "danger",
+      "background": "paper",
+      "ratio": 6.51,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "danger",
+      "background": "danger-soft",
+      "ratio": 5.99,
+      "minimum": 4.5
+    }
+  ],
+  "scope": "Declared theme pairs; lilac wordmark uses large text. Not a complete accessibility audit."
+}

@@ -2,7 +2,16 @@
 
 IST 402 Assignment 3: a localhost coursework prototype exploring short, user-controlled mental health skills experiences informed by the supplied R1–R4 and D1–D6 study findings. The source of truth is [the assignment](docs/assignment-description.md). Test only with fictional scenarios; this prototype must not be offered as a mental health support tool or claim to provide therapy, diagnosis, or monitoring.
 
-Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app.git) (URL supplied by the user; local remote configuration was not changed).
+Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app.git), configured locally as `origin`.
+
+## inspire visual theme — October 28, 2026
+
+The application is now branded **inspire**, with a soft cream/lavender theme, minimal sage/peach accents, filled
+waves and a thinner lilac/violet lowercase wordmark across its existing screens. Routes,
+Emergency access and feature behavior remain unchanged. Existing appearance
+preferences and personal emotion colors are preserved; new preferences default
+to Violet. See [theme implementation and verification](docs/inspire-theme.md).
+Earlier names and appearance descriptions below are historical where superseded.
 
 ## Chat history update — October 27, 2026
 
@@ -14,7 +23,43 @@ pending/in-progress text may be lost on reload/close. Earlier unsaved voice chat
 cannot be recovered. The older notes below are historical where superseded.
 See [persistence contract](backend/app/features/voice/PERSISTENCE.md).
 
-### Run the current application
+## Part 3.2 submission increment — October 26, 2026
+
+Guided breathing is the submission focus. Completed typed exchanges now save
+as atomic user/assistant pairs in SQLite, separately from model generation.
+Support chat → View saved typed chats provides read-only review and confirmed
+deletion. Old chats are never automatically sent to the model. Voice captions
+remain transient. Save status/Retry survives navigation in the loaded app;
+unsaved queues are lost on reload/close. Typed records remain until deleted.
+No dependency was added. Earlier implementation notes below are historical where
+this section supersedes them.
+
+Use the build/run commands below for the normal app at port 8000, using ignored
+`backend/data/still.sqlite3`. New chat tables initialize when the updated backend
+starts. Model requests require server-only `OPENAI_API_KEY` and
+`VOICE_BACKEND_MODEL`; SQLite does not establish provider privacy/retention.
+
+For a no-cost rehearsal, build then run
+`backend/.venv/bin/python scripts/serve_submission_demo.py` and open
+`http://127.0.0.1:8001/`. This uses **mocked text**, no provider calls, no supported
+voice, and separate ignored `backend/data/submission-demo.sqlite3`. Send
+`demo:fail` to rehearse a reply error. It is not live-model evidence.
+`backend/.venv/bin/python scripts/inspect_submission_db.py` inspects the normal
+database read-only; add `--demo` for the rehearsal file and `--messages` only for
+fictional text you intend to show.
+
+Follow [browser and SQLite validation](docs/part32-validation.md). Observed
+results: [Part 3.2 verification](docs/part32-verification.md). The submission draft
+is [submissions/part3.2/report.md](submissions/part3.2/report.md); root `report.md`
+remains Part 3.1. Before uploading, supply actual live-model evidence, recording
+links and a reviewed/pushed submission commit. No live call is claimed by the
+mocked tests or rehearsal. [Typed persistence contract](backend/app/features/voice/PERSISTENCE.md).
+
+## Current implementation — October 21, 2026
+
+The first iteration now implements the responsive interface, emotion log/calendar/edit/delete, SQLite persistence, and guided breathing with synchronized circle motion and locally bundled CC0 human inhale/exhale recordings identified by the user. Support chat is an honest frontend stub. Emergency replaces Help throughout the current interface. About retains the assignment-required role description. The Part 3.1 notes below are historical design/scaffold evidence.
+
+The code is split for three independently buildable commits: **interface → emotion log → guided breathing**. See [checkpoint instructions](docs/implementation-checkpoints.md), the [exact file scopes](scripts/checkpoints.json), and [layer boundaries](docs/architecture.md). The shell imports no feature directly; frontend/backend feature folders register themselves. Breathing history is independent of emotion history. No dependency declarations were added/removed/upgraded; the existing project environments are reused.
 
 From the repository root, build and serve the full production PWA on localhost
 with the chat credentials/model in the private root `.env`:
@@ -43,9 +88,64 @@ not contact the provider or verify provider access. If a port is occupied, leave
 unrelated processes alone; use a free port (or `--port 0` and the URL Uvicorn
 prints). Production frontend requests use that same origin.
 
-The design/scaffold descriptions below record earlier milestones.
+For development, run the same backend command in one terminal and `npm --prefix frontend run dev -- --host 127.0.0.1 --port 5173 --strictPort` in another. Vite proxies `/api` to port 8000. It is tooling, not middleware. Service workers register only in production builds. Stop only the terminal processes you started. A feature-free interface checkpoint can use `npm --prefix frontend run preview -- --host 127.0.0.1` without the backend.
 
-## Part 3.1 research and design
+Verification:
+
+```sh
+npm --prefix frontend test
+backend/.venv/bin/python -m pytest -c backend/pytest.ini backend/tests backend/app/features
+backend/.venv/bin/python scripts/verify_checkpoints.py
+backend/.venv/bin/python scripts/stage_checkpoint.py interface
+```
+
+For non-mutating lint, run `npm exec --offline -- oxlint .` and `npm exec --offline -- eslint . --no-cache` from `frontend/`.
+
+The last command previews the stage scope; it does not stage or commit. Add `--stage` only when ready to stage that checkpoint. Commit interface first, then emotion, then breathing; the helper never commits. Root documentation had prior changes and remains outside these staging scopes for separate review. Existing `frontend/package-lock.json` and backend requirements remain unchanged; normal clean-checkout installation instructions below still apply.
+
+Contracts: [API index](docs/api-contract.md), [emotion](backend/app/features/emotion/CONTRACT.md), [breathing](backend/app/features/breathing/CONTRACT.md). SQLite lives in ignored `backend/data/still.sqlite3`, initialized at startup with no seeded records. Entries can be deleted in the app. Session retention/deletion controls remain TODOs; deletion does not promise erasure from backups. Failed session saves remain retryable in memory and are lost on reload/close. No authentication, model provider, passive sensing, or external API is implemented. Do not send real personal data. Chat/model contribution and conversation persistence still do not meet those Part 3.2 requirements.
+
+Observed checks and their limits are recorded in [iteration verification](docs/iteration-verification.md) and [the evidence log](docs/evidence-log.md). Healthy browser runs measured 63.0s for countdown plus six cycles, with 63.1s and 64.0s instruction-to-finish examples excluding pauses. Speaker quality, native installation, clean dependency installation on another machine, and live-model behavior remain unverified. The three code checkpoints were subsequently committed at the user’s request: `415310c` (interface), `b003173` (emotion), and `f9f7782` (breathing). They have not been pushed. Broader documentation/evidence edits remain unstaged.
+
+## Chat communication policy — October 26, 2026
+
+The [readable system prompt](docs/chat-system-prompt.md) reflects the user's chosen
+middle between listening and offering help. Explaining/venting favors short
+echoes, fuller reflections or selective summaries using the user's own words;
+genuine questions invite relevant answers and tentative practical options.
+Both server-owned prompt layers preserve consent, safety, age-sensitive wording
+and user control. The typed-channel hint follows the same policy. No RAG is
+connected; reviewed technique material is a future separate increment. Runtime
+source is `backend/app/features/voice/prompts.py`; restart the backend and start
+a fresh session to load changed instructions. No running process was restarted
+or live model/microphone behavior verified by this prompt task.
+
+## Chat voice/text increment — October 26, 2026
+
+The latest refinement keeps spoken and typed messages in one visible conversation.
+Each speaker's captions form bubbles using timeline gaps/speaker changes, with
+late fragments placed back in the right group. Sending text stops capture and
+shares recent text/captions with Responses; selecting the microphone again creates
+a fresh Live session carrying the same bounded current-chat context. Bubbles stay
+visible until leaving chat. Context is at most 16 messages / 6,000 UTF-8 bytes;
+caption/turn boundaries remain approximate. This supersedes the separate-context
+and clear-captions-on-Start behavior described in the earlier increment below.
+
+Chat now has a self-registering frontend with text bubbles and opt-in native WebRTC voice. Only selecting Start voice checks configuration/requests the microphone; Active waits for `session.started`. Permission, connecting, active, muted, closing, closed and error states, blocked-playback recovery, cancel/stop and resource cleanup are checked with mocks. The user additionally authorized `POST /api/chat/messages` for typing without microphone/WebRTC. Set backend `OPENAI_API_KEY` and `VOICE_BACKEND_MODEL`; no model/key/settings are accepted from the browser. See [chat behavior and limits](frontend/src/features/chat/README.md) and [HTTP contracts](backend/app/features/voice/CONTRACT.md).
+
+No audio, transcript or typed-message persistence is added. Sending text ends voice and uses recent typed context only; voice starts a separate provider session. Emergency remains independent and opening a panel stops voice without automatic resume. The 300-second client timer ends voice only, not chat, and is not a provider billing guarantee. Tests use fake media/peer/audio/HTTP and mocked Vue rendering; no real microphone, paid call, or device/browser compatibility result is claimed. Existing checkpoints are unchanged and omit these new modules; full-checkout tests/build cover chat separately. No dependencies were installed.
+
+The lifecycle refinement makes Mute/Unmute local microphone toggles: assistant playback, the provider session and billing continue. End stops capture immediately, sends session.close once and waits at most 2s before transport cleanup. Unmount/navigation/page exit, Emergency and the duration limit also clean up. Late creation IDs use the server-owned `POST /api/voice/sessions/{session_id}/end` fallback without restoring stale UI. Its WebRTC hangup applicability remains an explicit unverified assumption; see the contract. Duplicate Start/repeated End are guarded, and each new voice session starts with empty input and clears previous captions. Backend close tracking holds only IDs/outcomes in process memory, never audio/transcripts or SQLite.
+
+The [voice verification and manual checklist](docs/voice-verification.md) records the subsequent 134 backend / 41 focused frontend mock passes and production build, model/prompt locations, and a planned single live conversation ending by 45s with microphone release checked by 55s. The live procedure has not been run; no paid call or real microphone check is claimed.
+
+## Backend voice increment — October 22, 2026 (historical)
+
+`GET /api/voice/config` and `POST /api/voice/sessions` now provide server-owned GPT-Live (`gpt-live-1`) negotiation. Set both `OPENAI_API_KEY` and `VOICE_BACKEND_MODEL` in the backend process environment before startup; either missing/invalid value reports `unconfigured`. No delegated model is chosen automatically. Config checks do not contact the provider. The browser can send only a bounded SDP offer; no owners/profiles exist. See the [voice contract](backend/app/features/voice/CONTRACT.md) for payloads, errors, permissions and the focused mocked-test command. The two [server prompts](backend/app/features/voice/prompts.py) separately control Live speech and delegated Responses reasoning, which has no tools. No audio/transcript persistence is implemented.
+
+This is backend-only: the existing text-chat placeholder/frontend is unchanged. No dependencies or paid calls were added during implementation. The reported 300-second voice duration is a policy for future client handling, not an enforced provider expiry or a forced text-chat exit. `store: false` controls session retrieval, not general provider retention. Voice cleanup, conversation persistence and browser/live evaluation remain TODOs. Existing interface/emotion/breathing checkpoint scopes are unchanged.
+
+## Part 3.1 research and design (historical)
 
 Current milestone: Research and Design, due October 15, 2026 at 11:59 PM Eastern. The imagined audience includes people experiencing anxiety or intrusive thoughts who face cost or apprehension barriers to therapy. This motivation informs the design; actual use remains fictional coursework testing.
 
@@ -64,11 +164,11 @@ Optional appearance preferences cover accent color, text size, and reduced motio
 | Current handoff | [handoffs/current.md](handoffs/current.md); current scope, writing preferences, image review, and next work |
 | Design evidence and submission | Mockup and repository linked; the report records the reviewed content commit |
 
-The user used ChatGPT's image generation tool to create the low-fidelity wireframes. The supplied review board has been visually inspected and linked in the report. Its Help panel still shows a pending-number placeholder; the confirmed design uses separate U.S. crisis-counseling and emergency-services options. Static images do not demonstrate working navigation or animation. No project-specific UI, backend, model, SQLite persistence, or API integration has been implemented. Existing setup evidence below records earlier scaffold checks and is not a new verification of application behavior.
+The user used ChatGPT's image generation tool to create the low-fidelity wireframes. The supplied review board has been visually inspected and linked in the report. Its Help panel still shows a pending-number placeholder; the confirmed design uses separate U.S. crisis-counseling and emergency-services options. Static images do not demonstrate working navigation or animation. At the Part 3.1 checkpoint, no project-specific UI, backend, model, SQLite persistence, or API integration had been implemented. Existing setup evidence below records those earlier scaffold checks; current implementation evidence is linked above.
 
 ## Architecture
 
-- `backend/`: Python domain logic, independent of frameworks, with FastAPI as the JSON API boundary. SQLite will eventually persist conversations and skill sessions using Python's standard library; no database package is needed for this scaffold.
+- `backend/`: Python domain logic, independent of frameworks, with FastAPI as the JSON API boundary. SQLite persists emotion entries and skill sessions using Python's standard library. Conversation storage remains unfinished. Shared middleware handles HTTP policy only; feature folders own domain, routes and storage.
 - `frontend/`: Vue presentation, with backend-request code kept separate from components. Node.js and npm provide development tooling and builds, not a separate application server.
 - `docs/`: project requirements and design/verification notes.
 - `prompts/`: the ordered setup instructions used to prepare this scaffold.
@@ -78,7 +178,7 @@ Backend and frontend dependencies are project-owned: `backend/.venv` and `fronte
 
 ## Setup and verification
 
-Setup follows [the setup prompts](prompts/setup-prompts.md) in order. No backend application or API exists yet.
+Initial setup followed [the setup prompts](prompts/setup-prompts.md) in order. That phase is complete; current feature startup and verification commands are above.
 
 ### Backend
 
@@ -95,7 +195,7 @@ backend/.venv/bin/python -m pip check
 
 The only direct dependencies are `fastapi[standard]` (API tooling and development server) and `pytest` (future backend verification); their transitive dependencies are installed automatically. Verified: FastAPI 0.143.0 and pytest 9.1.1 import from the project environment. The prompt requires unpinned declarations, so this reproduces the setup procedure rather than guaranteeing identical future Python package versions. No Python lockfile was added.
 
-TODO: add the exact backend development and test commands when an application module and tests exist. There is no FastAPI server to start at this stage.
+The implemented FastAPI application is `backend/app/main.py`; startup and test commands are provided in the current implementation section.
 
 ### Frontend
 
@@ -122,11 +222,11 @@ npm run build
 npm ls --depth=0
 ```
 
-The build writes ignored `frontend/dist/`. The development server serves the starter locally; no backend connection exists. Stop it with Ctrl-C in the terminal that started it. A production build can be served locally with `npm run preview -- --host 127.0.0.1`. Browser rendering and interactive behavior have not been checked; scaffold verification covers imports, dependency consistency, lint, and compilation.
+The build writes ignored `frontend/dist/`. At scaffold time the development server served the starter without a backend. The implemented version now uses the documented API proxy. Stop it with Ctrl-C in the terminal that started it. A production build can be served locally with `npm run preview -- --host 127.0.0.1`. Browser rendering and interactive behavior have not been checked; scaffold verification covers imports, dependency consistency, lint, and compilation.
 
 ## Setup evidence (October 8, 2026)
 
-Steps 1–8 of the setup guide are complete. The user approved the current generator's bundled Oxlint on October 8, 2026. Step 9 awaits Git identity and initial commit approval.
+Steps 1–8 of the setup guide are complete. The user approved the current generator's bundled Oxlint on October 8, 2026. Step 9 was subsequently completed with user authorization on October 15; see the Git checkpoint below.
 
 ### Read-only preflight and tool checkpoints
 
@@ -157,7 +257,7 @@ Available Python executables on PATH were enumerated, resolved, and checked indi
 
 Additional PATH alternatives: `/usr/local/bin/node` v24.21.0 and `/usr/local/bin/npm` 11.19.0. The default tools were retained. These are computer-level tools, not project-owned dependencies. A fallback Git executable also appears on PATH under the Codex runtime; `/usr/bin/git` was used.
 
-Read-only commands used: `pwd`, `ls -la`, `rg --files` (including hidden files and targeted patterns), `find docs -maxdepth 2 -type f -print`, `cat prompts/setup-prompts.md`, `cat docs/assignment-description.md`, ancestor `AGENTS.md` checks, `cat AGENTS.md README.md`, `uname -a`, `sw_vers`, `whence -a`/`whence -pa` for Python/Node/npm/Git, individual executable `--version` calls, `command -v node npm`, `git rev-parse --show-toplevel`, `git rev-parse --is-inside-work-tree`, and `git config --get user.name`, `git config --get user.email`, `git config --get-regexp '^user\.(name|email)$'`. Python inline inspection enumerated executable names on PATH and checked whether the environment, manifests, lockfile, and dependency directory existed. Git identity is currently unset; it must be resolved before a commit. No global configuration was changed.
+Read-only commands used: `pwd`, `ls -la`, `rg --files` (including hidden files and targeted patterns), `find docs -maxdepth 2 -type f -print`, `cat prompts/setup-prompts.md`, `cat docs/assignment-description.md`, ancestor `AGENTS.md` checks, `cat AGENTS.md README.md`, `uname -a`, `sw_vers`, `whence -a`/`whence -pa` for Python/Node/npm/Git, individual executable `--version` calls, `command -v node npm`, `git rev-parse --show-toplevel`, `git rev-parse --is-inside-work-tree`, and `git config --get user.name`, `git config --get user.email`, `git config --get-regexp '^user\.(name|email)$'`. Python inline inspection enumerated executable names on PATH and checked whether the environment, manifests, lockfile, and dependency directory existed. Git identity was unset at that preflight checkpoint; the user later supplied project-local identity for the approved initial commit. No global configuration was changed.
 
 ### Backend installation and verification
 
@@ -217,17 +317,17 @@ Step 8 changed no source files, dependency declarations, or installed dependenci
 
 ### Initial Git checkpoint (step 9)
 
-Confirmed project root: `/Users/jlee/Desktop/psu4/ist402/a3_mental_health`. No enclosing repository exists. Requested the missing author name/email; no identity has been invented or configured globally. A remote will not be configured or pushed during setup.
+At the original setup checkpoint, no enclosing repository existed and author identity and commit approval were pending. The user subsequently supplied identity and authorized initialization and publication on October 15, 2026, as recorded in [the evidence log](docs/evidence-log.md).
 
-Proposed commit: `chore: initialize verified FastAPI and Vue scaffold`. Scope: root documentation/rules/ignore file, backend dependency manifest, generated Vue starter/configuration and npm lockfile, original assignment documentation, and original setup prompts. Generated environments, node_modules, build output, caches, editor settings, OS artifacts, and secrets are excluded. Git initialization/staging and the commit remain pending; a commit requires explicit approval under the setup guide.
+Read-only inspection on October 21 confirms initial commit `d52a680` (`chore: initialize coursework scaffold and design documentation`), content commit `084981b`, and report-reference commit `010a9d9`. `origin` matches the repository above and `report.md` is tracked. Generated environments, dependencies, builds, caches, and secrets remain excluded. Remote availability and instructor access were not rechecked in this inspection.
 
 ## Open decisions
 
 - TODO: refine feeling-slider labels and the burden of required feeling/color/graph inputs; reconcile the mockup's Help placeholder with the confirmed resource design when refining the interface.
 - TODO: resolve adaptive UI, approved reply-setting values, age scope, crisis-input policy, and the proposed fourteen-pattern chat influence. No automatic sensing or contraction is approved.
 - TODO: select model provider, reviewed retrieval corpus and rights, context permissions, privacy disclosure, embedding location, retention, and deletion semantics. Local SQLite does not establish fully local model processing.
-- TODO: turn the proposed SQLite records into a schema and document the JSON API request/response/error contract before implementing or integrating routes.
-- TODO: implement and verify independent persistent Help, failure/exit behavior, fixed breathing steps, and conversation/session history in a later milestone.
+- Entry and session schemas/contracts are implemented under `backend/app/features/`. TODO: define conversation/context/retention details before model integration.
+- Independent Emergency, failures/exits, fixed breathing and entry/session history are implemented and checked. TODO: complete conversation history/model behavior and broader accessibility testing.
 - TODO: measure guided exercise duration (no more than 90 seconds at the intended pace), including application delays and stated response assumptions; report entry/setup separately. The current breathing budget is a proposal, not a measured result. No forced chat timeout is planned.
 - TODO: create the required fictional evaluation scenarios and repeatable checks; update AI-use disclosure and evidence with actual results as work proceeds.
 - The report records the Part 1 content commit and uses file links pinned to it. A follow-up reference commit saves that hash in the report; no commit can contain its own hash. Confirm instructor access before uploading the report.

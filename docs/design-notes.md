@@ -137,5 +137,19 @@ Part 3.2 must demonstrate one complete skill, model contribution, SQLite convers
 - TODO: select provider, retrieval corpus/rights, embedding approach, privacy disclosure, context consent, retention, and deletion semantics. No automatic color interpretation.
 - TODO: define SQLite schema and JSON contract before integration; preserve fixed steps in domain logic.
 - TODO: verify timing, accessibility, failure/exit behavior, and clean-checkout commands when implemented.
-- TODO: complete the initial Git checkpoint with identity and explicit commit approval, then supply repository/version/design/evidence links in the Part 3.1 `report.md`. This task does not initialize Git, commit, publish, or submit.
+- The initial Git checkpoint is complete, and the tracked Part 3.1 `report.md` supplies repository/version/design/evidence links. TODO: confirm instructor access and submission rendering; local Git inspection does not establish either.
 - TODO: update [AI use disclosure](../AI-USE.md) and [evidence log](evidence-log.md) as tools and artifacts are actually used.
+
+## First iteration decisions — October 21, 2026
+
+The latest user instructions now authorize implementation, synchronized original inhale/exhale audio, PWA shell support, and Emergency wording in place of Help. A discreet About description preserves the assignment's required role description; repeated fictional/prototype labels do not appear on activity screens. Still is a provisional visual name. No clinical capabilities or automatic adaptation were added.
+
+Implementation is divided into independently buildable interface, emotion and breathing scopes. Modules own their domain/storage/contracts/tests and import no sibling feature; the shell discovers installed entry points. Breathing session history is independent of emotion calendar history to preserve those commit boundaries. See `docs/architecture.md`, `docs/implementation-checkpoints.md`, and feature contracts under `backend/app/features/`.
+
+Logging retains explicit feeling/color/graph selection; provisional five-position feeling labels and integer −100..100 axes are documented, not asserted as validated measures. Color meaning and notes are optional, with no inference. SQLite saves are idempotent by client UUID; entries retain original date/time on edit. Domain validation, API errors, retries and persistence are implemented.
+
+The browser owns countdown, fixed six four-in/six-out cycles and shared timing for visual/audio cues. Pause/end/Emergency work independently of network requests. Healthy browser sequences measured 63.0s including countdown; instruction-to-finish observations were 63.1s and 64.0s with stated immediate/brief-reading assumptions. The earlier 75-second budget remains an estimate. No forced timeout. Original Web Audio cues can be muted; reduced motion preserves text/static pacing. Main-thread stalls pause pacing, retaining the application delay in instruction timing. Native phone/audio listening checks remain TODOs.
+
+The PWA caches only the built shell. Browser checks confirmed offline reload, Emergency and breathing with FastAPI stopped; history fails explicitly and personal responses are never substituted from cache. Session-save Retry works after recovery, but pending records are only in memory and can be lost on reload/close. No background synchronization promise. Local database storage does not resolve future model/provider/transmission decisions.
+
+Chat remains a frontend stub by user scope; model contribution and persistent conversations remain outstanding Part 3.2 requirements. Original Part 3.1 report/image evidence is preserved. Actual checks, failures, commands and remaining limitations are in `docs/iteration-verification.md`; the old design descriptions above are historical where superseded here.

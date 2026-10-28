@@ -1,0 +1,91 @@
+{
+  "standard": [
+    {
+      "buttons": [
+        {
+          "background": "rgb(255, 253, 248)",
+          "label": "Cancel",
+          "width": 138.0034637451172
+        },
+        {
+          "background": "rgb(112, 81, 142)",
+          "label": "Continue",
+          "width": 138.0034637451172
+        }
+      ],
+      "sameIcon": true,
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "buttons": [
+        {
+          "background": "rgb(255, 253, 248)",
+          "label": "Cancel",
+          "width": 167.56076049804688
+        },
+        {
+          "background": "rgb(112, 81, 142)",
+          "label": "Continue",
+          "width": 167.56076049804688
+        }
+      ],
+      "sameIcon": true,
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "buttons": [
+        {
+          "background": "rgb(252, 250, 248)",
+          "label": "Cancel",
+          "width": 274.001708984375
+        },
+        {
+          "background": "rgb(112, 81, 142)",
+          "label": "Continue",
+          "width": 274.001708984375
+        }
+      ],
+      "sameIcon": true,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "buttons": [
+        {
+          "background": "rgb(254, 251, 248)",
+          "label": "Cancel",
+          "width": 274.001708984375
+        },
+        {
+          "background": "rgb(112, 81, 142)",
+          "label": "Continue",
+          "width": 274.001708984375
+        }
+      ],
+      "sameIcon": true,
+      "scrollWidth": 1280,
+      "width": 1280
+    }
+  ],
+  "largerText": {
+    "buttons": [
+      {
+        "clientWidth": 137,
+        "label": "Cancel",
+        "scrollWidth": 137,
+        "width": 138.0034637451172
+      },
+      {
+        "clientWidth": 137,
+        "label": "Continue",
+        "scrollWidth": 137,
+        "width": 138.0034637451172
+      }
+    ],
+    "largeText": true,
+    "scrollWidth": 320,
+    "width": 320
+  }
+}

@@ -1,0 +1,191 @@
+[
+  {
+    "headerBottom": 80,
+    "headingTop": 104.60311126708984,
+    "homeButtons": 0,
+    "route": "#home",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 103.52611541748048,
+    "homeButtons": 0,
+    "route": "#emotion",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 104.60775756835938,
+    "homeButtons": 0,
+    "route": "#history",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 102.26141357421876,
+    "homeButtons": 0,
+    "route": "#breathing",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 103.1917953491211,
+    "homeButtons": 0,
+    "route": "#sessions",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 111.5260772705078,
+    "homeButtons": 0,
+    "route": "#chat",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 103.19164276123048,
+    "homeButtons": 0,
+    "route": "#conversations",
+    "scrollWidth": 320,
+    "scrollY": 0,
+    "width": 320
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 104.2101058959961,
+    "homeButtons": 0,
+    "route": "#home",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 104.23429870605467,
+    "homeButtons": 0,
+    "route": "#emotion",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 102.5582504272461,
+    "homeButtons": 0,
+    "route": "#history",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 102.55949401855467,
+    "homeButtons": 0,
+    "route": "#breathing",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 104.21294403076172,
+    "homeButtons": 0,
+    "route": "#sessions",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 112.23211669921876,
+    "homeButtons": 0,
+    "route": "#chat",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 80,
+    "headingTop": 103.5248031616211,
+    "homeButtons": 0,
+    "route": "#conversations",
+    "scrollWidth": 391,
+    "scrollY": 0,
+    "width": 391
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 123.19093322753906,
+    "homeButtons": 0,
+    "route": "#home",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 123.21060180664062,
+    "homeButtons": 0,
+    "route": "#emotion",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 123.20706176757812,
+    "homeButtons": 0,
+    "route": "#history",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 122.86812591552734,
+    "homeButtons": 0,
+    "route": "#breathing",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 123.52931213378906,
+    "homeButtons": 0,
+    "route": "#sessions",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 131.18878173828125,
+    "homeButtons": 0,
+    "route": "#chat",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  },
+  {
+    "headerBottom": 96,
+    "headingTop": 123.17752075195312,
+    "homeButtons": 0,
+    "route": "#conversations",
+    "scrollWidth": 1280,
+    "scrollY": 0,
+    "width": 1280
+  }
+]

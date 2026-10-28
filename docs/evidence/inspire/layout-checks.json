@@ -1,0 +1,195 @@
+{
+  "standard": [
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#home",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#emotion",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#history",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#breathing",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#sessions",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#chat",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#conversations",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#home",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#emotion",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#history",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#breathing",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#sessions",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#chat",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#conversations",
+      "scrollWidth": 391,
+      "width": 391
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#home",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#emotion",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#history",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#breathing",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#sessions",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#chat",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "emergencyHeight": 44,
+      "reducedMotion": true,
+      "route": "#conversations",
+      "scrollWidth": 1280,
+      "width": 1280
+    }
+  ],
+  "largerText": [
+    {
+      "large": true,
+      "route": "#home",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "large": true,
+      "route": "#emotion",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "large": true,
+      "route": "#history",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "large": true,
+      "route": "#breathing",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "large": true,
+      "route": "#sessions",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "large": true,
+      "route": "#chat",
+      "scrollWidth": 320,
+      "width": 320
+    },
+    {
+      "large": true,
+      "route": "#conversations",
+      "scrollWidth": 320,
+      "width": 320
+    }
+  ]
+}

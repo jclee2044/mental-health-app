@@ -22,6 +22,8 @@ Paced breathing (4–6): inhale for a count of four and exhale for a count of si
 5-4-3-2-1 sensory grounding: identify five things you can see, four you can feel, three you can hear, two you can smell, and one you can taste. Decide how the application supports this without demanding unnecessary input.
 STOP: stop; take a step back; observe what is happening internally and externally; proceed mindfully. Consider how to communicate the sequence clearly.
 One-minute cognitive reframe: identify a distressing thought, consider the evidence supporting it, and consider an alternative interpretation. Think carefully about the effort this asks of the user.
+Feel free to use online datasets/resources to learn sample conversations between individuals and their therapists. Here is one example: https://www.kaggle.com/datasets/elvis23/mental-health-conversational-data
+
 These descriptions and the research summary below provide the domain material needed for the assignment. You are not expected to conduct clinical research.
 
 3. Research foundation

@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-28",
+  "colors": {
+    "cream": "#fbf8f1",
+    "paper": "#fffdf8",
+    "lavender": "#e8def5",
+    "lilac": "#d6c2ed",
+    "soft": "#f1eaf8",
+    "violet": "#6134be",
+    "muted": "#5c4d67",
+    "ink": "#40364e",
+    "brand-in": "#9370b8",
+    "control-line": "#9b86af",
+    "danger": "#91473e",
+    "danger-soft": "#fff1e9",
+    "white": "#ffffff"
+  },
+  "checks": [
+    {
+      "foreground": "violet",
+      "background": "cream",
+      "ratio": 7.22,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "paper",
+      "ratio": 7.53,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "lavender",
+      "ratio": 5.91,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "lilac",
+      "ratio": 4.67,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "violet",
+      "background": "soft",
+      "ratio": 6.51,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "cream",
+      "ratio": 10.67,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "paper",
+      "ratio": 11.13,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "lavender",
+      "ratio": 8.73,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "lilac",
+      "ratio": 6.9,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "ink",
+      "background": "soft",
+      "ratio": 9.63,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "cream",
+      "ratio": 7.3,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "paper",
+      "ratio": 7.62,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "lavender",
+      "ratio": 5.97,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "lilac",
+      "ratio": 4.72,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "muted",
+      "background": "soft",
+      "ratio": 6.59,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "white",
+      "background": "violet",
+      "ratio": 7.66,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "brand-in",
+      "background": "cream",
+      "ratio": 3.77,
+      "minimum": 3
+    },
+    {
+      "foreground": "control-line",
+      "background": "paper",
+      "ratio": 3.22,
+      "minimum": 3
+    },
+    {
+      "foreground": "control-line",
+      "background": "cream",
+      "ratio": 3.08,
+      "minimum": 3
+    },
+    {
+      "foreground": "danger",
+      "background": "paper",
+      "ratio": 6.51,
+      "minimum": 4.5
+    },
+    {
+      "foreground": "danger",
+      "background": "danger-soft",
+      "ratio": 5.99,
+      "minimum": 4.5
+    }
+  ],
+  "scope": "Declared theme pairs only; not a full accessibility audit. Brand uses large bold type on cream. Decorative lines and personal emotion colors are not inferred from these checks."
+}

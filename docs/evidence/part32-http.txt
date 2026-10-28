@@ -1,0 +1,23 @@
+Selected observed localhost HTTP events, October 26 2026 Eastern.
+Mocked provider, actual browser/FastAPI/SQLite. No credentials or live calls.
+Routine static assets omitted. This is a curated excerpt, not a HAR export.
+
+POST /api/chat/messages 200
+PUT /api/chat/conversations/bd5ca9dd-bf70-46d2-955b-0bfa9da0f61f/turns/87010ce0-5282-4517-ad7c-7258055def48 201
+GET /api/chat/conversations 200
+GET /api/chat/conversations 200 (after reload)
+GET /api/chat/conversations/bd5ca9dd-bf70-46d2-955b-0bfa9da0f61f 200
+
+POST /api/chat/messages 200
+PUT /api/chat/conversations/8288f7d8-504e-4048-886a-ecc3634456db/turns/81a50214-f870-4bf4-9f77-d8fc25906ec0 503 (simulated SQLite failure)
+PUT /api/chat/conversations/8288f7d8-504e-4048-886a-ecc3634456db/turns/81a50214-f870-4bf4-9f77-d8fc25906ec0 201 (manual Retry after recovery; no generation POST)
+POST /api/chat/messages 502 (demo:fail; no storage PUT)
+
+PUT /api/sessions/e7446e36-44c8-44ef-9952-d41fde310c44 201 (completed, 66.6121s instruction to finish)
+PUT /api/sessions/d41b6d41-cd47-49f5-83d3-840348bc4ae2 201 (ended after Emergency/pause)
+PUT /api/sessions/ecc6df0c-f8be-4901-8ceb-efc2ab0164d6 503 (simulated SQLite failure)
+PUT /api/sessions/ecc6df0c-f8be-4901-8ceb-efc2ab0164d6 201 (manual Retry)
+GET /api/sessions 200
+
+Demo server stopped; cached shell reloaded, history failed explicitly, Emergency opened.
+Demo server restarted with same database; GET /api/sessions and GET /api/chat/conversations returned saved records again.

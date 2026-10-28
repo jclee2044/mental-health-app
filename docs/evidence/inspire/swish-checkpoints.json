@@ -1,0 +1,17 @@
+[
+  {
+    "stage": "interface",
+    "path": "/Users/jlee/Desktop/psu4/ist402/a3_mental_health/.checkpoints/20261028-171134-926765/01-interface",
+    "result": "passed"
+  },
+  {
+    "stage": "emotion",
+    "path": "/Users/jlee/Desktop/psu4/ist402/a3_mental_health/.checkpoints/20261028-171134-926765/02-emotion",
+    "result": "passed"
+  },
+  {
+    "stage": "breathing",
+    "path": "/Users/jlee/Desktop/psu4/ist402/a3_mental_health/.checkpoints/20261028-171134-926765/03-breathing",
+    "result": "passed"
+  }
+]

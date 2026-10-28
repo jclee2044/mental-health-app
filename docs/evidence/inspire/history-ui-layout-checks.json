@@ -1,0 +1,224 @@
+[
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#home",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#emotion",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past breathing sessions",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#breathing",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View saved chats",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#chat",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": 0.0000152587890625,
+    "route": "#home",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#emotion",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past breathing sessions",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#breathing",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View saved chats",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#chat",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": 0.0000457763671875,
+    "route": "#home",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#emotion",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View past breathing sessions",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#breathing",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "history": [
+      {
+        "height": 44,
+        "label": "View saved chats",
+        "text": "",
+        "width": 44
+      },
+      {
+        "height": 44,
+        "label": "View past logs",
+        "text": "",
+        "width": 44
+      }
+    ],
+    "homeAlignment": null,
+    "route": "#chat",
+    "scrollWidth": 1280,
+    "width": 1280
+  }
+]
