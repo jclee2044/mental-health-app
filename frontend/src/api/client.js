@@ -7,11 +7,12 @@ export class ApiError extends Error {
   }
 }
 
-export async function request(path, { method = 'GET', body, signal } = {}) {
+export async function request(path, { method = 'GET', body, signal, timeoutMs = 8000, keepalive = false } = {}) {
   try {
-    const timeout = AbortSignal.timeout(8000)
+    const timeout = AbortSignal.timeout(timeoutMs)
     const response = await fetch(`/api${path}`, {
       method, cache: 'no-store',
+      ...(keepalive ? { keepalive: true } : {}),
       headers: body ? { 'Content-Type': 'application/json' } : {},
       ...(body && method !== 'GET' ? { body: JSON.stringify(body) } : {}),
       signal: signal ? AbortSignal.any([signal, timeout]) : timeout,

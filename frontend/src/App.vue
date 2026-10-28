@@ -9,7 +9,7 @@ import { usePreferences } from './composables/usePreferences.js'
 import { useFeatures } from './features.js'
 import { registerPwa } from './pwa.js'
 
-const routes = ['home', 'emotion', 'history', 'breathing', 'sessions', 'chat']
+const routes = ['home', 'emotion', 'history', 'breathing', 'sessions', 'chat', 'conversations']
 const readRoute = () => routes.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'home'
 const screen = ref(readRoute())
 const splash = ref(!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -19,7 +19,7 @@ const preferences = usePreferences()
 const offlineStatus = ref('Preparing offline mode…')
 const features = useFeatures({ navigate: go, interrupted: () => Boolean(sheet.value), reducedMotion: () => preferences.reducedMotion.value })
 const activeFeature = computed(() => features.find(feature => feature.routes[screen.value]))
-const title = computed(() => ({ home: 'Home', emotion: 'Emotion log', history: 'Past logs', breathing: 'Guided breathing', sessions: 'Past breathing sessions', chat: 'Support chat' })[screen.value])
+const title = computed(() => ({ home: 'Home', emotion: 'Emotion log', history: 'Past logs', breathing: 'Guided breathing', sessions: 'Past breathing sessions', chat: 'Support chat', conversations: 'Saved chats' })[screen.value])
 let splashTimer
 function go(destination) {
   splash.value = false
@@ -52,8 +52,8 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
       <template v-else>
         <div v-if="screen !== 'home'" class="page-top"><button class="text-button" @click="go('home')"><AppIcon name="arrow-left" /> Home</button></div>
         <HomeView v-if="screen === 'home'" @navigate="go" />
-        <ChatView v-else-if="screen === 'chat'" @end="go('home')" />
         <component :is="activeFeature.routes[screen]" v-else-if="activeFeature" v-bind="activeFeature.props(screen)" v-on="activeFeature.events" @emergency="openEmergency" />
+        <ChatView v-else-if="screen === 'chat'" @end="go('home')" />
         <FeaturePendingView v-else :title="title" @navigate="go" />
         <template v-for="feature in features" :key="feature.id"><component :is="feature.notice.component" v-if="feature.notice" v-bind="feature.notice.props()" v-on="feature.notice.events" /></template>
       </template>
@@ -81,7 +81,7 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
       </template>
       <template v-else>
         <p>Still is a coursework skills prototype running on localhost. It does not provide therapy, diagnosis, crisis response, or monitoring.</p>
-        <p>Available activities depend on this version. Support chat is not connected.</p>
+        <p>Available activities depend on this version. Chat needs the local server and provider configuration.</p>
         <p class="small" role="status">{{ offlineStatus }}</p>
       </template>
     </ModalSheet>

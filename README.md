@@ -4,6 +4,47 @@ IST 402 Assignment 3: a localhost coursework prototype exploring short, user-con
 
 Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app.git) (URL supplied by the user; local remote configuration was not changed).
 
+## Chat history update — October 27, 2026
+
+Saved chats now includes typed and spoken conversation text in the same history.
+Spoken text saves when voice ends or you leave chat; no audio recordings are
+saved. Both modes display as ordinary chat messages. New is at the top right of
+history. Review does not resend history to a model. Spoken text can be approximate;
+pending/in-progress text may be lost on reload/close. Earlier unsaved voice chats
+cannot be recovered. The older notes below are historical where superseded.
+See [persistence contract](backend/app/features/voice/PERSISTENCE.md).
+
+### Run the current application
+
+From the repository root, build and serve the full production PWA on localhost
+with the chat credentials/model in the private root `.env`:
+
+```sh
+npm --prefix frontend run build
+backend/.venv/bin/python -m uvicorn app.main:app --app-dir backend --env-file .env --host 127.0.0.1 --port 8000
+```
+
+Open `http://127.0.0.1:8000/`. The offline shell becomes available after a successful initial load/activation; About reports readiness. Native installation uses the target browser's install/Add to Home Screen controls, whose availability varies by browser. Native install/standalone relaunch on a real phone has not been verified. Cached assets contain no personal API responses. Offline breathing and Emergency work; saving/history require the local server. A phone's own localhost is a different host from this computer; no LAN/public deployment is configured.
+
+If no `.env` exists and you only want the offline activities, omit `--env-file
+.env`. Chat requires both `OPENAI_API_KEY` and `VOICE_BACKEND_MODEL` in the server
+environment. The full chat-enabled command is:
+
+```sh
+backend/.venv/bin/python -m uvicorn app.main:app --app-dir backend --env-file .env --host 127.0.0.1 --port 8000
+```
+
+The application reads process environment at startup; the launch command without
+`--env-file` does not load `.env` automatically. The existing project environment
+already includes Uvicorn's dotenv support; no dependency was added. Keep `.env`
+private and ignored. Restart after changing it; `GET /api/voice/config` should
+report `configured` when both required values are present/valid. This check does
+not contact the provider or verify provider access. If a port is occupied, leave
+unrelated processes alone; use a free port (or `--port 0` and the URL Uvicorn
+prints). Production frontend requests use that same origin.
+
+The design/scaffold descriptions below record earlier milestones.
+
 ## Part 3.1 research and design
 
 Current milestone: Research and Design, due October 15, 2026 at 11:59 PM Eastern. The imagined audience includes people experiencing anxiety or intrusive thoughts who face cost or apprehension barriers to therapy. This motivation informs the design; actual use remains fictional coursework testing.

@@ -4,7 +4,7 @@ defineEmits(['navigate'])
 const activities = [
   { route: 'emotion', icon: 'smile', title: 'Emotion log', description: 'A color, a feeling, a moment to notice.', class: 'sage' },
   { route: 'breathing', icon: 'wind', title: 'Guided breathing', description: 'Follow a gentle rhythm. In, then out.', class: 'rose' },
-  { route: 'chat', icon: 'chat', title: 'Support chat', description: 'A space for conversation, coming soon.', class: 'blue' },
+  { route: 'chat', icon: 'chat', title: 'Support chat', description: 'A space for conversation.', class: 'blue' },
 ]
 </script>
 <template>

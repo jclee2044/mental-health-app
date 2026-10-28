@@ -207,3 +207,333 @@ scripts/verify_checkpoints.py --stage breathing on the final timer/copy version:
 passed. Existing Starlette/httpx deprecation warning only. Evidence:
 .checkpoints/20261027-193319-380416/results.json. Commit scope excludes unrelated
 pre-existing application, chat, session-history and documentation work.
+
+
+### Voice configuration diagnosis — October 27, 2026
+
+The user authorized investigating voice failure and testing credentials. Codex
+used the OpenAI Docs skill and official Live WebRTC/model documentation, inspected
+the backend/frontend voice path and the active backend launch command, and read
+only credential presence/configuration identifiers from the private root .env.
+No secret was printed or saved in evidence. GET https://api.openai.com/v1/models
+with that key returned HTTP 200 and listed both gpt-live-1 and the configured
+Responses model. This establishes authentication/model visibility, not credit,
+Live creation permission, connection quality or generated behavior.
+
+Root cause observed: existing PID 25191 on port 8000 omitted --env-file .env;
+GET /api/voice/config returned unconfigured. The shell also had no API key.
+Started a separate project-owned Uvicorn process (PID 29847) on port 8002 with
+--env-file .env; its configuration endpoint returned HTTP 200/configured.
+The existing server was left untouched under the project process-ownership rule.
+CUA opened http://127.0.0.1:8002/#chat and verified Start voice, Microphone off,
+End chat, text composer and independent Emergency. Screenshot:
+docs/evidence/voice-configured-chat.png. No microphone or paid session was opened;
+no new key was needed. README's primary run command now explicitly loads .env,
+with instructions for running without it when chat is not configured.
+
+Commands/checks: rg/cat/sed source and documentation inspection; git status;
+lsof; ps -p 25191 -o pid=,comm=,args=; project Python urllib read-only local config
+and provider models checks; PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python
+-m pytest -p no:cacheprovider -q -c backend/pytest.ini
+backend/app/features/voice/tests backend/tests/test_boundaries.py
+backend/tests/test_shell.py (152 passed, existing Starlette/httpx deprecation
+warning); npm --prefix frontend test (72 passed); backend/.venv/bin/python -m
+uvicorn app.main:app --app-dir backend --env-file .env --host 127.0.0.1 --port 8002;
+git diff --check. Initial sandboxed network/ps checks were restricted; the bounded
+read-only network/process checks and localhost server ran with approved escalation.
+Changed only README.md, AI-USE.md, docs/evidence-log.md and the screenshot in this
+increment. No dependencies, app source, checkpoint scopes, staging or commits.
+TODO: user-selected fictional voice connection/playback check; billing/credit,
+provider cleanup and real audio behavior remain unverified by these tests.
+
+
+### Voice readiness event size correction — October 27, 2026
+
+After the user supplied Connecting/timeout screenshots, inspected the existing
+port-8002 server log (write_stdin session 53043) and CUA browser state/error logs.
+Observed three successful POST /api/voice/sessions responses (201) during the
+user's attempts; one cleanup returned 504 and another 204. These are user-triggered
+live creations, not calls started by Codex. No new credential was necessary for
+creation. Do not infer successful audio or confirmed closure of every attempt.
+
+Found a reproducible client defect: voice.js dropped all JSON events over 16,000
+characters before dispatch. Project Python measurement of session_payload with
+empty history was 17,161 serialized bytes (Live instructions 6,025; delegation
+10,667). Official Live reference says session.started includes resolved session
+configuration and session.closed includes a final snapshot:
+https://developers.openai.com/api/reference/cli/resources/live
+Actual failing data-channel frames were not captured; this is a deterministic
+bug consistent with the observed timeout, not a claim of observed end-to-end
+recovery. CUA browser errors/warnings were empty.
+
+Added a regression using fictional long prompt snapshots: it failed on the old
+code (Connecting instead of Active). Fixed lifecycle-only envelope allowance to
+128 KiB UTF-8, retaining smaller non-lifecycle/caption bounds, matching session
+IDs, disabled microphone until readiness, and all cleanup/event permissions.
+Added oversized lifecycle/caption rejection coverage. No configuration snapshot
+is displayed, logged or persisted. Updated frontend chat README accordingly.
+
+Commands/checks: source inspection; project Python session_payload size check;
+node --test frontend/src/features/chat/tests/voice.test.js (old code: 26 pass,
+1 expected regression failure); npm --prefix frontend test (fixed: 74 passed);
+npm --prefix frontend run build; targeted ESLint/Oxlint from frontend (passed);
+git diff --check. Initial ESLint invocation from root returned an oxlint config
+lookup warning; rerun from frontend resolved it. CUA reloaded the idle chat and
+DOM script src confirmed /assets/index-Z7RLGsoJ.js, the rebuilt client. Left Start
+voice for the user's explicit microphone action. Codex did not start any live
+session, microphone or provider generation. TODO: user retry to verify readiness,
+playback and cleanup with the fixed build; network-specific failure remains
+possible. No dependency, server policy, checkpoint, staging or commit changes.
+Files changed this follow-up: frontend/src/features/chat/voice.js,
+frontend/src/features/chat/tests/voice.test.js, frontend/src/features/chat/README.md,
+AI-USE.md and docs/evidence-log.md.
+
+
+### Chat copy cleanup — October 27, 2026
+
+User selected the chat storage paragraph for removal and requested removing
+mentions of fictional data from the visible app. Removed the entire selected
+paragraph from frontend/src/features/chat/ChatView.vue. Source search found no
+other fictional-data text in production Vue templates. Coursework/testing rules
+and historical documentation are unchanged. No runtime behavior or dependencies
+changed. Commands: rg production-template copy search; npm --prefix frontend run
+build (passed); git diff --check (passed). CUA reload verified the paragraph is
+absent and Emergency/End chat remain visible. Screenshot:
+docs/evidence/chat-copy-cleanup.png. No new tests for this copy-only deletion;
+no microphone/provider actions. Codex edited the template and recorded this entry
+in AI-USE.md and docs/evidence-log.md. No staging or commits.
+
+
+### Framed chat and composer voice control — October 27, 2026
+
+User requested a Voice mode option beside the text input and a framed chat
+window. Updated ChatView.vue and feature styles.css: bordered conversation/composer
+frame, bounded scrollable labeled conversation region, adjacent Voice mode button,
+and conditional voice status/cancel/mute/end/playback controls in the composer.
+Idle Closed/Microphone off panel is removed. Explicit button types prevent voice
+controls from submitting a typed draft. Existing permission/transmission copy,
+independent Emergency, End chat and underlying voice behavior remain. Updated
+feature README and existing SFC rendering checks across all seven voice states.
+No dependencies, contracts or provider calls changed.
+
+Commands/checks: npm --prefix frontend test (74 passed); npm --prefix frontend
+run build (passed); targeted ESLint (passed); node --test
+src/features/chat/tests/view.test.js from frontend after assertion updates
+(7 passed); git diff --check. CUA reloaded port 8002, verified the framed region,
+adjacent Voice mode/input, End chat and Emergency at the current 701x943 viewport.
+Screenshot: docs/evidence/chat-composer-voice.png. No microphone or live provider
+action; physical mobile interaction/real audio remains unverified. Files changed:
+frontend/src/features/chat/ChatView.vue, styles.css, tests/view.test.js, README.md,
+AI-USE.md, docs/evidence-log.md and the screenshot. No staging or commits.
+
+
+### Integrated voice input and minimal invitation — October 27, 2026
+
+User supplied composer references and requested integrated voice, warmer minimal
+copy, centered icon, End chat beneath Send only after starting, and concise
+privacy text. Asked two targeted design questions; user selected “What’s on your
+mind?” and one minimal welcoming line. Implemented that heading and “Start
+wherever you like.”, fixed icon centering by removing inherited padding from the
+fixed-size circle, integrated accessible 44px Voice mode icon in the rounded
+input toolbar, and moved End chat beneath Send after a message/voice-start
+attempt. End remains available through pending/error states for that chat.
+Emergency/Home remain independent. Kept full privacy/context/storage details in
+an expandable disclosure below a one-line summary. No clinical or NLP efficacy
+claims, prompt changes, dependencies or API changes.
+
+Files: frontend/src/features/chat/ChatView.vue, styles.css, tests/view.test.js,
+README.md; AI-USE.md; docs/evidence-log.md; screenshot
+ docs/evidence/chat-integrated-input.png. Checks: npm --prefix frontend test
+(77 passed after added empty/start-state rendering cases); npm --prefix frontend
+run build (passed); targeted ESLint and SFC rendering tests (10 passed);
+git diff --check. CUA reloaded the built app and verified the heading, empty
+invitation, Voice mode accessible name, no idle End chat, Emergency and disclosure
+expand/collapse. Live voice and paid calls were not run. Physical mobile input
+and active live-session layout remain unverified; voice-state layouts were
+rendered with mocks. No staging, commits or checkpoint changes.
+
+
+### Chat bubble labels and End alignment — October 27, 2026
+
+User requested removing the repeated “Voice caption · approximate” labels from
+both speakers and right-aligning End chat beneath Send. Removed that label from
+ChatView.vue; pending/failed typed-reply notices remain. Set styles.css .chat-end
+to width:fit-content with left auto margin. Disclosure still explains approximate
+captions. Checks: npm --prefix frontend run build and git diff --check passed.
+CUA observed a currently muted user voice session; deliberately did not reload
+and discard its transient conversation. The new build applies on the user's next
+refresh. Updated AI-USE.md and docs/evidence-log.md. No tests added for this
+copy/alignment-only change; live visual verification remains pending refresh.
+No dependencies, provider calls, staging or commits.
+
+
+### Subtle chat controls and starting topics — October 27, 2026
+
+User requested subtle input focus without resize handle, right-aligned privacy
+copy, suggested conversation topics, and an icon for saved chats. Updated feature
+ChatView.vue/styles.css: focused composer changes background subtly with no inner
+outline/outer ring, textarea resize:none with overflow scrolling, privacy block
+right alignment, topic examples (day / something weighing on you / small win),
+and a feature-owned history SVG button with accessible name, title and 44px hit
+area beside the heading. Updated the existing empty-state copy assertion in
+view.test.js. No dependencies, APIs, prompts or provider calls changed.
+
+Checks/commands: npm --prefix frontend run build; targeted ESLint; node --test
+src/features/chat/tests/view.test.js from frontend (10 passed); git diff --check.
+CUA verified idle chat with only draft “test”, refreshed, restored that exact
+draft without sending, clicked the input and visually confirmed no inner border
+or resize handle, history icon, suggestions and right-aligned privacy. Screenshot:
+docs/evidence/chat-subtle-controls.png. No microphone/model request or saved data
+mutation. Physical device/assistive-technology checks remain unverified.
+Files changed: frontend/src/features/chat/ChatView.vue, styles.css,
+tests/view.test.js; AI-USE.md; docs/evidence-log.md; screenshot. No staging/commit.
+
+
+### Separate dictation and waveform voice controls — October 27, 2026
+
+User explicitly authorized dictation and requested the microphone to the left of
+a waveform voice icon, overlaid in a shorter input. Added framework-free browser
+recognition controller dictation.js and focused tests/dictation.test.js; wired it
+through useChat.js and ChatView.vue, with feature CSS for compact overlay controls
+and reserved text space. Voice keeps its existing Live transport; dictation appends
+final text to the editable draft, never sends automatically, preserves edits,
+deduplicates results and enforces draft bounds. Visible errors cover unsupported,
+denied and failed recognition. Stop/60-second timer, Send, voice switch,
+Emergency/overlays, navigation/hidden/unmount abort and reject late results. No
+new deps, server endpoints, model/key settings, app audio storage or auto-restart.
+
+MDN SpeechRecognition documentation was fetched: support varies and audio may go
+to the browser vendor's service. Added visible separate dictation disclosure and
+expandable detail; no offline/local claim. Updated feature README and AGENTS.md
+to record this user-authorized increment. Tests use fake recognition, not real
+microphones or provider requests. npm --prefix frontend test: 89 passed; npm
+--prefix frontend run build and targeted ESLint passed; git diff --check passed.
+CUA verified idle chat, refreshed, observed Dictate message to the left of Voice
+mode, compact input, waveform icon, privacy and Emergency. Did not select either
+capture button. Screenshot: docs/evidence/chat-dictation-voice.png. Real dictation
+accuracy/service compatibility, audio capture/playback and physical mobile layout
+remain unverified. No staging/commit or checkpoint manifest changes.
+Files: frontend/src/features/chat/{dictation.js,useChat.js,ChatView.vue,styles.css,
+tests/dictation.test.js,tests/view.test.js,README.md}, AGENTS.md, AI-USE.md,
+docs/evidence-log.md and screenshot. AI role: Codex implemented/tests/docs using
+existing project tools and browser inspection; no new model-generated assets.
+
+
+### Dictation browser failure diagnostics — October 27, 2026
+
+User reported dictation failing. CUA confirmed the browser recognition error state
+with no draft text; captured console warnings/errors were empty. The previous
+recognition error was sanitized to one generic message, so the precise browser
+error code is not recoverable from this observation. Do not label it a confirmed
+network or permission issue. Added fixed allowlisted messages distinguishing
+network speech-service reachability, service prohibition, microphone capture,
+silence, language support, permission denial and interruption; raw diagnostics
+remain hidden. Added mocked error-class coverage. Targeted recognition tests:
+13 passed; targeted ESLint, production build and git diff --check passed.
+Reloaded idle empty chat to apply diagnostic build, without opening microphone.
+Files: frontend/src/features/chat/dictation.js, tests/dictation.test.js, AI-USE.md,
+docs/evidence-log.md. User choice requested before replacing browser recognition
+with an OpenAI audio-upload/transcription endpoint, because that changes audio
+destination/API cost. No such endpoint or audio upload implemented in this pass.
+Actual next browser error and successful dictation remain unverified. No paid
+requests, dependencies, staging or commits.
+
+
+### OpenAI recording dictation replacement — October 27, 2026
+
+User explicitly selected OpenAI transcription instead of browser-only recognition,
+with existing server key and acknowledged audio transmission/API usage. Added
+POST /api/chat/transcriptions in the voice feature with framework-free audio/
+transcript validation, strict JSON/no browser configuration, 3MiB streaming wire
+cap, 2MiB decoded WebM/MP4 cap and prefix checks. Provider adapter sends one
+bounded multipart request with fixed gpt-transcribe/json, no prompt/history/tools,
+no retries/redirects, 20s I/O timeout and projected validated text. No dependencies
+or audio persistence. See backend/app/features/voice/DICTATION.md.
+
+Replaced browser recognition controller with MediaRecorder capture and bounded
+chunks/base64 conversion, explicit finish/upload, visible Cancel, 30s capture /
+30s finalize timer, and stale-result guards. Tracks stop before upload. Transcript
+appends to the current edited draft; no automatic chat call/save. Send, voice
+start, Emergency, navigation, hidden/unmount and cancel discard/abort pending work.
+No guarantee of provider cancellation/retention/cost control is made. Disclosure
+now names OpenAI dictation; previous browser-only notes are marked historical.
+
+Checks: targeted ESLint passed; npm --prefix frontend test (92 passed); npm
+--prefix frontend run build; git diff --check. Backend command:
+PYTHONDONTWRITEBYTECODE=1 backend/.venv/bin/python -m pytest -p no:cacheprovider
+-q -c backend/pytest.ini backend/app/features/voice/tests backend/tests
+(171 passed; existing Starlette/httpx deprecation warning). Mock cases cover
+valid projection, malformed/oversized/streamed input, MP4/WebM, invalid output,
+timeouts/no retry, late permission/upload, edits/no auto-send, size/time limits,
+Send/voice switch and all lifecycle exits. No microphone or paid API request.
+
+Credential check: read-only GET /v1/models/gpt-transcribe returned HTTP200 and the
+requested model id using root .env without exposing key. This does not establish
+actual transcription entitlement/quality. Restarted only task-owned server
+session 53043/PID29847, now session86247/PID33822 at port8002 with --env-file .env.
+Read-only/local invalid empty POST confirmed route returns 422 before provider.
+CUA loaded chat and verified both controls, OpenAI recording disclosure and
+Emergency. Screenshot: docs/evidence/chat-openai-dictation.png. Real audio format
+compatibility, physical device behavior, quality and provider cancellation remain
+TODOs. No staging, commits or checkpoint/dependency changes.
+
+Files: backend/app/features/voice/{dictation_domain.py,dictation_routes.py,
+provider.py,__init__.py,DICTATION.md,CONTRACT.md,tests/test_dictation.py};
+frontend/src/features/chat/{dictation.js,useChat.js,api.js,ChatView.vue,
+tests/dictation.test.js,tests/api.test.js,README.md}; AGENTS.md, docs/api-contract.md,
+AI-USE.md, docs/evidence-log.md and screenshot. Codex authored code/tests/docs;
+existing OpenAI Docs skill and official transcription docs informed server policy.
+
+
+### Unified chat text history and New placement — October 27, 2026
+
+User requested all chats instead of typed-only history and a top-right New button,
+then explicitly clarified that transcribed text should look like normal messages
+and no audio recordings should be saved. Added a bounded voice-text batch storage
+route/domain/schema and additive chat_voice_messages table. Unified read/count/
+order/delete handles typed and voice text under one conversation; cross-type ID/
+position conflicts and atomic idempotent retries preserve existing typed pairs.
+Frontend queues received text on voice End/error/disposal, batches long Unicode
+content, preserves ordering across mode switches and retries storage only across
+navigation. No audio, fragments, timing or SDP is persisted. Historical review
+still never auto-sends model context. Old unsaved voice conversations are not
+recoverable; in-progress/pending text can still be lost on reload/crash.
+
+History now says Saved chats, shows New top-right, and renders user/assistant
+text identically without per-message source badges. Updated chat save/privacy
+copy and shell accessible region label. Approximate/partial caption limits remain
+in privacy/contracts. No dependencies, provider calls or microphone tests.
+
+Checks: backend voice/shell/storage suite 182 passed (existing Starlette/httpx
+warning); frontend suite 97 passed; production build; targeted ESLint;
+git diff --check. Added SQLite restart/mixed ordering/retry/conflict/deletion,
+validation and rollback checks, plus voice End/disposal/failed-save retry,
+Unicode batching, and history presentation checks with mocks. Restarted only
+task-owned server session86247/PID33822; new session82460/PID34540 on port8002.
+CUA loaded updated Saved chats/New UI and confirmed independent Emergency.
+Screenshot: docs/evidence/chat-unified-history.png. Live capture/save quality,
+physical-device behavior and crash delivery remain unverified. No staging,
+commits or checkpoint scope/dependency changes.
+
+Files: backend/app/features/voice/{domain.py,schemas.py,routes.py,storage.py,
+PERSISTENCE.md,tests/test_persistence.py}; frontend/src/features/chat/
+{ConversationHistoryView.vue,ChatView.vue,styles.css,domain.js,useChat.js,api.js,
+useConversationRecords.js,ChatSaveNotice.vue,README.md,tests/fakes.js,
+tests/persistence.test.js,tests/chat.test.js,tests/history-view.test.js};
+frontend/src/App.vue (accessible page label only); AGENTS.md, README.md,
+docs/api-contract.md, AI-USE.md, docs/evidence-log.md and screenshot.
+
+
+### Chat commit checkpoint — October 27, 2026
+
+User requested a commit. Reviewed the index/scope and kept prior assignment,
+submission and unrelated breathing edits outside this chat checkpoint. Selected
+the complete previously uncommitted chat/voice feature, integration, contracts,
+research/prompt references, current-session evidence and launch/disclosure notes.
+Verified .env, local SQLite and built output remain ignored. Commands: git status,
+git log, scoped git diff/index review, project backend pytest (187 passed), frontend
+Node tests (97 passed), production build, non-mutating full Oxlint/ESLint and
+git diff --cached --check. Existing Starlette/httpx warning only. No dependencies,
+paid calls, microphones, staging-all command or push. Earlier checkpoint commits
+remain separate; their manifest was not changed. Live provider/audio behavior is
+not established by these checks.

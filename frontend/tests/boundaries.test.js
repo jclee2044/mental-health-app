@@ -19,5 +19,11 @@ test('pure feature domain rules have no Vue or API imports', () => {
 })
 test('feature code never imports a sibling feature', () => {
   const root = fileURLToPath(new URL('../src/features', import.meta.url))
-  for (const file of files(root).filter(path => /\.(vue|js)$/.test(path))) assert.doesNotMatch(readFileSync(file, 'utf8'), /from ['"](?:\.\.\/(?:emotion|breathing)\/|.*features\/(?:emotion|breathing)\/)/, file)
+  const features = readdirSync(root, { withFileTypes: true }).filter(entry => entry.isDirectory()).map(entry => entry.name)
+  for (const feature of features) {
+    for (const file of files(`${root}/${feature}`).filter(path => /\.(vue|js)$/.test(path))) {
+      const source = readFileSync(file, 'utf8')
+      for (const sibling of features.filter(name => name !== feature)) assert.doesNotMatch(source, new RegExp(`from ['"](?:\\.\\.\\/${sibling}\\/|.*features\\/${sibling}\\/)`), file)
+    }
+  }
 })

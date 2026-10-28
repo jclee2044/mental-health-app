@@ -39,7 +39,9 @@ def create_app(db_path=None, frontend_dist=None):
     for module in pkgutil.iter_modules(features.__path__):
         if module.ispkg:
             feature = importlib.import_module(f"{features.__name__}.{module.name}")
-            stores.append(feature.register(app, database))
+            store = feature.register(app, database)
+            if store is not None:
+                stores.append(store)
 
     @app.exception_handler(ValidationError)
     async def domain_error(_request, exc):
