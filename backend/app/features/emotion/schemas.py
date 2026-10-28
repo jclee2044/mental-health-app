@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 
 class EntryBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    feeling: StrictInt
+    feeling: StrictInt | None = None
     color: StrictStr
     color_meaning: StrictStr = ""
     pleasantness: StrictInt

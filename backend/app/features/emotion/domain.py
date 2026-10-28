@@ -9,13 +9,15 @@ from ...errors import ValidationError
 def validate_entry(payload):
     fields = {}
     for key, low, high, message in (
-        ("feeling", 1, 5, "Choose a feeling."),
         ("pleasantness", -100, 100, "Choose pleasantness from −100 to 100."),
         ("energy", -100, 100, "Choose energy from −100 to 100."),
     ):
         value = payload.get(key)
         if type(value) is not int or not low <= value <= high:
             fields[key] = message
+    feeling = payload.get("feeling")
+    if feeling is not None and (type(feeling) is not int or not 1 <= feeling <= 5):
+        fields["feeling"] = "Use a legacy feeling from 1 to 5, or null."
     if not isinstance(payload.get("color"), str) or not re.fullmatch(r"#[0-9a-fA-F]{6}", payload["color"]):
         fields["color"] = "Choose a color."
     for key, limit in (("note", 2000), ("color_meaning", 80)):
@@ -36,5 +38,5 @@ def validate_entry(payload):
         fields["local_date"] = "Use the entry's local calendar date."
     if fields:
         raise ValidationError(fields)
-    return {**payload, "color": payload["color"].lower(), "note": payload.get("note", ""),
+    return {**payload, "feeling": feeling, "color": payload["color"].lower(), "note": payload.get("note", ""),
             "color_meaning": payload.get("color_meaning", ""), "recorded_at": timestamp.isoformat()}

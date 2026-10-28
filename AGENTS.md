@@ -125,3 +125,15 @@
   review and confirmed deletion. No audio, fragments, timing, automatic historical
   context, live calls or microphone tests. Keep approximate/partial caption and
   pending-save/reload limitations accurate in privacy/docs, without bubble labels.
+
+
+## Graph-first emotion log — October 28, 2026
+
+- The user explicitly replaced the first-page feeling cards with pleasantness ×
+  energy, removing the separate graph step and visible selection summary. This
+  supersedes the earlier required feeling/category and summary instructions.
+- Preserve explicit graph placement and personal color, optional notes, one-page
+  Save and independent Emergency. Tap/drag tracks with a slight smooth lag; honor
+  reduced motion and retain keyboard/non-drag controls. No inferred category.
+- New API feeling is null/omitted; preserve legacy labels on read/edit. Follow
+  emotion/CONTRACT.md for the internal storage absence marker; no row rewriting.

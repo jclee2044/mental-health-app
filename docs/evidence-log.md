@@ -1205,3 +1205,22 @@ October 28 copy correction: ready heading in frontend/src/features/breathing/Bre
 ### October 28, 2026 — publication preparation
 
 User requested committing all changes and pushing. Reviewed the 98 pending files, remote state, feature scopes, fictional submission evidence and credential/size scan (no potential credentials or files over 10 MB found). Verification: 187 backend tests and 97 frontend tests passed, offline Oxlint/ESLint, production build, all three isolated checkpoints and git diff --check passed. Backend tests emit the existing Starlette/httpx deprecation warning. Commands: git fetch origin; backend/.venv/bin/python -m pytest backend -q; npm --prefix frontend test; npm --prefix frontend run build; npm exec --offline -- oxlint .; npm exec --offline -- eslint . --no-cache (from frontend); backend/.venv/bin/python scripts/verify_checkpoints.py. Evidence: docs/evidence/inspire/prepush-checkpoints.json. Commit sequence preserves interface, emotion and breathing scopes, then chat and submission documentation/helpers. Existing draft submission TODOs remain; no paid calls, microphone or new browser behavior checks in this preparation.
+
+
+### October 28, 2026 — graph-first emotion log
+
+Codex implemented the user's first-page pleasantness × energy graph, replacing
+feeling cards/separate graph step and removing the visible selection summary.
+Captured tap/drag uses 90ms tracking with existing reduced-motion overrides.
+Optional nullable legacy feeling avoids inferring a category and preserves old
+entries without a database rewrite. New pointer and persistence compatibility
+tests passed alongside 188 backend and 99 frontend tests, production build,
+offline lint, all isolated checkpoints and whitespace checks. Browser checks
+observed drag, keyboard, 320px layout, validation, fictional save/history/edit
+on a separate test database. No dependencies, paid calls, microphone, staging
+or commit. File/command details and remaining limits: [verification](emotion-graph.md).
+
+October 28 publication follow-up: user authorized commit and push of the emotion
+graph update. Reviewed the pending feature code, contract, tests, design revision
+and fictional screenshot; fetched origin before publication. Existing observed
+checks above apply; no implementation changed during publication preparation.

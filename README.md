@@ -4,6 +4,17 @@ IST 402 Assignment 3: a localhost coursework prototype exploring short, user-con
 
 Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app.git), configured locally as `origin`.
 
+## Emotion graph update — October 28, 2026
+
+Emotion log now opens directly with pleasantness × energy, replacing the feeling
+cards and separate graph step. Tap or drag to place the dot; movement follows with
+a short 90ms transition (instant with reduced motion). No selection summary is
+shown. Color remains required; notes are optional. Sliders and keyboard controls
+remain available. Existing feeling labels are preserved in history; new entries
+save without a category. See the [current design revision](docs/design-notes.md#october-28-2026--graph-first-emotion-log-revision)
+and [JSON contract](backend/app/features/emotion/CONTRACT.md).
+Restart an already-running backend to load the optional feeling contract.
+
 ## inspire visual theme — October 28, 2026
 
 The application is now branded **inspire**, with a soft cream/lavender theme, minimal sage/peach accents, filled

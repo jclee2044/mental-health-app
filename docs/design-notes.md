@@ -153,3 +153,20 @@ The browser owns countdown, fixed six four-in/six-out cycles and shared timing f
 The PWA caches only the built shell. Browser checks confirmed offline reload, Emergency and breathing with FastAPI stopped; history fails explicitly and personal responses are never substituted from cache. Session-save Retry works after recovery, but pending records are only in memory and can be lost on reload/close. No background synchronization promise. Local database storage does not resolve future model/provider/transmission decisions.
 
 Chat remains a frontend stub by user scope; model contribution and persistent conversations remain outstanding Part 3.2 requirements. Original Part 3.1 report/image evidence is preserved. Actual checks, failures, commands and remaining limitations are in `docs/iteration-verification.md`; the old design descriptions above are historical where superseded here.
+
+
+## October 28, 2026 — graph-first emotion log revision
+
+The user explicitly replaced the five feeling cards and separate graph step with
+a pleasantness × energy graph on the first page. This supersedes the earlier
+three-required-input design: graph placement and personal color remain required;
+color meaning and notes remain optional. There is no visible selection summary,
+automatic feeling category or color interpretation. The dot follows taps and
+captured pointer dragging with a 90ms CSS transition; reduced-motion preferences
+remove the transition. Sliders remain available under a disclosure alongside
+keyboard instructions. One-page Save replaces Continue; failures retain the draft.
+
+New entries use a null legacy feeling field; old explicit values remain readable
+and survive edits. The API/storage compatibility rule is in the emotion contract.
+No dependencies, model calls or microphone use are needed. Physical touch-device
+feel and screen-reader usability still need direct verification.

@@ -61,3 +61,26 @@ def test_json_error_shapes_and_storage_failure(tmp_path, payload):
         result = client.get("/api/entries")
         assert result.status_code == 503
         assert result.json()["error"]["code"] == "storage_unavailable"
+
+
+def test_graph_only_entry_and_legacy_storage_compatibility(tmp_path, payload):
+    """No inferred feeling; old NOT NULL databases work without destructive migration."""
+    db_path = tmp_path / "existing.sqlite3"
+    legacy_id, graph_id = str(uuid4()), str(uuid4())
+    graph_payload = {key: value for key, value in payload.items() if key != "feeling"}
+    with TestClient(create_app(db_path)) as client:
+        assert client.put(f"/api/entries/{legacy_id}", json=payload).json()["feeling"] == 3
+        saved = client.put(f"/api/entries/{graph_id}", json=graph_payload)
+        assert saved.status_code == 201
+        assert saved.json()["feeling"] is None
+        assert client.put(f"/api/entries/{graph_id}", json={**graph_payload, "feeling": None}).status_code == 200
+    with TestClient(create_app(db_path)) as client:
+        records = {entry["id"]: entry for entry in client.get("/api/entries").json()["entries"]}
+        assert records[legacy_id]["feeling"] == 3
+        legacy_edit = client.put(f"/api/entries/{legacy_id}", json={**payload, "energy": 75})
+        assert legacy_edit.json()["feeling"] == 3
+        assert records[graph_id]["feeling"] is None
+        edited = client.put(f"/api/entries/{graph_id}", json={**graph_payload, "energy": 75})
+        assert edited.json()["energy"] == 75
+        assert edited.json()["feeling"] is None
+        assert client.get(f"/api/entries/{graph_id}").json()["feeling"] is None

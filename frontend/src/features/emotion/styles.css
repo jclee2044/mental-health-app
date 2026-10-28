@@ -1,10 +1,4 @@
-.feeling-bubble { width: 90px; height: 90px; border-radius: 50%; display: grid; place-items: center; margin: 24px auto; transition: background .2s; }
-.feeling-bubble .icon { width: 36px; height: 36px; color: var(--paper); }
 .required-note, .optional { font-size: .65rem; font-weight: 400; color: var(--muted); margin-left: 5px; }
-.feeling-options { display: flex; gap: 7px; }
-.feeling-options label { background: var(--paper); display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 12px 5px; min-height: 90px; text-align: center; border: 1px solid var(--line); border-radius: 18px; font-size: .7rem; cursor: pointer; }
-.feeling-options .selected { background: var(--lavender); border-color: var(--accent); }
-.feeling-options input { accent-color: var(--accent); width: 16px; height: 16px; }
 .color-hint { margin-top: 14px; } .field-error { font-size: .8rem; color: var(--danger); margin: 8px 0; }
 .error-banner { background: var(--danger-soft); color: var(--danger); padding: 16px; border: 1px solid var(--danger-line); border-radius: 18px; font-size: .85rem; }
 .error-banner p { color: inherit; } .form-next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 24px; }
@@ -17,10 +11,12 @@
 .graph-wrap { display: grid; grid-template-columns: 60px minmax(140px, 300px) 60px; grid-template-rows: 30px auto 30px; justify-content: center; align-items: center; gap: 5px; margin-top: 18px; }
 .axis-top { grid-column: 2; grid-row: 1; text-align: center; } .axis-bottom { grid-column: 2; grid-row: 3; text-align: center; } .axis-left { grid-column: 1; grid-row: 2; text-align: right; } .axis-right { grid-column: 3; grid-row: 2; }
 .graph-wrap > span { font-size: .65rem; color: var(--muted); }
-.emotion-graph { grid-column: 2; grid-row: 2; width: 100%; aspect-ratio: 1; position: relative; border: 1px solid #8d8396; border-radius: 4px; background: linear-gradient(90deg, transparent calc(50% - .5px), #b5adb9 50%, transparent calc(50% + .5px)), linear-gradient(transparent calc(50% - .5px), #b5adb9 50%, transparent calc(50% + .5px)), #f5f2ef; cursor: crosshair; }
-.graph-point { width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; outline: 1px solid var(--ink); position: absolute; transform: translate(-50%, -50%); pointer-events: none; }
+.emotion-graph { grid-column: 2; grid-row: 2; width: 100%; aspect-ratio: 1; position: relative; border: 1px solid #8d8396; border-radius: 4px; background: linear-gradient(90deg, transparent calc(50% - .5px), #b5adb9 50%, transparent calc(50% + .5px)), linear-gradient(transparent calc(50% - .5px), #b5adb9 50%, transparent calc(50% + .5px)), #f5f2ef; cursor: crosshair; touch-action: none; user-select: none; }
+.graph-point { width: 20px; height: 20px; border-radius: 50%; border: 2px solid white; outline: 1px solid var(--ink); position: absolute; transform: translate(-50%, -50%); pointer-events: none; transition: left 90ms linear, top 90ms linear, background-color 120ms ease; }
 .graph-instruction { position: absolute; top: 21%; left: 0; right: 0; text-align: center; color: var(--muted); font-size: .75rem; }
-.point-summary { font-size: .8rem; text-align: center; margin: 12px 0 20px; }
+.graph-controls { margin: 16px 0 24px; }
+.graph-controls summary { color: var(--muted); font-size: .75rem; cursor: pointer; }
+.graph-field > p { margin-bottom: 0; }
 input[type=range] { width: 100%; accent-color: var(--accent); min-height: 32px; margin: 0; } label output { float: right; font-weight: 400; }
 .saved-state { text-align: center; padding: 28px 0 36px; } .saved-state > .button { margin-top: 14px; }
 .saved-mark { width: 100px; height: 100px; background: var(--lavender); display: inline-grid; place-items: center; border-radius: 50%; margin-bottom: 30px; } .saved-mark .icon { width: 42px; height: 42px; }
@@ -38,7 +34,7 @@ input[type=range] { width: 100%; accent-color: var(--accent); min-height: 32px; 
 .entry-card-top { display: flex; align-items: center; gap: 9px; font-size: .85rem; margin-bottom: 12px; } .entry-card time { font-size: .65rem; margin-left: auto; color: var(--muted); }
 .entry-note { white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--heading-font); color: var(--ink); font-size: 1rem; }
 .entry-actions { display: flex; justify-content: space-between; border-top: 1px solid var(--line); margin-top: 12px; padding-top: 5px; } .delete-link { color: var(--danger); }
-@media(max-width:650px) { .history-layout { grid-template-columns: 1fr; gap: 20px; } .history-heading .button { padding: 10px; font-size: .72rem; } .history-heading h1 { font-size: 2.8rem; } .calendar-panel { padding: 20px; } .feeling-options { gap: 4px; } .feeling-options label { background: var(--paper); font-size: .6rem; padding: 8px 3px; } .swatches { gap: 12px; } .swatch,.custom-color { width: 37px; height: 37px; } .form-links .text-button { font-size: .72rem; } .graph-wrap { grid-template-columns: 48px minmax(130px,300px) 48px; } .graph-wrap > span { font-size: .55rem; } }
+@media(max-width:650px) { .history-layout { grid-template-columns: 1fr; gap: 20px; } .history-heading .button { padding: 10px; font-size: .72rem; } .history-heading h1 { font-size: 2.8rem; } .calendar-panel { padding: 20px; } .swatches { gap: 12px; } .swatch,.custom-color { width: 37px; height: 37px; } .form-links .text-button { font-size: .72rem; } .graph-wrap { grid-template-columns: 48px minmax(130px,300px) 48px; } .graph-wrap > span { font-size: .55rem; } }
 
 .day-heading { font-size: 1.25rem; margin-bottom: 20px; }
 
