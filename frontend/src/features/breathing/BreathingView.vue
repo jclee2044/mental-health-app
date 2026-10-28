@@ -10,7 +10,7 @@ const props = defineProps({ interrupted: Boolean, reducedMotion: Boolean })
 const emit = defineEmits(['navigate', 'record', 'start'])
 const audio = new BreathAudio(undefined, decodeRecordings)
 const soundEnabled = ref(true)
-const soundStatus = ref('Recorded inhale & exhale')
+const soundStatus = ref('')
 let audioKey = ''
 const clock = new BreathingClock()
 const state = ref('ready')
@@ -77,7 +77,7 @@ onMounted(() => {
   window.addEventListener('blur', hold.cancel)
 })
 onBeforeUnmount(() => { cancelAnimationFrame(frame); audio.close(); clock.end(performance.now()); record(); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('blur', hold.cancel) })
-const heading = computed(() => state.value === 'ready' ? 'A gentler rhythm.' : state.value === 'paused' ? 'Take your time.' : state.value === 'completed' ? 'A moment, taken.' : cue.value.phase === 'countdown' ? 'Settle in.' : cue.value.phase === 'inhale' ? 'Breathe in.' : 'Breathe out.')
+const heading = computed(() => state.value === 'ready' ? "Take a breath, it'll help." : state.value === 'paused' ? 'Take your time.' : state.value === 'completed' ? 'A moment, taken.' : cue.value.phase === 'countdown' ? 'Settle in.' : cue.value.phase === 'inhale' ? 'Breathe in.' : 'Breathe out.')
 const remainingSeconds = computed(() => Math.max(0, Math.ceil((PATTERN.total - Math.max(PATTERN.countdown, elapsed.value)) / 1000)))
 const circleScale = computed(() => {
   if (props.reducedMotion || state.value === 'ready' || state.value === 'completed' || cue.value.phase === 'countdown') return 1
@@ -85,7 +85,7 @@ const circleScale = computed(() => {
   return cue.value.phase === 'inhale' ? .78 + .6 * progress : 1.38 - .6 * progress
 })
 async function unlockSound() {
-  try { await audio.unlock(); audioKey = ''; soundStatus.value = 'Recorded inhale & exhale'; syncAudio() }
+  try { await audio.unlock(); audioKey = ''; soundStatus.value = ''; syncAudio() }
   catch { soundStatus.value = 'Sound unavailable. Follow the words and circle.' }
 }
 function syncAudio() {
@@ -104,14 +104,14 @@ function toggleSound() {
 <template>
   <section class="breathing-page narrow-page page-enter">
     <h1 aria-live="polite">{{ heading }}</h1>
-    <p id="breathing-hold-instructions" class="breathing-hold-instructions"><strong>{{ state === 'ready' ? 'Tap and hold the circle to start.' : state === 'completed' ? 'Finished. You can release the circle.' : state === 'paused' ? 'Keep holding while paused.' : 'Keep holding the circle.' }}</strong><span>{{ state === 'completed' ? 'Hold it again for another exercise.' : 'Release at any time to end the exercise.' }}</span></p>
-    <p class="breathing-description">{{ state === 'ready' ? 'A 3-second countdown, then 6 cycles: breathe in for 4 seconds and out for 6. No breath holds.' : state === 'paused' ? pauseReason : state === 'completed' ? 'You’ve finished the breathing exercise.' : cue.phase === 'countdown' ? 'Starting in ' + cue.count + '… Keep holding.' : props.reducedMotion ? 'Let the words carry the pace.' : 'Follow the circle, gently.' }}</p>
-    <div class="breathing-stage"><div class="breathing-guide-ring"></div><button type="button" class="breathing-circle" aria-label="Hold to begin or repeat breathing; release to end" aria-describedby="breathing-hold-instructions" @pointerdown="hold.pointerDown" @pointerup="hold.pointerUp" @pointercancel="hold.pointerUp" @lostpointercapture="hold.pointerUp" @keydown="hold.keyDown" @keyup="hold.keyUp" @blur="hold.blur" @contextmenu.prevent @click.prevent :style="{transform:`scale(${circleScale})`}" :data-phase="cue.phase" :data-scale="circleScale.toFixed(3)"><span v-if="state === 'ready'" class="breathing-circle-label"><AppIcon name="wind" /><strong>Tap &amp; hold</strong><span>to start</span></span><AppIcon v-else-if="state === 'completed'" name="check" /><AppIcon v-else-if="state === 'paused'" name="pause" /></button><div v-if="state === 'running'" class="breathing-count" aria-hidden="true">{{ cue.count }}</div></div>
-    <p class="breathing-time" role="timer" aria-live="off">{{ state === 'ready' ? '60 seconds of breathing' : state === 'completed' ? 'Exercise complete' : `${remainingSeconds} seconds left` }}<span>{{ state === 'ready' ? 'After a separate 3-second countdown' : state === 'paused' ? 'Timer paused · Release to end' : state === 'completed' ? 'All 6 cycles finished' : cue.phase === 'countdown' ? 'Getting ready · Breathing timer starts after countdown' : 'Release to end' }}</span></p>
-    <p class="breathing-progress" role="status">{{ state === 'ready' ? '6 cycles · 60 seconds of breathing' : state === 'completed' ? '6 of 6 cycles' : cue.phase === 'countdown' ? '3–2–1 countdown' : `Cycle ${cue.cycle} of 6 · ${Math.floor(Math.max(0,elapsed-3000)/1000)} / 60 seconds` }}</p>
-    <div class="sound-control" :data-audio-phase="audioKey" :data-audio-state="audio.context?.state || 'idle'"><button class="text-button" :aria-pressed="soundEnabled" :aria-label="soundEnabled ? 'Mute breathing sounds' : 'Enable breathing sounds'" @click="toggleSound"><AppIcon :name="soundEnabled ? 'sound' : 'mute'" /> {{ soundEnabled ? 'Sound on' : 'Sound off' }}</button><span class="small muted" role="status">{{ soundEnabled ? soundStatus : 'Text and visual cues stay on' }}</span></div>
-    <template v-if="state === 'completed'"><div class="button-row"><button class="button secondary" @click="emit('navigate','home')">Home</button><p class="small">Hold the circle again to repeat.</p></div><p class="small breathing-note">Sequence: {{ (elapsed/1000).toFixed(1) }}s · Instruction to finish: {{ instructionSeconds?.toFixed(1) }}s, excluding pauses.</p></template>
+    <div class="breathing-instruction-heading"><strong id="breathing-start-label">{{ state === 'ready' ? 'Tap and hold the circle to start.' : state === 'completed' ? 'Finished. You can release the circle.' : state === 'paused' ? 'Keep holding while paused.' : 'Keep holding the circle.' }}</strong><button class="history-button" type="button" aria-label="View past breathing sessions" title="View past breathing sessions" @click="emit('navigate','sessions')"><AppIcon name="history" /></button></div>
+    <p id="breathing-hold-instructions" class="breathing-hold-instructions">{{ state === 'completed' ? 'Hold it again for another exercise.' : 'Release at any time to end the exercise.' }}</p>
+    <div class="breathing-stage"><div class="breathing-guide-ring"></div><button type="button" class="breathing-circle" aria-label="Hold to begin or repeat breathing; release to end" aria-describedby="breathing-start-label breathing-hold-instructions" @pointerdown="hold.pointerDown" @pointerup="hold.pointerUp" @pointercancel="hold.pointerUp" @lostpointercapture="hold.pointerUp" @keydown="hold.keyDown" @keyup="hold.keyUp" @blur="hold.blur" @contextmenu.prevent @click.prevent :style="{transform:`scale(${circleScale})`}" :data-phase="cue.phase" :data-scale="circleScale.toFixed(3)"><span v-if="state === 'ready'" class="breathing-circle-label"><AppIcon name="wind" /><strong>Tap &amp; hold</strong><span>to start</span></span><AppIcon v-else-if="state === 'completed'" name="check" /><AppIcon v-else-if="state === 'paused'" name="pause" /></button><div v-if="state === 'running'" class="breathing-count" aria-hidden="true">{{ cue.count }}</div></div>
+    <p v-if="state !== 'ready'" class="breathing-description">{{ state === 'paused' ? pauseReason : state === 'completed' ? 'You’ve finished the breathing exercise.' : cue.phase === 'countdown' ? 'Starting in ' + cue.count + '… Keep holding.' : props.reducedMotion ? 'Let the words carry the pace.' : 'Follow the circle, gently.' }}</p>
+    <p class="breathing-time" role="timer" aria-live="off">{{ state === 'ready' ? '6 cycles · 60 seconds of breathing' : state === 'completed' ? 'Exercise complete' : `${remainingSeconds} seconds left` }}<span v-if="state !== 'ready'">{{ state === 'paused' ? 'Timer paused · Release to end' : state === 'completed' ? 'All 6 cycles finished' : cue.phase === 'countdown' ? 'Getting ready · Breathing timer starts after countdown' : 'Release to end' }}</span></p>
+    <p v-if="state !== 'ready'" class="breathing-progress" role="status">{{ state === 'completed' ? '6 of 6 cycles' : cue.phase === 'countdown' ? '3–2–1 countdown' : `Cycle ${cue.cycle} of 6 · ${Math.floor(Math.max(0,elapsed-3000)/1000)} / 60 seconds` }}</p>
+    <div class="sound-control" :data-audio-phase="audioKey" :data-audio-state="audio.context?.state || 'idle'"><button class="text-button" :aria-pressed="soundEnabled" :aria-label="soundEnabled ? 'Mute breathing sounds' : 'Enable breathing sounds'" @click="toggleSound"><AppIcon :name="soundEnabled ? 'sound' : 'mute'" /> {{ soundEnabled ? 'Sound on' : 'Sound off' }}</button><span v-if="!soundEnabled || soundStatus" class="small muted" role="status">{{ soundEnabled ? soundStatus : 'Text and visual cues stay on' }}</span></div>
+    <template v-if="state === 'completed'"><p class="small">Hold the circle again to repeat.</p><p class="small breathing-note">Sequence: {{ (elapsed/1000).toFixed(1) }}s · Instruction to finish: {{ instructionSeconds?.toFixed(1) }}s, excluding pauses.</p></template>
     <template v-else-if="state !== 'ready'"><button v-if="state === 'paused'" class="button full-width" @click="resume"><AppIcon name="play" /> Resume</button><button v-else class="button full-width" @click="pause()"><AppIcon name="pause" /> Pause</button><button class="button secondary full-width end-exercise" @click="end">End exercise</button></template>
-    <button class="text-button" @click="emit('navigate','sessions')">View past breathing sessions</button>
   </section>
 </template>
