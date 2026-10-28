@@ -9,6 +9,7 @@ import { renderToString } from 'vue/server-renderer'
 const source = readFileSync(new URL('../ConversationHistoryView.vue', import.meta.url), 'utf8')
 const { descriptor } = parse(source)
 const compiled = compileScript(descriptor, { id: 'history-mock', inlineTemplate: true, templateOptions: { ssr: true } }).content
+  .replace(/import AppIcon from ['"][^'"]+['"]/, 'const AppIcon = { render: () => null }')
   .replace(/import \{ useConversationHistory \} from ['"][^'"]+['"]/, 'const useConversationHistory = () => globalThis.historyViewMock')
   .replace(/from (['"])(vue(?:\/server-renderer)?)\1/g, (_match, _quote, name) => `from '${import.meta.resolve(name)}'`)
 const { default: HistoryView } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`)

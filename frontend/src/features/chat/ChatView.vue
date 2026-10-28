@@ -38,8 +38,8 @@ onBeforeUnmount(() => { unbind(); dispose() })
   <section class="chat-page narrow-page page-enter">
     <div class="chat-heading">
       <h1>What’s on your mind?</h1>
-      <button class="chat-history-button" type="button" aria-label="View saved chats" title="View saved chats" @click="$emit('navigate', 'conversations')">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6M12 7v5l3 2" /></svg>
+      <button class="history-button" type="button" aria-label="View saved chats" title="View saved chats" @click="$emit('navigate', 'conversations')">
+        <AppIcon name="history" />
       </button>
     </div>
     <audio ref="remoteAudio" autoplay playsinline hidden aria-hidden="true"></audio>
@@ -51,7 +51,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
         </div>
         <ol v-else class="chat-transcript" aria-label="Conversation" aria-live="polite" aria-relevant="additions text">
           <li v-for="message in messages" :key="message.id" class="chat-bubble" :class="`chat-${message.role}`">
-            <span class="chat-speaker">{{ message.role === 'user' ? 'You' : 'Still' }}</span>
+            <span class="chat-speaker">{{ message.role === 'user' ? 'You' : 'inspire' }}</span>
             <p>{{ message.text }}</p>
             <span v-if="message.status === 'pending'" class="chat-caption-note">Waiting for a reply…</span>
             <span v-else-if="message.status === 'failed'" class="chat-caption-note">Reply unavailable · draft kept</span>
