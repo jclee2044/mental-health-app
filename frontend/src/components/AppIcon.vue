@@ -1,11 +1,12 @@
 <script setup>
 defineProps({ name: { type: String, required: true } })
 const paths = {
-  leaf: 'M19 4C8 2 3 8 6 14c3 6 12 5 13-10ZM5 21c0-7 5-11 9-13',
+  breath: 'M4 21C8 15 13 5 18.5 4C23.5 3 23.5 9 20.5 12.5C18.5 15 15 17 13.5 16C11.5 15 14 8.5 17 10M3 14C4 12 6 10 7.5 9',
   plus: 'M12 5v14M5 12h14',
   'arrow-left': 'm12 5-7 7 7 7M5 12h14',
   'arrow-right': 'm12 5 7 7-7 7M5 12h14',
   'arrow-up-right': 'M6 18 18 6M6 6h12v12',
+  history: 'M3 10a9 9 0 1 1 2 8M3 4v6h6M12 7v5l3 2',
   calendar: 'M5 5h14v15H5zM8 3v4m8-4v4M5 10h14M8 14h2m4 0h2m-8 3h2',
   sliders: 'M4 7h6m4 0h6M4 17h10m4 0h2M10 4v6m4 4v6',
   check: 'm5 12 4 4L19 6',
@@ -20,4 +21,4 @@ const paths = {
   play: 'm8 4 12 8-12 8z',
 }
 </script>
-<template><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="paths[name] || paths.leaf" /></svg></template>
+<template><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path :d="paths[name] || paths.breath" /></svg></template>

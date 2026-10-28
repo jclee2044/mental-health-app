@@ -25,7 +25,7 @@ Breathing uses a monotonic browser clock for counts, circle scale and audio. Req
 
 `frontend/src/features.js` discovers `features/*/index.js` using Vite's static glob. An empty feature directory is valid: the shell shows an honest pending screen. Each feature's entry point registers its own routes, state, styling and optional notices. The shell has no hard imports of feature components.
 
-The backend composition root discovers local packages under `app/features/`. Each registers its router and storage initializer. Shared code imports no feature directly; sibling features import none of each other's code. Adding the breathing package creates only its own table. Routine tests enforce HTTP confinement, framework-free domain logic and feature independence.
+The backend composition root discovers local packages under `app/features/`. Each registers its router and optionally returns a storage initializer; stateless features return `None`. Shared code imports no feature directly; sibling features import none of each other's code. Adding the breathing package creates only its own table. Routine tests enforce HTTP confinement, framework-free domain logic and feature independence.
 
 1. **Interface**: shared shell, responsive Home, Emergency, appearance, chat stub, PWA shell. No backend required; use Vite development/preview.
 2. **Emotion**: shared API/database foundations plus emotion frontend/backend modules. Includes logging, graph, calendar, edit/delete and its contract/tests.
@@ -37,4 +37,16 @@ Exact staging scopes and isolated verification are documented in `implementation
 
 Still is a provisional visual name. The supplied wireframes guide layout; original CSS/vector art supplies polish. Emergency replaces Help. Repeated prototype labels are removed from activity screens; About accurately describes the coursework role. Audio is now explicitly authorized. Calls are never placed during tests and must be simulated during interactive demonstrations.
 
-Chat stays a frontend stub, with no sending/model/conversation persistence. Those Part 3.2 requirements remain unfinished. No inference/adaptation, authentication, external model, speech service, microphone, or analytics. Failed session saves are retryable only within the current app instance. Forced closing/reloading can lose them. Target-device audio quality and native install behavior require direct checks.
+The October 26 `chat` frontend feature adds opt-in native voice, transient captions and independent typed requests. The shell prioritizes registered features and retains the old placeholder only if chat is absent. Frontend `api.js` calls only the shared transport; browser resources are isolated from Vue/HTTP. The backend `voice` package owns both the existing voice routes and the newly authorized `/api/chat/messages` route so it can reuse its server-owned settings/prompts without sibling-feature imports. Both are stateless. See the [contract](../backend/app/features/voice/CONTRACT.md) and [chat notes](../frontend/src/features/chat/README.md). Checks use mocked media/HTTP/Vue rendering; real microphone/provider behavior is unverified. Conversation persistence remains unfinished. No inference/adaptation, authentication or analytics. Failed skill saves are retryable in memory and may be lost on reload. Native installation/device sound quality still need direct checks.
+
+The subsequent voice lifecycle refinement adds framework-free process-local session-ID/close tracking (no SQLite) and a bounded server-owned end endpoint for late/abandoned negotiations. Local Mute affects microphone tracks only. Browser lifecycle wiring remains in the chat feature; Emergency stays shell-owned. See the voice contract for the unverified WebRTC hangup assumption, single-process ledger limits and crash/reconciliation TODOs.
+
+The Part 3.2 submission increment supersedes typed non-persistence above. The voice
+package now returns its typed-chat storage initializer, creating `chat_conversations`
+and `chat_messages`. Model generation and voice negotiation still work without
+SQLite. A separate bounded PUT stores an immutable completed typed pair in one
+transaction; list/detail/deletion make saved records reviewable. Domain rules,
+HTTP orchestration and SQL remain separate. Frontend `useConversationRecords`
+survives view navigation, with visible failures and storage-only Retry. Saved
+history never enters model context automatically; voice captions remain transient.
+The shell adds only the saved-chat route/title, importing no feature components.
