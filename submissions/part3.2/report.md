@@ -16,23 +16,23 @@ Chat supports typed messages, voice conversation and dictation into an editable 
 
 I tested guided breathing multiple times, including tapping and holding and then releasing early, which returns to the home page, and holding through the whole exercise, which leads to the six cycles. My completion screenshot shows **63.0 seconds for the sequence and 63.9 seconds from instruction to finish**, excluding pauses. This run is under the assignment's 90-second limit, with a prompt start and no additional user responses required. Entry/Home navigation is outside that measurement and still needs separate timing; there is no forced timeout.
 
-![My breathing test completed all six cycles in 63.9 seconds from instruction to finish](../../docs/evidence/part32-user-breathing-complete.png)
+[![My breathing test completed all six cycles in 63.9 seconds from instruction to finish](https://raw.githubusercontent.com/jclee2044/mental-health-app/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-user-breathing-complete.png)](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-user-breathing-complete.png)
 
-A new browser check of early release returned Home and saved an `ended` session with **2.2 seconds of breathing**, rather than claiming completion. [Matching SQLite record](../../docs/evidence/part32-current-exit.json).
+A new browser check of early release returned Home and saved an `ended` session with **2.2 seconds of breathing**, rather than claiming completion. [Matching SQLite record](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-exit.json).
 
-![Releasing early returned Home with the session saved](../../docs/evidence/part32-current-breathing-exit.jpg)
+[![Releasing early returned Home with the session saved](https://raw.githubusercontent.com/jclee2044/mental-health-app/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-breathing-exit.jpg)](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-breathing-exit.jpg)
 
-![History distinguishes the ended exercise from completed six-cycle sessions](../../docs/evidence/part32-current-ended-session.jpg)
+[![History distinguishes the ended exercise from completed six-cycle sessions](https://raw.githubusercontent.com/jclee2044/mental-health-app/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-ended-session.jpg)](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-ended-session.jpg)
 
 I also used DB Browser for SQLite to check the database and verify that the messages were being recorded there. The screenshot shows fictional spoken-text records in `chat_voice_messages`; earlier [browser/database checks](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/part32-verification.md) separately checked typed persistence and records surviving restart.
 
-![DB Browser showing saved fictional conversation text in SQLite](../../docs/evidence/part32-user-sqlite.png)
+[![DB Browser showing saved fictional conversation text in SQLite](https://raw.githubusercontent.com/jclee2044/mental-health-app/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-user-sqlite.png)](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-user-sqlite.png)
 
 A mocked request failure kept the draft and showed an error. End chat remained available, and Emergency opened independently (R2/D4); no call links were selected. Earlier [save-failure evidence](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-breathing-save-failure.png) shows the unsaved notice and Retry; it uses the previous visual design. Storage-only Retry does not repeat a model call; pending saves can be lost on reload/close.
 
-![A deliberately mocked reply failure retains the draft and End chat](../../docs/evidence/part32-current-request-failure.jpg)
+[![A deliberately mocked reply failure retains the draft and End chat](https://raw.githubusercontent.com/jclee2044/mental-health-app/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-request-failure.jpg)](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-request-failure.jpg)
 
-![Emergency opens independently after the failed request](../../docs/evidence/part32-current-failure-emergency.jpg)
+[![Emergency opens independently after the failed request](https://raw.githubusercontent.com/jclee2044/mental-health-app/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-failure-emergency.jpg)](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-current-failure-emergency.jpg)
 
 The latest recorded automated checks passed **188 backend tests, 101 frontend tests, lint, the production build and all three original cumulative checkpoints**. New browser checks used a mocked demo and separate database, with no paid calls or microphone access. Mocks do not establish generated behavior or clinical effectiveness.
 
@@ -44,7 +44,7 @@ In another iteration, the echo technique was being overutilized: the chatbot was
 
 I explained roughly what design style I wanted and had ChatGPT ask clarifying questions and create multiple reference UIs. I gave feedback until I was satisfied, then gave that to Codex to redesign the app because the earlier design felt generic. One failed approach was describing the icon I wanted: it came out differently than expected, so I used Codex's sketch functionality to draw what I envisioned, which produced a much closer result.
 
-I used **Codex with GPT-6.1 Sol**, along with ChatGPT for research, design references and writing support. Image-generation model/version details were not recorded. [AI-USE.md](../../AI-USE.md) identifies tools, roles and available model identifiers; the [curated prompt and evidence log](../../docs/part32-evidence.md) connects selected prompts, revisions, observations and decisions. The app's model configuration is disclosed separately from the coding model.
+I used **Codex with GPT-6.1 Sol**, along with ChatGPT for research, design references and writing support. Image-generation model/version details were not recorded. [AI-USE.md](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/AI-USE.md) identifies tools, roles and available model identifiers; the [curated prompt and evidence log](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/part32-evidence.md) connects selected prompts, revisions, observations and decisions. The app's model configuration is disclosed separately from the coding model.
 
 ## What I still want to add
 

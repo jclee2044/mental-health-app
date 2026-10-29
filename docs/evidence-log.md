@@ -1402,3 +1402,14 @@ User requested commit/push and matching report version. Confirmed README commit
 commit and pinned existing document links to that snapshot. Verified Git object
 targets and whitespace; no code changes or runtime tests. The follow-up commit
 saves the reference; the report does not attempt to contain its own commit hash.
+
+### October 28, 2026 — standalone report links
+
+User requested absolute links for the individually uploaded Part Two report.
+Replaced all nine relative references with HTTPS URLs pinned to its existing
+9023240 snapshot: six images use raw image URLs wrapped in clickable GitHub
+file-page links; SQLite JSON, AI-USE and curated evidence use GitHub file URLs.
+Verified every target exists in that Git commit and no relative Markdown links
+remain; git diff --check passed. Repository permissions and the submission
+platform's Markdown/image rendering were not independently verified. No code,
+dependencies, live calls, microphone or runtime-suite changes.
