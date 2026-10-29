@@ -13,13 +13,14 @@ const compiled = compileScript(descriptor, { id: 'chat-mock', inlineTemplate: tr
   .replace(/import AppIcon from ['"][^'"]+['"]/, 'const AppIcon = { render: () => null }')
   .replace(/import \{ useChat \} from ['"][^'"]+['"]/, 'const useChat = () => globalThis.chatViewMock')
   .replace(/from (['"])(\.\/lifecycle\.js)\1/g, (_match, _quote, path) => `from '${new URL(`../${path}`, import.meta.url).href}'`)
+  .replace(/from (['"])(\.\/useTranscriptScroll\.js)\1/g, (_match, _quote, path) => `from '${new URL(`../${path}`, import.meta.url).href}'`)
   .replace(/from (['"])(vue(?:\/server-renderer)?)\1/g, (_match, _quote, name) => `from '${import.meta.resolve(name)}'`)
 const { default: ChatView } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`)
 
 for (const status of ['permission', 'connecting', 'active', 'muted', 'closing', 'closed', 'error']) {
   test(`chat renders ${status} while retaining an enabled text composer and End chat`, async () => {
     globalThis.chatViewMock = {
-      messages: ref([{ id: 'one', role: 'user', text: 'Fictional message', source: 'text', status: 'complete' }, { id: 'two', role: 'assistant', text: 'Fictional reply', source: 'text', status: 'complete' }]),
+      messages: ref([{ id: 'one', role: 'user', text: 'Fictional message', source: 'text', status: 'complete' }, { id: 'two', role: 'assistant', text: '  \n Fictional reply', source: 'text', status: 'complete' }]),
       draft: ref('Keep this draft'), textBusy: ref(false), textError: ref(''),
       dictationState: ref({ status: 'idle', message: '' }), dictation: { start() {}, stop() {}, dispose() {} },
       voiceState: ref({ status, message: 'Mocked state', microphoneMuted: status === 'muted', playbackBlocked: status === 'active', mutePending: false }),
@@ -37,6 +38,7 @@ for (const status of ['permission', 'connecting', 'active', 'muted', 'closing', 
       if (['closed', 'error'].includes(status)) assert.match(composer, /<button[^>]*type="button"[^>]*>[\s\S]*?Voice mode/)
       if (['permission', 'connecting', 'active', 'muted', 'closing'].includes(status)) assert.match(composer, /<button[^>]*type="button"[^>]*>[\s\S]*?(?:Cancel voice setup|End voice)/)
       assert.match(html, /chat-user/); assert.match(html, /chat-assistant/)
+      assert.match(html, /<p>Fictional reply<\/p>/)
       if (status === 'active') assert.match(html, /Enable assistant audio/)
       if (['active', 'muted'].includes(status)) { assert.match(html, /End voice/); assert.match(html, /billing continue/) }
       if (status === 'permission') assert.match(html, /Cancel voice setup/)

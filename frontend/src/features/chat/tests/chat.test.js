@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { useChat } from '../useChat.js'
-import { appendCaption, conversationHistory } from '../domain.js'
+import { appendCaption, conversationHistory, voiceTranscriptBatches } from '../domain.js'
 import { deferred, flush, harness } from './fakes.js'
 
 test('typing works after denied microphone permission and retains the draft through setup', async () => {
@@ -54,6 +54,21 @@ test('caption grouping preserves fragments and spaces across overlapping speaker
   appendCaption(messages, { session: 1, id: 'u2', role: 'user', text: ' I think so.', start: 300, end: 600 })
   assert.equal(messages.length, 2); assert.equal(messages[0].text, 'I think I think so.')
   assert.deepEqual(conversationHistory(messages), [{ role: 'user', content: 'I think I think so.' }, { role: 'assistant', content: 'Mm-hmm.' }])
+})
+
+test('caption bubbles remove leading whitespace while preserving fragment joins and late regrouping', () => {
+  const messages = []
+  const append = (id, role, text, start, end) => appendCaption(messages, { session: 1, id, role, text, start, end })
+  append('u1', 'user', ' \n First', 0, 200)
+  append('u2', 'user', ' next', 600, 800)
+  assert.equal(messages[0].text, 'First next')
+  append('a1', 'assistant', '\t Reply', 300, 500)
+  assert.deepEqual(messages.map(message => message.text), ['First', 'Reply', 'next'])
+  append('u3', 'user', ' word', 800, 900)
+  assert.equal(messages[2].text, 'next word')
+  assert.equal(messages[2].fragments[0].text, ' next')
+  assert.deepEqual(conversationHistory(messages).map(message => message.content), ['First', 'Reply', 'next word'])
+  assert.deepEqual(voiceTranscriptBatches(messages).flat().map(message => message.content), ['First', 'Reply', 'next word'])
 })
 
 test('shared context is bounded and excludes failed drafts', async () => {

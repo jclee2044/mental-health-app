@@ -2,12 +2,15 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import AppIcon from '../../components/AppIcon.vue'
 import { useChat } from './useChat.js'
+import { useTranscriptScroll } from './useTranscriptScroll.js'
 import { bindVoiceLifecycle, interruptVoice } from './lifecycle.js'
 
 const props = defineProps({ interrupted: Boolean, records: Object })
 const emit = defineEmits(['navigate'])
 const remoteAudio = ref(null)
+const chatWindow = ref(null)
 const { messages, draft, textBusy, textError, voiceState, voice, dictation, dictationState, send, dispose } = useChat({ getAudio: () => remoteAudio.value, records: props.records })
+useTranscriptScroll(chatWindow, messages)
 const labels = { permission: 'Permission', connecting: 'Connecting', active: 'Active', muted: 'Muted', closing: 'Closing', closed: 'Closed', error: 'Error' }
 const canStart = computed(() => ['closed', 'error'].includes(voiceState.value.status))
 const canMute = computed(() => ['active', 'muted'].includes(voiceState.value.status))
@@ -44,7 +47,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
     </div>
     <audio ref="remoteAudio" autoplay playsinline hidden aria-hidden="true"></audio>
     <div class="chat-frame">
-      <div class="chat-window" role="region" aria-label="Chat window" tabindex="0">
+      <div ref="chatWindow" class="chat-window" role="region" aria-label="Chat window" tabindex="0">
         <div v-if="!messages.length" class="empty-state">
           <span class="empty-icon"><AppIcon name="chat" /></span>
           <p>Your day, something weighing on you,<br />or a small win you’d like to share.</p>
@@ -52,7 +55,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
         <ol v-else class="chat-transcript" aria-label="Conversation" aria-live="polite" aria-relevant="additions text">
           <li v-for="message in messages" :key="message.id" class="chat-bubble" :class="`chat-${message.role}`">
             <span class="chat-speaker">{{ message.role === 'user' ? 'You' : 'inspire' }}</span>
-            <p>{{ message.text }}</p>
+            <p>{{ message.text.trimStart() }}</p>
             <span v-if="message.status === 'pending'" class="chat-caption-note">Waiting for a reply…</span>
             <span v-else-if="message.status === 'failed'" class="chat-caption-note">Reply unavailable · draft kept</span>
           </li>

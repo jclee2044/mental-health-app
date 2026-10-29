@@ -182,3 +182,20 @@ No historical context is automatically sent to the model. Old voice conversation
 that were never persisted cannot be backfilled. This supersedes prior voice-text
 transience notes, but not raw-audio non-persistence. See PERSISTENCE.md for bounds,
 additive schema, idempotency, approximate-caption limits and ordering contract.
+
+
+### October 28 — transcript scrolling and whitespace
+
+ChatView now scrolls only its chat window to the bottom after Vue renders a new
+message, caption text growth, regrouping or status update. The feature-owned
+useTranscriptScroll watcher follows message text as well as count; scrolling is
+immediate, with no animation or page/focus movement. Assembled voice bubbles
+remove leading whitespace, preserving raw fragments and internal word spacing
+for late regrouping. Presentation also removes leading whitespace from replies.
+No saved-row migration or provider prompt change is part of this fix.
+
+Observed checks: 101 frontend tests passed, including post-update scroll with
+constant bubble count, late caption regrouping/word spacing, normalized voice
+history/storage content and real-SFC reply rendering. Production build and
+non-mutating Oxlint/ESLint passed. No real browser scroll geometry, microphone,
+live provider call or physical-device check was performed.

@@ -22,6 +22,8 @@ export function appendCaption(messages, fragment) {
       bubbles.push(bubble); latest[part.role] = bubble
     }
   }
+  // Keep raw fragments intact for late timeline regrouping and word spacing.
+  for (const bubble of bubbles) bubble.text = bubble.text.trimStart()
   const remaining = messages.filter(message => !belongs(message))
   remaining.splice(first < 0 ? remaining.length : first, 0, ...bubbles)
   messages.splice(0, messages.length, ...remaining)

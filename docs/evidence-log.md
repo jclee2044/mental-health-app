@@ -1224,3 +1224,99 @@ October 28 publication follow-up: user authorized commit and push of the emotion
 graph update. Reviewed the pending feature code, contract, tests, design revision
 and fictional screenshot; fetched origin before publication. Existing observed
 checks above apply; no implementation changed during publication preparation.
+
+
+### October 28, 2026 — active emotional exploration prompt revision
+
+User reported premature advice and clarified that chat should ask questions and
+help explore emotions, alongside echoing and other context-appropriate moves.
+Codex (GPT-6-based assistant; exact served identifier unavailable) revised both
+server-owned prompts in backend/app/features/voice/prompts.py: active exploration
+of meaning/feelings, one relevant question at a time, tentative interpretations,
+explicit practical-request distinction, no compulsory disclosure or sequence.
+Added the assignment's four fixed skill descriptions as reference only; guided
+grounding/STOP/reframe sessions remain unimplemented and cannot be simulated by
+free-form model turns. Retained Echo Technique and review limits for proposed
+Sleight of Mouth/NLP. Corrected stale emotion-log scope to the graph-first design.
+Updated AGENTS.md and docs/chat-system-prompt.md, including five planned fictional
+review cases. Preserved pre-existing report/disclosure/evidence edits.
+
+Commands/checks: cat/sed/nl/rg source review; git status --short; git diff --stat;
+git diff -- backend/app/features/voice/prompts.py AGENTS.md;
+backend/.venv/bin/python -m pytest backend -q: 188 passed, one existing
+Starlette/httpx deprecation warning; project Python/runpy refreshed and asserted
+both documented effective prompt copies match source; git diff --check passed.
+The assignment-linked Kaggle page returned no readable content through web open;
+no dataset examples were downloaded, reviewed, ingested or used for training.
+The user's observed conversation was not supplied for independent review.
+No paid calls, microphone, dependencies, frontend changes, new guided interface,
+server restart, staging or commit. Mocked tests establish transport/wiring only;
+new live generated behavior, voice delivery and clinical safety remain unverified.
+Restart/reload the backend and start a fresh voice session to use the new policy.
+
+
+October 28 follow-up — required question with reflection: user explicitly
+required a question whenever using echoing/reflection. Updated the shared Live
+and Responses policy, removed conflicting optional-question wording in the
+Responses role and AGENTS.md, and refreshed docs/chat-system-prompt.md and its
+planned cases. A question-form echo counts as the one question; statement
+reflections/summaries require one relevant question. Explicit no-question requests
+receive acknowledgment/space instead of reflection. Commands: project Python
+source/doc updates; rg/sed consistency review; backend/.venv/bin/python -m pytest
+backend -q (188 passed, existing Starlette warning); git diff --check (passed).
+No live calls, microphone checks or server restart. Generated behavior remains
+unverified. No new dependencies, staging or commit.
+
+
+### October 28, 2026 — voice transcript scrolling and leading spaces
+
+User requested automatic scrolling to the latest chat text and removal of leading
+message spaces. Codex changed frontend/src/features/chat/ChatView.vue, added
+useTranscriptScroll.js, normalized assembled bubble starts in domain.js while
+keeping raw fragments/internal spaces, and added/updated tests in scroll.test.js,
+chat.test.js and view.test.js. Feature README documents behavior and limits.
+No dependencies, provider/API/storage schema, prompts or checkpoint scopes changed.
+
+Commands: cat/rg source review; npm --prefix frontend test (101 passed);
+npm --prefix frontend run build (passed); npm exec --offline -- oxlint . and
+npm exec --offline -- eslint . --no-cache from frontend (passed);
+git diff --check (passed). The first new scroll test failed because its expected
+fixture character count was off by one; corrected the test arithmetic, then all
+tests passed. Scroll test simulates post-render height changes, including growth
+without a new bubble; SSR verifies leading-space removal in displayed replies.
+No real browser geometry, live microphone/provider, physical-device or backend
+checks in this frontend-only fix; no processes started, staging or commit.
+
+
+### October 28, 2026 — honor conversation endings without questions
+
+User required honoring any request to end without further questions or prying.
+Codex updated shared Live/Responses policy in backend/app/features/voice/prompts.py
+to prioritize ending over exploration and required reflection questions: brief
+closing acknowledgment, no advice, exit confirmation, disclosure invitation or
+continuation until the user explicitly reopens. Already-established immediate
+danger permits a brief urgent human-help direction without assessment questions,
+then stop; a stop request alone is not danger. No model-controlled navigation,
+microphone/provider cleanup or claim that a spoken closing performs those actions
+was added. Updated AGENTS.md and docs/chat-system-prompt.md with source copies
+and four planned fictional review cases (not observed generated behavior).
+
+Commands/checks: sed/rg/git status source review; project Python/runpy refreshed
+and asserted documented prompt copies match source;
+backend/.venv/bin/python -m pytest backend -q (188 passed, existing Starlette/httpx
+deprecation warning); git diff --check (passed). No new dependencies, live calls,
+microphone, backend restart, staging or commit. Mocked tests verify instruction
+wiring/transport, not actual compliance. Live fictional ending behavior remains
+unverified. Reload backend and start a fresh voice session for the new policy.
+
+
+October 28 publication preparation: user authorized commit and push. Reviewed
+scoped chat prompt, scrolling, whitespace, tests and documentation changes;
+excluded the pre-existing Part 3.2 report revision and its disclosure/log entry
+from staging. Re-ran 188 backend tests, 101 frontend tests, production build,
+non-mutating Oxlint/ESLint and whitespace checks successfully. The existing
+Starlette/httpx deprecation warning remains. git fetch origin succeeded through
+the required approval mechanism after sandbox denial; local main and origin/main
+matched before commit. No live provider/microphone or real browser checks added.
+
+Publication checkpoint check: backend/.venv/bin/python scripts/verify_checkpoints.py passed all three original isolated cumulative builds/tests; ignored evidence is .checkpoints/20261028-213210-246977/results.json.

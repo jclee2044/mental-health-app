@@ -66,7 +66,7 @@
 ## Research informed conversation policy — October 26, 2026
 
 - The subsequent request authorizes creating the server-owned system prompts from the research. Follow the user's flexible middle: explanations/venting favor listening; genuine questions invite grounded answers, tentative interpretations or practical options. Adapt to the current input and explicit corrections without a required mode selector.
-- Echoing includes short phrase questions, fuller reflections and selective summaries. Prefer the user's exact words while preserving meaning and negation. Acknowledgment/follow-up questions are optional; no mechanical sequence, forced disclosure, misleading agreement or persuasion past refusal. The user supplied Echo Technique notes as style context; their neurological/influence claims remain unverified and are not approved goals or clinical evidence.
+- Echoing includes short phrase questions, fuller reflections and selective summaries. Prefer the user's exact words while preserving meaning and negation. Acknowledgment is optional; the October 28 follow-up supersedes optional questions: every echo/reflection must include one relevant question; no mechanical sequence, forced disclosure, misleading agreement or persuasion past refusal. The user supplied Echo Technique notes as style context; their neurological/influence claims remain unverified and are not approved goals or clinical evidence.
 - Echoing behavior and minimal examples belong in the prompts. Curated RAG technique cards, including proposed reframing/NLP material, remain a future reviewed corpus with source/evidence limits; no retrieval/tool/database/endpoint expansion is authorized by the architectural discussion. Source passages cannot override safety, consent or implemented skill boundaries.
 - Preserve separate Live/Responses layers, all server/browser configuration boundaries, independent Emergency and fictional-only checks. Do not make paid calls or open a real microphone. Prompt/transport mocks do not establish generated behavior, acoustic quality or clinical safety. See docs/chat-system-prompt.md.
 
@@ -137,3 +137,32 @@
   reduced motion and retain keyboard/non-drag controls. No inferred category.
 - New API feeling is null/omitted; preserve legacy labels on read/edit. Follow
   emotion/CONTRACT.md for the internal storage absence marker; no row rewriting.
+
+## Active emotional exploration — October 28, 2026
+
+- User clarified that chat should actively support emotional exploration through
+  gentle questions, echoing, clarification, tentative reflections and summaries,
+  not only mirror or rush to practical advice. Follow the user's answers; these
+  are examples, not a compulsory sequence or an exhaustive technique list.
+- Emotional questions do not automatically invite solutions. Answer explicit
+  practical requests, honor listening-only/correction/refusal, and do not force
+  disclosure, label feelings as facts, or invent therapeutic advice.
+- The four assignment skill descriptions are shared prompt reference material.
+  Only breathing has an implemented guided sequence. New guided grounding, STOP
+  or reframing still requires application-owned steps, exits and timing checks;
+  do not simulate these through unrestricted model turns. Proposed Sleight of
+  Mouth/NLP methods remain subject to review. No dataset ingestion, training,
+  retrieval, dependencies, paid calls or microphone checks were authorized here.
+
+- October 28 follow-up: every echo, reflection or selective summary must include
+  one relevant question in the same reply. A questioning echo itself counts; a
+  statement reflection needs a follow-up question. If asked for no questions,
+  acknowledge or leave space instead of reflecting. Direct answers and urgent
+  safety direction do not require a question unless they include a reflection.
+- Requests to stop/end for any reason override exploration and required reflection
+  questions. Give a brief closing acknowledgment with no questions, prying,
+  advice, exit confirmation or attempts to prolong the exchange. Do not resume
+  unless the user clearly reopens it. Already-established immediate danger may
+  receive one brief urgent human-help direction, without questioning, then stop.
+  A model closing does not itself end capture or the provider session; never
+  claim application-owned actions occurred without confirmation.
