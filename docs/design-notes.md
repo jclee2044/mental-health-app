@@ -1,6 +1,6 @@
 # Part 3.1 design notes
 
-Design decisions as of October 15, 2026. The [assignment](assignment-description.md) is the requirements source; [research notes](research-notes.md) separate outside evidence from project interpretations. The user created the [early mockup](early-mockup.png) using ChatGPT's image generation tool. This static review board has been visually inspected and embedded in [the report](../report.md). The repository contains the existing scaffold, not this application. See [the current handoff](../handoffs/current.md) for continuation notes.
+Design decisions as of October 15, 2026. The [assignment](assignment-description.md) is the requirements source; [research notes](research-notes.md) separate outside evidence from project interpretations. The user created the [early mockup](early-mockup.png) using ChatGPT's image generation tool. This static review board has been visually inspected and embedded in [the report](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/report.md). The repository contains the existing scaffold, not this application. See [the current handoff](../handoffs/current.md) for continuation notes.
 
 ## Purpose and imagined audience
 

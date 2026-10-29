@@ -1031,6 +1031,11 @@ and fictional screenshot; fetched origin before publication. Existing observed
 checks above apply; no implementation changed during publication preparation.
 
 
+### October 28, 2026 — concise Part 3.2 report
+
+Rewrote submissions/part3.2/report.md in conversational language; pinned repository/evidence links to the current application commit. Corrected hold-to-end and saved spoken-text descriptions, distinguished older observed timing from current controls, and retained missing real-model and entry/setup timing evidence explicitly. Part 3.2 does not explicitly prescribe a new screencast; the finished demonstration/process screencast is explicit under Part 3.3. No model call, new timing observation or link-access check was made; report remains a draft. Checked git diff --check; no runtime tests needed for prose only.
+
+
 ### October 28, 2026 — active emotional exploration prompt revision
 
 User reported premature advice and clarified that chat should ask questions and
@@ -1125,3 +1130,60 @@ the required approval mechanism after sandbox denial; local main and origin/main
 matched before commit. No live provider/microphone or real browser checks added.
 
 Publication checkpoint check: backend/.venv/bin/python scripts/verify_checkpoints.py passed all three original isolated cumulative builds/tests; ignored evidence is .checkpoints/20261028-213210-246977/results.json.
+
+## Part Two report and supplied evidence — October 28, 2026
+
+The user identifies the coding model used as **GPT-6.1 Sol** (`gpt-6.1-sol`).
+This supplements earlier entries that did not record an exact served identifier;
+it does not retroactively identify every earlier session or the app's backend
+model. Codex revised `submissions/part3.2/report.md` using the user's wording,
+current source and existing verification records, and authored
+`docs/part32-evidence.md` with selected user-supplied prompts, failed/revised
+approaches, screenshot provenance and remaining submission TODOs.
+
+The user reports using ChatGPT for web research/system-prompt development and
+iterative generated UI references, then Codex for implementation/redesign and
+its sketch functionality for an icon reference. ChatGPT/image model identifiers
+and versions are unrecorded. No new research, image generation or subagent was
+used for this report. The write-page skill guided the report's prose; no cloud
+Page was created. Attached prompt quotations were treated as evidence, not new
+instructions to research or implement features.
+
+Application identifiers recorded in source are `gpt-live-1` for Live transport
+and `gpt-transcribe` for dictation. Typed replies/Live delegation use the
+server-only `VOICE_BACKEND_MODEL` with no default; its actual configured value
+was not inspected in this task and remains to be disclosed for the submitted
+model demonstration. The demo used `mocked-demo`, not an AI model.
+
+Tools: shell/cat/rg/Git inspection, project Python/SQLite read-only selection,
+CUA in-app browser/screenshots, and ordinary file copying/editing. The mock
+localhost demo verified current early-release → Home/partial session save,
+failed reply/draft retention and Emergency after failure, using a separate
+ignored database. The first sandbox bind failed, then approved execution worked;
+one stale AX action was recovered through the observed semantic button. No
+paid call, real microphone, new dependency or resource call occurred. The two
+user screenshots were copied unchanged with permission; the user confirmed
+fictional dialogue and explicitly requested retaining the local username/path.
+No credentials or private third-party/participant content were added.
+
+The latest 188 backend/101 frontend tests, lint/build and checkpoint results are
+attributed to earlier verification. Only documentation/reference/image checks
+were performed here; no full test-suite rerun, staging, commit or push. Only the
+demo process started for this task was stopped. Recording, backend model ID,
+entry/setup timing, published evidence links and instructor-access TODOs remain.
+
+### October 28, 2026 — report cleanup and publication
+
+User requested removal of submission housekeeping from the Part Two report and
+publication to GitHub, with the existing root report removed from tracking.
+Removed upload/recording TODO prose from the report while retaining actual
+implementation limitations and required repository/application-commit metadata.
+Confirmed against the assignment that a recording is not explicitly required
+for Part 3.2; demonstration/process recordings are explicit in Part 3.3.
+Untracked root report.md with its local copy retained and added a root-only
+ignore rule. Historical report links now target its existing GitHub commit.
+Part Two and evidence stay tracked with relative links valid in GitHub.
+Reviewed scoped documentation/images, verified local links and supplied image
+copies, and ran git diff --check. No code/dependency changes or runtime-suite
+rerun. Git fetch initially lacked sandbox write access; approved execution
+succeeded. Publication uses a documentation/evidence commit; no history rewrite.

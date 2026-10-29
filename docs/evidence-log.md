@@ -1226,6 +1226,11 @@ and fictional screenshot; fetched origin before publication. Existing observed
 checks above apply; no implementation changed during publication preparation.
 
 
+### October 28, 2026 — concise Part 3.2 report
+
+Rewrote submissions/part3.2/report.md in conversational language; pinned repository/evidence links to the current application commit. Corrected hold-to-end and saved spoken-text descriptions, distinguished older observed timing from current controls, and retained missing real-model and entry/setup timing evidence explicitly. Part 3.2 does not explicitly prescribe a new screencast; the finished demonstration/process screencast is explicit under Part 3.3. No model call, new timing observation or link-access check was made; report remains a draft. Checked git diff --check; no runtime tests needed for prose only.
+
+
 ### October 28, 2026 — active emotional exploration prompt revision
 
 User reported premature advice and clarified that chat should ask questions and
@@ -1320,3 +1325,47 @@ the required approval mechanism after sandbox denial; local main and origin/main
 matched before commit. No live provider/microphone or real browser checks added.
 
 Publication checkpoint check: backend/.venv/bin/python scripts/verify_checkpoints.py passed all three original isolated cumulative builds/tests; ignored evidence is .checkpoints/20261028-213210-246977/results.json.
+
+### October 28, 2026 — Part Two report with screenshot evidence
+
+User requested a concrete implementation report in their own conversational
+wording, screenshot evidence, their observations/prompts and future-work scope.
+Revised `submissions/part3.2/report.md`; added the selected prompts, failed echo
+and icon approaches, changes/decisions and screenshot provenance in
+[Part Two curated evidence](part32-evidence.md). Updated AI-USE with the user's
+GPT-6.1 Sol identification, ChatGPT design/research role and separate runtime
+model identifiers/unknown backend configuration. Root Part 3.1 report preserved.
+
+Copied user completion/SQLite images unedited; user confirmed fictional dialogue
+and explicitly requested retaining username/unrelated UI. Completion displays
+63.0s sequence/63.9s instruction-to-finish, not a newly measured Codex run.
+New mocked-browser checks on port 8013 observed early hold release → Home,
+SQLite `ended`/2.2137s active/5.2137s sequence; `demo:fail` → 502 with retained
+draft/no assistant reply; Emergency opened afterward without call actions.
+Four current screenshots and a minimal read-only SQLite excerpt were saved.
+No paid calls or microphone use. Only task-started demo PID 88446 was stopped.
+
+Commands, initial sandbox bind failure, recovered stale AX click, source/file
+inventory and checks are recorded in the curated evidence. `git diff --check`,
+local Markdown targets, pinned Git object targets and image signatures/copies
+were checked. Full runtime tests were not rerun for documentation. No application
+code, dependency, checkpoint scope, staging, commit or push changes. Existing
+pre-task documentation edits retained. New evidence remains local pending a
+reviewed publication; recordings, separate setup timing, model demonstration/ID
+and instructor access remain explicit TODOs.
+
+### October 28, 2026 — report cleanup and publication
+
+User requested removal of submission housekeeping from the Part Two report and
+publication to GitHub, with the existing root report removed from tracking.
+Removed upload/recording TODO prose from the report while retaining actual
+implementation limitations and required repository/application-commit metadata.
+Confirmed against the assignment that a recording is not explicitly required
+for Part 3.2; demonstration/process recordings are explicit in Part 3.3.
+Untracked root report.md with its local copy retained and added a root-only
+ignore rule. Historical report links now target its existing GitHub commit.
+Part Two and evidence stay tracked with relative links valid in GitHub.
+Reviewed scoped documentation/images, verified local links and supplied image
+copies, and ran git diff --check. No code/dependency changes or runtime-suite
+rerun. Git fetch initially lacked sandbox write access; approved execution
+succeeded. Publication uses a documentation/evidence commit; no history rewrite.

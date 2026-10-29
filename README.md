@@ -61,8 +61,9 @@ fictional text you intend to show.
 
 Follow [browser and SQLite validation](docs/part32-validation.md). Observed
 results: [Part 3.2 verification](docs/part32-verification.md). The submission draft
-is [submissions/part3.2/report.md](submissions/part3.2/report.md); root `report.md`
-remains Part 3.1. Before uploading, supply actual live-model evidence, recording
+is [submissions/part3.2/report.md](submissions/part3.2/report.md); the historical root `report.md`
+is retained locally and ignored by Git. Its published Part 3.1 version remains
+available in earlier commits. Before uploading, supply actual live-model evidence, recording
 links and a reviewed/pushed submission commit. No live call is claimed by the
 mocked tests or rehearsal. [Typed persistence contract](backend/app/features/voice/PERSISTENCE.md).
 
@@ -166,7 +167,7 @@ Optional appearance preferences cover accent color, text size, and reduced motio
 
 | Deliverable | Location and status |
 | --- | --- |
-| Part 1 report | [report.md](report.md); tracked submission file with direct GitHub documentation/image links |
+| Part 1 report | [Historical Part 1 report](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/report.md); local root copy is untracked and ignored |
 | Low-fidelity wireframes | [Early mockup](docs/early-mockup.png), created with ChatGPT image generation; static review board |
 | Design decisions and flow | [Design notes](docs/design-notes.md); research traceability, timing budget, data proposal, model boundaries, tradeoffs, and TODOs |
 | Additional research | [Research notes](docs/research-notes.md); studies, official resources, design implications, and evidence limits |

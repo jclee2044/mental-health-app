@@ -48,3 +48,6 @@ Thumbs.db
 *.pfx
 credentials.json
 service-account*.json
+
+# Historical Part One report kept locally at the user's request
+/report.md

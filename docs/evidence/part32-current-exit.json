@@ -1,0 +1,11 @@
+{
+  "source": "Mocked localhost demo; separate submission-demo.sqlite3; latest observed early release",
+  "session": {
+    "id": "a08ec0bf-c137-453c-98b4-11b0cef2fc0e",
+    "status": "ended",
+    "active_seconds": 2.213700000047684,
+    "sequence_seconds": 5.213700000047684,
+    "pause_seconds": 0.0,
+    "instruction_seconds": 9.683600000023842
+  }
+}

@@ -1,94 +1,55 @@
-# Assignment 3 Part 2 Working Application and Safety
+# Assignment 3 Part Two — Working Application and Safety
 
-## Scope and project access
+**Repository:** [mental-health-app](https://github.com/jclee2044/mental-health-app). **Application commit:** [3177e4d](https://github.com/jclee2044/mental-health-app/commit/3177e4d7dc037a69f3eb7d1c073d466577a822b5).
 
-I focused this version on completing guided breathing through the running Vue
-interface, with FastAPI and SQLite on localhost. Emotion logging is also available,
-but breathing is the chosen skill for this submission. Home offers breathing,
-logging and chat independently; no emotion entry or conversation is required
-before starting an exercise.
+## What is implemented
 
-Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app).
+inspire is an app with an emotion log, guided breathing and a chatbot. It runs on localhost using Vue, FastAPI and SQLite. Each option is available directly from Home, so the user does not have to log an emotion before breathing or chatting. This is a coursework prototype using fictional scenarios, not therapy, diagnosis or monitoring.
 
-Submitted version: **TODO: reviewed and pushed commit URL**. This draft is not yet
-ready to upload. Replace relative evidence links with accessible repository URLs
-pinned to that commit before uploading this standalone file. Preserve the earlier
-Part 3.1 report separately.
+The emotion log lets the user place a point on a pleasantness × energy graph, choose their own color and optionally add notes. Entries are saved and can be reviewed, edited or deleted. Color means whatever the user wants it to mean; the app does not interpret it automatically. I still have more testing that I want to do for the emotion log since I am finalizing and refining how I want the user flow to be.
 
-## Working breathing experience
+Guided breathing uses a 3–2–1 countdown followed by six cycles of four seconds in and six seconds out. The user taps and holds the circle to start, and releasing early returns to Home. Sound can be muted, and reduced motion keeps text/static cues available. The application controls timing independently of requests, keeping the skill short (R1), leaving the user in control (R3/R4) and reducing effort (D2/D3).
 
-The exercise provides a 3–2–1 countdown followed by six cycles of four seconds in
-and six seconds out. Text, circle motion and optional recorded breath cues carry
-the pace. Pause, End, mute and reduced-motion alternatives preserve user control.
-The browser owns the fixed sequence; model requests and SQLite saves cannot
-change or delay a breath. This follows the assignment's R1 timing concern, R3/R4
-permission and choice, and D2/D3/D4 focus, low input burden and persistent safety.
+Chat supports typed messages, voice conversation and dictation into an editable draft. The system prompt supports emotional exploration and direct answers to practical questions. Emergency, exits and the breathing sequence remain application controls. SQLite stores conversation text and breathing sessions, with saved history available for review. Audio is not saved, and historical chats are not automatically sent back to the model. Local storage does not mean model processing is fully local.
 
-The observed October 26 browser run completed **60 seconds of breathing** with a
-**63.0-second sequence** including countdown. First instruction to final step was
-**66.6 seconds**, including about 3.6 seconds before Begin and application delays,
-with no pauses. Entry/Home navigation was outside that interval. TODO: report
-separately measured entry/setup time from my final recording. User-chosen pauses
-and accessing support are excluded; the app does not force completion or exit.
-[Timing screenshot](../../docs/evidence/part32-breathing-complete.png).
+## Verification and screenshots
 
-## Model contribution and saved records
+I tested guided breathing multiple times, including tapping and holding and then releasing early, which returns to the home page, and holding through the whole exercise, which leads to the six cycles. My completion screenshot shows **63.0 seconds for the sequence and 63.9 seconds from instruction to finish**, excluding pauses. This run is under the assignment's 90-second limit, with a prompt start and no additional user responses required. Entry/Home navigation is outside that measurement and still needs separate timing; there is no forced timeout.
 
-The typed model interface can explain the fixed breathing instructions and respond
-to the current fictional conversation. Server-owned instructions supply reviewed
-application facts, preserve refusal and prevent the model from controlling exits,
-safety access or the exercise. No RAG is connected. The useful contribution is
-optional explanation/conversation; pacing remains deterministic application code.
+![My breathing test completed all six cycles in 63.9 seconds from instruction to finish](../../docs/evidence/part32-user-breathing-complete.png)
 
-**TODO: link a short actual fictional model exchange, identify the configured
-model, and explain its observed contribution and one limit.** The current browser
-evidence uses replies explicitly labeled as mocks. These demonstrate integration,
-not generated model quality or prompt obedience. No paid calls were made for
-these checks.
+A new browser check of early release returned Home and saved an `ended` session with **2.2 seconds of breathing**, rather than claiming completion. [Matching SQLite record](../../docs/evidence/part32-current-exit.json).
 
-SQLite stores completed/ended breathing sessions with timestamps and duration
-fields in `skill_sessions`. Completed typed exchanges save separately as atomic
-user/assistant pairs in `chat_conversations` and `chat_messages`. Saved sessions
-and typed chats can be reviewed after reload/server restart. Typed chats can be
-deleted after confirmation; old chats are not automatically reused as model
-context. Voice audio/captions and failed reply requests are not persisted. Local
-SQLite storage does not establish local processing or provider retention/training
-policies. [Database evidence](../../docs/evidence/part32-database.json),
-[saved-chat view](../../docs/evidence/part32-saved-chat.png).
+![Releasing early returned Home with the session saved](../../docs/evidence/part32-current-breathing-exit.jpg)
 
-## Safety and failure behavior
+![History distinguishes the ended exercise from completed six-cycle sessions](../../docs/evidence/part32-current-ended-session.jpg)
 
-Emergency stays available during exercises, history, confirmation and failures,
-independently of model/classifier/network success. It opens separately labeled
-U.S. crisis-counseling and emergency-service resources. No call was placed in
-testing. With the backend stopped, the cached shell and Emergency still worked;
-history showed an explicit error. [Offline safety evidence](../../docs/evidence/part32-offline-emergency.png).
+I also used DB Browser for SQLite to check the database and verify that the messages were being recorded there. The screenshot shows fictional spoken-text records in `chat_voice_messages`; earlier [browser/database checks](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/part32-verification.md) separately checked typed persistence and records surviving restart.
 
-Opening Emergency during breathing paused the exercise; closing it required
-explicit Resume. Early End returned Home and saved a partial `ended` record.
-A simulated save failure displayed “hasn’t been saved” and Retry. Successful
-recovery saved the same UUID once. Typed-save failure kept the received reply
-and allowed storage-only Retry after ending chat, without repeating generation.
-A failed reply kept the draft and did not invent an assistant message.
-[Observed checks and failure evidence](../../docs/part32-verification.md).
+![DB Browser showing saved fictional conversation text in SQLite](../../docs/evidence/part32-user-sqlite.png)
 
-## Verification and unfinished work
+A mocked request failure kept the draft and showed an error. End chat remained available, and Emergency opened independently (R2/D4); no call links were selected. Earlier [save-failure evidence](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/evidence/part32-breathing-save-failure.png) shows the unsaved notice and Retry; it uses the previous visual design. Storage-only Retry does not repeat a model call; pending saves can be lost on reload/close.
 
-The full mocked checks passed 157 backend and 66 frontend tests, non-mutating
-linters, the production build and all three isolated original checkpoint builds.
-Real browser checks covered completion/timing, early exit, Emergency, save/reply
-failures, recovery and SQLite persistence after server restart. Browser/SQL steps
-are reproducible in the [validation guide](../../docs/part32-validation.md).
+![A deliberately mocked reply failure retains the draft and End chat](../../docs/evidence/part32-current-request-failure.jpg)
 
-TODO: add an accessible recording link showing the running app, matching browser
-requests and SQLite rows; replace the submitted-version and live-model TODOs.
-Failed-save queues remain memory-only and can be lost on reload/close. Voice
-caption persistence, historical personalization, RAG, session deletion controls,
-clean installation on another machine and comprehensive accessibility checks
-remain unfinished. These are software checks with fictional scenarios, not
-clinical evaluation. The prototype is not therapy, diagnosis, monitoring or a
-support service. The broader fifteen-scenario/live-variation evaluation belongs
-to Part 3.3.
+![Emergency opens independently after the failed request](../../docs/evidence/part32-current-failure-emergency.jpg)
 
-AI assistance, commands, revisions and evidence limits are disclosed in
-[AI-USE.md](../../AI-USE.md) and [the evidence log](../../docs/evidence-log.md).
+The latest recorded automated checks passed **188 backend tests, 101 frontend tests, lint, the production build and all three original cumulative checkpoints**. New browser checks used a mocked demo and separate database, with no paid calls or microphone access. Mocks do not establish generated behavior or clinical effectiveness.
+
+## Revisions and AI use
+
+For voice mode, I found that it was sometimes adding a space to the beginning of messages as they were transcribed and appeared. I fixed that and found it much easier to read and a lot cleaner.
+
+In another iteration, the echo technique was being overutilized: the chatbot was simply relaying what the user said without further probing or moving the conversation along. I revised the system prompt to always ask a relevant question after echoing or repeating words back so the user is encouraged to think more deeply. I found this flow more natural and easier to maintain. Requests to stop or have no questions take priority. These are my observations; the mocked tests do not establish how consistently the revised prompt behaves.
+
+I explained roughly what design style I wanted and had ChatGPT ask clarifying questions and create multiple reference UIs. I gave feedback until I was satisfied, then gave that to Codex to redesign the app because the earlier design felt generic. One failed approach was describing the icon I wanted: it came out differently than expected, so I used Codex's sketch functionality to draw what I envisioned, which produced a much closer result.
+
+I used **Codex with GPT-6.1 Sol**, along with ChatGPT for research, design references and writing support. Image-generation model/version details were not recorded. [AI-USE.md](../../AI-USE.md) identifies tools, roles and available model identifiers; the [curated prompt and evidence log](../../docs/part32-evidence.md) connects selected prompts, revisions, observations and decisions. The app's model configuration is disclosed separately from the coding model.
+
+## What I still want to add
+
+I still want to implement cognitive reframing using NLP reframe patterns, including the fourteen patterns discussed in Robert Dilts's *Sleight of Mouth* and Doug O'Brien's *The User's Guide to Sleight of Mouth*. These remain proposed influences requiring review, not established CBT evidence or clinically validated techniques. A guided reframe still needs the assignment's fixed steps, exits and timing checks.
+
+I also want to finish the dynamic UI. After the redesign it currently uses a fixed style and color palette, which I want to change for the final version. Eye tracking is another feature I wanted to try; it is not implemented. Saved-history personalization, retrieval, broader accessibility checks and the Part 3.3 evaluation remain unfinished.
+
+The [design notes](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/design-notes.md), [original wireframes](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/early-mockup.png), [redesign evidence](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/inspire-theme.md), [research notes](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/research-notes.md) and [system-prompt policy](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/chat-system-prompt.md) keep the reasoning and earlier designs available for comparison.

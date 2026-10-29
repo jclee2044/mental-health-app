@@ -1,5 +1,13 @@
 # Part 3.2 observed verification
 
+> **October 28 update:** this page preserves the original October 26 checks and
+> earlier interface. The current report, user-supplied 63.9s hold-completion
+> screenshot, saved spoken text and new hold-release/failure screenshots are in
+> [Part Two curated evidence](part32-evidence.md). Later implementation saves
+> accepted spoken text, while audio remains unsaved; the caption-only limits
+> below describe the earlier version. Current generated-model demonstration,
+> recording and submission-link TODOs remain explicit in the report.
+
 October 26, 2026, Eastern. Guided breathing and typed conversation persistence.
 Browser checks used the production build, the local mocked rehearsal server on
 port 8001, and **separate** `backend/data/submission-demo.sqlite3`. No paid model,
