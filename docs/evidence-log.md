@@ -1369,3 +1369,28 @@ Reviewed scoped documentation/images, verified local links and supplied image
 copies, and ran git diff --check. No code/dependency changes or runtime-suite
 rerun. Git fetch initially lacked sandbox write access; approved execution
 succeeded. Publication uses a documentation/evidence commit; no history rewrite.
+
+### October 28, 2026 — current implementation README
+
+At the user's request, replaced the overlapping historical README updates with
+one current implementation/run/configuration/storage/verification guide.
+Checked feature registration, FastAPI composition, preferences, hold controls,
+Live/Responses settings/prompts, dictation/persistence contracts, Vite/PWA code,
+manifest scripts and database inspector. Documented graph-first logging, current
+hold/exit behavior, shared typed/voice history, OpenAI dictation, local-only mute,
+stop/no-question prompt rules and unresolved provider/device limits. Clarified
+that the read-only inspector currently omits spoken-text rows, and that Part Two
+does not explicitly require a recording. Original scaffold observations moved
+to docs/setup-history.md with historical status and corrected relative link;
+application code, dependencies and checkpoint scopes are unchanged.
+
+Tools/commands: cat/rg/sed source inspection, git status/diff, project Python
+Markdown/path and shell-syntax checks, backend/.venv/bin/python -m uvicorn --help,
+backend/.venv/bin/python -m pip check (no broken requirements), node --version
+(v26.6.0), npm --version (11.18.0), git diff --check. Pip emitted a cache-permission
+warning and disabled its cache; no installation was attempted. Available-model
+identifiers were read from source, never credentials or the private .env. Codex
+(GPT-6.1 Sol, as identified by the user) authored the README revision/archive.
+No subagents, external research, live calls, microphone, browser tests or full
+runtime suites were used for this documentation-only update. Earlier 188 backend /
+101 frontend and checkpoint passes remain explicitly attributed to prior checks.
