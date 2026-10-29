@@ -1,6 +1,6 @@
 # Assignment 3 Part Two — Working Application and Safety
 
-**Repository:** [mental-health-app](https://github.com/jclee2044/mental-health-app). **Application commit:** [3177e4d](https://github.com/jclee2044/mental-health-app/commit/3177e4d7dc037a69f3eb7d1c073d466577a822b5).
+**Repository:** [mental-health-app](https://github.com/jclee2044/mental-health-app). **Application commit:** [9023240](https://github.com/jclee2044/mental-health-app/commit/9023240a458a25d18cded44ba4023bc3bffdd2b9).
 
 ## What is implemented
 
@@ -24,11 +24,11 @@ A new browser check of early release returned Home and saved an `ended` session 
 
 ![History distinguishes the ended exercise from completed six-cycle sessions](../../docs/evidence/part32-current-ended-session.jpg)
 
-I also used DB Browser for SQLite to check the database and verify that the messages were being recorded there. The screenshot shows fictional spoken-text records in `chat_voice_messages`; earlier [browser/database checks](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/part32-verification.md) separately checked typed persistence and records surviving restart.
+I also used DB Browser for SQLite to check the database and verify that the messages were being recorded there. The screenshot shows fictional spoken-text records in `chat_voice_messages`; earlier [browser/database checks](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/part32-verification.md) separately checked typed persistence and records surviving restart.
 
 ![DB Browser showing saved fictional conversation text in SQLite](../../docs/evidence/part32-user-sqlite.png)
 
-A mocked request failure kept the draft and showed an error. End chat remained available, and Emergency opened independently (R2/D4); no call links were selected. Earlier [save-failure evidence](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/evidence/part32-breathing-save-failure.png) shows the unsaved notice and Retry; it uses the previous visual design. Storage-only Retry does not repeat a model call; pending saves can be lost on reload/close.
+A mocked request failure kept the draft and showed an error. End chat remained available, and Emergency opened independently (R2/D4); no call links were selected. Earlier [save-failure evidence](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/evidence/part32-breathing-save-failure.png) shows the unsaved notice and Retry; it uses the previous visual design. Storage-only Retry does not repeat a model call; pending saves can be lost on reload/close.
 
 ![A deliberately mocked reply failure retains the draft and End chat](../../docs/evidence/part32-current-request-failure.jpg)
 
@@ -52,4 +52,4 @@ I still want to implement cognitive reframing using NLP reframe patterns, includ
 
 I also want to finish the dynamic UI. After the redesign it currently uses a fixed style and color palette, which I want to change for the final version. Eye tracking is another feature I wanted to try; it is not implemented. Saved-history personalization, retrieval, broader accessibility checks and the Part 3.3 evaluation remain unfinished.
 
-The [design notes](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/design-notes.md), [original wireframes](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/early-mockup.png), [redesign evidence](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/inspire-theme.md), [research notes](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/research-notes.md) and [system-prompt policy](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/docs/chat-system-prompt.md) keep the reasoning and earlier designs available for comparison.
+The [design notes](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/design-notes.md), [original wireframes](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/early-mockup.png), [redesign evidence](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/inspire-theme.md), [research notes](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/research-notes.md) and [system-prompt policy](https://github.com/jclee2044/mental-health-app/blob/9023240a458a25d18cded44ba4023bc3bffdd2b9/docs/chat-system-prompt.md) keep the reasoning and earlier designs available for comparison.

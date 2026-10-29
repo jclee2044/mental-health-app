@@ -1394,3 +1394,11 @@ identifiers were read from source, never credentials or the private .env. Codex
 No subagents, external research, live calls, microphone, browser tests or full
 runtime suites were used for this documentation-only update. Earlier 188 backend /
 101 frontend and checkpoint passes remain explicitly attributed to prior checks.
+
+### October 28, 2026 — report version reference
+
+User requested commit/push and matching report version. Confirmed README commit
+`9023240` was already on origin/main, then updated the Part Two report
+commit and pinned existing document links to that snapshot. Verified Git object
+targets and whitespace; no code changes or runtime tests. The follow-up commit
+saves the reference; the report does not attempt to contain its own commit hash.
