@@ -76,8 +76,8 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
     <footer class="site-footer">
       <span class="footer-wordmark">Make room for a moment.</span>
       <nav aria-label="Secondary navigation">
-        <span ref="soundSlot" class="sound-control-slot"><SoundToggle v-if="!sheet" /></span>
         <button @click="openSheet('appearance')"><AppIcon name="sliders" /> Appearance</button>
+        <span ref="soundSlot" class="sound-control-slot"><SoundToggle v-if="!sheet" /></span>
       </nav>
     </footer>
     <ModalSheet v-if="sheet" :title="sheet === 'emergency' ? 'Emergency & crisis support' : 'Make it yours'" :emergency="sheet === 'emergency'" @close="sheet = null" @emergency="openEmergency">

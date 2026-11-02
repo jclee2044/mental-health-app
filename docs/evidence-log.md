@@ -1766,3 +1766,17 @@ stage_checkpoint.py interface/emotion/breathing --stage, reviewed cached diffs,
 scoped git add and git commit, git diff --check and final status/log. Initial
 sandbox index-lock failure was resolved with approved Git write escalation.
 No dependencies, provider calls or microphone. Runtime listening limits remain.
+
+
+### November 2, 2026 — footer order and tighter spacing
+
+User requested Appearance before Sound on/off and less space between them.
+Changed App.vue order and styles.css to a 16px navigation gap and 84px sound
+slot (was 100px). No sound behavior changed. Production build, targeted
+non-mutating ESLint for App.vue and git diff --check passed. Browser DOM/readout
+confirmed Appearance then Sound on, with a 16px gap; screenshot:
+docs/evidence/footer-appearance-sound-compact.png. Commands: npm --prefix frontend
+run build; from frontend, npm exec --offline -- eslint src/App.vue --no-cache;
+git diff --check. Existing bundle-size warning remains. Tests/checkpoints were
+not rerun for this presentation-only change. No dependencies, live calls,
+microphone use, staging or commits.
