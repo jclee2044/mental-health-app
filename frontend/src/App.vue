@@ -1,5 +1,6 @@
 <script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, provide, ref, watch } from 'vue'
+import SoundToggle from './components/SoundToggle.vue'
 import AppIcon from './components/AppIcon.vue'
 import ModalSheet from './components/ModalSheet.vue'
 import BrandWordmark from './components/BrandWordmark.vue'
@@ -16,8 +17,11 @@ const readRoute = () => routes.includes(location.hash.slice(1)) ? location.hash.
 const screen = ref(readRoute())
 const splash = ref(!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches)
 const sheet = ref(null)
+const soundSlot = ref(null)
+const soundPosition = ref({})
 const main = ref(null)
 const preferences = usePreferences()
+provide('appSoundEnabled', preferences.soundEnabled)
 const features = useFeatures({ navigate: go, interrupted: () => Boolean(sheet.value), reducedMotion: () => preferences.reducedMotion.value })
 const activeFeature = computed(() => features.find(feature => feature.routes[screen.value]))
 const title = computed(() => ({ home: 'Home', emotion: 'Emotion log', history: 'Past logs', breathing: 'Guided breathing', sessions: 'Past breathing sessions', chat: 'Support chat', conversations: 'Saved chats' })[screen.value])
@@ -28,7 +32,12 @@ function go(destination) {
   location.hash = destination
 }
 function routeChanged() { screen.value = readRoute(); features.forEach(feature => feature.onNavigate?.(screen.value)) }
-function openEmergency() { sheet.value = 'emergency' }
+function positionSoundControl() {
+  const rect = soundSlot.value?.getBoundingClientRect()
+  if (rect) soundPosition.value = { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` }
+}
+function openSheet(name) { positionSoundControl(); sheet.value = name }
+function openEmergency() { openSheet('emergency') }
 function focusMain() {
   main.value?.focus({ preventScroll: true })
   window.scrollTo(0, 0)
@@ -37,9 +46,10 @@ watch(screen, async () => { await nextTick(); focusMain() })
 onMounted(() => {
   registerPwa(() => {})
   window.addEventListener('hashchange', routeChanged)
+  window.addEventListener('resize', positionSoundControl)
   splashTimer = setTimeout(() => { splash.value = false }, 900)
 })
-onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashchange', routeChanged) })
+onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashchange', routeChanged); window.removeEventListener('resize', positionSoundControl) })
 </script>
 
 <template>
@@ -64,12 +74,14 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
       </template>
     </main>
     <footer class="site-footer">
-      <p class="prototype-note">Localhost coursework prototype. No therapy, diagnosis, crisis response or monitoring.</p>
+      <span class="footer-wordmark">Make room for a moment.</span>
       <nav aria-label="Secondary navigation">
-        <button @click="sheet = 'appearance'"><AppIcon name="sliders" /> Appearance</button>
+        <span ref="soundSlot" class="sound-control-slot"><SoundToggle v-if="!sheet" /></span>
+        <button @click="openSheet('appearance')"><AppIcon name="sliders" /> Appearance</button>
       </nav>
     </footer>
     <ModalSheet v-if="sheet" :title="sheet === 'emergency' ? 'Emergency & crisis support' : 'Make it yours'" :emergency="sheet === 'emergency'" @close="sheet = null" @emergency="openEmergency">
+      <template #persistent-controls><SoundToggle class="dialog-sound-control" :style="soundPosition" /></template>
       <template v-if="sheet === 'emergency'">
         <p>United States resources. These services are separate from inspire.</p>
         <a class="resource-card" href="tel:988"><span class="resource-number">988</span><span><strong>Crisis counseling</strong><span>Suicide & Crisis Lifeline</span></span><AppIcon name="arrow-up-right" /></a>

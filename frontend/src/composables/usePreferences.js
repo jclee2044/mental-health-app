@@ -27,8 +27,9 @@ export function usePreferences() {
   const themeColor = computed(() => accents.find(color => color.value === accent.value)?.surface || accents[0].surface)
   const largeText = ref(saved.largeText === true)
   const reducedMotion = ref(saved.reducedMotion ?? matchMedia('(prefers-reduced-motion: reduce)').matches)
-  watch([accent, largeText, reducedMotion], () => {
-    try { localStorage.setItem('still.preferences', JSON.stringify({ accent: accent.value, largeText: largeText.value, reducedMotion: reducedMotion.value })) } catch { /* Storage is optional for appearance. */ }
+  const soundEnabled = ref(saved.soundEnabled !== false)
+  watch([accent, largeText, reducedMotion, soundEnabled], () => {
+    try { localStorage.setItem('still.preferences', JSON.stringify({ accent: accent.value, largeText: largeText.value, reducedMotion: reducedMotion.value, soundEnabled: soundEnabled.value })) } catch { /* Storage is optional for appearance. */ }
   })
-  return { accent, themeColor, largeText, reducedMotion, accents }
+  return { soundEnabled, accent, themeColor, largeText, reducedMotion, accents }
 }
