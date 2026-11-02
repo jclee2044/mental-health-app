@@ -1,0 +1,86 @@
+[
+  {
+    "file": "01-warm-keys.wav",
+    "title": "Warm keys",
+    "duration_seconds": 4.2,
+    "notes": [
+      "G3",
+      "C4",
+      "D4",
+      "G4"
+    ],
+    "roll_spacing_seconds": 0.13,
+    "peak_dbfs": -10.46,
+    "checks": "duration <= 5s; PCM readback; no clipping; silent endpoints/tail"
+  },
+  {
+    "file": "02-soft-harp.wav",
+    "title": "Soft harp",
+    "duration_seconds": 4.0,
+    "notes": [
+      "G3",
+      "C4",
+      "D4",
+      "G4"
+    ],
+    "roll_spacing_seconds": 0.11,
+    "peak_dbfs": -10.46,
+    "checks": "duration <= 5s; PCM readback; no clipping; silent endpoints/tail"
+  },
+  {
+    "file": "03-rounded-bell.wav",
+    "title": "Rounded bell",
+    "duration_seconds": 4.4,
+    "notes": [
+      "G3",
+      "C4",
+      "D4",
+      "G4"
+    ],
+    "roll_spacing_seconds": 0.14,
+    "peak_dbfs": -10.46,
+    "checks": "duration <= 5s; PCM readback; no clipping; silent endpoints/tail"
+  },
+  {
+    "file": "04-mellow-marimba.wav",
+    "title": "Mellow marimba",
+    "duration_seconds": 3.6,
+    "notes": [
+      "G3",
+      "C4",
+      "D4",
+      "G4"
+    ],
+    "roll_spacing_seconds": 0.12,
+    "peak_dbfs": -10.46,
+    "checks": "duration <= 5s; PCM readback; no clipping; silent endpoints/tail"
+  },
+  {
+    "file": "05-airy-pad.wav",
+    "title": "Airy pad",
+    "duration_seconds": 4.8,
+    "notes": [
+      "G3",
+      "C4",
+      "D4",
+      "G4"
+    ],
+    "roll_spacing_seconds": 0.18,
+    "peak_dbfs": -10.46,
+    "checks": "duration <= 5s; PCM readback; no clipping; silent endpoints/tail"
+  },
+  {
+    "file": "06-mellow-marimba-octave-up.wav",
+    "title": "Mellow marimba \u2014 octave up",
+    "duration_seconds": 3.6,
+    "notes": [
+      "G4",
+      "C5",
+      "D5",
+      "G5"
+    ],
+    "roll_spacing_seconds": 0.12,
+    "peak_dbfs": -10.46,
+    "checks": "duration <= 5s; PCM readback; no clipping; silent endpoints/tail"
+  }
+]

@@ -16,7 +16,7 @@ Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app).
 | --- | --- |
 | Interface | Responsive cream/lavender design, skippable introduction, independent Home choices, activity-specific history shortcuts and persistent Emergency access. Appearance offers eight distinct soft theme colors that tint the app, larger text and reduced motion; it does not dynamically infer distress or adapt the layout. |
 | Emotion log | Required personal color appears before explicit pleasantness × energy placement by tap/drag, with keyboard and slider alternatives; optional color meaning and notes. One-page Save, calendar/history, edit and delete. New entries have no feeling category; legacy labels are preserved. Color meaning belongs to the user. |
-| Guided breathing | Hold the circle through a 3–2–1 countdown and six four-second inhale/six-second exhale cycles. Release early to end and return Home; release after completion keeps the result. Mouse/touch/pen and held Space/Enter are supported in code. Pause/Resume while holding, End, mute, reduced-motion cues, bundled human breath audio, retryable saving and separate session history are included. |
+| Guided breathing | Hold the circle through a 3–2–1 countdown and six four-second inhale/six-second exhale cycles. Release early to show a gentle ending message and Return home button; release after completion keeps the result. Mouse/touch/pen and held Space/Enter are supported in code. Pause/Resume while holding, End, mute, reduced-motion cues, bundled human breath audio, retryable saving and separate session history are included. |
 | Typed chat | Model replies using bounded current-chat context, editable drafts retained after failure, End chat, automatic transcript scrolling and leading-space cleanup. Completed exchanges save separately from generation. |
 | Voice conversation | Explicit Voice mode selection, WebRTC speech/captions, seven visible lifecycle states, local Mute/Unmute, End, playback recovery and cancellation/cleanup. Switching to text stops voice; explicitly restarting voice carries recent visible context. |
 | Dictation | Separate microphone captures up to 30 seconds for OpenAI transcription into the editable draft. Finish/cancel controls, size bounds and typing fallback; no automatic Send or restart. |
@@ -170,7 +170,7 @@ deletion and automatic retention/expiry remain unfinished. Deletion makes no
 promise about backups or provider records. No authentication or per-user isolation
 is provided.
 
-Appearance preferences alone use browser local storage (`still.preferences`,
+Appearance and app-sound preferences use browser local storage (`still.preferences`,
 retained across the rebrand). Personal API responses are not cached by the PWA.
 Only the built shell is cached. Offline chat,
 transcription and history are not provided. Native phone installation and
@@ -230,6 +230,34 @@ The documented JSON contracts include request/response/error shapes:
 [conversation persistence](backend/app/features/voice/PERSISTENCE.md).
 
 ## Verification
+
+The approved softened harp plays after a successful emotion save (including an
+edit). The original 4.2s warm keys audition plays once when all six breathing
+cycles finish. One volume control with an icon and Sound on/off text sits beside Appearance
+in the bottom menu across the app and
+overlays. It mutes breathing cues, completion/ending sounds and assistant voice
+playback. The preference survives navigation and reloads when browser storage is
+available; it defaults to on. Microphone mute remains separate; speaker mute
+does not end capture, the voice session or billing. Failed saves, early exits and cancelled
+actions do not play the harp. Breathing early release/End instead plays the
+approved 4.4s descending open tones once, with an ending message and Return home
+button. Mute, Emergency/overlays, hidden pages, window blur and navigation cancel
+this cue; saving remains independent. Emergency/other overlays, hidden pages, mute and
+navigation cancel pending/active completion audio. Audio failure does not block
+the visible confirmation or exercise. Both completion cues are bundled for offline
+playback; see [source, license and modifications](frontend/src/components/completion-sound/CREDITS.md).
+
+November 2 completion-sound checks: 110 frontend tests, production build,
+non-mutating lint and all three original cumulative checkpoints passed. These
+include mocked SFC trigger and audio lifecycle checks, not speaker/browser
+listening. Vite reports a large bundled-JS warning; the approved WAV is inlined
+for offline use. No new dependency was added.
+
+November 2 global-sound update: **113 frontend tests**, production build,
+targeted non-mutating ESLint and all three cumulative checkpoints passed. Browser
+checks confirmed persisted mute, assistant playback mute, the same icon position
+in Emergency/Appearance and the retained early-end screen. No live microphone or
+provider check was performed; see [evidence log](docs/evidence-log.md).
 
 Run the existing project checks:
 

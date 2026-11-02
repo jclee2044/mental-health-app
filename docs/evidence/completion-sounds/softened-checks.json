@@ -1,0 +1,12 @@
+{
+  "file": "07-orange-harp-softened.wav",
+  "seconds": 4.101224489795919,
+  "channels": 2,
+  "sample_rate": 44100,
+  "gain_db": -5,
+  "lowpass_hz": 3200,
+  "fade_in_seconds": 0.025,
+  "fade_out_seconds": 1.2,
+  "peak_dbfs": -5.263591779427928,
+  "checks": "PCM readback; unchanged frame count; <=5s; no clipping; zero endpoints"
+}

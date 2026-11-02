@@ -1,0 +1,10 @@
+{
+  "file": "11-pluck-and-open-tones.wav",
+  "sources": [
+    "08-descending-soft-pluck.wav",
+    "10-descending-open-tones.wav"
+  ],
+  "blend": "simultaneous equal gains",
+  "duration_seconds": 4.4,
+  "checks": "PCM readback; 4.4s; no clipping; silent endpoints/tail"
+}

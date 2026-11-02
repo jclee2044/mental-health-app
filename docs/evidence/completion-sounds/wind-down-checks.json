@@ -1,0 +1,42 @@
+[
+  {
+    "file": "08-descending-soft-pluck.wav",
+    "notes": [
+      "G4",
+      "D4",
+      "C4",
+      "G3"
+    ],
+    "note_count": 4,
+    "spacing_seconds": 0.28,
+    "duration_seconds": 4.0,
+    "peak_dbfs": -14.89,
+    "checks": "PCM readback; duration; no clipping; silent endpoints and last 20ms"
+  },
+  {
+    "file": "09-descending-warm-keys.wav",
+    "notes": [
+      "E4",
+      "C4",
+      "A3"
+    ],
+    "note_count": 3,
+    "spacing_seconds": 0.38,
+    "duration_seconds": 4.2,
+    "peak_dbfs": -14.89,
+    "checks": "PCM readback; duration; no clipping; silent endpoints and last 20ms"
+  },
+  {
+    "file": "10-descending-open-tones.wav",
+    "notes": [
+      "D4",
+      "A3",
+      "D3"
+    ],
+    "note_count": 3,
+    "spacing_seconds": 0.44,
+    "duration_seconds": 4.4,
+    "peak_dbfs": -14.89,
+    "checks": "PCM readback; duration; no clipping; silent endpoints and last 20ms"
+  }
+]

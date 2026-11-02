@@ -1414,6 +1414,22 @@ remain; git diff --check passed. Repository permissions and the submission
 platform's Markdown/image rendering were not independently verified. No code,
 dependencies, live calls, microphone or runtime-suite changes.
 
+### November 2, 2026 — completion sound audition
+
+User requested five short happy completion sounds, preferably a rolled G C D G
+with sustain/fade and a five-second maximum. Codex (model identifier not exposed
+in this session) searched stock sound listings, then authored five original
+standard-library additive-synthesis WAV sketches to match the pitches exactly;
+these are synthetic timbre approximations, not sourced instrument recordings.
+Artifacts, source links, reproducible render.py and numeric checks are under
+docs/evidence/completion-sounds/. No application wiring or sound selection is
+claimed. Ran cat/rg and git status for project/context inspection, the project
+Python render command and git diff --check. WAV readback verified 3.6–4.8s,
+16-bit mono 44.1kHz, no clipping and silent endpoints/tail. No subjective audio,
+real-device playback, app suite, paid API, microphone or dependency checks were
+performed. Existing application changes remain outside this audition task.
+
+
 ### November 2, 2026 — appearance, emotion order and saved-chat titles
 
 User requested accent colors across the app, more choices, removal of About and
@@ -1459,6 +1475,17 @@ full palette contrast audit. Title errors retain saved chats and expose a
 separate manual retry. Missing titles are generated when History opens, not
 by storage saves/retries. SQLite titles persist and existing messages survive.
 
+### November 2, 2026 — marimba octave-up audition
+
+User requested the marimba audition up one octave. Codex added an optional
+transpose argument to docs/evidence/completion-sounds/render.py and rendered
+06-mellow-marimba-octave-up.wav (G4 C5 D5 G5, 3.6s), retaining the original
+envelope, roll, harmonics, echo and peak target. Updated preview README/checks.
+Commands: cat renderer; project Python renderer; project Python documentation
+append; git diff --check. Numeric duration, PCM, clipping and silent-tail checks
+passed. No subjective listening, app tests, app integration or dependencies.
+
+
 Visual evidence: [Forest appearance](evidence/appearance-forest-2026-11-02.png)
 and [mocked title layout](evidence/chat-titles-mocked-2026-11-02.png).
 The repeated demo titles are intentionally fixed mock output, not evidence of
@@ -1490,6 +1517,20 @@ preference was Amber. No paid requests or chat history were opened. No backend
 changes/tests were needed. Full palette accessibility and physical-device use
 remain unverified. Historical Part 3.1 report/checkpoint scopes are unchanged.
 
+### November 2, 2026 — softer stock harp preview
+
+User selected the original Orange Free Sounds harp and requested a softer edit.
+Codex downloaded Alexander's CC BY-NC 4.0 MP3, decoded with macOS afconvert,
+and authored stdlib soften_harp.py: -5dB gain, 3.2kHz low-pass, 25ms fade-in,
+1.2s fade-out, unchanged pitch/speed/duration. Added source/working WAV/edited
+07-orange-harp-softened.wav and numeric checks under completion-sounds, with
+attribution/license and commands in its README. curl and afconvert initially
+failed under sandbox; approved escalations succeeded. Python checks confirmed
+4.1012s, unchanged frames, no clipping, zero endpoints; git diff --check passed.
+No subjective listening claim, app integration, runtime suite, dependencies,
+paid calls or microphone. Source: https://orangefreesounds.com/harp-notification-sound/.
+
+
 ### November 2, 2026 — eight distinct theme colors
 
 User requested exactly eight colors with broader rainbow representation and fewer
@@ -1506,3 +1547,222 @@ Observed: 104 frontend tests and production build passed; git diff --check passe
 Browser confirmed exactly eight Theme color choices and preserved the user's
 Light brown selection. Left Appearance open on the current build. Evidence:
 [eight theme choices](evidence/eight-theme-colors-2026-11-02.png).
+
+### November 2, 2026 — completion harp integration
+
+User selected the softened original harp for successful emotion logs and full
+breathing completion. Codex added shared completion-sound player/composable,
+approved WAV and CC BY-NC attribution under frontend/src/components; emotion
+owns its save/edit-success trigger and local mute, breathing owns its six-cycle
+completion trigger using its existing mute. Independent cancellation invalidates
+late decode/save results and stops sound on mute/overlays/hidden/unmount. Audio
+never delays SQLite, visible success or breathing timing; failed saves and early
+release stay silent. No dependencies/API/backend/checkpoint-manifest changes,
+staging or commits. The source WAV matches the user-approved preview byte for
+byte. Updated root and feature READMEs, audition provenance and these logs.
+
+Commands/checks: cat/rg/git status/diff inspection; copied approved WAV; npm
+--prefix frontend test (110 passed); npm --prefix frontend run build; npm exec
+--offline -- oxlint . and eslint . --no-cache from frontend (passed); project
+Python scripts/verify_checkpoints.py (interface/emotion/breathing passed,
+including 8/10 cumulative backend tests); project Python asset hash/docs check;
+git diff --check. New real-SFC handler mocks check emotion validation, request
+failure/retry and one full breathing completion versus early release; shared
+player mocks check one-shot playback, cancellation/mute, hidden/closed and
+unavailable audio. Evidence: .checkpoints/20261102-151834-773411/results.json.
+Vite large-chunk warning reflects bundled offline audio; existing Starlette/httpx
+warning remains. No browser speaker listening, real-device audio or full backend
+suite rerun. No microphone or paid calls. Nominal 63s sequence plus 4.1012s cue
+tail is 67.1012s excluding entry/reading/pauses/delays; this is calculation, not
+new observed exercise timing. Runtime audio failure leaves visual success usable.
+
+
+### November 2, 2026 — restore footer wording
+
+User's browser comment requested the previous footer text. Codex restored
+“Make room for a moment.” in App.vue and removed unused prototype-note CSS.
+This supersedes the prior decision to put the coursework description in the
+footer. No other navigation or role wording changed. Commands: rg, git status,
+npm --prefix frontend run build, git diff --check. No dependencies, paid calls,
+microphone or commit.
+
+
+### November 2, 2026 — sparse descending sound auditions
+
+User rejected the linked glissandos and requested fewer descending notes with a
+winding-down character. Codex searched stock sources and authored three original
+stdlib additive-synthesis previews (three/four notes, 4.0–4.4s), renderer and
+numeric checks under docs/evidence/completion-sounds. These are synthetic sketches,
+not sampled instruments or generated-provider audio. Command:
+`backend/.venv/bin/python docs/evidence/completion-sounds/render_wind_down.py`.
+PCM readback, durations, no sample clipping and silent endpoints/tails passed.
+User audition/selection remains pending; no listening/device verification or app
+integration. No dependencies, paid calls, microphone use or app test runs.
+
+
+### November 2, 2026 — combined descending audition
+
+User requested combining the first and third sparse previews. Codex added
+`11-pluck-and-open-tones.wav`, layering soft pluck and open tones simultaneously
+at equal gains, with original timing/pitches and a shared −14.89 dBFS peak target.
+Reproduction: `backend/.venv/bin/python docs/evidence/completion-sounds/blend_wind_down.py`.
+Added the stdlib renderer and blend-checks.json alongside the preview. PCM
+readback verified 4.4s, no clipping and silent endpoints/tail. Subjective audition
+is pending. No app integration, dependencies, provider calls or app test runs.
+
+
+### November 2, 2026 — breathing early-end screen and open tones
+
+User selected audition 10 (descending open tones) for early termination.
+Release/End now stops the clock and breath audio, records once through the
+existing retryable save path, and stays on “Breathing exercise ended.” with
+“It’s okay to stop whenever you need. Take things at your own pace.” and a
+Return home button. Emergency remains in the shell. No completion penalty,
+required response or forced navigation. The exact 4.4s original synthesized
+audition is bundled under breathing/assets/open-tones.wav; the existing harp
+remains exclusive to completed six-cycle breathing and successful emotion saves.
+The shared optional cue loader accepts a feature-owned bundled asset. Mute,
+interruptions/hidden state, window blur and unmount invalidate pending sound;
+turning sound back on at the ending screen does not replay it. Sequence timing
+and API/storage contracts are unchanged.
+
+Observed: 110 frontend tests passed, including real-SFC mocked early ending,
+no Home navigation, duplicate protection, full completion and paused focus loss.
+Existing shared-player tests cover mute/interruption/decode failures. Production
+build, targeted non-mutating ESLint and all three cumulative checkpoint builds/
+tests passed. Vite large-bundle and existing Starlette/httpx warnings remain.
+Commands: npm --prefix frontend test; npm --prefix frontend run build; from
+frontend, npm exec --offline -- eslint src/features/breathing/BreathingView.vue
+src/features/breathing/tests/completion.test.js
+src/components/completion-sound/useCompletionSound.js --no-cache;
+backend/.venv/bin/python scripts/verify_checkpoints.py; git diff --check.
+
+Local mock demo started via scripts/serve_submission_demo.py --port 8014
+(after sandbox socket denial, approved escalation succeeded). CUA keyboard
+press/release verified the ended message, Return home, Emergency, saved-session
+notice and actual Home navigation. Screenshot: docs/evidence/breathing-ended-open-tones.png.
+No provider/microphone/call actions. Speaker quality, physical touch-device
+behavior and screen-reader announcement remain unverified. No dependencies,
+staging or commits. Codex authored the code/copy and used existing Vue/Node/
+Python/CUA tools; exact served coding-model identifier is unavailable.
+
+Command note: one lint invocation from the repository root failed with npm
+ENOTCACHED (wrong working directory); rerunning from frontend used the existing
+local ESLint and passed. No install or dependency change was performed.
+
+### November 2, 2026 — saved-entry text navigation
+
+User requested replacing the history-only icon on emotion save confirmation
+with clickable “Return home” and “View history” on separate lines. Updated
+EmotionView.vue and feature styles.css with vertically stacked text buttons
+using existing home/history navigation. Other history shortcuts remain unchanged.
+Commands: project Python targeted edit, npm --prefix frontend run build (passed,
+existing large-chunk warning), git diff --check. CUA reloaded the existing app
+and saved one clearly labeled fictional UI-check log; confirmation visibly shows
+both buttons and Emergency. Screenshot: docs/evidence/emotion-saved-links-2026-11-02.png.
+No new tests/dependencies, full-suite rerun, staging or commit. No subjective
+speaker check, paid API or microphone. Fictional test log remains in local history.
+
+
+### November 2, 2026 — persistent global output-sound control
+
+User approved keeping the early-end screen and descending open tones, and
+requested replacing per-screen sound buttons with one icon in the bottom menu.
+App now provides one reactive appSoundEnabled preference, stored alongside
+appearance in still.preferences (defaults on; memory-only fallback). Shared
+SoundToggle renders waves when on and an X when off, with accessible labels,
+pressed state and a 44px target, without visible text. The footer stays at the
+viewport bottom on long screens. Native dialogs render the same control in the
+same fixed viewport position so it remains clickable in their top layer.
+
+Breathing/emotion consume the shared preference; local sound buttons are gone.
+Mute stops breath audio and invalidates queued/active completion and ending cues.
+Unmute can resume current breathing-phase audio, without replaying past cues.
+Chat binds and synchronously applies the same preference to assistant playback,
+including newly mounted audio elements. Microphone mute, dictation, session
+closure and billing are independent; global output mute does not change them.
+No backend/API/dependency changes. Approved ending sound/screen remain unchanged.
+
+Observed checks: 113 frontend tests passed, including storage/reload/failure
+fallback, shared-control remounts, breathing mute, assistant output replacement/
+mute without mic/session calls, and muted SSR output. Production build and
+targeted non-mutating ESLint passed. All three cumulative checkpoints passed
+(the final rerun includes the updated mocks); checkpoint manifest unchanged.
+Existing Vite bundle-size and Starlette/httpx deprecation warnings remain.
+An initial test run caught an inject import accidentally placed in dates.js
+imports; it was corrected to import from Vue before the passing checks.
+
+CUA browser checks on the existing labeled mock demo confirmed no local sound
+buttons, muted navigation from breathing through Home to chat, audio.muted=true,
+persistence after fresh page navigation, and clickable global controls in
+Appearance/Emergency. Narrow-view checks found identical 44px control coordinates
+before/inside Emergency; no call links selected. Returned sound to on, verified
+the approved early-end screen and reset the temporary viewport override.
+Screenshot: docs/evidence/global-sound-narrow.png. Speaker quality, hardware
+microphone/live voice and assistive-technology use remain unverified.
+
+Commands: npm --prefix frontend test; npm --prefix frontend run build;
+from frontend, npm exec --offline -- eslint [changed JS/Vue files] --no-cache;
+backend/.venv/bin/python scripts/verify_checkpoints.py; git diff --check.
+Files changed: App.vue, ModalSheet.vue, new SoundToggle.vue, usePreferences.js,
+styles.css, emotion/breathing/chat views, focused tests/setupView, README and
+feature/AI-use/evidence notes. No installs, paid calls, real microphones, staging
+or commits. Codex authored implementation/tests using existing Vue/Node/Python
+and CUA; exact served coding-model identifier unavailable.
+
+### November 2, 2026 — warm keys for full breathing completion
+
+User requested original warm keys for completed breathing, retaining softened
+harp for emotion saves. Copied the exact 4.2s audition to breathing/assets/warm-keys.wav;
+BreathingView supplies it to the existing shared player. Emotion's default harp,
+separate early-end open tones and global mute are unchanged. Adjusted the existing
+real-SFC mock to require the explicit warm-keys versus open-tones selection.
+Updated root/feature READMEs and shared credits. No dependencies, backend, manifest,
+staging or commit changes. Original synthesis provenance remains in audition render.py.
+
+Commands: cat/rg/git status inspection, cp, project Python targeted docs/byte
+comparison, npm --prefix frontend test (113 passed), npm --prefix frontend run
+build (passed), project Python scripts/verify_checkpoints.py (all three passed,
+including lint/build and cumulative backend checks), git diff --check. Checkpoint
+result: .checkpoints/20261102-154128-910994/results.json. Existing large-chunk and
+Starlette/httpx warnings remain. No new browser listening, microphone or paid
+calls; speaker quality is not established by mocks. Production bundle rebuilt;
+reload the app to use it. Nominal full sequence plus warm-keys tail is 67.2s,
+a calculation rather than new observed timing.
+
+
+### November 2, 2026 — align and label footer sound control
+
+User requested moving the sound control left into the footer frame and adding
+Sound on/off text to match Appearance. SoundToggle now has the matching 16px
+icon/text layout in normal footer flow, without the floating circular background.
+A reserved footer slot keeps layout stable while a native dialog is open; the
+dialog copy mirrors that slot's measured position and updates on resize. Shared
+output-mute behavior and stored preference are unchanged. This supersedes the
+prior icon-only presentation decision.
+
+Changed App.vue, SoundToggle.vue, styles.css, README, AGENTS and evidence/AI-use
+notes. Commands/checks: npm --prefix frontend run build (passed; existing bundle
+warning remains), targeted non-mutating ESLint for App.vue/SoundToggle.vue,
+npm --prefix frontend test (113 passed), scripts/verify_checkpoints.py (all three
+cumulative checkpoints passed), and git diff --check. CUA observed Sound on/off
+text, in-frame alignment beside Appearance and matching x/y coordinates in the
+Appearance overlay, then restored Sound on. Screenshot:
+docs/evidence/footer-sound-labeled.png. No dependency or API changes, provider
+calls, microphone use, staging or commits. Actual speaker/device quality remains
+unverified; this is a presentation refinement.
+
+### November 2, 2026 — commit approved sound/UI work
+
+User explicitly requested committing the pending changes. Reviewed Git status,
+code/docs diffs and audition provenance; preserved independent interface,
+emotion and breathing checkpoint commits in that order, then separate chat
+output-mute and documentation/evidence commits. Updated AGENTS to match the
+latest warm-keys-for-breathing / harp-for-emotion selection. No push requested.
+Frontend npm test rerun: 113 passed. Latest cumulative verification and builds
+remain recorded above; no code changed during commit preparation. Commands:
+git status/diff/log, cat/rg, npm --prefix frontend test, project Python
+stage_checkpoint.py interface/emotion/breathing --stage, reviewed cached diffs,
+scoped git add and git commit, git diff --check and final status/log. Initial
+sandbox index-lock failure was resolved with approved Git write escalation.
+No dependencies, provider calls or microphone. Runtime listening limits remain.

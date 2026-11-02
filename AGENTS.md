@@ -182,3 +182,17 @@
   historical no-provider-lookup rules only for this separate task; old chats are
   still never automatic context for conversational replies. Mock verification
   only; do not make paid calls or open a microphone.
+
+
+## Global output-sound control — November 2, 2026
+
+- User approved the breathing early-end message/Return home screen and audition
+  10 descending open tones. Preserve these alongside warm keys for completed sessions; emotion saves keep
+  the softened harp.
+- One volume control with icon and Sound on/off text, aligned inside the footer
+  beside Appearance, owns all app playback, persists
+  across navigation/reload and remains available in native dialog overlays at the
+  same viewport position. No per-feature Sound on/off buttons.
+- Shared output mute covers breath/cue audio and assistant playback. Microphone
+  mute and End remain independent; muting speakers does not stop capture, provider
+  sessions or billing. Keep captions and fixed text/visual breathing cues usable.
