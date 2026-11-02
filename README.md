@@ -14,13 +14,13 @@ Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app).
 
 | Area | Implemented behavior |
 | --- | --- |
-| Interface | Responsive cream/lavender design, skippable introduction, independent Home choices, history shortcuts and persistent Emergency access. Appearance offers accent, larger text and reduced motion; it does not dynamically infer distress or adapt the layout. |
-| Emotion log | Explicit pleasantness × energy placement by tap/drag, with keyboard and slider alternatives; required personal color and optional notes. One-page Save, calendar/history, edit and delete. New entries have no feeling category; legacy labels are preserved. Color meaning belongs to the user. |
+| Interface | Responsive cream/lavender design, skippable introduction, independent Home choices, activity-specific history shortcuts and persistent Emergency access. Appearance offers eight distinct soft theme colors that tint the app, larger text and reduced motion; it does not dynamically infer distress or adapt the layout. |
+| Emotion log | Required personal color appears before explicit pleasantness × energy placement by tap/drag, with keyboard and slider alternatives; optional color meaning and notes. One-page Save, calendar/history, edit and delete. New entries have no feeling category; legacy labels are preserved. Color meaning belongs to the user. |
 | Guided breathing | Hold the circle through a 3–2–1 countdown and six four-second inhale/six-second exhale cycles. Release early to end and return Home; release after completion keeps the result. Mouse/touch/pen and held Space/Enter are supported in code. Pause/Resume while holding, End, mute, reduced-motion cues, bundled human breath audio, retryable saving and separate session history are included. |
 | Typed chat | Model replies using bounded current-chat context, editable drafts retained after failure, End chat, automatic transcript scrolling and leading-space cleanup. Completed exchanges save separately from generation. |
 | Voice conversation | Explicit Voice mode selection, WebRTC speech/captions, seven visible lifecycle states, local Mute/Unmute, End, playback recovery and cancellation/cleanup. Switching to text stops voice; explicitly restarting voice carries recent visible context. |
 | Dictation | Separate microphone captures up to 30 seconds for OpenAI transcription into the editable draft. Finish/cancel controls, size bounds and typing fallback; no automatic Send or restart. |
-| Saved chats | Typed pairs and accepted spoken text share SQLite conversation history, read-only review and confirmed deletion. No audio recordings are saved. Older chats are not automatically reused as model context. |
+| Saved chats | Typed pairs and accepted spoken text share SQLite conversation history, model-generated summary titles with date/time, read-only review and confirmed deletion. Missing titles are generated when History opens using a bounded saved-text excerpt; title failures never block review or storage. No audio recordings are saved. Older chats are not automatically reused as conversational context. |
 | Failures and offline use | Explicit request/save errors and storage-only Retry. After the production shell is cached, Emergency and breathing remain available without the server; saving/history need the local backend. Pending saves remain in memory and can be lost on reload/close. |
 
 Emergency is application-owned and opens independently of model/classifier or
@@ -172,7 +172,7 @@ is provided.
 
 Appearance preferences alone use browser local storage (`still.preferences`,
 retained across the rebrand). Personal API responses are not cached by the PWA.
-Only the built shell is cached; About reports offline readiness. Offline chat,
+Only the built shell is cached. Offline chat,
 transcription and history are not provided. Native phone installation and
 standalone relaunch remain unverified.
 
@@ -203,7 +203,8 @@ requires one relevant question; requests to stop or have no questions take
 priority. A model's closing acknowledgment does not itself stop capture or
 navigate. The prompts contain the assignment's skill descriptions, but only
 breathing has an implemented guided sequence. No RAG, dataset ingestion, model
-training or automatic historical-context retrieval is connected.
+training or automatic historical context for conversation replies is connected.
+History separately sends a bounded saved excerpt for missing summary titles.
 
 ## Architecture and contracts
 
@@ -253,10 +254,9 @@ checks also cover chat. `backend/.venv/bin/python scripts/stage_checkpoint.py
 interface` only previews; `--stage` modifies the index and never commits. See
 [checkpoint instructions](docs/implementation-checkpoints.md).
 
-Latest recorded full verification: **188 backend tests, 101 frontend tests**,
+Latest recorded full verification: **191 backend tests, 104 frontend tests**,
 production build, non-mutating lint and all three original cumulative checkpoints
-passed. The existing Starlette/httpx deprecation warning remains. These results
-precede this documentation update; they were not rerun for it.
+passed. The existing Starlette/httpx deprecation warning remains. These checks were rerun on November 2, 2026 for the appearance/history update.
 
 [Part Two evidence](docs/part32-evidence.md) distinguishes user observations from
 mocked checks: the supplied current completion screenshot shows 63.0s sequence /

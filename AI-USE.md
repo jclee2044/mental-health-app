@@ -1212,3 +1212,90 @@ identifiers were read from source, never credentials or the private .env. Codex
 No subagents, external research, live calls, microphone, browser tests or full
 runtime suites were used for this documentation-only update. Earlier 188 backend /
 101 frontend and checkpoint passes remain explicitly attributed to prior checks.
+
+### November 2, 2026 — appearance, emotion order and saved-chat titles
+
+User requested accent colors across the app, more choices, removal of About and
+the Home history shortcut, color before the emotion graph, and descriptive LLM
+chat titles with smaller date/time below. Codex implemented eight saved accents
+with derived theme shades, preserved Emergency/personal emotion colors, moved
+the coursework role description into the footer, reordered the emotion form,
+and added nullable SQLite titles with separate bounded model generation.
+Tools: Codex (model identifier not exposed in this session), shell/Python edits,
+Vue compiler/SSR tests, pytest, official OpenAI documentation, and computer-use
+IAB checks. No dependencies added, subagents, paid calls or microphone use.
+Responses integration follows the existing project transport and the official
+[text generation guide](https://developers.openai.com/api/docs/guides/text).
+
+Observed: 191 backend tests and 104 frontend tests passed; production build,
+non-mutating oxlint/eslint and all three unchanged isolated cumulative checkpoint
+builds/tests passed. Added tests cover legacy schema migration, Unicode context
+bounds, separate/cached title policy, sanitized timeout, restart/deletion, title
+retry/late navigation, and escaped title/date presentation. Existing Starlette
+httpx deprecation warning remains. The sandbox initially denied binding localhost;
+approved escalation ran only the mocked demo at port 8017. IAB verified green
+Home colors, eight swatches, absent About/Home history, color before graph, and
+mocked titles above smaller timestamps. The first browser inspection exposed
+shared-button CSS overriding title alignment; increased selector specificity.
+This is mock evidence, not generated-model evidence. Demo uses its separate
+ignored SQLite file and explicitly labeled mock titles/replies.
+
+Commands: rg/cat/sed source inspection; git status/diff --check;
+backend/.venv/bin/python -m pytest -q -c backend/pytest.ini backend/tests backend/app/features;
+npm --prefix frontend test; npm --prefix frontend run build;
+(from frontend) npm exec --offline -- oxlint . and
+npm exec --offline -- eslint . --no-cache;
+backend/.venv/bin/python scripts/verify_checkpoints.py;
+backend/.venv/bin/python scripts/serve_submission_demo.py --port 8017.
+Changed files: shell App.vue/preferences/styles; emotion EmotionView.vue;
+chat history view/composable/API/styles/privacy and related tests; voice
+storage/routes/provider/new titles.py and persistence/provider tests/contract;
+mock demo, README, this disclosure/log and design notes. No staging/commit.
+
+TODO/unverified: live title quality, changing topics after the first bounded
+excerpt, multi-worker title deduplication, native mobile/screen-reader use and
+full palette contrast audit. Title errors retain saved chats and expose a
+separate manual retry. Missing titles are generated when History opens, not
+by storage saves/retries. SQLite titles persist and existing messages survive.
+
+Visual evidence: [Forest appearance](docs/evidence/appearance-forest-2026-11-02.png)
+and [mocked title layout](docs/evidence/chat-titles-mocked-2026-11-02.png).
+The repeated titles are fixed mock output, not summary-quality evidence. A lint
+command accidentally run from root reported ENOTCACHED; rerunning from frontend
+used installed tools and passed. No installation was attempted. Final frontend
+checks/build and backend suite passed again after privacy/alignment refinements.
+Temporary mock server and test tab were closed after verification.
+
+
+### November 2, 2026 — softer theme refinement
+
+User requested softer palettes, preserved Violet/Forest, bluer Slate, Sage and
+Light brown additions, matching swatches and “Theme color” wording. Updated
+frontend/src/composables/usePreferences.js, frontend/src/App.vue and
+frontend/src/styles.css: ten pastel surface palettes with darker readable
+companions; swatches use the exact primary surface color. Slate's previous saved
+value migrates to its blue companion. Emergency/personal emotion colors retain
+their existing behavior. Neutralized the modal backdrop's fixed purple tint.
+README now lists ten soft themes. Codex edited these files using shell/Python;
+no dependencies, model calls, microphone, commits or new server processes.
+
+Commands/checks: npm --prefix frontend test (104 passed), npm --prefix frontend
+run build (passed); from frontend, npm exec --offline -- oxlint . and npm exec
+--offline -- eslint . --no-cache (passed); git diff --check. Browser saw all ten
+swatches and Theme color heading on the running app. Initial old-tab reconnect
+failed; a fresh tab on the same browser opened successfully. Existing user
+preference was Amber. No paid requests or chat history were opened. No backend
+changes/tests were needed. Full palette accessibility and physical-device use
+remain unverified. Historical Part 3.1 report/checkpoint scopes are unchanged.
+
+### November 2, 2026 — eight distinct theme colors
+
+User requested exactly eight colors with broader rainbow representation and fewer
+near duplicates. Removed Slate (overlaps Ocean) and Teal (overlaps Forest), mapping
+saved selections to Ocean/Forest. Preserved Violet, Rose, Light brown, Sage,
+Forest and Ocean; warmed Clay to Peach and made Amber more yellow. Sage is a
+lighter yellow-green, Forest a cooler green. Matching surface swatches remain.
+Changed usePreferences.js and README with Codex shell/Python edits. No dependencies,
+backend changes, paid calls, microphone or commits. Commands: npm --prefix
+frontend test; npm --prefix frontend run build; git diff --check. Full palette
+accessibility and physical-device checks remain unverified.

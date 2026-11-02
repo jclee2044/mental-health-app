@@ -170,3 +170,22 @@ New entries use a null legacy feeling field; old explicit values remain readable
 and survive edits. The API/storage compatibility rule is in the emotion contract.
 No dependencies, model calls or microphone use are needed. Physical touch-device
 feel and screen-reader usability still need direct verification.
+
+
+## November 2, 2026 — appearance and recognizable chat history
+
+The user requested full accent flexibility: eight muted palettes tint headings,
+brand, cards, waves and controls. Personal emotion colors remain independent and
+Emergency retains its distinct styling. About and the ambiguous Home history
+shortcut are removed; the footer retains the required coursework role description.
+Each activity retains its own history route. Emotion color/optional meaning now
+appear before the required pleasantness × energy graph, with no change to input
+requirements or legacy compatibility.
+
+Saved chats show a generated topic title and smaller original local date/time.
+Opening History generates missing titles separately from storage using a bounded
+saved-text excerpt; the UI discloses transmission. Review remains available with
+a fallback title on failure and a manual title retry. Titles are cached once, so
+later content may outgrow the opening-topic title. See the persistence contract
+for limits/TODOs. Mock tests/browser evidence do not establish live title quality.
+Historical Part 3.1 report is preserved.

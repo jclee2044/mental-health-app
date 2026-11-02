@@ -166,3 +166,19 @@
   receive one brief urgent human-help direction, without questioning, then stop.
   A model closing does not itself end capture or the provider session; never
   claim application-owned actions occurred without confirmation.
+
+
+## Appearance and saved-chat titles — November 2, 2026
+
+- The user authorized eight soft theme palettes across the app, removal of About and
+  the ambiguous Home history shortcut, and personal color above the emotion graph.
+  Keep the coursework role description visible, Emergency independent/distinct,
+  personal emotion colors unchanged, and each activity's own history available.
+- The user requested LLM summary titles with smaller original date/time below.
+  Follow voice/PERSISTENCE.md's November 2 extension: separate title POST using
+  bounded saved text, existing server-only model/settings, no tools/dependencies,
+  cached nullable SQLite title, no generation in GET or storage Retry, graceful
+  fallback and manual title retry. Title generation on History opens supersedes
+  historical no-provider-lookup rules only for this separate task; old chats are
+  still never automatic context for conversational replies. Mock verification
+  only; do not make paid calls or open a microphone.
