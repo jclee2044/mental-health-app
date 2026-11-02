@@ -18,7 +18,6 @@ const splash = ref(!location.hash && !matchMedia('(prefers-reduced-motion: reduc
 const sheet = ref(null)
 const main = ref(null)
 const preferences = usePreferences()
-const offlineStatus = ref('Preparing offline mode…')
 const features = useFeatures({ navigate: go, interrupted: () => Boolean(sheet.value), reducedMotion: () => preferences.reducedMotion.value })
 const activeFeature = computed(() => features.find(feature => feature.routes[screen.value]))
 const title = computed(() => ({ home: 'Home', emotion: 'Emotion log', history: 'Past logs', breathing: 'Guided breathing', sessions: 'Past breathing sessions', chat: 'Support chat', conversations: 'Saved chats' })[screen.value])
@@ -36,7 +35,7 @@ function focusMain() {
 }
 watch(screen, async () => { await nextTick(); focusMain() })
 onMounted(() => {
-  registerPwa(status => { offlineStatus.value = status })
+  registerPwa(() => {})
   window.addEventListener('hashchange', routeChanged)
   splashTimer = setTimeout(() => { splash.value = false }, 900)
 })
@@ -44,7 +43,7 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
 </script>
 
 <template>
-  <div class="app" :class="{ 'large-text': preferences.largeText.value, 'reduce-motion': preferences.reducedMotion.value }" :style="{ '--accent': preferences.accent.value }">
+  <div class="app" :class="{ 'large-text': preferences.largeText.value, 'reduce-motion': preferences.reducedMotion.value }" :style="{ '--accent': preferences.accent.value, '--theme-color': preferences.themeColor.value }">
     <ThemeBackdrop />
     <a class="skip-link" href="#main-content" @click.prevent="focusMain">Skip to content</a>
     <header class="site-header">
@@ -65,31 +64,25 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
       </template>
     </main>
     <footer class="site-footer">
-      <span class="footer-wordmark">Make room for a moment.</span>
+      <p class="prototype-note">Localhost coursework prototype. No therapy, diagnosis, crisis response or monitoring.</p>
       <nav aria-label="Secondary navigation">
-        <button class="history-button" type="button" aria-label="View past logs" title="View past logs" @click="go('history')"><AppIcon name="history" /></button>
         <button @click="sheet = 'appearance'"><AppIcon name="sliders" /> Appearance</button>
-        <button @click="sheet = 'about'">About</button>
       </nav>
     </footer>
-    <ModalSheet v-if="sheet" :title="sheet === 'emergency' ? 'Emergency & crisis support' : sheet === 'appearance' ? 'Make it yours' : 'About inspire'" :emergency="sheet === 'emergency'" @close="sheet = null" @emergency="openEmergency">
+    <ModalSheet v-if="sheet" :title="sheet === 'emergency' ? 'Emergency & crisis support' : 'Make it yours'" :emergency="sheet === 'emergency'" @close="sheet = null" @emergency="openEmergency">
       <template v-if="sheet === 'emergency'">
         <p>United States resources. These services are separate from inspire.</p>
         <a class="resource-card" href="tel:988"><span class="resource-number">988</span><span><strong>Crisis counseling</strong><span>Suicide & Crisis Lifeline</span></span><AppIcon name="arrow-up-right" /></a>
         <a class="resource-card" href="tel:911"><span class="resource-number">911</span><span><strong>Emergency services</strong><span>For immediate danger or a medical emergency</span></span><AppIcon name="arrow-up-right" /></a>
         <p class="small muted">Opening this panel does not contact anyone.</p>
       </template>
-      <template v-else-if="sheet === 'appearance'">
+      <template v-else>
         <p>Choose what feels comfortable. You can change this any time.</p>
-        <fieldset><legend>Accent color</legend><div class="swatches"><button v-for="color in preferences.accents" :key="color.value" :style="{ '--swatch': color.value }" class="swatch" :aria-label="color.name" :aria-pressed="preferences.accent.value === color.value" @click="preferences.accent.value = color.value"><AppIcon v-if="preferences.accent.value === color.value" name="check" /></button></div></fieldset>
+        <fieldset><legend>Theme color</legend><div class="swatches"><button v-for="color in preferences.accents" :key="color.value" :style="{ '--swatch': color.surface, '--swatch-ink': color.value }" class="swatch theme-swatch" :title="color.name" :aria-label="color.name" :aria-pressed="preferences.accent.value === color.value" @click="preferences.accent.value = color.value"><AppIcon v-if="preferences.accent.value === color.value" name="check" /></button></div></fieldset>
         <label class="toggle-row"><span><strong>Larger text</strong><span>A little more room to read</span></span><input v-model="preferences.largeText.value" type="checkbox"></label>
         <label class="toggle-row"><span><strong>Reduced motion</strong><span>Use still cues instead of animation</span></span><input v-model="preferences.reducedMotion.value" type="checkbox"></label>
       </template>
-      <template v-else>
-        <p>inspire is a coursework skills prototype running on localhost. It does not provide therapy, diagnosis, crisis response, or monitoring.</p>
-        <p>Available activities depend on this version. Chat needs the local server and provider configuration.</p>
-        <p class="small" role="status">{{ offlineStatus }}</p>
-      </template>
+
     </ModalSheet>
   </div>
 </template>

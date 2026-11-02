@@ -46,7 +46,7 @@ p { color: var(--muted); }
 .large-text { font-size: 1.15rem; }
 .large-text button, .large-text input, .large-text textarea { font-size: inherit; }
 .site-header { min-height: 96px; display: flex; align-items: center; gap: clamp(8px, 2vw, 24px); }
-/* Brand colors are stable even when someone selects a different accent. */
+/* Brand follows the selected appearance palette. */
 .brand { background: #fbf8f1ed; display: inline-flex; flex-shrink: 0; align-items: center; padding: 6px 10px; margin-left: -10px; border-radius: 999px; }
 .brand-wordmark { display: inline-flex; align-items: center; font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif; font-size: 2.35rem; font-weight: 400; line-height: 1.1; letter-spacing: -.04em; }
 .brand-in { color: var(--brand-lilac); }
@@ -109,7 +109,7 @@ textarea { resize: vertical; } fieldset { border: 0; margin: 22px 0; padding: 0;
 .toggle-row span span { font-weight: 400; color: var(--muted); font-size: .76rem; }
 input[type=checkbox] { width: 23px; height: 23px; accent-color: var(--accent); }
 .modal-sheet { width: min(520px, calc(100% - 28px)); max-height: calc(100svh - 30px); border: 1px solid var(--line); border-radius: 30px; background: var(--paper); color: var(--ink); padding: 28px; box-shadow: 0 24px 100px #4c297a26; }
-.modal-sheet::backdrop { background: #3d245966; backdrop-filter: blur(4px); } .modal-sheet p { font-size: .85rem; }
+.modal-sheet::backdrop { background: #30363b55; backdrop-filter: blur(4px); } .modal-sheet p { font-size: .85rem; }
 .modal-sheet > .button:last-child { margin-top: 22px; }
 .modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
 .modal-top .emergency-button { margin-left: 0; }
@@ -175,3 +175,25 @@ input::placeholder, textarea::placeholder { color: var(--muted); opacity: 1; }
 .history-button:hover { background: var(--lavender); }
 .history-button .icon, .site-footer .history-button .icon { width: 22px; height: 22px; }
 .site-footer .history-button { padding: 0; justify-content: center; background: var(--paper); }
+
+/* Derive the entire decorative palette from the saved accent. Keep Emergency
+   and personal emotion colors independent of appearance. */
+.app {
+  --violet: var(--accent);
+  --brand-lilac: color-mix(in srgb, var(--accent) 72%, white);
+  --ink: color-mix(in srgb, var(--accent) 30%, #303030);
+  --muted: color-mix(in srgb, var(--accent) 45%, #555);
+  --line: color-mix(in srgb, var(--accent) 23%, var(--paper));
+  --control-line: color-mix(in srgb, var(--accent) 70%, var(--paper));
+  --lavender: var(--theme-color);
+  --lilac: color-mix(in srgb, var(--theme-color) 86%, var(--accent));
+  --surface-soft: color-mix(in srgb, var(--theme-color) 40%, var(--paper));
+  --sage-soft: color-mix(in srgb, var(--theme-color) 72%, var(--paper));
+  --peach-soft: color-mix(in srgb, var(--theme-color) 45%, var(--paper));
+  color: var(--ink);
+}
+.swatches { flex-wrap: wrap; }
+.prototype-note { font-size: .68rem; max-width: 390px; margin: 0; }
+
+.theme-swatch { color: var(--swatch-ink); border: 1px solid color-mix(in srgb, var(--swatch-ink) 30%, var(--swatch)); }
+.theme-swatch .icon { filter: none; }
