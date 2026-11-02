@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import AppIcon from '../../components/AppIcon.vue'
 import { useChat } from './useChat.js'
 import { useTranscriptScroll } from './useTranscriptScroll.js'
@@ -8,6 +8,8 @@ import { bindVoiceLifecycle, interruptVoice } from './lifecycle.js'
 const props = defineProps({ interrupted: Boolean, records: Object })
 const emit = defineEmits(['navigate'])
 const remoteAudio = ref(null)
+const soundEnabled = inject('appSoundEnabled', ref(true))
+watch([soundEnabled, remoteAudio], ([enabled, audio]) => { if (audio) audio.muted = !enabled }, { flush: 'sync' })
 const chatWindow = ref(null)
 const { messages, draft, textBusy, textError, voiceState, voice, dictation, dictationState, send, dispose } = useChat({ getAudio: () => remoteAudio.value, records: props.records })
 useTranscriptScroll(chatWindow, messages)
@@ -45,7 +47,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
         <AppIcon name="history" />
       </button>
     </div>
-    <audio ref="remoteAudio" autoplay playsinline hidden aria-hidden="true"></audio>
+    <audio ref="remoteAudio" :muted="!soundEnabled" autoplay playsinline hidden aria-hidden="true"></audio>
     <div class="chat-frame">
       <div ref="chatWindow" class="chat-window" role="region" aria-label="Chat window" tabindex="0">
         <div v-if="!messages.length" class="empty-state">

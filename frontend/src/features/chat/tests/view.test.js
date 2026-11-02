@@ -27,7 +27,10 @@ for (const status of ['permission', 'connecting', 'active', 'muted', 'closing', 
       voice: { start() {}, stop() {}, toggleMute() {}, enableAudio() {} }, send() {}, dispose() {},
     }
     try {
-      const html = await renderToString(createSSRApp(ChatView, { interrupted: false }))
+      const app = createSSRApp(ChatView, { interrupted: false })
+      app.provide('appSoundEnabled', ref(status !== 'active'))
+      const html = await renderToString(app)
+      if (status === 'active') assert.match(html, /<audio[^>]* muted/)
       assert.match(html, new RegExp(`data-voice-state="${status}"`))
       const textarea = html.match(/<textarea[^>]*>[\s\S]*?<\/textarea>/)[0]
       assert.doesNotMatch(textarea, /disabled/); assert.match(textarea, /Keep this draft/)

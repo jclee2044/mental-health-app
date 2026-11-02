@@ -199,3 +199,16 @@ constant bubble count, late caption regrouping/word spacing, normalized voice
 history/storage content and real-SFC reply rendering. Production build and
 non-mutating Oxlint/ESLint passed. No real browser scroll geometry, microphone,
 live provider call or physical-device check was performed.
+
+
+### November 2, 2026 — persistent global output-sound control
+
+Assistant playback now follows the shell’s shared sound preference both at
+mount and synchronously on changes, including replacement audio elements. This
+controls output only: microphone Mute/Unmute, dictation and session/billing
+lifecycle remain separate. Captions and typing remain usable.
+
+Observed: 113 frontend tests, production build, targeted ESLint and all three
+cumulative checkpoints passed. Browser checks verified persisted mute and
+controls in overlays; voice playback was mocked/DOM-verified, without real
+microphone or provider calls. Full commands and limits: docs/evidence-log.md.
