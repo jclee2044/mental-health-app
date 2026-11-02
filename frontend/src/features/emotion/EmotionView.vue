@@ -1,11 +1,14 @@
 <script setup>
 import { localDate } from '../../dates.js'
-import { computed, onUnmounted, reactive, ref } from 'vue'
+import { computed, inject, onUnmounted, reactive, ref } from 'vue'
 import AppIcon from '../../components/AppIcon.vue'
 import { saveEntry } from './api.js'
 import { colors } from './domain.js'
 import { graphInteraction } from './graph.js'
-const props = defineProps({ entry: { type: Object, default: null } })
+import { useCompletionSound } from '../../components/completion-sound/useCompletionSound.js'
+const props = defineProps({ entry: { type: Object, default: null }, interrupted: Boolean })
+const soundEnabled = inject('appSoundEnabled', ref(true))
+const completionSound = useCompletionSound(soundEnabled, () => props.interrupted)
 const emit = defineEmits(['navigate'])
 const draft = reactive({ feeling: props.entry?.feeling ?? null, color: props.entry?.color ?? null, color_meaning: props.entry?.color_meaning || '', pleasantness: props.entry?.pleasantness ?? 0, energy: props.entry?.energy ?? 0, note: props.entry?.note || '', recorded_at: props.entry?.recorded_at || new Date().toISOString(), local_date: props.entry?.local_date || localDate() })
 const entryId = props.entry?.id || crypto.randomUUID()
@@ -38,10 +41,11 @@ async function save() {
   if (!chosenPoint.value) fields.value.graph = 'Place a point on the graph, or use the sliders.'
   if (!draft.color) fields.value.color = 'Choose a color.'
   if (Object.keys(fields.value).length) return
+  const soundTicket = completionSound.arm()
   error.value = ''; fields.value = {}; saving.value = true
   try {
     await saveEntry(entryId, { ...draft }, { signal: controller.signal })
-    if (active) saved.value = true
+    if (active) { saved.value = true; void completionSound.complete(soundTicket) }
   } catch (failure) { if (active) { error.value = failure.message; fields.value = failure.fields || {} } }
   finally { saving.value = false }
 }
@@ -71,6 +75,6 @@ async function save() {
         </form>
       <div class="form-links"><button class="history-button" type="button" aria-label="View past logs" title="View past logs" @click="emit('navigate','history')"><AppIcon name="history" /></button></div>
     </template>
-    <template v-else><div class="saved-state"><span class="saved-mark"><AppIcon name="check" /></span><h1>Entry saved.</h1><p>You can come back to it whenever you like.</p><button class="history-button" type="button" aria-label="View past logs" title="View past logs" @click="emit('navigate','history')"><AppIcon name="history" /></button></div></template>
+    <template v-else><div class="saved-state"><span class="saved-mark"><AppIcon name="check" /></span><h1>Entry saved.</h1><p>You can come back to it whenever you like.</p><div class="saved-links"><button class="text-button" type="button" @click="emit('navigate','home')">Return home</button><button class="text-button" type="button" @click="emit('navigate','history')">View history</button></div></div></template>
   </section>
 </template>

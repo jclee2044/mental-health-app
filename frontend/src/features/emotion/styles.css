@@ -38,4 +38,4 @@ input[type=range] { width: 100%; accent-color: var(--accent); min-height: 32px; 
 
 .day-heading { font-size: 1.25rem; margin-bottom: 20px; }
 
-.saved-state > .history-button { margin-top: 14px; }
+.saved-links { display: flex; flex-direction: column; align-items: center; margin-top: 14px; }
