@@ -32,3 +32,16 @@ for (const hasMessages of [false, true]) {
     } finally { delete globalThis.historyViewMock }
   })
 }
+
+test('saved chat list shows escaped descriptive titles above smaller date/time text', async () => {
+  globalThis.historyViewMock = {
+    conversations: ref([{ id: 'one', title: '<script>A fictional exam</script>', created_at: '2026-10-27T12:00:00Z' }]),
+    selected: ref(null), loading: ref(false), error: ref(''), confirming: ref(false),
+    load() {}, open() {}, remove() {}, dispose() {}, generateTitle() {},
+  }
+  try {
+    const html = await renderToString(createSSRApp(HistoryView))
+    assert.match(html, /<strong>&lt;script&gt;A fictional exam&lt;\/script&gt;<\/strong><time class="small muted"/)
+    assert.match(html, /datetime="2026-10-27T12:00:00Z"/)
+  } finally { delete globalThis.historyViewMock }
+})

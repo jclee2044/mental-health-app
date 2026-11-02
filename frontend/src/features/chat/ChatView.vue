@@ -95,9 +95,10 @@ onBeforeUnmount(() => { unbind(); dispose() })
     <p class="small muted chat-dictation-privacy">Dictation sends a short recording to OpenAI.</p>
     <details class="chat-privacy-details">
       <summary>Privacy &amp; saved chats</summary>
+      <p>Opening History generates missing chat titles using a short saved-text excerpt sent to OpenAI. Titles are saved locally; reviewing a conversation does not continue it with the model.</p>
       <p>Select the microphone to record up to 30 seconds, then select it again to transcribe with OpenAI. You can cancel while preparing or transcribing. Leaving, Emergency, Send or switching to Voice mode cancels dictation. Recognized words go into your editable draft, not directly into chat. This app keeps recording audio in memory only and doesn’t save it. Cancelling an upload can’t guarantee cancellation of provider processing or charges.</p>
       <p>Voice sends microphone audio to OpenAI only after you select Voice mode and allow access. Recent messages and approximate captions provide context across text and voice. Sending text turns the microphone off; returning to voice is your choice.</p>
-      <p>Saved chats remain until deleted and aren’t automatically reused as context. Spoken messages save as approximate text when voice ends or you leave chat; audio isn’t saved. Unsaved exchanges can be lost on reload or close. Local deletion doesn’t control OpenAI’s retention or training policies.</p>
+      <p>Saved chats remain until deleted and aren’t automatically reused as conversation context. Spoken messages save as approximate text when voice ends or you leave chat; audio isn’t saved. Unsaved exchanges can be lost on reload or close. Local deletion doesn’t control OpenAI’s retention or training policies.</p>
     </details>
   </section>
 </template>

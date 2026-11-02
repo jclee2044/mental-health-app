@@ -65,6 +65,16 @@ class LiveProvider:
         }, 200)
         return validate_text_response(data)
 
+    def summarize_title(self, context):
+        from .titles import TITLE_INSTRUCTIONS, validate_title
+        data = self._post("https://api.openai.com/v1/responses", {
+            "model": self.settings.backend_model,
+            "instructions": TITLE_INSTRUCTIONS,
+            "input": [{"role": "user", "content": context}],
+            "store": False, "tools": [], "tool_choice": "none", "max_output_tokens": 1024,
+        }, 200)
+        return validate_title(validate_text_response(data))
+
     def transcribe(self, audio, mime, extension):
         boundary = "dictation_" + secrets.token_hex(16)
         fields = [

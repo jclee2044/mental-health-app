@@ -14,6 +14,8 @@ class ChatStorage:
         with self.database.connect() as db:
             db.execute("""CREATE TABLE IF NOT EXISTS chat_conversations (
                 id TEXT PRIMARY KEY, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)""")
+            if "title" not in {row["name"] for row in db.execute("PRAGMA table_info(chat_conversations)")}:
+                db.execute("ALTER TABLE chat_conversations ADD COLUMN title TEXT")
             db.execute("""CREATE TABLE IF NOT EXISTS chat_messages (
                 conversation_id TEXT NOT NULL, turn_id TEXT NOT NULL,
                 position INTEGER NOT NULL CHECK(position BETWEEN 0 AND 99),
@@ -51,7 +53,7 @@ class ChatStorage:
             if db.execute("SELECT 1 FROM chat_messages WHERE conversation_id = ? AND position = ?",
                           (conversation_id, values["position"])).fetchone():
                 raise ConversationConflict()
-            db.execute("INSERT INTO chat_conversations VALUES (?, ?, ?) ON CONFLICT(id) DO UPDATE SET updated_at=excluded.updated_at",
+            db.execute("INSERT INTO chat_conversations (id, created_at, updated_at) VALUES (?, ?, ?) ON CONFLICT(id) DO UPDATE SET updated_at=excluded.updated_at",
                        (conversation_id, now, now))
             db.executemany("INSERT INTO chat_messages VALUES (?, ?, ?, ?, ?, ?)", [
                 (conversation_id, turn_id, values["position"], role, values[role], now)
@@ -78,7 +80,7 @@ class ChatStorage:
             if db.execute("SELECT 1 FROM chat_voice_messages WHERE conversation_id=? AND position=?",
                           (conversation_id, values["position"])).fetchone():
                 raise ConversationConflict()
-            db.execute("INSERT INTO chat_conversations VALUES (?, ?, ?) ON CONFLICT(id) DO UPDATE SET updated_at=excluded.updated_at",
+            db.execute("INSERT INTO chat_conversations (id, created_at, updated_at) VALUES (?, ?, ?) ON CONFLICT(id) DO UPDATE SET updated_at=excluded.updated_at",
                        (conversation_id, now, now))
             db.executemany("INSERT INTO chat_voice_messages VALUES (?, ?, ?, ?, ?, ?, ?)", [
                 (conversation_id, turn_id, values["position"], i, message["role"], message["content"], now)
@@ -109,6 +111,13 @@ class ChatStorage:
                     FROM chat_voice_messages WHERE conversation_id=?
                 ) ORDER BY position, ordinal""", (conversation_id, conversation_id))]
             return {**dict(header), "message_count": len(messages), "messages": messages}
+
+    def save_title(self, conversation_id, title):
+        with self.database.connect() as db:
+            db.execute("UPDATE chat_conversations SET title=? WHERE id=? AND title IS NULL",
+                       (title, conversation_id))
+            row = db.execute("SELECT title FROM chat_conversations WHERE id=?", (conversation_id,)).fetchone()
+            return row["title"] if row else None
 
     def delete(self, conversation_id):
         with self.database.connect() as db:

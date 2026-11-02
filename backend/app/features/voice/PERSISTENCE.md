@@ -97,3 +97,45 @@ storage does not certify completed user/assistant turns, heard audio or generate
 behavior. Preserve this in privacy/contract notes without repeated bubble labels.
 Earlier unsaved voice conversations cannot be recovered. No recording/audio files
 or raw dictation clips are stored. Local deletion does not control provider data.
+
+
+## Summary titles — November 2, 2026
+
+The user's title request authorizes a separate model task over saved text. This
+supersedes the no-provider-lookup statement above only for title generation;
+conversation review and storage Retry still make no provider call.
+
+An additive nullable `title` column on `chat_conversations` preserves existing
+rows and timestamps. List/detail JSON now includes `title` (null before successful
+generation). Titles are saved once and deleted with the header; later exchanges
+do not automatically regenerate the initial-topic title or change chat ordering.
+
+`POST /api/chat/conversations/{uuid}/title` accepts no body or query parameters.
+Returns 200 `{"title":"Preparing for a fictional exam"}`; a cached title skips
+model access even without configuration. Missing chat: 404. Other errors use the
+shared envelope: 422 validation_error; 409 title_busy (one generation at a time in
+this server process); 503 chat_unconfigured/storage_unavailable; 504 title_timeout;
+502 title_unavailable. No automatic retry. A deleted chat is never recreated by a
+late result. The process lock does not coordinate multiple server workers.
+
+Server uses the existing VOICE_BACKEND_MODEL/credential, a separate summarization
+instruction, no tools, store:false, a ten-second HTTP timeout and at most 1024
+output tokens. Input is JSON conversation data containing at most the first 16
+saved messages / 6,000 UTF-8 content bytes (Unicode-safe truncation). It contains
+only roles/content, no UUIDs, timestamps, audio or developer roles. Output must be
+nonblank plain text, at most 80 characters, without control characters; Vue
+escapes it. Prompt asks for neutral topic wording, no names, diagnosis or advice;
+these semantic properties require live evaluation and are not guaranteed by
+validation. store:false does not promise general provider retention controls.
+
+History lists load immediately, then request missing titles sequentially, once
+per chat per mounted history view. Explicit Retry title repeats only this title
+task; refresh within the view does not automatically retry failures. Leaving
+aborts browser requests/queue and ignores late results, but cannot guarantee
+provider cancellation or prevent usage. Another history visit can attempt an
+uncached title again. Existing saved chats use the same path. Until successful,
+show Saved conversation plus the original local date/time. Review/delete remains
+available on title failure. The UI discloses excerpt transmission before entering
+History in chat privacy notes and on the History screen. TODO: live title quality,
+long conversations whose topic changes after the bounded opening excerpt, and
+cross-process cost deduplication remain unverified.

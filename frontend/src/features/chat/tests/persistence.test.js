@@ -123,3 +123,36 @@ test('leaving an active voice chat saves accepted text and excludes audio/fragme
   assert.equal(h.calls.voiceSaves.length, 1)
   assert.deepEqual(h.calls.voiceSaves[0].body, { position: 0, messages: [{ role: 'assistant', content: 'A fictional reflection' }] })
 })
+
+test('history generates missing titles separately, caches successes and offers explicit retry', async () => {
+  let calls = 0
+  const api = {
+    listConversations: async () => ({ conversations: [{ id: 'one', title: null }, { id: 'two', title: 'Existing title' }] }),
+    generateConversationTitle: async () => { calls++; throw new Error('private error') },
+  }
+  const history = useConversationHistory({ api })
+  await history.load(); await flush()
+  assert.equal(calls, 1)
+  assert.equal(history.conversations.value[0].titleState, 'failed')
+  await history.load(); await flush()
+  assert.equal(calls, 1)
+  assert.equal(history.conversations.value[0].titleState, 'failed')
+  api.generateConversationTitle = async () => { calls++; return { title: 'A fictional exam' } }
+  await history.generateTitle(history.conversations.value[0])
+  assert.equal(history.conversations.value[0].title, 'A fictional exam')
+  await history.generateTitle(history.conversations.value[0])
+  assert.equal(calls, 2)
+  history.dispose()
+})
+
+test('leaving history stops the title queue and ignores late title results', async () => {
+  const pending = deferred(); let calls = 0
+  const history = useConversationHistory({ api: {
+    listConversations: async () => ({ conversations: [{ id: 'one' }, { id: 'two' }] }),
+    generateConversationTitle: () => { calls++; return pending.promise },
+  } })
+  await history.load(); history.dispose()
+  pending.resolve({ title: 'Late title' }); await flush()
+  assert.equal(calls, 1)
+  assert.equal(history.conversations.value[0].title, undefined)
+})

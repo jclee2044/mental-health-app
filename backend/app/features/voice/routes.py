@@ -1,5 +1,6 @@
 """Bounded JSON input and sanitized errors; no provider details reach the browser."""
 import re
+from threading import Lock
 from uuid import UUID
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse, Response
@@ -14,6 +15,7 @@ from .schemas import ConfigResponse, SessionBody, SessionResponse, TextBody, Tex
 from .storage import ConversationConflict
 from .settings import VOICE_DURATION_SECONDS
 from .domain import validate_saved_voice
+from .titles import title_context, validate_title
 
 router = APIRouter(prefix="/api/voice", tags=["voice"])
 text_router = APIRouter(prefix="/api/chat", tags=["chat"])
@@ -180,3 +182,42 @@ def delete_conversation(conversation_id: UUID, request: Request):
     if not request.app.state.chat_store.delete(str(conversation_id)):
         raise HTTPException(404, "Conversation not found.")
     return Response(status_code=204)
+
+
+# Serialize title generation within this localhost server process. Concurrent
+# requests receive an explicit busy response, rather than duplicate paid calls.
+_title_lock = Lock()
+
+
+@text_router.post("/conversations/{conversation_id}/title")
+async def generate_title(conversation_id: UUID, request: Request):
+    if request.query_params:
+        return failure(422, "validation_error", "Send no body or query parameters.")
+    async for chunk in request.stream():
+        if chunk:
+            return failure(422, "validation_error", "Send no body or query parameters.")
+    if not _title_lock.acquire(blocking=False):
+        return failure(409, "title_busy", "Another title is being generated. Try again later.")
+    try:
+        store = request.app.state.chat_store
+        record = await run_in_threadpool(store.conversation, str(conversation_id))
+        if record is None:
+            raise HTTPException(404, "Conversation not found.")
+        if record["title"]:
+            return {"title": record["title"]}
+        if not request.app.state.voice_settings.configured:
+            return failure(503, "chat_unconfigured", "Chat titles need model configuration on the local server.")
+        try:
+            title = await run_in_threadpool(request.app.state.voice_provider.summarize_title,
+                                           title_context(record["messages"]))
+            title = validate_title(title)
+        except ProviderTimeout:
+            return failure(504, "title_timeout", "Title generation timed out. Your chat is still saved.")
+        except (ProviderUnavailable, InvalidProviderResponse):
+            return failure(502, "title_unavailable", "A title could not be generated. Your chat is still saved.")
+        saved = await run_in_threadpool(store.save_title, str(conversation_id), title)
+        if saved is None:
+            raise HTTPException(404, "Conversation not found.")
+        return {"title": saved}
+    finally:
+        _title_lock.release()

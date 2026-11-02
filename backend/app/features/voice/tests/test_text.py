@@ -96,3 +96,16 @@ def test_typed_chat_without_configuration_avoids_provider(text_client):
     browser.app.state.voice_settings = type('Unconfigured', (), {'configured': False})()
     assert browser.post('/api/chat/messages', json={"message": "fictional"}).status_code == 503
     sender.assert_not_called()
+
+
+def test_title_provider_uses_separate_policy_and_validated_plain_text(text_client):
+    browser, sender = text_client
+    data = reply(); data['output'][0]['content'][0]['text'] = 'Preparing for a fictional exam'
+    sender.side_effect = None; sender.return_value = Response(data)
+    assert browser.app.state.voice_provider.summarize_title('[{"role":"user","content":"fictional"}]') == 'Preparing for a fictional exam'
+    payload = json.loads(sender.call_args.args[0].data)
+    assert payload['model'] == 'fictional-backend-model'
+    assert payload['store'] is False and payload['tools'] == [] and payload['tool_choice'] == 'none'
+    assert 'untrusted conversation' in payload['instructions']
+    assert payload['instructions'] != BACKEND_INSTRUCTIONS
+    assert sender.call_args.kwargs['timeout'] == 10

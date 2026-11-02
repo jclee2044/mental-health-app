@@ -51,3 +51,7 @@
 .chat-storage-error { padding: 14px; border: 1px solid var(--danger-line); border-radius: 18px; color: var(--danger); background: var(--danger-soft); }
 @media (max-width: 650px) { .chat-heading { top: 83px; } .chat-heading .button { padding: 10px 14px; } .chat-bubble { max-width: 92%; } }
 @media (max-width: 420px) { .chat-window { padding: 16px; min-height: 220px; } .chat-window .empty-state { min-height: 188px; } .chat-composer { padding: 16px; } }
+
+.button.saved-chat { flex-direction: column; align-items: flex-start; text-align: left; gap: 3px; }
+.saved-chat strong { overflow-wrap: anywhere; }
+.saved-chat time { font-weight: 400; }

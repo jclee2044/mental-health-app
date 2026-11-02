@@ -14,3 +14,5 @@ export const saveChatTurn = (conversationId, turnId, body) => request(`/chat/con
 export const listConversations = options => request('/chat/conversations', options)
 export const getConversation = (id, options) => request(`/chat/conversations/${id}`, options)
 export const deleteConversation = id => request(`/chat/conversations/${id}`, { method: 'DELETE' })
+
+export const generateConversationTitle = (id, options) => request(`/chat/conversations/${id}/title`, { ...options, method: 'POST', timeoutMs: 15000 })

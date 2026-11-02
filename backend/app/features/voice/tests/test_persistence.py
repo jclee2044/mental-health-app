@@ -171,3 +171,59 @@ def test_voice_batch_rolls_back_on_later_row_failure(tmp_path):
         result = client.put(f'/api/chat/conversations/{uuid4()}/voice-turns/{uuid4()}', json=body)
         assert result.status_code == 503 and 'private SQL' not in result.text
         assert client.get('/api/chat/conversations').json() == {'conversations': []}
+
+
+def test_title_generation_is_separate_cached_bounded_and_preserves_saves(tmp_path, monkeypatch):
+    from unittest.mock import Mock
+    from app.features.voice.settings import VoiceSettings
+    from app.features.voice.provider import ProviderTimeout
+    cid = str(uuid4())
+    base = f'/api/chat/conversations/{cid}'
+    path = tmp_path / 'titles.sqlite3'
+    with TestClient(create_app(path)) as client:
+        sender = Mock(return_value='Finding a gentle breathing rhythm')
+        client.app.state.voice_provider.summarize_title = sender
+        client.app.state.voice_settings = VoiceSettings(api_key='fictional', backend_model='fictional')
+        assert client.put(f'{base}/turns/{uuid4()}', json=turn()).status_code == 201
+        assert client.get(base).json()['title'] is None
+        assert client.get('/api/chat/conversations').status_code == 200
+        sender.assert_not_called()
+        assert client.post(f'{base}/title?model=browser').status_code == 422
+        assert client.post(f'{base}/title', json={'instructions': 'override'}).status_code == 422
+        sender.side_effect = ProviderTimeout('private secret')
+        failed = client.post(f'{base}/title')
+        assert failed.status_code == 504 and 'private secret' not in failed.text
+        assert client.get(base).json()['message_count'] == 2
+        sender.side_effect = None
+        result = client.post(f'{base}/title')
+        assert result.json() == {'title': 'Finding a gentle breathing rhythm'}
+        assert result.headers['cache-control'] == 'no-store'
+        context = json.loads(sender.call_args.args[0])
+        assert context == [{'role': 'user', 'content': turn()['user']}, {'role': 'assistant', 'content': turn()['assistant']}]
+        sender.reset_mock()
+        assert client.post(f'{base}/title').status_code == 200
+        sender.assert_not_called()
+        assert client.get('/api/chat/conversations').json()['conversations'][0]['title'] == result.json()['title']
+    with TestClient(create_app(path)) as client:
+        assert client.get(base).json()['title'] == 'Finding a gentle breathing rhythm'
+        assert client.delete(base).status_code == 204
+        assert client.post(f'{base}/title').status_code == 404
+
+
+def test_title_migration_preserves_legacy_rows_and_unicode_bounds(tmp_path):
+    from app.features.voice.titles import title_context, validate_title
+    from app.features.voice.domain import InvalidProviderResponse
+    path = tmp_path / 'legacy.sqlite3'
+    with sqlite3.connect(path) as db:
+        db.execute('CREATE TABLE chat_conversations (id TEXT PRIMARY KEY, created_at TEXT NOT NULL, updated_at TEXT NOT NULL)')
+        db.execute("INSERT INTO chat_conversations VALUES ('old', 'date', 'date')")
+    database = Database(path)
+    store = ChatStorage(database); store.initialize(); store.initialize()
+    with database.connect() as db:
+        assert dict(db.execute('SELECT * FROM chat_conversations').fetchone()) == {'id': 'old', 'created_at': 'date', 'updated_at': 'date', 'title': None}
+    context = json.loads(title_context([{'role': 'user', 'content': '🙂' * 8000}] * 20))
+    assert len(context) <= 16
+    assert sum(len(m['content'].encode('utf-8')) for m in context) <= 6000
+    for bad in ['', 'x' * 81, 'Title\nInjected', None]:
+        with pytest.raises(InvalidProviderResponse):
+            validate_title(bad)

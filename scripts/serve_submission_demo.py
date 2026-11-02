@@ -26,6 +26,9 @@ def demo_app():
                     "four seconds in and six seconds out. Open Guided breathing "
                     "from Home when you choose. You can pause or end at any time.")
 
+        def summarize_title(self, context):
+            return "Mock: Exploring the breathing steps"
+
         def create_session(self, *args):
             raise ProviderUnavailable()  # Never send audio or SDP to a provider.
 
