@@ -35,7 +35,11 @@ def create_app(db_path=None, frontend_dist=None):
         except (sqlite3.Error, OSError):
             # Keep static navigation/Emergency usable; API operations report 503.
             pass
-        yield
+        try:
+            yield
+        finally:
+            if close := getattr(app.state, "close_reframing", None):
+                close()
 
     app = FastAPI(title="inspire API", lifespan=lifespan)
     app.add_middleware(NoStoreMiddleware)
@@ -45,6 +49,12 @@ def create_app(db_path=None, frontend_dist=None):
             store = feature.register(app, database)
             if store is not None:
                 stores.append(store)
+
+    if hasattr(app.state, "voice_provider"):
+        app.state.voice_provider.memory_summary_instructions = getattr(app.state, "memory_summary_instructions", "")
+
+    if configure := getattr(app.state, "configure_chat_context", None):
+        configure(app)
 
     @app.exception_handler(ValidationError)
     async def domain_error(_request, exc):

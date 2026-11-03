@@ -1,5 +1,6 @@
 """Keep the documented separation enforceable as the application grows."""
 import ast
+from importlib.util import resolve_name
 from pathlib import Path
 
 APP = Path(__file__).resolve().parents[1] / "app"
@@ -28,4 +29,9 @@ def test_features_do_not_import_sibling_features():
         if not directory.is_dir() or directory.name.startswith("_"):
             continue
         for path in directory.glob("*.py"):
+            package = f"app.features.{directory.name}"
+            for node in ast.walk(ast.parse(path.read_text())):
+                if isinstance(node, ast.ImportFrom):
+                    target = resolve_name("." * node.level + (node.module or ""), package) if node.level else node.module or ""
+                    assert not (target.startswith("app.features.") and target.split(".")[2] != directory.name), (path, target)
             assert not any("features." in name and f"features.{directory.name}" not in name for name in imports(path)), path

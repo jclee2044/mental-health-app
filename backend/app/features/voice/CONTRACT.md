@@ -276,3 +276,35 @@ instruction layers at startup only. Tools, store:false, model choices, history
 bounds, event allowlists and cleanup remain unchanged. See the separate
 [personal-memory contract](../personal_memory/CONTRACT.md) for all fields, timeouts,
 fallback, consent and evidence limits. The reframing corpus remains independent.
+
+
+## November 3 — optional typed technique references
+
+`POST /api/chat/messages` retains its strict request fields and can return an
+additional `reframing: {status, card_ids}` report. Disabled reports are omitted.
+Personal memory remains separately permissioned. Typed source values now enter
+separately labeled input data rather than the policy field; the shared coordinator
+checks disconnect before selection and before generation. Optional technique
+lookup has a two-second fallback; reply/storage Retry separation is unchanged.
+See `../reframing/CONTRACT.md`. No new voice lookup, events or tools are added.
+
+
+The user subsequently authorized optional `CHAT_REASONING_EFFORT=low` and three
+bounded fictional reply observations after two default-effort stop timeouts.
+Only typed `reply_text` adds `reasoning:{effort:"low"}` when this server setting is
+present. Other/unset values omit the field. No browser choice, model change,
+timeout increase, voice-delegation change or automatic retry. Titles and memory
+summaries retain their existing settings. See the reframing evidence for observed
+results and small-sample limits; model support is required when opting in.
+
+
+## November 3 — conversational reframing and voice library access
+
+The user explicitly approved voice library access, superseding no-voice-catalogue
+statements above. Startup can receive all 19 active operation definitions and
+avoid-boundaries with bibliography as separately labeled input data. Personal
+permissions remain unchanged. No voice embedding, per-turn lookup, new tool/event
+or microphone restart. Budget/corpus failure preserves history and reports unavailable.
+See `../reframing/CONTRACT.md`. Shared delivery now invites conversational perspectives
+and permits two supported angles on request. First-person replacement lines are
+for explicit wording requests. Refusal, stopping, no-question and fixed steps remain.

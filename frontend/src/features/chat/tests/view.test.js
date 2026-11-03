@@ -37,6 +37,8 @@ for (const status of ['permission', 'connecting', 'active', 'muted', 'closing', 
       const textarea = html.match(/<textarea[^>]*>[\s\S]*?<\/textarea>/)[0]
       assert.doesNotMatch(textarea, /disabled/); assert.match(textarea, /Keep this draft/)
       assert.match(html, /End chat/); assert.match(html, />Send/)
+      assert.match(html, /class="history-button"[^>]*aria-label="New chat"/)
+      assert.ok(html.indexOf('aria-label="View saved chats"') < html.indexOf('aria-label="New chat"'))
       assert.ok(html.indexOf('>End chat</button>') > html.indexOf('>Send'))
       assert.match(html, /role="region" aria-label="Chat window"/)
       const composer = html.match(/<form[\s\S]*?<\/form>/)[0]

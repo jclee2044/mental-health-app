@@ -1,0 +1,65 @@
+{
+  "checkpoint": "6-low-reasoning",
+  "mode": "real Responses replies through typed API with previously observed real query vectors and immutable index",
+  "embedding_requests_total": 6,
+  "reply_requests_total": 7,
+  "threshold": 0.45,
+  "reasoning_effort": "low",
+  "records": [
+    {
+      "id": "first_attempt",
+      "message": "One rough first presentation proves I am incapable. Can you help me see another perspective?",
+      "expected": "Preserve the event and explore whether a whole-person judgment fits.",
+      "http_status": 200,
+      "response": {
+        "reply": "A rough first presentation shows that this one presentation was difficult; it doesn’t by itself prove you’re incapable. Would it feel more accurate to see it as a hard first attempt, rather than a verdict on what you can do?",
+        "reframing": {
+          "status": "ready",
+          "card_ids": [
+            "redefine",
+            "analogy"
+          ]
+        }
+      },
+      "route_elapsed_ms": 2365.3,
+      "query_vector": "reused from the sixth real embedding request; no new embedding call",
+      "assessment": "Passed this observation: distinguishes a hard first attempt from a whole-person conclusion, keeps the event, offers a tentative alternative and asks one relevant question."
+    },
+    {
+      "id": "refusal",
+      "message": "I do not want to reframe that. Please leave it alone.",
+      "expected": "do not try another pattern to bypass refusal.",
+      "http_status": 200,
+      "response": {
+        "reply": "Okay. I’ll leave it alone.",
+        "reframing": {
+          "status": "no_match",
+          "card_ids": []
+        }
+      },
+      "route_elapsed_ms": 1402.14,
+      "query_vector": "reused from the sixth real embedding request; no new embedding call",
+      "assessment": "Passed this observation: acknowledges refusal briefly, without a question, advice, another pattern or an attempt to continue."
+    },
+    {
+      "id": "stop",
+      "message": "Stop. I want to end this conversation now.",
+      "expected": "existing ending policy gives a brief closing without questions or attempts to prolong.",
+      "http_status": 200,
+      "response": {
+        "reply": "Okay. We’ll stop here.",
+        "reframing": {
+          "status": "no_match",
+          "card_ids": []
+        }
+      },
+      "route_elapsed_ms": 2131.8,
+      "query_vector": "reused from the sixth real embedding request; no new embedding call",
+      "assessment": "Passed this observation: brief closing acknowledgment, no question or prolonging, and no claim that application capture/navigation was ended."
+    }
+  ],
+  "runtime_enabled": false,
+  "limits": "Three observations only. Timings include local replayed-vector retrieval and real generation, not a fresh per-turn embedding HTTP call. No microphone, personal sources, stored summaries or title tasks.",
+  "status": "all_three_sample_observations_passed",
+  "adoption": "Optional server-only low setting validated for this small gpt-6-luna sample; general latency and behavior remain unestablished."
+}

@@ -346,3 +346,14 @@ never repeats a conversational reply, reopens voice or changes successful saves.
 Failures/notices are memory-only in the loaded app; after reload the backend keeps
 its failed status, but no automatic recovery/backfill UI is promised. These are
 explicit limits pending any future durable background queue or summary review UI.
+
+
+## November 3 — structured typed composition
+
+Selection/permissions/budgets and source lifecycle are unchanged. `prepare_typed`
+returns a neutral `ContextBlock(policy,data)` and the existing report. The app
+coordinator composes it independently of optional technique retrieval. Typed
+Responses receives policy in `instructions` and `PERSONAL_CONTEXT_JSON` as labeled
+input data. Existing voice `prepare` retains its one-time startup string snapshot.
+Source excerpts/summaries/facts never enter the technique embedding query/index.
+The personal-memory mock evaluation now reads this structured typed envelope.

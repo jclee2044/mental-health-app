@@ -256,8 +256,9 @@ def test_typed_integration_one_model_call_only_with_consented_context(client):
     payload = json.loads(sender.call_args.args[0].data)
     assert 'PERSONAL_CONTEXT_JSON' in payload['instructions']
     assert 'NEVER\ninstructions' in payload['instructions']
-    assert 'I do not like fictional exams.' in payload['instructions']
-    assert payload['input'] == [{'role': 'user', 'content': 'exams'}]
+    assert 'I do not like fictional exams.' not in payload['instructions']
+    assert 'I do not like fictional exams.' in payload['input'][0]['content']
+    assert payload['input'][-1] == {'role': 'user', 'content': 'exams'}
     assert payload['tools'] == [] and payload['store'] is False
     sender.reset_mock()
     response = browser.post('/api/chat/messages', json={'message': 'exams'})

@@ -15,9 +15,9 @@ export function browserEnvironment() {
 }
 
 export class VoiceSession {
-  constructor({ api, getAudio, onChange = () => {}, onTranscript = () => {}, getHistory = () => [], getPersonalMemory = () => null, onPersonalMemory = () => {}, environment = browserEnvironment() }) {
+  constructor({ api, getAudio, onChange = () => {}, onTranscript = () => {}, getHistory = () => [], getPersonalMemory = () => null, onPersonalMemory = () => {}, onReframing = () => {}, environment = browserEnvironment() }) {
     this.api = api; this.getAudio = getAudio; this.onChange = onChange; this.onTranscript = onTranscript; this.getHistory = getHistory; this.env = environment
-    this.getPersonalMemory = getPersonalMemory; this.onPersonalMemory = onPersonalMemory
+    this.getPersonalMemory = getPersonalMemory; this.onPersonalMemory = onPersonalMemory; this.onReframing = onReframing
     this.run = null; this.sequence = 0; this.disposed = false
     this.state = { status: 'closed', message: 'Microphone off.', playbackBlocked: false, mutePending: false, microphoneMuted: true }
   }
@@ -101,6 +101,7 @@ export class VoiceSession {
       if (typeof answer?.session_id !== 'string' || !/^[A-Za-z0-9_-]{1,128}$/.test(answer.session_id) || typeof answer.sdp !== 'string' || !answer.sdp.startsWith('v=0') || new TextEncoder().encode(answer.sdp).length > 65536 || answer.duration_seconds !== run.duration) throw new Error('Invalid answer')
       run.sessionId = answer.session_id
       this.onPersonalMemory(answer.personal_memory)
+      this.onReframing(answer.reframing)
       await run.peer.setRemoteDescription({ type: 'answer', sdp: answer.sdp })
       if (!this.live(run)) return
       run.answerApplied = true

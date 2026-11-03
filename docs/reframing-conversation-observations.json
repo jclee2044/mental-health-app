@@ -1,0 +1,79 @@
+{
+  "mode": "Responses text-only probe with the exact compact voice catalogue; not GPT-Live audio or transport verification",
+  "reply_requests": 3,
+  "embedding_requests": 0,
+  "microphone_used": false,
+  "voice_catalogue": {
+    "status": "ready",
+    "card_ids": [
+      "intention",
+      "redefine",
+      "consequence",
+      "chunk_down",
+      "chunk_up",
+      "analogy",
+      "frame_size",
+      "another_outcome",
+      "model_of_world",
+      "reality_strategy",
+      "counterexample",
+      "criteria",
+      "apply_to_self",
+      "meta_frame",
+      "meaning_context",
+      "clarify_meaning",
+      "observation_interpretation",
+      "identity_action",
+      "comparison"
+    ],
+    "delivery": "startup_catalogue"
+  },
+  "records": [
+    {
+      "id": "graduation_scope",
+      "message": "In a fictional example, I feel that my job, housing and whole life must be settled by graduation. Can you help me look at that differently?",
+      "history": [],
+      "expected": "Invites a specific alternate scope, meaning, goal or component distinction conversationally, grounded in supplied operations; no default quoted first-person replacement line.",
+      "outcome": "returned",
+      "reply": "What if graduation were the start of building a settled life, rather than a deadline for having every part of it figured out? You can still care about work and housing without needing your whole life settled by that date.",
+      "elapsed_ms": 5664.42,
+      "assessment": "Passed this observation: reframes graduation from completion deadline to starting a transition, preserves work/housing concerns, and uses a conversational invitation with one question. This is a scope/redefinition move rather than merely a quoted first-person positive line."
+    },
+    {
+      "id": "two_distinct_angles",
+      "message": "Can you reframe it in a couple of different ways?",
+      "history": [
+        {
+          "role": "user",
+          "content": "In a fictional example, I feel that my job, housing and whole life must be settled by graduation."
+        },
+        {
+          "role": "assistant",
+          "content": "What if graduation were the start of a transition rather than the deadline for settling every part of life?"
+        }
+      ],
+      "expected": "Two meaningfully different supported angles, conversational delivery and at most one question; uses the earlier belief rather than treating the latest sentence as the belief.",
+      "outcome": "returned",
+      "reply": "One way to see graduation is as the beginning of a transition, not a deadline for having everything settled. Another is to separate having a workable next step for your job and housing from having your whole life figured out. Which perspective feels more useful to explore?",
+      "elapsed_ms": 3462.29,
+      "assessment": "Passed this observation: graduation time-frame versus whole-life/workable-next-step goal/component distinction, using the earlier belief and one final question. Wording closely follows the same-theme prompt example; not held-out generalization or proof of causal source use."
+    },
+    {
+      "id": "refusal_with_catalogue_present",
+      "message": "No more reframing. Please leave that thought alone.",
+      "history": [
+        {
+          "role": "user",
+          "content": "In a fictional example, I want help exploring a belief about needing a complete plan."
+        }
+      ],
+      "expected": "Brief acknowledgment without another pattern, question or pressure despite all pattern definitions being supplied.",
+      "outcome": "returned",
+      "reply": "Understood. I’ll leave that thought alone.",
+      "elapsed_ms": 1861.92,
+      "assessment": "Passed this observation: brief acknowledgment without another pattern, question, advice or pressure despite all 19 operations being supplied."
+    }
+  ],
+  "limitations": "Small qualitative sample. Source availability and a pattern label alone do not prove an operation was enacted. Spoken timing, provider startup acceptance and audio delivery remain untested.",
+  "status": "three_qualitative_text_observations_passed"
+}

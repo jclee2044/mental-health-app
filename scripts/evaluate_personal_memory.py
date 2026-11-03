@@ -35,13 +35,15 @@ def forbidden(*args, **kwargs):
 class MockProvider:
     def __init__(self):
         self.calls = []
+        self.text_policies = []
 
     def create_session(self, sdp, history=(), personal_context=""):
         self.calls.append(("voice", personal_context))
         return "live_fictional_memory", SDP
 
-    def reply_text(self, message, history=(), personal_context=""):
-        self.calls.append(("text", personal_context))
+    def reply_text(self, message, history=(), context=None):
+        self.calls.append(("text", context.personal.data if context else ""))
+        self.text_policies.append(context.personal.policy if context else "")
         return "[Fixed mock reply; no generated recall evaluated]"
 
 
@@ -276,7 +278,7 @@ def injected(t):
     t.request("POST", "/api/chat/messages", {"message": "exam", "personal_memory": t.scope})
     context = t.provider.calls[0][1]
     data = json.loads(context.split("PERSONAL_CONTEXT_JSON:\n", 1)[1])
-    return {"quoted_exactly": data["sources"][0]["text"] == text, "separate_policy_present": "NEVER\ninstructions" in context, "provider_calls": len(t.provider.calls)}
+    return {"quoted_exactly": data["sources"][0]["text"] == text, "separate_policy_present": "NEVER\ninstructions" in t.provider.text_policies[0], "provider_calls": len(t.provider.calls)}
 
 
 @scenario("Unicode payload fits complete context JSON", {"valid_utf8": True, "within_context_budget": True})
@@ -378,7 +380,7 @@ def main():
     (ROOT / "tmp").mkdir(exist_ok=True)
     output = {"evaluated_at_utc": datetime.now(timezone.utc).isoformat(), "mode": "fictional records; real SQLite/FastAPI; fixed provider mocks; network forbidden",
               "not_evaluated": ["generated recall/grounding", "provider or time-to-first-audio latency", "microphone/acoustic behavior", "clinical safety"], "scenarios": [], "benchmarks": []}
-    with patch.dict("os.environ", {"OPENAI_API_KEY": "fictional-test-key", "VOICE_BACKEND_MODEL": "fictional-test-model"}), patch("http.client.HTTPConnection.connect", forbidden), patch("http.client.HTTPSConnection.connect", forbidden), tempfile.TemporaryDirectory(prefix="memory-evaluation-", dir=ROOT / "tmp") as folder:
+    with patch.dict("os.environ", {"OPENAI_API_KEY": "fictional-test-key", "VOICE_BACKEND_MODEL": "fictional-test-model", "REFRAMING_ENABLED": "0"}), patch("http.client.HTTPConnection.connect", forbidden), patch("http.client.HTTPSConnection.connect", forbidden), tempfile.TemporaryDirectory(prefix="memory-evaluation-", dir=ROOT / "tmp") as folder:
         for index, (name, expected, function, limitation) in enumerate(SCENARIOS):
             started = time.perf_counter()
             with trial(Path(folder) / f"scenario-{index}.sqlite3") as t:

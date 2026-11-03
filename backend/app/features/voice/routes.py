@@ -1,5 +1,7 @@
 """Bounded JSON input and sanitized errors; no provider details reach the browser."""
 import re
+import asyncio
+from ...context_data import ContextBlock
 from threading import Lock
 from uuid import UUID
 from fastapi import APIRouter, HTTPException, Request
@@ -16,7 +18,7 @@ from .storage import ConversationConflict
 from .settings import VOICE_DURATION_SECONDS
 from .domain import validate_saved_voice
 from .titles import title_context, validate_title
-from ..personal_memory.context import prepare as prepare_personal_memory
+from ...conversation_context import RequestAbandoned
 
 router = APIRouter(prefix="/api/voice", tags=["voice"])
 text_router = APIRouter(prefix="/api/chat", tags=["chat"])
@@ -55,11 +57,18 @@ async def create_session(request: Request):
         return failure(422, "invalid_sdp", "Send a valid audio SDP offer.")
     if not request.app.state.voice_settings.configured:
         return failure(503, "voice_unconfigured", "Voice is not configured on the local server.")
-    personal_context, memory_report = await prepare_personal_memory(
-        request.app.state.personal_memory, body.personal_memory,
-        " ".join(item["content"] for item in history[-2:] if item["role"] == "user"))
+    prepare_memory = getattr(request.app.state, "prepare_personal_memory", None)
+    prepare_catalogue = getattr(request.app.state, "prepare_voice_catalogue", None)
+    async def personal():
+        return await prepare_memory(request.app.state.personal_memory, body.personal_memory,
+            " ".join(item["content"] for item in history[-2:] if item["role"] == "user")) if prepare_memory else ("", None)
+    async def techniques():
+        return await prepare_catalogue(sum(len(item["content"].encode('utf-8')) for item in history)) if prepare_catalogue else (ContextBlock(), None)
+    (personal_context, memory_report), (technique_context, technique_report) = await asyncio.gather(personal(), techniques())
+    if await request.is_disconnected():
+        return failure(409, "request_abandoned", "The request was abandoned.")
     try:
-        args = (sdp, history, personal_context) if personal_context else (sdp, history)
+        args = (sdp, history, personal_context, technique_context) if technique_context.data else ((sdp, history, personal_context) if personal_context else (sdp, history))
         session_id, answer = await run_in_threadpool(request.app.state.voice_provider.create_session, *args)
     except ProviderTimeout:
         return failure(504, "voice_provider_timeout", "Voice setup timed out. The session outcome is unknown; do not retry automatically.")
@@ -74,7 +83,7 @@ async def create_session(request: Request):
         except (ProviderUnavailable, InvalidProviderResponse):
             pass  # No confirmed finalization; never expose provider details.
         return failure(409, "voice_start_abandoned", "Voice setup was abandoned.")
-    return {"session_id": session_id, "sdp": answer, "duration_seconds": VOICE_DURATION_SECONDS, "personal_memory": memory_report}
+    return {"session_id": session_id, "sdp": answer, "duration_seconds": VOICE_DURATION_SECONDS, "personal_memory": memory_report, "reframing": technique_report}
 
 
 @router.post("/sessions/{session_id}/end")
@@ -116,18 +125,19 @@ async def send_text(request: Request):
         return failure(422, "validation_error", "Check the message and current text conversation.")
     if not request.app.state.voice_settings.configured:
         return failure(503, "chat_unconfigured", "Chat is not configured on the local server.")
-    personal_context, memory_report = await prepare_personal_memory(
-        request.app.state.personal_memory, body.personal_memory, message)
     try:
-        args = (message, history, personal_context) if personal_context else (message, history)
-        reply = await run_in_threadpool(request.app.state.voice_provider.reply_text, *args)
+        context = await request.app.state.conversation_context.prepare(message, body.personal_memory, request.is_disconnected)
+    except RequestAbandoned:
+        return failure(409, "request_abandoned", "The request was abandoned.")
+    try:
+        reply = await run_in_threadpool(request.app.state.voice_provider.reply_text, message, history, context)
     except ProviderTimeout:
         return failure(504, "chat_provider_timeout", "The reply timed out. It has not been retried.")
     except ProviderUnavailable:
         return failure(502, "chat_provider_unavailable", "The reply could not be completed. It has not been retried.")
     except InvalidProviderResponse:
         return failure(502, "chat_provider_invalid_response", "The reply was unavailable. It has not been retried.")
-    return {"reply": reply, "personal_memory": memory_report}
+    return {"reply": reply, "personal_memory": context.personal_report, "reframing": context.technique_report}
 
 
 @text_router.put("/conversations/{conversation_id}/turns/{turn_id}")

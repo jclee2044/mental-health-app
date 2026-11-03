@@ -2,6 +2,7 @@
 .chat-heading { display: flex; align-items: center; gap: 16px; padding: 8px 0; margin-bottom: 16px; }
 .chat-heading h1 { flex: 1; margin-bottom: 0; font-size: clamp(2rem, 5vw, 2.9rem); }
 .chat-heading .button { flex-shrink: 0; }
+.chat-heading-actions { display: flex; align-items: center; flex-shrink: 0; gap: 8px; }
 .chat-frame { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--paper); overflow: hidden; margin-top: 18px; }
 .chat-window { min-height: 260px; max-height: 48vh; overflow-y: auto; padding: 22px; overscroll-behavior: contain; }
 .chat-window .empty-state { min-height: 216px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 10px; }

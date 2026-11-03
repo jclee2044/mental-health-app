@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-03",
+  "local_config_enabled": true,
+  "code_default": "off",
+  "configured_index": "backend/data/reframing-2026-11-03.sqlite3",
+  "index_sha256": "e38aab9ac92b82606b1663c8bd741a09dc649b1b22c86ad3497eb30c35416d75",
+  "corpus_sha256": "352ffd9b5d04136d2cf2759cbc6b205c89db3236f859f39a578127e6eda2b8b0",
+  "spec": {
+    "provider": "openai",
+    "model": "text-embedding-3-small",
+    "dimensions": 1536
+  },
+  "minimum_score": 0.45,
+  "typed_reasoning_effort": "low",
+  "validated_documents": 76,
+  "external_requests_in_this_check": 0,
+  "backend_restart_required": true,
+  "note": "Existing processes were not stopped/restarted. Hosted matching occurs on future user-initiated typed turns after loading this configuration."
+}

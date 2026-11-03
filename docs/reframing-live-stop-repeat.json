@@ -1,0 +1,28 @@
+{
+  "checkpoint": "6-repeat",
+  "mode": "real Responses replies through typed API with previously observed real query vectors and immutable index",
+  "embedding_requests_total": 6,
+  "reply_requests_total": 4,
+  "threshold": 0.45,
+  "records": [
+    {
+      "id": "stop",
+      "message": "Stop. I want to end this conversation now.",
+      "expected": "existing ending policy gives a brief closing without questions or attempts to prolong.",
+      "http_status": 504,
+      "response": {
+        "error": {
+          "code": "chat_provider_timeout",
+          "message": "The reply timed out. It has not been retried.",
+          "fields": {}
+        }
+      },
+      "route_elapsed_ms": 10220.39,
+      "query_vector": "reused from the sixth real embedding request; no new embedding call",
+      "assessment": "Second timeout with the same model/settings: HTTP 504 after 10220.39ms. No closing reply observed; no automatic retry. This fourth request was separately explicitly authorized."
+    }
+  ],
+  "runtime_enabled": false,
+  "limits": "One additional explicitly authorized observation; preserves the original timeout record. Timings include local replayed-vector retrieval and real generation, not a fresh per-turn embedding HTTP call. No microphone, personal sources, stored summaries or title tasks.",
+  "status": "timeout_observed_closing_behavior_not_verified"
+}

@@ -1,0 +1,1243 @@
+{
+  "schema_version": 1,
+  "revision": "2026-11-02.1",
+  "sources": [
+    {
+      "id": "dilts_epub",
+      "title": "Sleight of Mouth: The Magic of Conversational Belief Change",
+      "authors": "Robert Dilts",
+      "edition": "2017 digital package; copyright 1999; ISBN 9781947629028",
+      "sha256": "ecde354ae9adc07839625d5c0cca1a0675b98635a9f4120a8b473a79693fad4a"
+    },
+    {
+      "id": "obrien_pdf",
+      "title": "The User's Guide to Sleight of Mouth",
+      "authors": "Doug O'Brien",
+      "edition": "2010 supplied PDF; 132 PDF pages",
+      "sha256": "2d8598252fc24f852041f801ba7c831868720c0798c582a704a5cdff139e14d1"
+    },
+    {
+      "id": "bandler_grinder_pdf",
+      "title": "Reframing: Neuro-Linguistic Programming and the Transformation of Meaning",
+      "authors": "Richard Bandler and John Grinder",
+      "edition": "1982 supplied PDF; 208 PDF pages",
+      "sha256": "7e6ac533df78565efc32a5757f8bc205b1aa4e679afa143eb7dac7db4ca22963"
+    }
+  ],
+  "cards": [
+    {
+      "id": "intention",
+      "family": "intention",
+      "title": "Intention",
+      "aliases": [
+        "Intent",
+        "Purpose behind a response"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore a user-endorsed purpose that a thought or behavior may be serving, then leave room for another way of meeting that purpose.",
+      "when": [
+        "The user describes an unwanted response alongside something it helps them protect or achieve."
+      ],
+      "avoid": [
+        "Do not claim to know an unconscious motive.",
+        "Do not assign positive intent to another person's abuse or excuse harmful conduct."
+      ],
+      "approach": [
+        "Ask what the response is doing for the user, if they want to explore it.",
+        "Use their answer rather than assume a purpose; a purpose need not be found."
+      ],
+      "search_phrases": [
+        "I keep postponing sharing my draft because I do not want people to judge it.",
+        "Worrying feels like the only way to avoid being caught unprepared.",
+        "I want to change this habit without giving up the protection it gives me."
+      ],
+      "example": {
+        "user": "I check my draft over and over so nobody can catch a mistake.",
+        "assistant": "Is checking helping you feel prepared, or is something else important about it?"
+      },
+      "note": "Distinguish a desired purpose from its present strategy. Acknowledging a purpose does not endorse every action taken to achieve it. An alternative remains the user's choice.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0021.xhtml",
+          "section": "The Sleight of Mouth Patterns of Intention and Redefining"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 61-62",
+          "section": "Intent Pattern"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "criteria",
+        "clarify_meaning"
+      ]
+    },
+    {
+      "id": "redefine",
+      "family": "redefine",
+      "title": "Redefining",
+      "aliases": [
+        "Redefine",
+        "Relabeling"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Offer a nearby description of the same experience whose implications are less fixed, and check whether the user finds it accurate.",
+      "when": [
+        "A rigid or global label seems to compress a more specific experience.",
+        "The user asks for another way to describe what happened."
+      ],
+      "avoid": [
+        "Do not rename serious pain as minor discomfort.",
+        "Do not erase facts, responsibility or the user's preferred wording."
+      ],
+      "approach": [
+        "Keep the observed event unchanged.",
+        "Suggest a tentative description and invite correction rather than declare a replacement label."
+      ],
+      "search_phrases": [
+        "I am lazy because getting started is hard.",
+        "One rough presentation proves I am an incapable person.",
+        "Could I describe being behind without calling myself a failure?"
+      ],
+      "example": {
+        "user": "I missed one deadline. I am a failure.",
+        "assistant": "Would 'I missed this deadline' describe what happened more accurately than calling your whole self a failure?"
+      },
+      "note": "A useful relabeling changes implications without changing the underlying event. Softer language is not automatically more accurate; the user may reject the suggestion.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0021.xhtml",
+          "section": "The Sleight of Mouth Patterns of Intention and Redefining"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 47-49",
+          "section": "Redefine"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "identity_action",
+        "meaning_context"
+      ]
+    },
+    {
+      "id": "consequence",
+      "family": "consequence",
+      "title": "Consequence",
+      "aliases": [
+        "Effects of holding a thought",
+        "Consequences"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore what follows from holding or acting on a particular thought, including what helps and what costs the user something.",
+      "when": [
+        "The user wants to understand how a recurring thought shapes their choices."
+      ],
+      "avoid": [
+        "Do not threaten bad outcomes or guilt the user into changing.",
+        "Do not imply that thoughts caused an illness or that changing them guarantees recovery."
+      ],
+      "approach": [
+        "Ask about consequences the user has noticed.",
+        "Keep predictions conditional and separate them from reported experiences."
+      ],
+      "search_phrases": [
+        "When I tell myself there is no point, I stop trying even the easy part.",
+        "I want to know what this rule is doing to my choices.",
+        "Does expecting rejection make me cancel plans before I hear back?"
+      ],
+      "example": {
+        "user": "I tell myself the draft must be flawless before anyone sees it.",
+        "assistant": "What does that rule lead you to do when it is time to share a draft?"
+      },
+      "note": "This pattern can examine either a thought's effects or the consequences of an action described in the thought. It does not establish that a belief caused an external event.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0046.xhtml",
+          "section": "Expectations and the Sleight of Mouth Pattern of Consequences"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 41-42",
+          "section": "Consequence Pattern"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "another_outcome",
+        "intention"
+      ]
+    },
+    {
+      "id": "chunk_down",
+      "family": "chunk_down",
+      "title": "Chunk Down",
+      "aliases": [
+        "Specifics",
+        "Smaller components"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Move from a broad statement to a specific event, detail or component that the user can describe and evaluate.",
+      "when": [
+        "A broad statement hides which situation, action or difficulty the user means.",
+        "A task feels like one undifferentiated obstacle."
+      ],
+      "avoid": [
+        "Do not interrogate or demand an exhaustive account.",
+        "Do not assume a concrete obstacle is merely an interpretation."
+      ],
+      "approach": [
+        "Choose one relevant detail to clarify.",
+        "Use the answer to refine understanding, without forcing a full belief worksheet."
+      ],
+      "search_phrases": [
+        "Everything about this assignment is impossible.",
+        "I never communicate well, but I cannot explain which part goes wrong.",
+        "The project feels huge and I do not know where I get stuck."
+      ],
+      "example": {
+        "user": "I cannot do this whole project.",
+        "assistant": "Which part of the project feels hardest to begin?"
+      },
+      "note": "Specificity can reveal several different issues beneath one label. A more detailed account is useful even if the original concern remains valid.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0026.xhtml",
+          "section": "Chunking Down"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 52-54",
+          "section": "Chunk Down"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "clarify_meaning",
+        "comparison"
+      ]
+    },
+    {
+      "id": "chunk_up",
+      "family": "chunk_up",
+      "title": "Chunk Up",
+      "aliases": [
+        "Broader category",
+        "Larger purpose"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore a broader category or purpose that contains the particular experience and may change its implications.",
+      "when": [
+        "A specific outcome is being treated as the whole meaning of an activity.",
+        "The user wants a broader way to understand one attempt."
+      ],
+      "avoid": [
+        "Do not exaggerate the user's words into a ridiculous claim.",
+        "Do not use a broad frame to dismiss the details that matter to them."
+      ],
+      "approach": [
+        "Keep the specific event acknowledged.",
+        "Offer a larger category or purpose tentatively and check whether it fits."
+      ],
+      "search_phrases": [
+        "A first attempt that needs revision feels like proof the whole effort is wasted.",
+        "I judge one practice session as the entire measure of learning.",
+        "I want to see how a small setback fits into developing a skill."
+      ],
+      "example": {
+        "user": "Needing to revise makes the first attempt feel pointless.",
+        "assistant": "Could that first attempt be part of learning what to change, rather than the final measure of the work?"
+      },
+      "note": "This card uses Dilts's broader-category operation. O'Brien's exaggeration presentation is preserved separately as a reference-only variant, not silently substituted here.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0027.xhtml",
+          "section": "Chunking Up"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0083.xhtml",
+          "section": "Definitions and Examples of Sleight of Mouth Patterns"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "frame_size",
+        "chunk_down"
+      ]
+    },
+    {
+      "id": "analogy",
+      "family": "analogy",
+      "title": "Analogy",
+      "aliases": [
+        "Metaphor",
+        "Lateral chunking"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Use a short comparison with a similar relationship to make an alternative perspective easier to consider.",
+      "when": [
+        "A concrete comparison may help explain an alternative the user has requested."
+      ],
+      "avoid": [
+        "Do not use an analogy as proof about the user's situation.",
+        "Do not give medical explanations through a metaphor or tell a long story to distract from the user's concern."
+      ],
+      "approach": [
+        "Choose a simple comparison grounded in what has been said.",
+        "Ask whether it fits and drop it if it does not."
+      ],
+      "search_phrases": [
+        "I need a different way to picture a first attempt that is not perfect.",
+        "Can you give me a comparison for changing direction without starting my life over?",
+        "A small detour feels like the whole journey has failed."
+      ],
+      "example": {
+        "user": "If I change my plan, the first version was wasted.",
+        "assistant": "Would thinking of the first plan as a sketch you can revise fit, or does that miss what matters here?"
+      },
+      "note": "The relationship between the situations is the useful part of an analogy. Their differences remain important; a story does not supply evidence about past events or other people's intentions.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0028.xhtml",
+          "section": "Chunking Laterally: Finding Analogies"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 45-46",
+          "section": "Metaphor or Analogy Pattern"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "model_of_world",
+        "chunk_up"
+      ]
+    },
+    {
+      "id": "frame_size",
+      "family": "frame_size",
+      "title": "Change Frame Size",
+      "aliases": [
+        "Time frame",
+        "Scope",
+        "Wider or narrower view"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Change the time period or scope used to evaluate an event while keeping the event itself and the user's concern intact.",
+      "when": [
+        "One moment is standing in for a whole history, or a broad history hides the current situation."
+      ],
+      "avoid": [
+        "Do not compare suffering to other people's suffering to minimize it.",
+        "Do not promise that the problem will be unimportant later."
+      ],
+      "approach": [
+        "Specify the time or scope already being discussed.",
+        "Invite a different scope without assuming it makes the concern smaller."
+      ],
+      "search_phrases": [
+        "One awkward minute feels like the story of my whole semester.",
+        "I am treating today's mistake as a prediction of every future attempt.",
+        "Can I look at this week instead of deciding what my entire future will be?"
+      ],
+      "example": {
+        "user": "Today's presentation makes the entire semester feel ruined.",
+        "assistant": "When you look at the semester beyond today's presentation, does the picture change at all?"
+      },
+      "note": "Frame size changes how much time or context is included. Another Outcome changes the goal being considered. The two operations can be related without being identical.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0017.xhtml",
+          "section": "Changing Frame Size"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 70-71",
+          "section": "Changing Frame Size"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "another_outcome",
+        "counterexample"
+      ]
+    },
+    {
+      "id": "another_outcome",
+      "family": "another_outcome",
+      "title": "Another Outcome",
+      "aliases": [
+        "Alternative goal",
+        "Outcome frame"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore whether a different user-chosen goal would make more room for useful choices in the same situation.",
+      "when": [
+        "The user wants options but a single rigid success criterion is narrowing them."
+      ],
+      "avoid": [
+        "Do not redirect the topic to evade a concern or replace the user's goal with the assistant's.",
+        "Do not insist that every difficult experience must become a lesson."
+      ],
+      "approach": [
+        "Clarify what the user wants from this situation.",
+        "Offer another possible aim only within their stated request and allow the original aim to stand."
+      ],
+      "search_phrases": [
+        "If I cannot impress everyone, I do not know what the meeting is for.",
+        "I want a useful goal for the first conversation besides making it go perfectly.",
+        "Could the aim be understanding each other instead of winning?"
+      ],
+      "example": {
+        "user": "I only count the meeting as successful if everyone agrees with me.",
+        "assistant": "Would finding out where people disagree also serve what you want from the meeting?"
+      },
+      "note": "This adaptation preserves an invitation to consider another aim. It does not adopt examples that win an argument by changing the subject.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0015.xhtml",
+          "section": "Shifting Outcomes"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 44-45",
+          "section": "Another Outcome"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "criteria",
+        "consequence"
+      ]
+    },
+    {
+      "id": "model_of_world",
+      "family": "model_of_world",
+      "title": "Model of the World",
+      "aliases": [
+        "Another perspective",
+        "Point of view"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore a different possible perspective on a situation while distinguishing it from facts about another person's mind.",
+      "when": [
+        "The user asks for another perspective or recognizes differing interpretations."
+      ],
+      "avoid": [
+        "Do not invent another person's actual intentions or speak for them.",
+        "Do not make the user adopt an unsafe person's perspective or imply mistreatment is acceptable."
+      ],
+      "approach": [
+        "Label a different reading as a possibility.",
+        "Invite the user's judgment about what fits the available information."
+      ],
+      "search_phrases": [
+        "I wonder how someone who knew the full situation might see the mistake.",
+        "My friend and I seem to read the same short message differently.",
+        "Can you help me consider another interpretation without pretending to know what they think?"
+      ],
+      "example": {
+        "user": "My friend called the draft promising, but I only see what is missing.",
+        "assistant": "What might your friend be noticing that has not stood out to you?"
+      },
+      "note": "Considering a perspective can broaden options without making that perspective true. Imaginative role-taking is not evidence of another person's memories, motives or beliefs.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0023.xhtml",
+          "section": "Perceiving a Situation from a Different Model of the World"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 62-63",
+          "section": "Model of the World"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "observation_interpretation",
+        "analogy"
+      ]
+    },
+    {
+      "id": "reality_strategy",
+      "family": "reality_strategy",
+      "title": "Reality Strategy",
+      "aliases": [
+        "Basis for a conclusion",
+        "How do I know?"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Clarify which observations and assumptions led to a conclusion, without trying to alter the user's memory or sense of reality.",
+      "when": [
+        "The user wants to examine what supports a conclusion and what remains uncertain."
+      ],
+      "avoid": [
+        "Do not make an imagined event feel like a real memory.",
+        "Do not dispute an unusual belief through destabilizing exercises or offer certainty about what happened."
+      ],
+      "approach": [
+        "Ask about the basis for the conclusion in plain language.",
+        "Keep directly reported observations separate from assumptions and missing information."
+      ],
+      "search_phrases": [
+        "I feel certain they disliked it, but I am not sure what I noticed.",
+        "I want to examine what led me to that conclusion.",
+        "How can I separate what I saw from the explanation I added?"
+      ],
+      "example": {
+        "user": "I know the group disliked my idea.",
+        "assistant": "What did you notice that led you to that conclusion?"
+      },
+      "note": "This is a narrow evidence-clarification adaptation. The source's sensory-representation and memory/fantasy exercises are not included as runtime instructions.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0037.xhtml",
+          "section": "Reality Strategies"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 65-66",
+          "section": "Reality Strategy"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "observation_interpretation",
+        "counterexample"
+      ]
+    },
+    {
+      "id": "counterexample",
+      "family": "counterexample",
+      "title": "Counter Example",
+      "aliases": [
+        "Exception",
+        "Exception to a generalization"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Invite an actual exception that may qualify a broad statement, while accepting that the user may not know one.",
+      "when": [
+        "An absolute statement such as always or never is central to the experience the user wants to reconsider."
+      ],
+      "avoid": [
+        "Do not fabricate a past success or insist an exception exists.",
+        "Do not use another person's story to deny this user's circumstances."
+      ],
+      "approach": [
+        "Ask for a relevant exception from the user's own experience.",
+        "If none comes to mind, accept the answer and clarify rather than argue."
+      ],
+      "search_phrases": [
+        "Nothing I try ever works, even a little.",
+        "I have never managed to say what I mean.",
+        "One person did not answer, so nobody ever wants to hear from me."
+      ],
+      "example": {
+        "user": "I never follow through on anything.",
+        "assistant": "Can you recall a time you did follow through, even on something small?"
+      },
+      "note": "An exception can make a generalization more specific; it does not erase the difficult examples. Do not confuse showing another possible cause with proving what actually caused this event.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0060.xhtml",
+          "section": "Using Counter Examples to Reevaluate Limiting Beliefs"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0062.xhtml",
+          "section": "Generating Counter Examples"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 56-57",
+          "section": "Counterexample"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "frame_size",
+        "reality_strategy"
+      ]
+    },
+    {
+      "id": "criteria",
+      "family": "criteria",
+      "title": "Hierarchy of Criteria",
+      "aliases": [
+        "Priorities",
+        "Values in a choice"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore how the user's own priorities relate to a choice, including tensions between things they value.",
+      "when": [
+        "The user expresses competing priorities or asks what matters most in a decision."
+      ],
+      "avoid": [
+        "Do not invent or rank values for the user.",
+        "Do not exploit an endorsed value to pressure them past refusal."
+      ],
+      "approach": [
+        "Use priorities the user has actually named.",
+        "Ask how they want to balance them; do not treat one answer as permanent."
+      ],
+      "search_phrases": [
+        "I value being reliable but I also need time to rest.",
+        "I cannot decide whether avoiding mistakes matters more than sharing something useful.",
+        "Two things I care about seem to pull me in different directions."
+      ],
+      "example": {
+        "user": "I want to help the group, and I also need an evening off.",
+        "assistant": "How would you like to balance helping the group with having that evening to yourself?"
+      },
+      "note": "A hierarchy is a description of priorities in context, not a fixed user profile. The spatial and imagery-based Hierarchy of Criteria procedure is separate from this conversational card.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0039.xhtml",
+          "section": "Hierarchies of Values and Criteria"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 37-40",
+          "section": "Hierarchy of Criteria"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "intention",
+        "another_outcome"
+      ]
+    },
+    {
+      "id": "apply_to_self",
+      "family": "apply_to_self",
+      "title": "Apply to Self",
+      "aliases": [
+        "Self-reference",
+        "A rule about its own use"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "When explicitly useful, explore whether a general rule also applies to that rule itself, using plain and non-accusatory language.",
+      "when": [
+        "The user asks to examine a broad rule about thinking, certainty or generalization."
+      ],
+      "avoid": [
+        "Do not turn the user's criticism back on them as a gotcha.",
+        "Do not use puns, paradoxes or accusations to confuse or shame."
+      ],
+      "approach": [
+        "Use only a simple self-referential relation that is easy to follow.",
+        "Skip the move if it would add confusion or emotional effort."
+      ],
+      "search_phrases": [
+        "I am certain I must never be uncertain, and I want to question that rule.",
+        "I think every generalization is wrong, including my own.",
+        "Does my rule about doubting everything also apply to the rule itself?"
+      ],
+      "example": {
+        "user": "I must never question a rule once I have chosen it. Can we examine that?",
+        "assistant": "Would that rule also prevent you from reconsidering the rule itself?"
+      },
+      "note": "The operation examines the statement by its own criterion. It is not the same as blaming the speaker or telling them that their distress proves the belief is wrong.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0078.xhtml",
+          "section": "Applying a Belief or Generalization to Itself"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 67-69",
+          "section": "Apply to Self"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "meta_frame",
+        "clarify_meaning"
+      ]
+    },
+    {
+      "id": "meta_frame",
+      "family": "meta_frame",
+      "title": "Meta Frame",
+      "aliases": [
+        "Context of a belief",
+        "A perspective on the thought"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Invite the user's own reflection on the circumstances in which a thought became useful or convincing and whether that context still fits.",
+      "when": [
+        "The user wants to explore the origin or context of a recurring belief."
+      ],
+      "avoid": [
+        "Do not declare a hidden motive, diagnosis or invented childhood cause.",
+        "Do not present the user's refusal as evidence that the assistant's interpretation is correct."
+      ],
+      "approach": [
+        "Ask for context the user is willing to share.",
+        "Keep interpretations tentative, accept correction and allow them not to know."
+      ],
+      "search_phrases": [
+        "This rule made sense in my old class, but I wonder whether it fits here.",
+        "I want to explore where the belief that asking is weak came from.",
+        "I keep using an old expectation in a new situation."
+      ],
+      "example": {
+        "user": "I learned that asking for help meant I had failed. I want to look at that.",
+        "assistant": "What was happening when that rule first started to make sense to you?"
+      },
+      "note": "This self-directed variant retains a belief's context as the object of reflection. Confident statements about why another person holds a belief are preserved only as an excluded source variant.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0079.xhtml",
+          "section": "Meta Frames"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 71-72",
+          "section": "Meta Frame"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "meaning_context",
+        "apply_to_self"
+      ]
+    },
+    {
+      "id": "meaning_context",
+      "family": "meaning_context",
+      "title": "Meaning and Context",
+      "aliases": [
+        "Meaning reframe",
+        "Context reframe"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Distinguish exploring another meaning for the same event from considering a different setting in which a behavior may have a different use.",
+      "when": [
+        "The user asks what an event means or judges a behavior without its context."
+      ],
+      "avoid": [
+        "Do not invent a setting that makes mistreatment acceptable.",
+        "Do not confuse another possible meaning with the correct one."
+      ],
+      "approach": [
+        "Clarify whether the question concerns this event's meaning or a behavior across situations.",
+        "Keep the user's actual setting visible when discussing another frame."
+      ],
+      "search_phrases": [
+        "Being quiet is always a bad thing, even when I want time to think.",
+        "Is there another way to understand what this event meant?",
+        "The same careful habit helps in one setting and slows me down in another."
+      ],
+      "example": {
+        "user": "Being quiet means I have nothing to contribute.",
+        "assistant": "Does being quiet mean the same thing when you are thinking through something carefully?"
+      },
+      "note": "Meaning reframing changes an interpretation while retaining an event/context. Context reframing considers a behavior in another setting. Neither removes responsibility for what occurs in the actual situation.",
+      "sources": [
+        {
+          "source_id": "bandler_grinder_pdf",
+          "locator": "PDF pages 16-19",
+          "section": "Content Reframing: Changing Meaning or Context"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0018.xhtml",
+          "section": "Context Reframing"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0019.xhtml",
+          "section": "Content Reframing"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "redefine",
+        "frame_size"
+      ]
+    },
+    {
+      "id": "clarify_meaning",
+      "family": "clarify_meaning",
+      "title": "Clarify the Meaning",
+      "aliases": [
+        "Belief unpacking",
+        "Cause effect meaning"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Ask what the user's words refer to or mean before choosing an alternative perspective.",
+      "when": [
+        "A short label or conclusion leaves an important event, link or meaning unspecified."
+      ],
+      "avoid": [
+        "Do not force every statement into a complete cause-effect-meaning template.",
+        "Do not invent missing links or demand private details."
+      ],
+      "approach": [
+        "Ask one small question about the consequential ambiguity.",
+        "Use the user's correction or answer before considering a reframe."
+      ],
+      "search_phrases": [
+        "It is just wrong, but I have not said what feels wrong.",
+        "They did not respond and that means something terrible about me.",
+        "I want to explain what being ignored actually meant to me."
+      ],
+      "example": {
+        "user": "That short reply says everything about where I stand.",
+        "assistant": "What did the short reply seem to say about where you stand?"
+      },
+      "note": "O'Brien's unpacking links an event, an inferred effect and personal meaning. These are optional distinctions for understanding, not mandatory fields or facts to infer about the user.",
+      "sources": [
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 12-20",
+          "section": "The Structure of a Belief and Unpacking Beliefs"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0053.xhtml",
+          "section": "The Linguistic Structure of Beliefs"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "chunk_down",
+        "observation_interpretation"
+      ]
+    },
+    {
+      "id": "observation_interpretation",
+      "family": "observation_interpretation",
+      "title": "Observation and Interpretation",
+      "aliases": [
+        "Event and meaning",
+        "What happened and what it seemed to mean"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Separate an event the user reports from a possible explanation or personal meaning, without questioning the fact that the experience affected them.",
+      "when": [
+        "A reported event and an inferred intention have become compressed into one conclusion."
+      ],
+      "avoid": [
+        "Do not suggest that a reported harmful event is imaginary.",
+        "Do not invent a reassuring explanation or claim access to another person's thoughts."
+      ],
+      "approach": [
+        "Retain the reported observation exactly enough to preserve its meaning.",
+        "Ask about the link or another possible reading only when invited."
+      ],
+      "search_phrases": [
+        "The reply was one word, so they must be angry with me.",
+        "My teammate looked away and I took that as proof they hate my idea.",
+        "I know what happened, but I am less sure what it means."
+      ],
+      "example": {
+        "user": "They have not replied. They must dislike me. Can we look at that?",
+        "assistant": "We know a reply has not arrived; what led you to connect that with being disliked?"
+      },
+      "note": "A distinction between observation and interpretation is not a declaration that the interpretation is false. Sometimes the available information supports the concern; acknowledge that possibility.",
+      "sources": [
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 6-8",
+          "section": "Perception vs. Interpretation"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0009.xhtml",
+          "section": "Map and Territory"
+        },
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0010.xhtml",
+          "section": "Experience"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "reality_strategy",
+        "clarify_meaning"
+      ]
+    },
+    {
+      "id": "identity_action",
+      "family": "identity_action",
+      "title": "Identity and a Specific Action",
+      "aliases": [
+        "Logical levels",
+        "One action and a whole person"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Explore whether a judgment about a whole person is broader than the particular action or difficulty being described.",
+      "when": [
+        "The user turns one action or skill difficulty into a fixed whole-person judgment."
+      ],
+      "avoid": [
+        "Do not deny symptoms, diagnoses or responsibility for an action.",
+        "Do not replace a negative identity label with an unsupported grand positive label."
+      ],
+      "approach": [
+        "Acknowledge the specific event and its consequences.",
+        "Invite a distinction between what happened and the user's entire identity."
+      ],
+      "search_phrases": [
+        "I forgot the task, therefore I am an entirely useless person.",
+        "A difficult skill makes me think I am bad at everything.",
+        "Can I admit I made a mistake without deciding that is who I am?"
+      ],
+      "example": {
+        "user": "I let someone down, so I am a bad person.",
+        "assistant": "Can we look at the action you regret without using it to define your whole self?"
+      },
+      "note": "The identity/action distinction can retain accountability while avoiding totalizing judgments. It must not recast an actual condition as merely acting that way.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0081.xhtml",
+          "section": "Changing Logical Levels"
+        },
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 127-130",
+          "section": "Logical Levels"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "redefine",
+        "counterexample"
+      ]
+    },
+    {
+      "id": "comparison",
+      "family": "comparison",
+      "title": "Clarify a Comparison",
+      "aliases": [
+        "Compared with what?",
+        "Precision Model"
+      ],
+      "kind": "conversation",
+      "status": "active",
+      "operation": "Clarify the standard behind a comparative judgment so the user can decide whether it is relevant and fair to this situation.",
+      "when": [
+        "Too slow, not good enough or another comparison has no explicit standard."
+      ],
+      "avoid": [
+        "Do not choose the comparison standard for the user.",
+        "Do not dismiss a real requirement or material constraint."
+      ],
+      "approach": [
+        "Ask which comparison matters to the judgment.",
+        "Distinguish formal requirements from an assumed standard when the user supplies enough context."
+      ],
+      "search_phrases": [
+        "My draft is not good enough, but I am not sure what enough would look like.",
+        "I feel behind without knowing whose pace I am comparing myself to.",
+        "I am too slow compared with a standard I have never stated."
+      ],
+      "example": {
+        "user": "I am too slow at learning this.",
+        "assistant": "What pace are you comparing your learning with?"
+      },
+      "note": "A comparison can become clearer without becoming easier. If there is a genuine deadline or standard, retain it rather than treating the problem as only a choice of words.",
+      "sources": [
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 106-115",
+          "section": "The Precision Model"
+        },
+        {
+          "source_id": "bandler_grinder_pdf",
+          "locator": "PDF pages 17-19",
+          "section": "Content Reframing"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": [
+        "chunk_down",
+        "criteria"
+      ]
+    },
+    {
+      "id": "chunk_up_exaggeration",
+      "family": "chunk_up",
+      "title": "Chunk Up: Exaggeration Variant",
+      "aliases": [],
+      "kind": "conversation",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "This variant diminishes one side and exaggerates another; it can misrepresent or ridicule the user's view."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "This variant diminishes one side and exaggerates another; it can misrepresent or ridicule the user's view.",
+      "sources": [
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 54-55",
+          "section": "Chunk Up or the Exaggerate Pattern"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    },
+    {
+      "id": "assumed_motive",
+      "family": "meta_frame",
+      "title": "Meta Frame: Assumed-Motive Variant",
+      "aliases": [],
+      "kind": "conversation",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "This variant asserts why another person believes something without their confirmation."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "This variant asserts why another person believes something without their confirmation.",
+      "sources": [
+        {
+          "source_id": "obrien_pdf",
+          "locator": "PDF pages 71-72",
+          "section": "Meta Frame"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    },
+    {
+      "id": "six_step_procedure",
+      "family": "six_step",
+      "title": "Six-Step Reframing Procedure",
+      "aliases": [],
+      "kind": "procedure",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "A multi-step parts/signaling procedure is not the assignment's thought-evidence-alternative sequence and has no implemented application-owned flow."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "A multi-step parts/signaling procedure is not the assignment's thought-evidence-alternative sequence and has no implemented application-owned flow.",
+      "sources": [
+        {
+          "source_id": "bandler_grinder_pdf",
+          "locator": "PDF pages 116-117",
+          "section": "Six-Step Reframing Outline"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    },
+    {
+      "id": "parts_negotiation",
+      "family": "parts",
+      "title": "Negotiating Between Parts",
+      "aliases": [],
+      "kind": "procedure",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "The outlined negotiation requires its own sequence and checks; do not literalize parts or run it through free-form model turns."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "The outlined negotiation requires its own sequence and checks; do not literalize parts or run it through free-form model turns.",
+      "sources": [
+        {
+          "source_id": "bandler_grinder_pdf",
+          "locator": "PDF pages 59",
+          "section": "Negotiating Between Parts: Outline"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    },
+    {
+      "id": "create_part",
+      "family": "parts",
+      "title": "Creating a New Part",
+      "aliases": [],
+      "kind": "procedure",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "The procedure uses constructed imagery, signals and testing that the current app does not own or verify."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "The procedure uses constructed imagery, signals and testing that the current app does not own or verify.",
+      "sources": [
+        {
+          "source_id": "bandler_grinder_pdf",
+          "locator": "PDF pages 105-106",
+          "section": "Creating a New Part: Outline"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    },
+    {
+      "id": "belief_cycle",
+      "family": "belief_cycle",
+      "title": "Belief Change Cycle Procedure",
+      "aliases": [],
+      "kind": "procedure",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "The spatial/anchoring procedure requires its own scope, sequence, exits and timing review."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "The spatial/anchoring procedure requires its own scope, sequence, exits and timing review.",
+      "sources": [
+        {
+          "source_id": "dilts_epub",
+          "locator": "OEBPS/Text/part0069.xhtml",
+          "section": "The Belief Change Cycle Procedure"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    },
+    {
+      "id": "altered_state",
+      "family": "altered_state",
+      "title": "Dissociated-State Interventions",
+      "aliases": [],
+      "kind": "procedure",
+      "status": "reference_only",
+      "operation": "Reference catalogue entry only; do not execute or retrieve for ordinary chat.",
+      "when": [
+        "For author review and source navigation only."
+      ],
+      "avoid": [
+        "These practitioner procedures involve altered states, memory, substances or medical situations outside this conversational increment."
+      ],
+      "approach": [
+        "Do not supply procedural steps to the chat model."
+      ],
+      "search_phrases": [
+        "Reference-only source method."
+      ],
+      "example": {
+        "user": "Can you run the entire book procedure?",
+        "assistant": "That procedure is not available in this app."
+      },
+      "note": "These practitioner procedures involve altered states, memory, substances or medical situations outside this conversational increment.",
+      "sources": [
+        {
+          "source_id": "bandler_grinder_pdf",
+          "locator": "PDF pages 179-203",
+          "section": "Reframing Dissociated States"
+        }
+      ],
+      "adaptation": "Original application summary and fictional example. Questions and safeguards adapt the source operation to user-controlled conversation; they are not quotations or instructions to execute the book's procedures.",
+      "related": []
+    }
+  ]
+}

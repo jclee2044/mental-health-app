@@ -1,5 +1,6 @@
 """Framework-free bounds and structural checks, not a full SDP negotiation parser."""
 import re
+from ...provider_errors import InvalidProviderResponse
 
 MAX_SDP_BYTES = 64 * 1024
 MAX_BODY_BYTES = 96 * 1024
@@ -40,9 +41,6 @@ class InvalidSdp(ValueError):
 class OversizedSdp(InvalidSdp):
     pass
 
-
-class InvalidProviderResponse(ValueError):
-    pass
 
 
 def validate_sdp(sdp):

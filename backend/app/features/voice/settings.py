@@ -21,6 +21,7 @@ SERVER_EVENTS = (
 class VoiceSettings:
     api_key: str = field(default="", repr=False)
     backend_model: str = field(default="", repr=False)
+    typed_reasoning_effort: str = field(default="", repr=False)
 
     @classmethod
     def from_environment(cls):
@@ -31,22 +32,25 @@ class VoiceSettings:
         backend_model = os.environ.get("VOICE_BACKEND_MODEL", "").strip()
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,127}", backend_model):
             backend_model = ""
-        return cls(api_key=key, backend_model=backend_model)
+        return cls(api_key=key, backend_model=backend_model,
+                   typed_reasoning_effort="low" if os.environ.get("CHAT_REASONING_EFFORT", "").strip() == "low" else "")
 
     @property
     def configured(self):
         return bool(self.api_key and self.backend_model)
 
 
-def session_payload(sdp, backend_model, history=(), personal_context=""):
+def session_payload(sdp, backend_model, history=(), personal_context="", technique_context=None):
     """Construct fresh policy containers; no browser configuration is merged."""
+    technique_policy = "\n" + technique_context.policy if technique_context and technique_context.data else ""
+    references = [{"type": "message", "role": "user", "content": [{"type": "input_text", "text": technique_context.data}]}] if technique_policy else []
     return {
         "session": {
             "model": MODEL,
-            "instructions": LIVE_INSTRUCTIONS + personal_context,
+            "instructions": LIVE_INSTRUCTIONS + personal_context + technique_policy,
             "audio": {"output": {"voice": "marin"}},
             "store": False,
-            "input": [{
+            "input": references + [{
                 "type": "message", "role": item["role"],
                 "content": [{"type": "input_text" if item["role"] == "user" else "output_text", "text": item["content"]}],
             } for item in history],  # Only bounded, explicitly supplied current-chat text.
@@ -54,7 +58,7 @@ def session_payload(sdp, backend_model, history=(), personal_context=""):
                 "type": "responses",
                 "responses": {
                     "model": backend_model,
-                    "instructions": BACKEND_INSTRUCTIONS + personal_context,
+                    "instructions": BACKEND_INSTRUCTIONS + personal_context + technique_policy,
                     "tools": [],
                     "tool_choice": "none",
                 },

@@ -1,36 +1,14 @@
 """Application-only consent/scope; never browser model configuration."""
-from datetime import date, datetime, timezone
 from typing import Literal
 from uuid import UUID
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
-
-
-class StrictBody(BaseModel):
-    model_config = ConfigDict(extra="forbid", strict=True)
+from pydantic import StrictBool, StrictStr, field_validator
+from ...context_contracts import MemoryScope, StrictBody
 
 
 class Preferences(StrictBody):
     emotions: StrictBool
     conversations: StrictBool
     facts: StrictBool
-
-
-class MemoryScope(StrictBody):
-    local_date: StrictStr
-    conversation_id: StrictStr
-
-    @field_validator("local_date")
-    @classmethod
-    def valid_date(cls, value):
-        day = date.fromisoformat(value)
-        if day.isoformat() != value or abs((day - datetime.now(timezone.utc).date()).days) > 1:
-            raise ValueError("Use today's local calendar date.")
-        return value
-
-    @field_validator("conversation_id")
-    @classmethod
-    def valid_id(cls, value):
-        return str(UUID(value))
 
 
 class PreviewBody(MemoryScope):

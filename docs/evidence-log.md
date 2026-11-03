@@ -1781,6 +1781,43 @@ git diff --check. Existing bundle-size warning remains. Tests/checkpoints were
 not rerun for this presentation-only change. No dependencies, live calls,
 microphone use, staging or commits.
 
+
+### November 2, 2026 — reframing source review before implementation
+
+User requested a complete content review before deciding implementation, supplied
+three PDFs, and subsequently supplied a Dilts EPUB. User selected cards plus
+vector search from the start; another chat may design a separate user-context
+knowledge base. No implementation authorization is inferred from this review.
+
+Reviewed chapter/section structure throughout the books, pattern definitions,
+procedure outlines and selected examples/dialogues. Representative PDF pages
+were rendered/inspected. Dilts PDF has no text layer; local Swift/Vision OCR
+failed at page 1. EPUB metadata/text inspection provided the usable alternative.
+The EPUB contains only a cover image, so it omits the book's explanatory figures.
+O'Brien's map text on pages 79-82 is image-based; page 79 was inspected visually.
+The review distinguishes chapter coverage from exhaustive paragraph/figure QA.
+
+Result: docs/reframing-content-review.md recommends fourteen canonical families
+with source-specific variants and supporting cards, vector search of approved
+variants, linked approved context and a private source archive. O'Brien's
+exaggeration version of Chunk Up differs from Dilts's broader-category version.
+Extended procedures in Bandler/Grinder and Dilts are not interchangeable with
+ordinary conversational moves or the assignment's fixed guided sequence.
+Source boundaries and per-variant eligibility affect retrieval before ranking.
+SQLite-stored vectors with framework-free exact scoring are proposed initially;
+provider/dimension/transmission and dynamic voice integration remain decisions.
+
+Commands/tools: cat/rg/git status and diff; Python/pypdf PDF extraction and SHA-256;
+Python zipfile/XML EPUB metadata/spine/text; pdfinfo/pdftoppm and view_image;
+Swift/PDFKit/Vision (failed attempt); official OpenAI embedding documentation;
+apply_patch for the review; Python append for evidence/disclosure. A ps check was
+blocked by the sandbox; the task's exec session returned its failed completion,
+so no unrelated process was stopped. Verification: 29 referenced EPUB locations
+exist, all fourteen family rows are present, extracted text is ignored, and
+git diff --check passes. No code tests rerun for documentation-only work. No
+dependencies, provider calls, microphone, runtime ingestion/index or app changes,
+staging or commits. Review does not establish actual retrieval/reply quality.
+
 ## November 2, 2026 — opt-in SQLite personal memory
 
 Request: implement the approved non-vector user knowledge base, with a small Voice
@@ -1851,6 +1888,37 @@ own reframing.sqlite3 path and no chat/prompt wiring. Read that registration and
 service boundary without editing either; this personal-memory path does not call
 it or its embedder. Reran the full backend/frontend suites after that package
 appeared to check coexistence. Concurrent future edits are outside this snapshot.
+
+
+### November 2, 2026 — independent reframing implementation
+
+User authorized completing independent work while the personal-memory chat
+continued. Codex (GPT-6-based; exact served identifier unavailable) authored
+backend/app/features/reframing, scripts/reframing_kb.py, and dedicated review/
+handoff/verification documentation. The corpus has 14 core families, 5 supporting
+cards, 7 reference-only entries and 76 original search representations, with
+source/edition references and synthetic examples. No book text or personal
+records were copied into the corpus. The fifteen semantic/reply scenarios are
+planned rather than observed generated results.
+
+Implemented framework-free validation/ranking/context rules, a separate SQLite
+index with read-only retrieval and atomic no-overwrite publication, an explicitly
+constructed bounded embedding adapter, disabled-by-default registration and
+offline-only CLI. No shared chat/memory/frontend/prompt/README/AGENTS/checkpoint
+files were edited by this increment. Personal memory's non-vector contract means
+no shared embedding-model decision is required. Future activation and typed/voice
+integration are documented separately; no runtime index or model is installed.
+
+Commands: cat/rg/git status/diff; project Python/pytest; reframing_kb.py validate
+and plan; source-locator/JSON/syntax/whitespace inspections; verify_checkpoints.py.
+Observed final full backend run: 277 passed (61 reframing checks), existing
+Starlette/httpx deprecation warning. All three original cumulative build scopes
+passed. Mock HTTP/network tripwires and synthetic vectors verify mechanics only.
+A misplaced test assertion caused one intermediate NameError (55 passed/1 failed);
+it was corrected before passing runs. Checks and bounds are recorded in
+docs/reframing-verification.md. New private plan/extraction files are ignored.
+No dependency or machine installation, live/paid request, microphone, browser/UI
+change, semantic/reply-quality claim, staging or commit.
 
 ## November 2, 2026 — simulated personal-memory evaluation
 User asked whether testing could be conducted with simulated data. Conducted
@@ -2094,3 +2162,101 @@ app on 8019, then restarted the current app using the existing project .env:
 backend/.venv/bin/python -m uvicorn app.main:app --app-dir backend --env-file .env --host 127.0.0.1 --port 8019.
 Startup and configuration GET succeeded without a provider request. User must reload
 their existing page; no draft was discarded. No staging or commit was performed.
+
+
+### November 2, 2026 — combined personal-memory review and reframing plan
+
+User requested checking the current implementation with personal memory and then
+planning reframing integration. Baseline: committed personal-memory/cached-summary
+work at 6242c3a plus the uncommitted independent reframing module. Codex used
+the judge workflow (three perspectives, reviewed inline without subagents),
+read project rules/contracts/code and current official OpenAI documentation,
+and authored docs/reframing-integration-plan.md with a link from the handoff.
+No application code, prompts, corpus, API configuration or dependencies changed.
+
+Observed fresh checks: 306 backend tests and 136 frontend tests passed; production
+build and non-mutating Oxlint/ESLint passed. Existing Starlette/httpx deprecation
+and bundled-JS-size warnings remain. A relative-import AST probe found six
+voice/personal-memory cross-feature dependencies missed by the current boundary
+test's unresolved ImportFrom.level. A mocked Starlette route probe supplied a
+valid fictional body followed by http.disconnect: the typed route still invoked
+its mocked provider once and left the disconnect unread. No real network call
+was made. Existing frontend late-response rejection remains implemented.
+
+Plan: repair small composition/contract/cancellation boundaries; align the 2KB
+technique query with accepted 8KB chat input; distinguish lookup availability
+from consent to apply a reframe; supply labeled data apart from stable policy;
+preserve personal-memory permission/source/summary rules and budget; integrate
+typed retrieval under a disabled flag, run combined mocks, then separately
+authorize real embedding relevance/threshold work. Note the pre-retrieval
+latency/usage tradeoff and keep dynamic spoken lookup a separate increment.
+External transmission/API usage remains pending. No paid calls, microphone,
+browser test, staging, commit or runtime activation during this review.
+
+
+## November 3, 2026 — reframing implementation checkpoints
+
+Implemented the reviewed plan through default-off typed integration and a real
+standalone vector index. See [checkpoint evidence](reframing-implementation-evidence.md)
+for exact commands, per-step observed counts, failure records and limitations.
+No sibling feature imports remain; typed source values are separate from stable
+policy. Existing personal opt-ins, summaries and storage-only Retry remain tested.
+Emergency/End interruption rejects late typed replies/references without replacing
+new drafts. Voice gets no technique retrieval.
+
+Observed: 341 backend and 138 frontend tests, frontend lint/build, original cumulative
+builds, and 26 personal-memory evaluation scenarios passed. Six explicitly authorized
+embedding requests validated the real index and fifteen fictional query vectors.
+Threshold 0.45: 7/8 positive acceptable-family hits, 6/6 negative no-matches; competing
+priorities was missed. Three authorized reply checks plus one separately authorized
+repeat produced two valid replies and two stop timeouts. Closing behavior and the
+live latency gate remain unresolved; retrieval remains disabled. No microphone,
+new dependencies, commit, automatic retry or unapproved paid task. Handoff local
+copies are preserved while ignored; only the existing handoff index entry was
+removed to make the ignore effective.
+
+
+The user then explicitly authorized optional low typed reasoning and three further
+fictional reply checks. All three passed their observed perspective/refusal/closing
+expectations with HTTP 200 in 1.4–2.4s (replayed real query vectors, no new embeddings).
+Total: six embedding and seven reply requests. Prior failures remain in evidence;
+small-sample, relevance-miss and timing limits remain. The ignored local `.env`
+selects/enables the evaluated index and low typed setting for the next backend
+restart. Code defaults remain off. No existing process restart, dependency change
+or microphone. Routine backend tests isolate flags and block outgoing HTTP globally.
+See the final-status section of the linked checkpoint evidence for current results.
+
+
+## November 3 — conversational reframing correction
+
+Files: `backend/app/features/voice/prompts.py`, shared reference policy in
+`backend/app/features/reframing/domain.py`, and prompt/AI-use/evidence notes.
+Removed stale 'no RAG source' wording and added shared conversational delivery:
+apply the supplied operation, use tentative second-person invitations, and provide
+two distinct supported angles if explicitly requested. Retain one question total
+and no-question/refusal/stop exceptions. Card corpus/index are unchanged. Voice
+library integration awaits the user's clarification; no new voice capability is
+claimed. Earlier live samples do not verify this new wording. No paid/model or
+microphone calls were performed for this increment.
+
+User confirmation authorized Voice library access. The compact catalogue and shared
+conversational style correction are now implemented. Observed: 350 backend tests,
+140 frontend tests, lint/build, read-only startup readiness, and three explicitly
+authorized fictional Responses checks using the voice catalogue passed their
+recorded expectations. No embedding, microphone or new dependency. Spoken Live
+acceptance/delivery is not established. Exact commands, artifacts, changed files,
+budget fallback and limits: [current verification](reframing-conversation-verification.md).
+
+
+## November 3 — New chat icon
+
+Changed AppIcon, chat ChatView/ChatRoute/index/styles and render assertions. The
+rightmost header action shares History's circle and CSS theme tokens. New chat
+remounts the session through existing exit cleanup; pending save notices remain
+feature-owned. Browser mock verified transcript/draft/old notice clearing, focus
+without a scroll jump, 44px circles, Violet→Sage adaptation and fit at 375px.
+Commands: npm test (140 passed), oxlint, ESLint, npm run build, verify_checkpoints.py
+(all original scopes passed), git diff --check. No backend feature change, paid call,
+real microphone or dependency for this UI increment. Existing bundle/deprecation
+warnings remain. Preview: new-chat-button.png. Latest user instruction: local commit
+only, no push.

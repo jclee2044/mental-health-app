@@ -273,3 +273,22 @@ test('failed fallback close is contained, never retried and cannot change closed
   assert.equal(attempts, 1); assert.equal(h.changes.length, changes)
   assert.match(h.voice.state.message, /unconfirmed/); assert.doesNotMatch(h.voice.state.message, /secret/)
 })
+
+test('voice reports catalogue availability once and ignores a late abandoned report', async () => {
+  const h = harness(), reports = []
+  const original = h.api.createVoiceSession
+  h.api.createVoiceSession = async (...args) => ({ ...await original(...args), reframing: { status: 'unavailable', card_ids: [], delivery: 'startup_catalogue' } })
+  h.voice = new VoiceSession({ ...h.options, onReframing: report => reports.push(report) })
+  await connect(h)
+  assert.equal(reports.length, 1)
+  assert.equal(reports[0].status, 'unavailable')
+  h.voice.dispose()
+  const late = harness(), answer = deferred(), lateReports = []
+  late.api.createVoiceSession = () => answer.promise
+  late.voice = new VoiceSession({ ...late.options, onReframing: report => lateReports.push(report) })
+  const pending = late.voice.start(); await flush(); late.peer.completeIce(); await flush()
+  late.voice.dispose()
+  answer.resolve({ session_id: 'late_reference_session', sdp: 'v=0\r\n', duration_seconds: 300, reframing: { status: 'ready', card_ids: ['frame_size'] } })
+  await pending
+  assert.deepEqual(lateReports, [])
+})

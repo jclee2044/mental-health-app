@@ -246,3 +246,21 @@
 - Mocked tests only; no paid calls or real microphone checks by the agent. Cached
   summaries are unverified generated interpretations, separate from confirmed
   user facts and the reframing corpus. No new dependencies or model settings.
+
+
+## Voice reframing catalogue and conversational delivery — November 3, 2026
+
+- User confirmed the transcript was Voice and authorized library access. Voice now
+  receives all 19 active operation definitions, complete avoid-boundaries and
+  bibliography as a compact startup catalogue, separate from policy/personal data.
+  Follow the latest voice/reframing CONTRACT additions. Typed vector search remains.
+  No mid-session lookup, new tools/events, voice embeddings, automatic microphone
+  restart or dependencies are authorized here.
+- Preserve accepted voice history. If catalogue + history exceed 7,500 UTF-8 bytes,
+  omit the entire catalogue and report unavailable. Use a fresh chat/session for
+  full references. Source presence is not proof of actual operation use or speech.
+- Offer reframes conversationally using the relevant operation. Allow two distinct
+  supported angles when asked; first-person replacement lines are for explicit
+  wording requests. Retain one question total and no-question/refusal/stop boundaries.
+- Earlier paid allowances are exhausted. Further live checks need a new explicit
+  bounded allowance. Do not open a real microphone for routine verification.

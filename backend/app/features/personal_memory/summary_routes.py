@@ -5,8 +5,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 from pydantic import StrictBool
 from starlette.concurrency import run_in_threadpool
-from ..voice.domain import InvalidProviderResponse
-from ..voice.provider import ProviderTimeout, ProviderUnavailable
+from ...provider_errors import InvalidProviderResponse, ProviderTimeout, ProviderUnavailable
 from .routes import body, no_query
 from .schemas import StrictBody
 from .summary_storage import SummaryStorage

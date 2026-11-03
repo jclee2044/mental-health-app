@@ -105,6 +105,7 @@ usage; use the mocked rehearsal below for routine checks.
 | --- | --- |
 | `OPENAI_API_KEY` | Backend provider credential; required for transcription and model requests. |
 | `VOICE_BACKEND_MODEL` | Responses model for typed replies and Live delegation. No default; both this and a valid credential are required for configured chat/voice status. |
+| `CHAT_REASONING_EFFORT` | Optional `low` for typed replies only; unset/other values preserve the provider default. The current local Luna configuration uses the separately approved, sampled low setting. |
 | Server-fixed Live settings | `gpt-live-1`, voice `marin`; browser requests cannot choose models, prompts or tools. |
 | Server-fixed dictation model | `gpt-transcribe`; transcription needs the credential, independently of `VOICE_BACKEND_MODEL`. |
 
@@ -112,6 +113,16 @@ usage; use the mocked rehearsal below for routine checks.
 policy; it does not contact the provider or verify model access. It is not a
 transcription-readiness check. The coding model disclosed in AI-USE is separate
 from the configured application model.
+
+Typed reframing references are implemented behind the server-only
+`REFRAMING_ENABLED` flag (default `0`), independently of personal-memory opt-ins.
+The real local index has 76 documents from 19 reviewed cards. Setup and rollback:
+[reframing library](backend/app/features/reframing/README.md). Each implementation
+checkpoint and observed limitation is recorded in
+[reframing evidence](docs/reframing-implementation-evidence.md). The local ignored
+`.env` enables the evaluated index and `CHAT_REASONING_EFFORT=low`; restart your
+backend to load these settings. Voice receives a compact reviewed catalogue at startup; there is no dynamic
+spoken retrieval. Start a fresh chat/session after loading updated backend prompts.
 
 For frontend development, keep the backend on port 8000 and run in a second terminal:
 

@@ -8,6 +8,7 @@ import { usePersonalMemory } from './usePersonalMemory.js'
 
 export function useChat({ getAudio, api = requests, environment, dictationEnvironment, records = useConversationRecords({ api }) } = {}) {
   const messages = ref([]), draft = ref(''), textBusy = ref(false), textError = ref('')
+  const reframingUnavailable = ref(false)
   const voiceState = ref(null)
   let draftRevision = 0
   const stopDraftWatch = watch(draft, () => { draftRevision++ }, { flush: 'sync' })
@@ -30,6 +31,7 @@ export function useChat({ getAudio, api = requests, environment, dictationEnviro
     getHistory: () => conversationHistory(messages.value),
     getPersonalMemory: personalMemory.scope,
     onPersonalMemory: personalMemory.acceptReport,
+    onReframing: report => { reframingUnavailable.value = report?.status === 'unavailable' },
     onChange: state => {
       voiceState.value = state
       if (state.status === 'permission') dictation.stop()
@@ -73,6 +75,7 @@ export function useChat({ getAudio, api = requests, environment, dictationEnviro
       if (typeof result?.reply !== 'string' || !result.reply.trim() || new TextEncoder().encode(result.reply).length > 8000) throw new Error('Invalid reply')
       user.status = 'complete'
       personalMemory.acceptReport(result.personal_memory)
+      reframingUnavailable.value = result.reframing?.status === 'unavailable'
       messages.value.push({ id: `text-${++sequence}`, role: 'assistant', source: 'text', text: result.reply, status: 'complete' })
       // Storage retry never repeats the provider call.
       records.queue({ conversationId, turnId: crypto.randomUUID(), body: { position: position++, user: text, assistant: result.reply } })
@@ -86,6 +89,9 @@ export function useChat({ getAudio, api = requests, environment, dictationEnviro
       }
     } finally { if (active) textBusy.value = false }
   }
+  function interrupt(message, immediate = true) {
+    textController?.abort(); dictation.stop(); voice.stop(message, immediate)
+  }
   function restoreDraft(message) {
     if (active && !textBusy.value && !draft.value && message.status === 'failed') draft.value = message.text
   }
@@ -95,7 +101,7 @@ export function useChat({ getAudio, api = requests, environment, dictationEnviro
     active = false; textController?.abort(); stopDraftWatch(); personalMemory.dispose(); dictation.dispose(); voice.dispose(); saveVoice()
     // Feature-owned queue survives navigation. Never wait here for a model task.
     records.finishConversation?.(conversationId, { summarize })
-    messages.value = []; draft.value = ''
+    messages.value = []; draft.value = ''; reframingUnavailable.value = false
   }
-  return { messages, draft, textBusy, textError, voiceState, voice, dictation, dictationState, personalMemory, send, restoreDraft, dispose }
+  return { messages, draft, reframingUnavailable, textBusy, textError, voiceState, voice, dictation, dictationState, personalMemory, send, interrupt, restoreDraft, dispose }
 }

@@ -160,3 +160,46 @@ test('voice storage batching preserves long Unicode text without splitting code 
   assert.equal(batches.flat().map(message => message.content).join(''), text)
   assert.ok(batches.every(batch => batch.length <= 50 && batch.reduce((sum, message) => sum + new TextEncoder().encode(message.content).length, 0) <= 8000))
 })
+
+test('unavailable references keep the reply usable and clear on a later ordinary reply', async () => {
+  const h = harness()
+  let turn = 0
+  h.api.sendTextMessage = async () => ({ reply: 'Fictional reply', ...(turn++ === 0 ? { reframing: { status: 'unavailable', card_ids: [] } } : {}) })
+  const chat = useChat(h.options)
+  chat.draft.value = 'First fictional turn'; await chat.send()
+  assert.equal(chat.reframingUnavailable.value, true)
+  assert.equal(chat.messages.value.at(-1).text, 'Fictional reply')
+  chat.draft.value = 'Second fictional turn'; await chat.send()
+  assert.equal(chat.reframingUnavailable.value, false)
+  chat.dispose()
+})
+
+test('Emergency overlay interruption aborts text and rejects late references and replies', async () => {
+  const h = harness(), reply = deferred()
+  let signal
+  h.api.sendTextMessage = (_text, _history, options) => { signal = options.signal; return reply.promise }
+  const chat = useChat(h.options)
+  chat.draft.value = 'Fictional submitted message'; const pending = chat.send()
+  chat.draft.value = 'New editable draft'
+  chat.interrupt('Emergency opened.', true)
+  assert.equal(signal.aborted, true)
+  reply.resolve({ reply: 'Late reply', reframing: { status: 'unavailable', card_ids: [] } })
+  await pending
+  assert.equal(chat.draft.value, 'New editable draft')
+  assert.equal(chat.messages.value.length, 1)
+  assert.equal(chat.messages.value[0].status, 'failed')
+  assert.equal(chat.reframingUnavailable.value, false)
+  chat.dispose()
+})
+
+test('voice catalogue failure reaches the shared nonblocking notice', async () => {
+  const h = harness(), original = h.api.createVoiceSession
+  h.api.createVoiceSession = async (...args) => ({ ...await original(...args), reframing: { status: 'unavailable', card_ids: [], delivery: 'startup_catalogue' } })
+  const chat = useChat(h.options)
+  const pending = chat.voice.start(); await flush(); h.peer.completeIce(); await pending
+  assert.equal(chat.reframingUnavailable.value, true)
+  chat.draft.value = 'A fictional typed follow-up'; await chat.send()
+  assert.equal(chat.reframingUnavailable.value, false)
+  assert.equal(chat.messages.value.at(-1).text, 'A fictional reply.')
+  chat.dispose()
+})

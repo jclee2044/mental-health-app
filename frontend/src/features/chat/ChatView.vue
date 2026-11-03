@@ -8,12 +8,14 @@ import PersonalMemoryPanel from './PersonalMemoryPanel.vue'
 import { submitOnEnter } from './composer.js'
 
 const props = defineProps({ interrupted: Boolean, records: Object })
-const emit = defineEmits(['navigate'])
+const emit = defineEmits(['navigate', 'new-chat'])
 const remoteAudio = ref(null)
 const soundEnabled = inject('appSoundEnabled', ref(true))
 watch([soundEnabled, remoteAudio], ([enabled, audio]) => { if (audio) audio.muted = !enabled }, { flush: 'sync' })
 const chatWindow = ref(null)
-const { messages, draft, textBusy, textError, voiceState, voice, dictation, dictationState, personalMemory, send, restoreDraft, dispose } = useChat({ getAudio: () => remoteAudio.value, records: props.records })
+const composer = ref(null)
+defineExpose({ focusComposer: () => composer.value?.focus({ preventScroll: true }) })
+const { messages, draft, reframingUnavailable, textBusy, textError, voiceState, voice, dictation, dictationState, personalMemory, send, interrupt, restoreDraft, dispose } = useChat({ getAudio: () => remoteAudio.value, records: props.records })
 useTranscriptScroll(chatWindow, messages)
 const labels = { permission: 'Permission', connecting: 'Connecting', active: 'Active', muted: 'Muted', closing: 'Closing', closed: 'Closed', error: 'Error' }
 const canStart = computed(() => ['closed', 'error'].includes(voiceState.value.status))
@@ -33,7 +35,7 @@ function toggleDictation() {
 function endChat() { dispose(); emit('navigate', 'home') }
 let unbind = () => {}
 const capture = {
-  stop: (message, immediate) => { dictation.stop(); voice.stop(message, immediate) },
+  stop: interrupt,
   dispose: () => { dictation.dispose(); voice.dispose() },
 }
 watch(() => props.interrupted, value => interruptVoice(capture, value), { flush: 'sync' })
@@ -45,9 +47,14 @@ onBeforeUnmount(() => { unbind(); dispose() })
   <section class="chat-page narrow-page page-enter">
     <div class="chat-heading">
       <h1>What’s on your mind?</h1>
-      <button class="history-button" type="button" aria-label="View saved chats" title="View saved chats" @click="$emit('navigate', 'conversations')">
-        <AppIcon name="history" />
-      </button>
+      <div class="chat-heading-actions">
+        <button class="history-button" type="button" aria-label="View saved chats" title="View saved chats" @click="$emit('navigate', 'conversations')">
+          <AppIcon name="history" />
+        </button>
+        <button class="history-button" type="button" aria-label="New chat" title="New chat" :disabled="interrupted" @click="emit('new-chat')">
+          <AppIcon name="compose" />
+        </button>
+      </div>
     </div>
     <audio ref="remoteAudio" :muted="!soundEnabled" autoplay playsinline hidden aria-hidden="true"></audio>
     <div class="chat-frame">
@@ -67,7 +74,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
       <form class="chat-composer" @submit.prevent="send">
         <label for="chat-message" class="chat-sr-only">Message</label>
         <div class="chat-input-box" :class="{ 'chat-input-voice-active': !canStart }">
-          <textarea id="chat-message" v-model="draft" rows="2" maxlength="4000" placeholder="Write what’s on your mind…" aria-describedby="chat-keyboard-hint" @keydown="submitOnEnter($event, send)"></textarea>
+          <textarea ref="composer" id="chat-message" v-model="draft" rows="2" maxlength="4000" placeholder="Write what’s on your mind…" aria-describedby="chat-keyboard-hint" @keydown="submitOnEnter($event, send)"></textarea>
           <span id="chat-keyboard-hint" class="chat-sr-only">Enter to send. Shift and Enter for a new line.</span>
           <div class="chat-input-toolbar">
             <div class="chat-controls">
@@ -85,6 +92,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
         </div>
         <p v-if="dictationState.message" class="small muted dictation-status" :role="dictationState.status === 'error' ? 'alert' : 'status'">{{ dictationState.message }}</p>
         <button v-if="dictating" class="text-button" type="button" @click="dictation.stop('Dictation cancelled. Your existing draft is unchanged.')">Cancel dictation</button>
+        <p v-if="reframingUnavailable" class="small muted" role="status">Reframing references are unavailable. You can keep chatting.</p>
         <p v-if="textError" class="chat-storage-error" role="alert">{{ textError }}</p>
         <div class="button-row"><button class="button" type="submit" :disabled="textBusy || !draft.trim()">{{ textBusy ? 'Waiting for reply…' : 'Send' }}<AppIcon name="arrow-right" /></button></div>
         <button v-if="conversationStarted" class="text-button chat-end" type="button" @click="endChat">End chat</button>
@@ -97,6 +105,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
     </div>
     <PersonalMemoryPanel v-if="personalMemory" :model="personalMemory" />
     <p class="small muted chat-privacy">Uses OpenAI. Chats are saved on this device.</p>
+    <p class="small muted">When reframing references are enabled, your current typed message is also sent to OpenAI for matching. Voice receives reviewed reframing references when a session starts. Saved memory stays separate.</p>
     <p class="small muted chat-dictation-privacy">Dictation sends a short recording to OpenAI.</p>
     <details class="chat-privacy-details">
       <summary>Privacy &amp; saved chats</summary>

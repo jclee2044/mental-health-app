@@ -1574,6 +1574,33 @@ git diff --check. Existing bundle-size warning remains. Tests/checkpoints were
 not rerun for this presentation-only change. No dependencies, live calls,
 microphone use, staging or commits.
 
+
+## Reframing book content review on November 2, 2026
+
+Codex, a GPT-6-based assistant (exact served identifier unavailable), reviewed
+the three user-supplied reframing books and the subsequent Dilts EPUB to inform
+a proposed knowledge-base architecture. Used the pdf, pages:write-page and
+openai-docs skills; existing Python/pypdf, zipfile/XML, pdfinfo/pdftoppm, image
+inspection and read-only repository commands. A local Swift/PDFKit/Vision OCR
+attempt failed on page 1; the EPUB supplied readable text instead. No complete
+OCR is claimed. EPUB metadata identifies a 2017 digital edition/copyright 1999;
+its missing diagrams require the PDF for visual checks.
+
+Authored docs/reframing-content-review.md: chapter/appendix coverage, detailed
+pattern/procedure comparisons, all fourteen pattern families, variant-specific
+application boundaries, a card-first vector retrieval recommendation and
+coordination requirements for the separate user-context work. Review scope is
+explicitly chapter-level with targeted close reading and representative figure
+checks, not line-by-line verification of every paragraph or figure. The official
+OpenAI embedding guide was checked for API/vector mechanics.
+
+Full source text, renderings and extraction/compiler working files remain in
+private ignored tmp/pdfs/reframing-review; originals remain in Downloads. No
+cloud Page, runtime cards/index, embeddings, application code, dependencies,
+paid calls, microphone use, staging or commits. No retrieval/generated behavior
+was tested. Checked EPUB locator existence, fourteen-family table coverage,
+ignored private extracts and git diff --check.
+
 ## November 2, 2026 — opt-in personal memory (separate chat)
 
 Codex implemented the user's approved SQLite personal-memory design without a
@@ -1610,6 +1637,37 @@ by a viewport screenshot showing the actual controls and persistent Emergency.
 
 No dependencies, paid calls, real microphone, real call links, staging, commits,
 root Part 3.1 report changes or live generated-memory/voice-latency claims.
+
+
+### November 2, 2026 — independent reframing implementation
+
+User authorized completing independent work while the personal-memory chat
+continued. Codex (GPT-6-based; exact served identifier unavailable) authored
+backend/app/features/reframing, scripts/reframing_kb.py, and dedicated review/
+handoff/verification documentation. The corpus has 14 core families, 5 supporting
+cards, 7 reference-only entries and 76 original search representations, with
+source/edition references and synthetic examples. No book text or personal
+records were copied into the corpus. The fifteen semantic/reply scenarios are
+planned rather than observed generated results.
+
+Implemented framework-free validation/ranking/context rules, a separate SQLite
+index with read-only retrieval and atomic no-overwrite publication, an explicitly
+constructed bounded embedding adapter, disabled-by-default registration and
+offline-only CLI. No shared chat/memory/frontend/prompt/README/AGENTS/checkpoint
+files were edited by this increment. Personal memory's non-vector contract means
+no shared embedding-model decision is required. Future activation and typed/voice
+integration are documented separately; no runtime index or model is installed.
+
+Commands: cat/rg/git status/diff; project Python/pytest; reframing_kb.py validate
+and plan; source-locator/JSON/syntax/whitespace inspections; verify_checkpoints.py.
+Observed final full backend run: 277 passed (61 reframing checks), existing
+Starlette/httpx deprecation warning. All three original cumulative build scopes
+passed. Mock HTTP/network tripwires and synthetic vectors verify mechanics only.
+A misplaced test assertion caused one intermediate NameError (55 passed/1 failed);
+it was corrected before passing runs. Checks and bounds are recorded in
+docs/reframing-verification.md. New private plan/extraction files are ignored.
+No dependency or machine installation, live/paid request, microphone, browser/UI
+change, semantic/reply-quality claim, staging or commit.
 
 ## November 2, 2026 — simulated personal-memory testing follow-up
 
@@ -1705,3 +1763,105 @@ No paid provider/embedding request or real microphone/call link was used by the
 agent. Actual generated summary quality, source grounding, shared provider quotas
 and voice latency remain unverified. Existing source report/corpus/reframing work,
 checkpoint scopes and prompt layers were preserved. No staging or commits.
+
+
+### November 2, 2026 — combined personal-memory review and reframing plan
+
+User requested checking the current implementation with personal memory and then
+planning reframing integration. Baseline: committed personal-memory/cached-summary
+work at 6242c3a plus the uncommitted independent reframing module. Codex used
+the judge workflow (three perspectives, reviewed inline without subagents),
+read project rules/contracts/code and current official OpenAI documentation,
+and authored docs/reframing-integration-plan.md with a link from the handoff.
+No application code, prompts, corpus, API configuration or dependencies changed.
+
+Observed fresh checks: 306 backend tests and 136 frontend tests passed; production
+build and non-mutating Oxlint/ESLint passed. Existing Starlette/httpx deprecation
+and bundled-JS-size warnings remain. A relative-import AST probe found six
+voice/personal-memory cross-feature dependencies missed by the current boundary
+test's unresolved ImportFrom.level. A mocked Starlette route probe supplied a
+valid fictional body followed by http.disconnect: the typed route still invoked
+its mocked provider once and left the disconnect unread. No real network call
+was made. Existing frontend late-response rejection remains implemented.
+
+Plan: repair small composition/contract/cancellation boundaries; align the 2KB
+technique query with accepted 8KB chat input; distinguish lookup availability
+from consent to apply a reframe; supply labeled data apart from stable policy;
+preserve personal-memory permission/source/summary rules and budget; integrate
+typed retrieval under a disabled flag, run combined mocks, then separately
+authorize real embedding relevance/threshold work. Note the pre-retrieval
+latency/usage tradeoff and keep dynamic spoken lookup a separate increment.
+External transmission/API usage remains pending. No paid calls, microphone,
+browser test, staging, commit or runtime activation during this review.
+
+
+## November 3, 2026 — reframing integration implementation
+
+Codex implemented the reviewed typed cards/vector-retrieval plan in verified
+checkpoints. Changes cover neutral contracts and composition, disconnect guards,
+structured source input, bounded optional lookup, server-only default-off
+configuration, typed status/fallback and interruption handling. Personal selection,
+summary/storage semantics and original checkpoint scopes are preserved. Original
+card summaries/examples and locators are used; whole books remain outside Git.
+Handoff documents/scratch work/private vectors are ignored, with local copies kept.
+No dependencies were added or upgraded.
+
+Observed checks: 341 backend tests, 138 frontend tests, frontend lint/build, all
+original cumulative checkpoint builds, and the personal-memory evaluation's 26
+fictional scenarios passed. Real API usage was separately authorized: six embedding
+requests built/evaluated the 76-document index, then three reply requests and one
+additional explicitly authorized reply request. Two replies returned and two stop
+requests timed out; no automatic retries or unapproved extra calls. Initial
+threshold 0.45 retained acceptable families in 7/8 positive cases and no candidates
+in 6/6 negative cases; the miss and small-sample limits are explicit. Dynamic voice,
+microphone checks and runtime activation were not performed. Evidence and exact
+commands: `docs/reframing-implementation-evidence.md` and its linked JSON artifacts.
+The live closing/latency gate remains incomplete; passing mocks are not claimed as
+observed generated behavior. Existing root Part 3.1 report was not rewritten.
+
+
+Subsequent explicit authorization added an optional server-owned low typed reasoning
+setting and three additional fictional replies after the repeated timeout. All
+three sample observations returned and met the expected perspective/refusal/closing
+behavior (1.4–2.4s with replayed query vectors). Total paid requests: six embeddings,
+seven replies; no microphone. Previous failures are retained, and small-sample and
+query-replay limitations remain explicit. The local ignored `.env` now enables the
+validated index and low typed setting after a backend restart; code defaults remain
+off. Existing processes were left alone. Routine pytest now isolates enabled flags
+and blocks outbound HTTP globally. The final live sample and configuration evidence
+are linked from the checkpoint evidence document.
+
+
+## November 3 — conversational reframing feedback
+
+Codex inspected the supplied transcript as debugging context, not a request to
+store personal facts. It confirmed voice has no technique-library access and
+found stale no-RAG wording in Responses. Shared prompt delivery now favors
+conversational invitations rather than quoted first-person replacement thoughts;
+it asks supplied cards to enact their operation and permits two supported angles
+when requested. Clarification/consent, no-question, refusal, stopping and fixed
+skill boundaries remain. No card content/index rebuild, dependencies, paid calls,
+microphone check or voice retrieval expansion. Scope clarification about Voice
+mode/library integration is pending. Existing generated samples predate this
+prompt correction; regression checks alone do not establish new generated behavior.
+
+The user then confirmed Voice and authorized catalogue access. Codex implemented
+all 19 active operation definitions/avoid-boundaries and bibliography as separate
+startup data, preserving personal permissions, history, tools/events and exits.
+350 backend and 140 frontend tests passed; lint/build and read-only enabled-config
+checks passed. The user separately authorized three new fictional text-only model
+checks (no embeddings/microphone); all returned conversational perspective,
+two-angle and refusal examples meeting the recorded sample expectations. These are
+Responses probes with the voice catalogue, not GPT-Live spoken verification or
+causal proof of source use. See docs/reframing-conversation-verification.md.
+
+
+## November 3 — New chat header action
+
+Added a compose icon in the existing theme-aware 44px circle, right of History.
+A feature-owned keyed wrapper remounts the chat, reusing existing capture/cancellation/
+save cleanup and focusing the empty composer without scrolling. Observed: 140 frontend
+tests, lint/build and all original cumulative checkpoints passed. An isolated Chrome
+mock check confirmed fresh transcript/draft/notice, composer focus, matching Violet/
+Sage colors and phone-width fit. No provider or microphone calls. Mock tab/server
+were closed and temporary browser sizing/theme restored. Preview: docs/new-chat-button.png.

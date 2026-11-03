@@ -1,0 +1,301 @@
+{
+  "checkpoint": 5,
+  "mode": "real text-embedding-3-small vectors, exact cosine search; no generated replies in this stage",
+  "corpus_sha256": "352ffd9b5d04136d2cf2759cbc6b205c89db3236f859f39a578127e6eda2b8b0",
+  "spec": {
+    "provider": "openai",
+    "model": "text-embedding-3-small",
+    "dimensions": 1536
+  },
+  "embedding_requests_used": 6,
+  "threshold": 0.45,
+  "rationale": "Conservative initial threshold: all six non-reframing cases return no match; seven of eight positive cases retain an acceptable family. The competing-values case is a measured miss (best acceptable score 0.392716). Ordinary chat remains available without a card. Lower thresholds recover that case but also retrieve an unwanted candidate for correction. Small development set, not held-out generalization or an intent classifier.",
+  "threshold_grid": [
+    {
+      "threshold": 0.35,
+      "positive_hits": 8,
+      "positive_cases": 8,
+      "negative_no_matches": 4,
+      "negative_cases": 6
+    },
+    {
+      "threshold": 0.38,
+      "positive_hits": 8,
+      "positive_cases": 8,
+      "negative_no_matches": 5,
+      "negative_cases": 6
+    },
+    {
+      "threshold": 0.39,
+      "positive_hits": 8,
+      "positive_cases": 8,
+      "negative_no_matches": 5,
+      "negative_cases": 6
+    },
+    {
+      "threshold": 0.4,
+      "positive_hits": 7,
+      "positive_cases": 8,
+      "negative_no_matches": 5,
+      "negative_cases": 6
+    },
+    {
+      "threshold": 0.43,
+      "positive_hits": 7,
+      "positive_cases": 8,
+      "negative_no_matches": 6,
+      "negative_cases": 6
+    },
+    {
+      "threshold": 0.45,
+      "positive_hits": 7,
+      "positive_cases": 8,
+      "negative_no_matches": 6,
+      "negative_cases": 6
+    },
+    {
+      "threshold": 0.5,
+      "positive_hits": 7,
+      "positive_cases": 8,
+      "negative_no_matches": 6,
+      "negative_cases": 6
+    }
+  ],
+  "observed": {
+    "threshold": 0.45,
+    "positive_hits": 7,
+    "positive_cases": 8,
+    "negative_no_matches": 6,
+    "negative_cases": 6,
+    "records": [
+      {
+        "id": "first_attempt",
+        "selected_cards": [
+          "redefine",
+          "analogy"
+        ],
+        "families": [
+          "redefine",
+          "analogy"
+        ],
+        "scores": [
+          0.779003,
+          0.551556
+        ],
+        "status": "ready",
+        "context_bytes": 3664,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "unreturned_message",
+        "selected_cards": [
+          "observation_interpretation",
+          "model_of_world"
+        ],
+        "families": [
+          "observation_interpretation",
+          "model_of_world"
+        ],
+        "scores": [
+          0.562735,
+          0.459689
+        ],
+        "status": "ready",
+        "context_bytes": 4155,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "competing_values",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": false,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "vague_obstacle",
+        "selected_cards": [
+          "chunk_down"
+        ],
+        "families": [
+          "chunk_down"
+        ],
+        "scores": [
+          0.639498
+        ],
+        "status": "ready",
+        "context_bytes": 1696,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "comparison",
+        "selected_cards": [
+          "comparison",
+          "meaning_context"
+        ],
+        "families": [
+          "comparison",
+          "meaning_context"
+        ],
+        "scores": [
+          0.622211,
+          0.455252
+        ],
+        "status": "ready",
+        "context_bytes": 4112,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "time_scope",
+        "selected_cards": [
+          "frame_size"
+        ],
+        "families": [
+          "frame_size"
+        ],
+        "scores": [
+          0.85109
+        ],
+        "status": "ready",
+        "context_bytes": 1835,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "analogy_requested",
+        "selected_cards": [
+          "chunk_up",
+          "analogy"
+        ],
+        "families": [
+          "chunk_up",
+          "analogy"
+        ],
+        "scores": [
+          0.520019,
+          0.478663
+        ],
+        "status": "ready",
+        "context_bytes": 3709,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "old_rule",
+        "selected_cards": [
+          "meta_frame"
+        ],
+        "families": [
+          "meta_frame"
+        ],
+        "scores": [
+          0.504512
+        ],
+        "status": "ready",
+        "context_bytes": 1888,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "listening_only",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": null,
+        "reframe_requested": false,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "stop",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": null,
+        "reframe_requested": false,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "refusal",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": null,
+        "reframe_requested": false,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "correction",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": null,
+        "reframe_requested": false,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "real_constraint",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": null,
+        "reframe_requested": false,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "urgent_route",
+        "selected_cards": [],
+        "families": [],
+        "scores": [],
+        "status": "no_match",
+        "context_bytes": 0,
+        "acceptable_family_hit": null,
+        "reframe_requested": false,
+        "simulated_failure_case": false
+      },
+      {
+        "id": "embedding_failure",
+        "selected_cards": [
+          "counterexample"
+        ],
+        "families": [
+          "counterexample"
+        ],
+        "scores": [
+          0.638548
+        ],
+        "status": "ready",
+        "context_bytes": 2226,
+        "acceptable_family_hit": true,
+        "reframe_requested": true,
+        "simulated_failure_case": true
+      }
+    ]
+  },
+  "query_failure_note": "The embedding_failure case used a healthy real query vector for relevance here; unavailable behavior was separately tested with mocked failure.",
+  "runtime_enabled": false,
+  "live_query_batch_ms": 1054.86
+}

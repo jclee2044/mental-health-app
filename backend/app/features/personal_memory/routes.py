@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import Response
 from pydantic import ValidationError
 from starlette.requests import ClientDisconnect
-from ..voice.http import read_json, RequestTooLarge
+from ...json_http import read_json, RequestTooLarge
 from ...errors import ValidationError as DomainError
 from .schemas import Preferences, PreviewBody, FactBody, ExclusionBody
 from .storage import MemoryConflict

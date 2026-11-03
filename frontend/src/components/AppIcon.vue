@@ -6,6 +6,7 @@ const paths = {
   'arrow-left': 'm12 5-7 7 7 7M5 12h14',
   'arrow-right': 'm12 5 7 7-7 7M5 12h14',
   'arrow-up-right': 'M6 18 18 6M6 6h12v12',
+  compose: 'M12 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-5M16.5 3.5a2.12 2.12 0 0 1 3 3L11 15l-4 1 1-4z',
   history: 'M3 10a9 9 0 1 1 2 8M3 4v6h6M12 7v5l3 2',
   calendar: 'M5 5h14v15H5zM8 3v4m8-4v4M5 10h14M8 14h2m4 0h2m-8 3h2',
   sliders: 'M4 7h6m4 0h6M4 17h10m4 0h2M10 4v6m4 4v6',

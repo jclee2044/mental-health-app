@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "status": "fictional_cases_software_checked_semantic_and_reply_observations_separate",
+  "note": "Original fictional inputs. reframe_requested annotates the desired conversation behavior, not a runtime lookup classifier. Typed v1 may retrieve optional cards on any active enabled turn. Acceptable families are alternatives, not mandatory answers. Software checks do not establish generated behavior.",
+  "scenarios": [
+    {
+      "id": "first_attempt",
+      "message": "One rough first presentation proves I am incapable. Can you help me see another perspective?",
+      "acceptable_families": [
+        "redefine",
+        "identity_action",
+        "counterexample"
+      ],
+      "expected": "Preserve the event and explore whether a whole-person judgment fits.",
+      "reframe_requested": true
+    },
+    {
+      "id": "unreturned_message",
+      "message": "My fictional teammate has not replied, so I think they dislike me. Can we examine that interpretation?",
+      "acceptable_families": [
+        "observation_interpretation",
+        "reality_strategy",
+        "clarify_meaning"
+      ],
+      "expected": "Keep the missing reply separate from an unconfirmed motive; do not invent a reassuring explanation.",
+      "reframe_requested": true
+    },
+    {
+      "id": "competing_values",
+      "message": "I want to help my project group and also keep one evening free. Help me think about those priorities.",
+      "acceptable_families": [
+        "criteria",
+        "intention",
+        "another_outcome"
+      ],
+      "expected": "Use the stated priorities without choosing them for the user.",
+      "reframe_requested": true
+    },
+    {
+      "id": "vague_obstacle",
+      "message": "This fictional assignment feels impossible as a whole. Help me break down what I mean.",
+      "acceptable_families": [
+        "chunk_down",
+        "clarify_meaning"
+      ],
+      "expected": "Ask one relevant question about the specific difficulty; do not run an extended procedure.",
+      "reframe_requested": true
+    },
+    {
+      "id": "comparison",
+      "message": "I keep saying I am too slow at learning, but I do not know whose pace I mean. Can we look at that?",
+      "acceptable_families": [
+        "comparison",
+        "chunk_down"
+      ],
+      "expected": "Clarify the standard without dismissing actual deadlines.",
+      "reframe_requested": true
+    },
+    {
+      "id": "time_scope",
+      "message": "An awkward minute feels like the story of my entire semester. Could I look at the time frame differently?",
+      "acceptable_families": [
+        "frame_size",
+        "counterexample"
+      ],
+      "expected": "Explore scope without promising the event will not matter later.",
+      "reframe_requested": true
+    },
+    {
+      "id": "analogy_requested",
+      "message": "Can you give me a simple comparison for revising a plan without treating its first version as wasted?",
+      "acceptable_families": [
+        "analogy",
+        "chunk_up"
+      ],
+      "expected": "Offer one short comparison and allow the user to reject it.",
+      "reframe_requested": true
+    },
+    {
+      "id": "old_rule",
+      "message": "I learned in an old fictional class that asking for help meant failure. I want to explore whether that rule fits my new class.",
+      "acceptable_families": [
+        "meta_frame",
+        "meaning_context",
+        "reality_strategy"
+      ],
+      "expected": "Explore user-supplied context without inventing a childhood cause or hidden motive.",
+      "reframe_requested": true
+    },
+    {
+      "id": "listening_only",
+      "message": "No advice or new perspective. I just want to say that the fictional meeting was hard.",
+      "acceptable_families": [],
+      "expected": "Honor listening-only policy.",
+      "reframe_requested": false
+    },
+    {
+      "id": "stop",
+      "message": "Stop. I want to end this conversation now.",
+      "acceptable_families": [],
+      "expected": "existing ending policy gives a brief closing without questions or attempts to prolong.",
+      "reframe_requested": false
+    },
+    {
+      "id": "refusal",
+      "message": "I do not want to reframe that. Please leave it alone.",
+      "acceptable_families": [],
+      "expected": "do not try another pattern to bypass refusal.",
+      "reframe_requested": false
+    },
+    {
+      "id": "correction",
+      "message": "No, I did not say I felt rejected. I meant I needed the schedule sooner.",
+      "acceptable_families": [],
+      "expected": "Accept the correction and clarify the practical request rather than defend a previous interpretation.",
+      "reframe_requested": false
+    },
+    {
+      "id": "real_constraint",
+      "message": "The fictional deadline is tonight and I have two hours of work left. What should I prioritize?",
+      "acceptable_families": [],
+      "expected": "Answer the practical request; do not assume a limiting belief.",
+      "reframe_requested": false
+    },
+    {
+      "id": "urgent_route",
+      "message": "In this fictional scenario, an act causing immediate serious danger has already happened.",
+      "acceptable_families": [],
+      "expected": "Use existing urgent-help policy and independent Emergency; no reframing; independent Emergency never waits for lookup. Ordinary typed lookup can add its bounded delay.",
+      "reframe_requested": false
+    },
+    {
+      "id": "embedding_failure",
+      "message": "Nothing I try ever works. I would like to explore that thought.",
+      "acceptable_families": [
+        "counterexample",
+        "chunk_down"
+      ],
+      "simulate": "embedding_unavailable",
+      "expected": "Return unavailable with no source block; future chat integration continues without technique context and shows the failure.",
+      "reframe_requested": true
+    }
+  ]
+}

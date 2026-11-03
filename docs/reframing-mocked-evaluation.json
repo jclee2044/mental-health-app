@@ -1,0 +1,156 @@
+{
+  "checkpoint": 4,
+  "date": "2026-11-03",
+  "mode": "real SQLite/FastAPI, synthetic vectors, fixed reply mock, network forbidden",
+  "backend_tests": 341,
+  "frontend_tests": 138,
+  "personal_memory_regression": {
+    "passed": 26,
+    "expected_limitation": 0,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "id": "first_attempt",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "unreturned_message",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "competing_values",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "vague_obstacle",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "comparison",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "time_scope",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "analogy_requested",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "old_rule",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "listening_only",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "stop",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "refusal",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "correction",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "real_constraint",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "urgent_route",
+      "expected_transport_status": "ready",
+      "observed_transport_status": "ready",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    },
+    {
+      "id": "embedding_failure",
+      "expected_transport_status": "unavailable",
+      "observed_transport_status": "unavailable",
+      "observed_embedding_calls": 1,
+      "observed_reply_calls": 1,
+      "checks": "current message preserved; eligible whole source cards only; source policy supplied; normal reply fallback",
+      "generated_behavior": "not measured by this mock"
+    }
+  ],
+  "cross_case_checks": [
+    "deadline fallback before worker exits; no late second generation",
+    "disconnect after lookup: zero generation",
+    "memory summary in progress: lookup and reply complete; only user text summarized",
+    "frontend Emergency/End/edited draft late-result checks pass"
+  ],
+  "semantic_relevance": "not established by synthetic vectors"
+}

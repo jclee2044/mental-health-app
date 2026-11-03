@@ -1,6 +1,8 @@
 """Single bounded HTTP attempt using the standard library; no SDK or retries."""
 import json
 import secrets
+from ...provider_errors import ProviderUnavailable, ProviderTimeout
+from ...context_data import TurnContext
 from http.client import HTTPException as TransportError
 from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
@@ -10,13 +12,6 @@ from .lifecycle import SessionClosures
 from .settings import PROVIDER_TIMEOUT_SECONDS, PROVIDER_URL, session_payload
 from .dictation_domain import transcript_text
 
-
-class ProviderUnavailable(Exception):
-    pass
-
-
-class ProviderTimeout(ProviderUnavailable):
-    pass
 
 
 class NoRedirects(HTTPRedirectHandler):
@@ -34,8 +29,8 @@ class LiveProvider:
         self.settings = settings
         self.closures = SessionClosures()
 
-    def create_session(self, sdp, history=(), personal_context=""):
-        session_id, answer = validate_provider_response(self._post(PROVIDER_URL, session_payload(sdp, self.settings.backend_model, history, personal_context), 201))
+    def create_session(self, sdp, history=(), personal_context="", technique_context=None):
+        session_id, answer = validate_provider_response(self._post(PROVIDER_URL, session_payload(sdp, self.settings.backend_model, history, personal_context, technique_context), 201))
         try:
             self.closures.remember(session_id)
         except ValueError:
@@ -56,13 +51,20 @@ class LiveProvider:
         self.closures.finish(session_id, True)
         return "closed"
 
-    def reply_text(self, message, history, personal_context=""):
-        data = self._post("https://api.openai.com/v1/responses", {
+    def reply_text(self, message, history, context=None):
+        context = context or TurnContext()
+        blocks = (context.personal, context.techniques)
+        policy = "\n".join(block.policy for block in blocks if block.data)
+        references = [{"role": "user", "content": block.data} for block in blocks if block.data]
+        payload = {
             "model": self.settings.backend_model,
-            "instructions": BACKEND_INSTRUCTIONS + "\nFor this typed turn, reply to the user in text, following the conversation policy above." + personal_context,
-            "input": [*history, {"role": "user", "content": message}],
+            "instructions": BACKEND_INSTRUCTIONS + "\nFor this typed turn, reply to the user in text, following the conversation policy above.\n" + policy,
+            "input": [*references, *history, {"role": "user", "content": message}],
             "store": False, "tools": [], "tool_choice": "none", "max_output_tokens": 1024,
-        }, 200)
+        }
+        if self.settings.typed_reasoning_effort:
+            payload["reasoning"] = {"effort": self.settings.typed_reasoning_effort}
+        data = self._post("https://api.openai.com/v1/responses", payload, 200)
         return validate_text_response(data)
 
     def summarize_title(self, context):
@@ -76,9 +78,8 @@ class LiveProvider:
         return validate_title(validate_text_response(data))
 
     def summarize_memory(self, context):
-        from ..personal_memory.summary_domain import SUMMARY_INSTRUCTIONS
         data = self._post("https://api.openai.com/v1/responses", {
-            "model": self.settings.backend_model, "instructions": SUMMARY_INSTRUCTIONS,
+            "model": self.settings.backend_model, "instructions": self.memory_summary_instructions,
             "input": [{"role": "user", "content": context}],
             "store": False, "tools": [], "tool_choice": "none", "max_output_tokens": 1024,
         }, 200)

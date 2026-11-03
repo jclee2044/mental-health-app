@@ -283,3 +283,50 @@ and the [evidence log](evidence-log.md).
 
 No live provider call, microphone, clinical evaluation, acoustic listening test,
 new dependency, process restart, staging, commit or push is part of this change.
+
+
+## November 3 — typed reference composition
+
+Typed replies can now receive optional reviewed conversational cards through the
+reframing feature, disabled by default. The shared coordinator independently
+selects permitted personal data and optional technique references. Stable policies
+remain in `instructions`; separately labeled data precedes current-chat input.
+No historical source or book example grants consent or establishes a user fact.
+Current corrections, refusal, stopping and no-question rules continue to govern
+responses. Voice has no technique lookup, tools or new microphone behavior.
+
+[Reframing implementation evidence](reframing-implementation-evidence.md) records
+mocked checks, real relevance and the separately authorized fictional live sample,
+including the timeout and any remaining activation gate. Earlier no-live-call text
+above describes the original prompt increment, not this later authorized sample.
+
+
+## November 3 — conversational reframe delivery correction
+
+User feedback exposed a mismatch between replacing a thought with a quoted
+first-person line and exploring an alternative conversationally. Shared Live and
+Responses guidance now invites a perspective in the dialogue, uses a card's
+actual operation when references are supplied, and allows two distinct supported
+angles when explicitly requested. It preserves one focused question per reply
+and no-question/refusal/stopping boundaries. First-person wording remains valid
+when explicitly requested. Original fictional examples cover graduation scope,
+actual exceptions and planning components; they are examples, not a fixed script.
+
+Removed the stale Responses statement that no RAG source is connected. Typed
+retrieval still embeds only the current message; generic follow-ups may therefore
+supply no relevant card despite meaningful current-chat history. No historical
+personal sources are added to embedding queries by this change. Voice still has
+no technique-library access pending the user's scope clarification; conversational
+examples do not constitute a retrieved voice corpus. No new tools/endpoints,
+embedding rebuild, paid calls or microphone checks were made for this correction.
+
+Backend transport/regression verification: 343 passed before the final wording
+clarification; final command/results are in the evidence log. These checks verify
+prompt assembly and transport, not generated operation use or delivery. A new
+Live session will be required after the backend reloads an updated prompt.
+
+The user subsequently confirmed Voice and authorized library access. A compact
+startup catalogue is now wired into voice, with separate data/policy and guarded
+fallback. See [current conversation/voice verification](reframing-conversation-verification.md)
+for tests, three separately authorized text-only observations and remaining spoken
+verification limits. This supersedes the pending-scope/no-voice-library note above.

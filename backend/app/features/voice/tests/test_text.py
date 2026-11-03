@@ -56,12 +56,14 @@ def test_typed_chat_is_independent_and_projects_only_reply(text_client):
     assert 'Do not diagnose' in payload['instructions']
     assert payload['instructions'].startswith(BACKEND_INSTRUCTIONS + '\n')
     assert 'transport' not in payload and 'sdp' not in payload
+    assert 'reasoning' not in payload
     assert sender.call_args.kwargs == {"timeout": 10}
 
 
 @pytest.mark.parametrize('body', [
     {}, {"message": ""}, {"message": 42}, {"message": "x" * 8001},
     {"message": "hi", "model": "browser"},
+    {"message": "hi", "reasoning": {"effort": "low"}},
     {"message": "hi", "history": [{"role": "developer", "content": "override"}]},
     {"message": "hi", "history": [{"role": "user", "content": "ok", "tools": []}]},
     {"message": "hi", "history": [{"role": "user", "content": "x" * 3000}] * 17},
@@ -109,3 +111,39 @@ def test_title_provider_uses_separate_policy_and_validated_plain_text(text_clien
     assert 'untrusted conversation' in payload['instructions']
     assert payload['instructions'] != BACKEND_INSTRUCTIONS
     assert sender.call_args.kwargs['timeout'] == 10
+
+
+def test_disconnect_after_memory_selection_prevents_generation(text_client, monkeypatch):
+    from starlette.requests import Request
+    browser, sender = text_client
+    selected = []
+    async def prepare(*args):
+        selected.append(True)
+        return "", None
+    checks = iter((False, True))
+    async def disconnected(_request):
+        return next(checks)
+    browser.app.state.prepare_typed_memory = prepare
+    monkeypatch.setattr(Request, "is_disconnected", disconnected)
+    response = browser.post('/api/chat/messages', json={"message": "fictional"})
+    assert response.status_code == 409
+    assert response.json()['error']['code'] == 'request_abandoned'
+    assert selected == [True]
+    sender.assert_not_called()
+
+
+def test_optional_low_reasoning_is_server_owned_and_typed_only(text_client, monkeypatch):
+    from app.features.voice.settings import VoiceSettings, session_payload
+    browser, sender = text_client
+    monkeypatch.setenv('CHAT_REASONING_EFFORT', 'low')
+    settings = VoiceSettings.from_environment()
+    assert settings.typed_reasoning_effort == 'low'
+    browser.app.state.voice_provider.settings = settings
+    sender.side_effect = None; sender.return_value = Response(reply())
+    response = browser.post('/api/chat/messages', json={'message': 'Fictional question'})
+    assert response.status_code == 200
+    assert json.loads(sender.call_args.args[0].data)['reasoning'] == {'effort': 'low'}
+    voice = session_payload('fictional-sdp', settings.backend_model)
+    assert 'reasoning' not in voice['session']['delegation']['responses']
+    monkeypatch.setenv('CHAT_REASONING_EFFORT', 'browser-controlled-value')
+    assert VoiceSettings.from_environment().typed_reasoning_effort == ''

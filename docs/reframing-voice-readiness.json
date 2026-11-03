@@ -1,0 +1,9 @@
+{
+  "voice_catalogue_ready": true,
+  "active_cards": 19,
+  "catalogue_bytes": 6872,
+  "startup_content_byte_cap": 7500,
+  "remaining_history_bytes_before_catalogue_fallback": 628,
+  "external_requests": 0,
+  "note": "Fresh chat recommended. Longer accepted histories are preserved and omit the catalogue if it cannot fit."
+}

@@ -1,0 +1,56 @@
+{
+  "checkpoint": "5a",
+  "at_utc": "2026-11-03T13:50:23.824550+00:00",
+  "status": "validated_real_index",
+  "metadata": {
+    "schema_version": 1,
+    "corpus_sha256": "352ffd9b5d04136d2cf2759cbc6b205c89db3236f859f39a578127e6eda2b8b0",
+    "documents_sha256": "dcdca6f09013102c965f8cb1a42a77a2aa325391e68c8f37ae9cc08525b0dce8",
+    "spec": {
+      "provider": "openai",
+      "model": "text-embedding-3-small",
+      "dimensions": 1536
+    },
+    "count": 76,
+    "built_at": "2026-11-03T13:50:23.790591+00:00"
+  },
+  "embedding_requests": [
+    {
+      "purpose": "build",
+      "inputs": 16,
+      "input_bytes": 1828,
+      "outcome": "validated",
+      "elapsed_ms": 1970.77
+    },
+    {
+      "purpose": "build",
+      "inputs": 16,
+      "input_bytes": 1833,
+      "outcome": "validated",
+      "elapsed_ms": 989.12
+    },
+    {
+      "purpose": "build",
+      "inputs": 16,
+      "input_bytes": 1769,
+      "outcome": "validated",
+      "elapsed_ms": 1034.57
+    },
+    {
+      "purpose": "build",
+      "inputs": 16,
+      "input_bytes": 1792,
+      "outcome": "validated",
+      "elapsed_ms": 584.77
+    },
+    {
+      "purpose": "build",
+      "inputs": 12,
+      "input_bytes": 1412,
+      "outcome": "validated",
+      "elapsed_ms": 1068.29
+    }
+  ],
+  "runtime_enabled": false,
+  "note": "Real vectors validated; relevance is the next gate. Private vectors/index are ignored."
+}

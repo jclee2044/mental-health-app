@@ -374,8 +374,9 @@ def test_concurrent_end_reports_closing_without_another_provider_attempt(client)
 
 def test_disconnected_creation_closes_its_late_session(client, monkeypatch):
     from starlette.requests import Request
+    checks = iter((False, True))
     async def disconnected(_request):
-        return True
+        return next(checks)
     monkeypatch.setattr(Request, "is_disconnected", disconnected)
     browser, sender = client
     sender.side_effect = [FakeResponse(valid_response()), FakeResponse(raw=b"", status=204)]
