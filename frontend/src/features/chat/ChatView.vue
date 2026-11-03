@@ -4,6 +4,8 @@ import AppIcon from '../../components/AppIcon.vue'
 import { useChat } from './useChat.js'
 import { useTranscriptScroll } from './useTranscriptScroll.js'
 import { bindVoiceLifecycle, interruptVoice } from './lifecycle.js'
+import PersonalMemoryPanel from './PersonalMemoryPanel.vue'
+import { submitOnEnter } from './composer.js'
 
 const props = defineProps({ interrupted: Boolean, records: Object })
 const emit = defineEmits(['navigate'])
@@ -11,7 +13,7 @@ const remoteAudio = ref(null)
 const soundEnabled = inject('appSoundEnabled', ref(true))
 watch([soundEnabled, remoteAudio], ([enabled, audio]) => { if (audio) audio.muted = !enabled }, { flush: 'sync' })
 const chatWindow = ref(null)
-const { messages, draft, textBusy, textError, voiceState, voice, dictation, dictationState, send, dispose } = useChat({ getAudio: () => remoteAudio.value, records: props.records })
+const { messages, draft, textBusy, textError, voiceState, voice, dictation, dictationState, personalMemory, send, restoreDraft, dispose } = useChat({ getAudio: () => remoteAudio.value, records: props.records })
 useTranscriptScroll(chatWindow, messages)
 const labels = { permission: 'Permission', connecting: 'Connecting', active: 'Active', muted: 'Muted', closing: 'Closing', closed: 'Closed', error: 'Error' }
 const canStart = computed(() => ['closed', 'error'].includes(voiceState.value.status))
@@ -54,19 +56,19 @@ onBeforeUnmount(() => { unbind(); dispose() })
           <span class="empty-icon"><AppIcon name="chat" /></span>
           <p>Your day, something weighing on you,<br />or a small win you’d like to share.</p>
         </div>
-        <ol v-else class="chat-transcript" aria-label="Conversation" aria-live="polite" aria-relevant="additions text">
+        <TransitionGroup v-else tag="ol" name="chat-bubble" appear class="chat-transcript" aria-label="Conversation" aria-live="polite" aria-relevant="additions text">
           <li v-for="message in messages" :key="message.id" class="chat-bubble" :class="`chat-${message.role}`">
             <span class="chat-speaker">{{ message.role === 'user' ? 'You' : 'inspire' }}</span>
             <p>{{ message.text.trimStart() }}</p>
-            <span v-if="message.status === 'pending'" class="chat-caption-note">Waiting for a reply…</span>
-            <span v-else-if="message.status === 'failed'" class="chat-caption-note">Reply unavailable · draft kept</span>
+            <template v-if="message.status === 'failed'"><span class="chat-caption-note">Reply unavailable</span><button class="text-button chat-restore" type="button" :disabled="textBusy || Boolean(draft)" @click="restoreDraft(message)">Restore message to draft</button></template>
           </li>
-        </ol>
+        </TransitionGroup>
       </div>
       <form class="chat-composer" @submit.prevent="send">
         <label for="chat-message" class="chat-sr-only">Message</label>
         <div class="chat-input-box" :class="{ 'chat-input-voice-active': !canStart }">
-          <textarea id="chat-message" v-model="draft" rows="2" maxlength="4000" placeholder="Write what’s on your mind…" @keydown.ctrl.enter.prevent="send" @keydown.meta.enter.prevent="send"></textarea>
+          <textarea id="chat-message" v-model="draft" rows="2" maxlength="4000" placeholder="Write what’s on your mind…" aria-describedby="chat-keyboard-hint" @keydown="submitOnEnter($event, send)"></textarea>
+          <span id="chat-keyboard-hint" class="chat-sr-only">Enter to send. Shift and Enter for a new line.</span>
           <div class="chat-input-toolbar">
             <div class="chat-controls">
               <template v-if="canStart">
@@ -93,6 +95,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
         </div>
       </form>
     </div>
+    <PersonalMemoryPanel v-if="personalMemory" :model="personalMemory" />
     <p class="small muted chat-privacy">Uses OpenAI. Chats are saved on this device.</p>
     <p class="small muted chat-dictation-privacy">Dictation sends a short recording to OpenAI.</p>
     <details class="chat-privacy-details">
@@ -100,7 +103,7 @@ onBeforeUnmount(() => { unbind(); dispose() })
       <p>Opening History generates missing chat titles using a short saved-text excerpt sent to OpenAI. Titles are saved locally; reviewing a conversation does not continue it with the model.</p>
       <p>Select the microphone to record up to 30 seconds, then select it again to transcribe with OpenAI. You can cancel while preparing or transcribing. Leaving, Emergency, Send or switching to Voice mode cancels dictation. Recognized words go into your editable draft, not directly into chat. This app keeps recording audio in memory only and doesn’t save it. Cancelling an upload can’t guarantee cancellation of provider processing or charges.</p>
       <p>Voice sends microphone audio to OpenAI only after you select Voice mode and allow access. Recent messages and approximate captions provide context across text and voice. Sending text turns the microphone off; returning to voice is your choice.</p>
-      <p>Saved chats remain until deleted and aren’t automatically reused as conversation context. Spoken messages save as approximate text when voice ends or you leave chat; audio isn’t saved. Unsaved exchanges can be lost on reload or close. Local deletion doesn’t control OpenAI’s retention or training policies.</p>
+      <p>Saved chats remain until deleted. Personal memory is off by default; its separate choices allow recent logs, saved user-message excerpts or model-written summaries, and facts you confirm to be sent as context. With saved conversation text enabled, ending a saved chat sends bounded user text to OpenAI for a short memory summary, which may incur API usage. Summaries are generated interpretations, not confirmed facts. Voice receives a snapshot at startup, with no ongoing history searches. Opening memory controls stops capture; changes apply to future requests. Spoken messages save as approximate text when voice ends or you leave chat; audio isn’t saved. Unsaved exchanges can be lost on reload or close. Local deletion doesn’t control OpenAI’s retention or training policies.</p>
     </details>
   </section>
 </template>

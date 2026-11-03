@@ -242,3 +242,62 @@ The board shows the main activities and secondary states. The Help panel still s
 Follow the next user request rather than automatically starting implementation. For implementation, resolve genuinely blocking choices, define the contract/schema, then build the bounded experience and independent Help. Later milestones need actual timing, persistence, exits/failures, fictional evaluation cases, and clearly separated mocked/live-model evidence. Do not install dependencies or expand scope without explaining the need.
 
 This update changes documentation only. Inspection used `cat`, `rg --files`, `ls -la handoffs`, and the local image viewer; edits used a shell heredoc and `apply_patch`. Project-owned Python checks report length, retained sections/findings, removed questions/paragraph, image existence/signature, and local links. No new application checks, dependencies, processes, calls, commits, or publishing occurred. Mermaid rendering remains unverified.
+
+## November 2, 2026 — personal-memory implementation handoff
+
+The user's non-vector personal-memory increment is implemented separately from
+the parallel reframing review/corpus. Authoritative feature contract:
+backend/app/features/personal_memory/CONTRACT.md. New chat disclosure is off by
+default; independently opt into logs, user-message excerpts or confirmed facts.
+Voice gets one startup snapshot; typed replies select bounded context per message.
+No embeddings, automatic fact extraction, extra model call, tools or dependencies.
+Future reframing integration must preserve the personal permission check and
+separate source types; do not index personal records in the technique corpus.
+Shared edits: voice routes/schemas/provider/settings, chat UI/API/lifecycle, and
+main's optional post-schema initialization hook. Base prompts.py and the
+reframing review/book/vector work were not edited here. No commits/staging.
+
+Verification: 216 backend / 122 frontend tests, production build, non-mutating
+lint and all original checkpoints pass. Browser proof uses a separate fictional
+mock database and labeled replies. No live provider/microphone/latency verification.
+See docs/evidence-log.md and the contract for provenance, deletion, source bounds
+and outstanding limits. Rebuild/restart your own app to load the feature; no
+existing user-owned process was stopped or restarted by this task.
+
+## Latest November 2 chat refinement
+
+Enter now sends; Shift+Enter is newline, with IME protection. Draft clears before
+requests; failure recovery respects edits made afterward. New keyed bubbles use
+short entrance/move transitions with OS/app reduced motion. Memory disclosure has
+only two short paragraphs and three existing permission toggles; removed editor/
+review UI does not delete facts/exclusions or their backend management routes.
+
+User selected compact excerpts across seven-day saved chats. Current backend
+considers rolling-168-hour user text, one longest literal message per permitted
+conversation, with evenly shared excerpts in a 12,000-byte snapshot. Coverage counts
+explicitly disclose partial snapshots. No keyword/200-message filter, vectors or
+extra model task. Cached model-written summaries were discussed but not implemented;
+keep any later summaries distinct from confirmed user facts and technique cards.
+
+283 backend / 129 frontend tests, build, lint, all checkpoints and 26 revised
+fictional scenarios pass. Details in personal_memory/CONTRACT.md and evidence log.
+Current app was restarted on port 8019 using existing project .env; no provider/
+microphone action was taken by the agent. User must reload their open page. Only
+our own mock/app processes were stopped. No staging/commit or reframing edits.
+
+## Latest cached-summary increment — November 2, 2026
+
+User approved background post-chat memory summaries and removed the per-bubble
+waiting caption. Implemented separate opted-in POST/GET summary API, bounded saved
+user-only model input, version/token/consent-epoch/expiry-safe SQLite cache, empty
+classification and local lookup fallback. Source deletion/exclusion invalidates
+late work. Source-save Retry stays storage-only, with distinct summary Retry.
+The feature queue waits for initial saves but End/navigation never await summary.
+No auto-backfill or automatic model retry. Cache summaries are unverified generated
+interpretations, not confirmed facts. Three-control memory UI stays compact.
+
+306 backend / 136 frontend tests, build/lint/checkpoints pass; see evidence and
+personal_memory/CONTRACT.md. Mocked browser/SQLite checks only. No paid model,
+embedding or microphone check by the agent; no dependency/reframing/commit changes.
+API calls after an opted-in saved chat ends may incur usage. Reload/close can lose
+unsent work/notices; single-process recovery and live output/latency remain limits.

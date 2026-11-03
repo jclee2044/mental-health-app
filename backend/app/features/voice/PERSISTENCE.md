@@ -139,3 +139,22 @@ available on title failure. The UI discloses excerpt transmission before enterin
 History in chat privacy notes and on the History screen. TODO: live title quality,
 long conversations whose topic changes after the bounded opening excerpt, and
 cross-process cost deduplication remain unverified.
+
+## Opt-in personal context — November 2, 2026
+
+The user's SQLite-memory implementation request supersedes the earlier blanket
+no-historical-context rule only for explicit personal-memory permissions. Source
+storage/retry/title generation remains independent of conversational generation.
+See [personal-memory contract](../personal_memory/CONTRACT.md): separate permissions,
+confirmed facts, current-source selection, exclusion/deletion and one voice startup
+snapshot. No vector/embedding, extra model call, historical resume or audio storage.
+
+## Separate cached-summary task — November 2, 2026
+
+User now authorized an opted-in memory-summary request after End/navigation and
+confirmed initial saves. It is separate from titles, conversational replies and
+storage Retry. The browser does not await it before navigating; current context
+lookup reads only cache/fallback. See personal_memory/CONTRACT.md for the bounded
+user-only source, generated-vs-confirmed distinction, source-delete trigger,
+revision/consent/expiry invalidation and explicit retry/delivery limits. No new
+provider settings, audio persistence, tools or reframing retrieval are introduced.

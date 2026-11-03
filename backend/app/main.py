@@ -29,6 +29,9 @@ def create_app(db_path=None, frontend_dist=None):
             database.initialize()
             for store in stores:
                 store.initialize()
+            for store in stores:
+                if finalize := getattr(store, "finalize_initialize", None):
+                    finalize()
         except (sqlite3.Error, OSError):
             # Keep static navigation/Emergency usable; API operations report 503.
             pass

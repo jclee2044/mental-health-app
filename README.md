@@ -20,7 +20,8 @@ Repository: [mental-health-app](https://github.com/jclee2044/mental-health-app).
 | Typed chat | Model replies using bounded current-chat context, editable drafts retained after failure, End chat, automatic transcript scrolling and leading-space cleanup. Completed exchanges save separately from generation. |
 | Voice conversation | Explicit Voice mode selection, WebRTC speech/captions, seven visible lifecycle states, local Mute/Unmute, End, playback recovery and cancellation/cleanup. Switching to text stops voice; explicitly restarting voice carries recent visible context. |
 | Dictation | Separate microphone captures up to 30 seconds for OpenAI transcription into the editable draft. Finish/cancel controls, size bounds and typing fallback; no automatic Send or restart. |
-| Saved chats | Typed pairs and accepted spoken text share SQLite conversation history, model-generated summary titles with date/time, read-only review and confirmed deletion. Missing titles are generated when History opens using a bounded saved-text excerpt; title failures never block review or storage. No audio recordings are saved. Older chats are not automatically reused as conversational context. |
+| Saved chats | Typed pairs and accepted spoken text share SQLite conversation history, model-generated summary titles with date/time, read-only review and confirmed deletion. Missing titles are generated when History opens using a bounded saved-text excerpt; title failures never block review or storage. No audio recordings are saved. Historical context requires the separate Personal memory opt-ins below. |
+| Personal memory | Off by default, with separate permission for recent logs, saved chats and confirmed facts. After an opted-in saved chat ends, a separate model task caches a short summary when substantive. Future context reads that cache or falls back to a literal user excerpt across the seven-day window. No vectors/keyword filter; generation never blocks navigation or runs during voice startup. |
 | Failures and offline use | Explicit request/save errors and storage-only Retry. After the production shell is cached, Emergency and breathing remain available without the server; saving/history need the local backend. Pending saves remain in memory and can be lost on reload/close. |
 
 Emergency is application-owned and opens independently of model/classifier or
@@ -202,8 +203,9 @@ exploration and practical answers appropriate to the input. Each echo/reflection
 requires one relevant question; requests to stop or have no questions take
 priority. A model's closing acknowledgment does not itself stop capture or
 navigate. The prompts contain the assignment's skill descriptions, but only
-breathing has an implemented guided sequence. No RAG, dataset ingestion, model
-training or automatic historical context for conversation replies is connected.
+breathing has an implemented guided sequence. No curated technique retrieval,
+dataset ingestion or model training is connected by the personal-memory increment.
+Historical personal context is available only through explicit Personal memory choices.
 History separately sends a bounded saved excerpt for missing summary titles.
 
 ## Architecture and contracts
@@ -318,7 +320,7 @@ are recorded separately; no live provider/microphone test is claimed by mocks.
   the Part Two report remains tracked. Relative links render within GitHub;
   a standalone uploaded report needs full published image/document URLs.
 
-Still unfinished: dynamic UI/personalization, automatic history reuse, reviewed
+Still unfinished: dynamic UI, live evaluation of personal-context retrieval, reviewed
 retrieval, separate entry/setup timing, broader emotion-flow/accessibility/device
 checks, clean-checkout verification and the Part Three fifteen-fictional-scenario /
 three-behavior-check evaluation with bounded live variation and recordings.
@@ -328,3 +330,101 @@ steps, exits and timing. The proposed fourteen patterns from Robert Dilts's
 subject to source/rights/evidence review, distinct from validated CBT. Eye tracking,
 passive emotion inference and additional breathing patterns remain unimplemented
 and require scope decisions before development.
+
+## Personal memory — November 2, 2026
+
+In Support chat, expand **Personal memory** to separately allow recent emotion
+logs, saved user-message text and facts you confirm. Choices start off and persist
+in SQLite. The compact disclosure contains only transmission/lifecycle information and three
+permission toggles. Saved history remains available in each activity. Voice receives
+one small startup snapshot; typed replies receive a fresh seven-day snapshot.
+The later opted-in post-chat summary task adds a separate model call; lookup does
+not. There is no vector database for personal context.
+The reframing corpus/cards/vector work stays separate. See the
+[personal-memory contract](backend/app/features/personal_memory/CONTRACT.md) for
+JSON shapes, limits, provenance, forgetting and integration boundaries.
+
+The log rule uses the latest permitted entry per local date across seven days;
+below-center energy means `<0`, not a clinical interpretation. Each saved chat with
+user text in the last seven days contributes a compact literal excerpt, without
+keyword filtering. Excerpts share a 12,000-byte context budget with logs and up to
+six existing confirmed facts. A short notice reports partial chat coverage if the
+recent history cannot all fit. A valid cached summary is preferred; otherwise
+these are literal excerpts. Generated summaries remain unverified interpretations,
+separate from facts the user confirms.
+A 200 ms local retrieval deadline falls back to ordinary chat on failure; actual
+voice startup/audio latency and generated recall have not been measured.
+
+Opening memory controls stops capture and cancels pending typed work. Changes
+apply to future requests; Voice requires an explicit restart. Forgetting a linked
+fact also excludes its whole source chat and related facts to prevent immediate
+reintroduction. Exclusion keeps the original history record. Independently saved
+duplicates are not semantically erased. Changes cannot retract provider context
+already sent or remove current-chat messages; End chat starts a fresh conversation.
+Selected context is transmitted to OpenAI; local storage is not a retention promise.
+
+Observed checks for this increment: 216 backend tests, 122 frontend tests,
+production build, non-mutating Oxlint/ESLint and all three cumulative checkpoints
+passed. Browser checks used a separate fictional database and the labeled mock
+provider: confirmed fact, context preview, correction/reload and independent
+Emergency. No paid call, microphone or live generated-memory check was performed.
+Known Starlette/httpx deprecation and bundled-JS size warnings remain.
+For an isolated mock rehearsal:
+
+```sh
+npm --prefix frontend run build
+backend/.venv/bin/python scripts/serve_submission_demo.py --port 8018 --database backend/data/personal-memory-demo.sqlite3
+```
+
+This mock accepts context but does not generate a memory-aware response. It cannot
+establish voice latency, generated grounding or retrieval safety.
+
+Simulated-memory follow-up: run
+`backend/.venv/bin/python scripts/evaluate_personal_memory.py` for isolated
+fictional scenarios and local mock timing. [Results](docs/personal-memory-validation.json)
+record 24 functional passes and two reproduced search limits; full regression
+suites pass 279 backend / 122 frontend tests. Testing fixed a keyword that could
+be indexed beyond its transmitted excerpt: search now uses the first 700 UTF-8
+bytes. At 2,000 fictional chats, the final run added about 2.4–3.0 ms median local
+mock voice-start route time. This excludes live model/network/audio latency.
+
+Latest chat refinement: Enter sends; Shift+Enter adds a newline (IME composition
+is preserved). The composer clears immediately; a failed reply restores an
+untouched draft without overwriting later typing. New bubbles use short entrance
+transitions with OS/app reduced-motion alternatives. Personal memory no longer
+shows its fact editor or context-review interface. The user's seven-day request
+supersedes the earlier keyword/200-message selection described in historical
+verification entries above. No automatic LLM memory-summary task was added.
+
+Current refinement checks: 283 backend tests, 129 frontend tests, production build,
+non-mutating lint and all three cumulative checkpoints passed. The updated fictional
+evaluator passes 26 scenarios and writes
+[seven-day results](docs/personal-memory-seven-day-validation.json). These supersede
+its earlier lexical-search expectations, while old raw evidence remains historical.
+Cached model-written memory summaries are a possible later increment; current
+snapshots use literal user excerpts and disclose when not all recent chats fit.
+
+## Cached memory summaries — latest November 2 update
+
+With **Use saved conversation text** enabled, ending/leaving a saved chat queues a
+separate summary request after its initial saves finish. Navigation and the next
+chat never wait. The current server model summarizes bounded saved user text;
+only substantive results are kept as summary text. SQLite caches the result for
+future seven-day context. New source text, deletion, exclusion, consent changes
+in flight and expiry prevent stale results from being reused. No automatic backfill
+or model retries. Excerpts remain the fallback, and generated summaries never
+become user-confirmed facts. See the [contract](backend/app/features/personal_memory/CONTRACT.md).
+
+This task adds API usage and text transmission after an opted-in chat ends. It
+has no intentional wait in the chat/voice startup path, but actual provider quota,
+network and audio effects are not measured. Summary failures have a small separate
+Retry control; Retry chat save remains storage-only. Closing/reloading can lose
+unsent requests/notices, and cannot guarantee provider cancellation. The per-message
+“Waiting for a reply…” caption is removed; Send retains its pending state.
+
+Observed cached-summary checks: 306 backend tests (including 23 summary cases),
+136 frontend tests, production build, non-mutating lint and all three cumulative
+checkpoints pass. Browser/SQLite verification used only fictional records and the
+fixed mock provider, not actual summary generation or live voice. The separate
+[summary contract](backend/app/features/personal_memory/CONTRACT.md) documents API
+usage, consent, failure fallback, expiry and delivery/recovery limitations.

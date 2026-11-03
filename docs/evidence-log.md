@@ -1780,3 +1780,317 @@ run build; from frontend, npm exec --offline -- eslint src/App.vue --no-cache;
 git diff --check. Existing bundle-size warning remains. Tests/checkpoints were
 not rerun for this presentation-only change. No dependencies, live calls,
 microphone use, staging or commits.
+
+## November 2, 2026 — opt-in SQLite personal memory
+
+Request: implement the approved non-vector user knowledge base, with a small Voice
+startup bundle, while leaving the parallel cognitive-reframing corpus/vector work
+independent. Read the attachment, repository requirements/design/research/contracts
+and active reframing chat read-only. That chat was doing source review; its files,
+private extracts and embedding decisions were left alone. Existing root disclosure
+changes were retained. Contract/ownership handoff:
+backend/app/features/personal_memory/CONTRACT.md.
+
+Changes: new personal_memory feature (domain/schema/storage/routes/context/tests),
+three prefixed tables, consent/fact/exclusion controls inside the chat feature,
+minimal voice/text provider/schema/route integration, post-schema initialization
+hook for atomic source-delete trigger, and compatible mock-provider signature plus
+optional isolated rehearsal DB. Added README/contracts/agent rules and this evidence;
+no checkpoint manifest, base prompt, curated corpus, dependency or report rewrite.
+
+Selected context is at most 6,000 UTF-8 bytes, built from current permitted logs,
+confirmed facts and user-only saved excerpts. Temporary in-memory FTS5 searches
+up to 200 recent candidates; no persistent text index/embeddings. Python describes
+the latest-per-day below-center-energy dates; no diagnosis or color/risk inference.
+A 200 ms caller deadline fails open to ordinary chat; observed timeout tests do
+not establish actual provider/audio latency. Voice has no ongoing lookup.
+
+Observed fictional checks: default off; strict permission/scope/media/size shapes;
+user-only lexical retrieval/no assistant inventions; exclusion of current chat;
+approximate spoken provenance; latest daily record; missing/zero-energy dates;
+edit/delete refresh; linked fact correction/deletion and exclusion tombstones;
+no resurrection on source restore; bounded facts/UTF-8 whole JSON; one mocked
+provider call with context and unchanged tools/config; source deletion trigger;
+unavailable/slow retrieval fallback; reload initialization. Frontend mocks cover
+permission failures, explicit fact confirmation/correction/forgetting, excluded
+sources, late loads/session results, text cancellation and endpoint transport.
+Existing voice lifecycle/Emergency and the three original cumulative scopes pass.
+
+Commands/checks (all passed):
+- backend/.venv/bin/python -m pytest -q -c backend/pytest.ini backend/tests backend/app/features — 216 tests.
+- npm --prefix frontend test — 122 tests.
+- npm --prefix frontend run build — passed; existing large bundled-JS warning.
+- From frontend: npm exec --offline -- oxlint . and npm exec --offline -- eslint . --no-cache — passed.
+- backend/.venv/bin/python scripts/verify_checkpoints.py — interface, emotion and breathing passed; .checkpoints/20261102-175721-685010/results.json.
+- git diff --check, read-only diff/status and project-owned sqlite3 FTS5 availability check.
+- Mock browser server: backend/.venv/bin/python scripts/serve_submission_demo.py --port 8018 --database backend/data/personal-memory-demo.sqlite3; no credentials/env file.
+
+Browser observation: confirmed a fictional preference, previewed it, corrected it,
+reloaded and saw the correction/permission persist. Sent a fictional text message
+and saw a labeled mocked reply/save and selected context. Emergency opened from
+memory controls independently; no call selected. Screenshots:
+[controls and selected context](personal-memory-controls.jpg),
+[viewport with persistent Emergency](personal-memory-preview.jpg).
+
+Failed/revised checks: first Node run had one SFC-loader failure on the new Vue
+child import; added the same explicit component test boundary used by existing
+SFC checks, then all passed. Initial localhost bind was sandbox-denied; approved
+localhost launch succeeded, and only that started process was stopped afterward.
+An incorrectly cropped screenshot was discarded and replaced by a viewport capture.
+
+Limits: all model/voice tests are mocked; no paid API calls, microphone, physical
+phone/accessibility study, generated recall, prompt-injection immunity or acoustic
+latency is established. Search is lexical/bounded and facts are manually confirmed;
+no semantic cross-source erasure or exact per-reply citations. Current-chat/provider
+context cannot be retracted by memory changes. Fictional data only; no staging or
+commits. Historical Part 3.1 report preserved.
+
+Final coexistence check: while this task was finishing, the other chat added
+backend/app/features/reframing as a separately registered, no-I/O service with its
+own reframing.sqlite3 path and no chat/prompt wiring. Read that registration and
+service boundary without editing either; this personal-memory path does not call
+it or its embedder. Reran the full backend/frontend suites after that package
+appeared to check coexistence. Concurrent future edits are outside this snapshot.
+
+## November 2, 2026 — simulated personal-memory evaluation
+User asked whether testing could be conducted with simulated data. Conducted
+26 fictional API scenarios against real FastAPI/SQLite with a fixed mock provider:
+24 functional scenarios passed; two expected search limitations were reproduced;
+zero unexpected failures. Used new temporary databases under ignored project tmp,
+fake process credentials and fail-fast HTTP connection patches. No real database,
+provider call, microphone, server process, embedding or reframing query was used.
+A forbidden reframing.prepare mock asserts that the personal-memory path never
+calls the other feature. Temporary databases are removed by the runner.
+
+Reproduction command:
+
+```sh
+backend/.venv/bin/python scripts/evaluate_personal_memory.py
+```
+
+Expected/observed values and durations for every scenario:
+[final results](personal-memory-validation.json). The runner is
+scripts/evaluate_personal_memory.py. Its provider reply is a fixed string: these
+checks evaluate selection, evidence/provenance and application behavior, never
+LLM-generated recall, relevance judgments, prompt-injection resistance or audio.
+
+Covered: default-off and independent permissions; three distinct energy dates,
+multiple logs on one date, latest-daily precedence, gaps and seven-day boundary;
+negation and user-only evidence; spoken-text provenance; original last-week date;
+current-chat exclusion; correction; linked forgetting/deletion; emotion edit;
+revocation before a subsequent voice start; one startup snapshot/provider call;
+storage errors; actual SQLite exclusive lock; 400 ms simulated slow lookup returning
+without late context; app re-creation persistence; quoted injection-like source data;
+Unicode budget; matching and nonmatching excerpts; semantic and candidate limits.
+Three cross-case behaviors verified: disabled/current/excluded records do not enter
+context; bounded sources retain user authorship/dates/negation; unavailable memory
+continues generation without personal context or another provider/embedding call.
+Existing frontend mocks verify cancellation/cleanup and independent Emergency.
+
+Finding and fix: a keyword at the end of the indexed 1,000-character candidate
+could select a message whose transmitted 700-byte excerpt omitted that keyword.
+The first run recorded this observed weakness in
+[before-fix results](personal-memory-validation-before-fix.json), without pretending
+it was generated recall. Retrieval now Unicode-clips candidate text to the same
+700-byte bound before FTS indexing. Added ASCII/emoji regression cases and updated
+the contract. A tail-only keyword no longer selects unrelated transmitted text;
+an early keyword/negation remains intact. Full original records stay available
+for explicit inspection. The first-700-byte search bound is an explicit limitation.
+
+Latency method: 40 measured pairs per size/mode after three warm-up pairs;
+alternate enabled/disabled order. Sizes 0, 200, 2,000 saved conversations (two
+messages each), plus seven emotion logs and six facts. Test both empty Voice starts
+and starts with a recent exam-topic user message (which exercises FTS). Baseline
+and enabled runs use the same immediate fixed provider mock. This measures warm
+local in-process API/database work, not network, provider prompt processing,
+time-to-first-audio, device capture or cold/contended production latency. Each
+snapshot still searches at most 200 recent user excerpts. No memory fallbacks in
+240 normal enabled measured samples; locked/slow failure cases were separate.
+
+| Saved chats | Voice-start context | Median added local route time (ms) | With-memory route p95 (ms) |
+| --- | --- | ---: | ---: |
+| 0 | empty_voice_start | 0.389 | 0.812 |
+| 0 | voice_start_with_recent_topic | 0.390 | 0.785 |
+| 200 | empty_voice_start | 0.874 | 1.419 |
+| 200 | voice_start_with_recent_topic | 1.460 | 2.093 |
+| 2000 | empty_voice_start | 2.401 | 2.894 |
+| 2000 | voice_start_with_recent_topic | 2.954 | 3.391 |
+
+Commands/checks: full backend pytest — 279 passed (includes the other feature's
+separate mocked tests); npm --prefix frontend test — 122 passed;
+backend/.venv/bin/python scripts/evaluate_personal_memory.py — 24 passed / two
+expected limitations / zero failures; git diff --check — passed. Existing
+Starlette/httpx deprecation remains. No frontend, dependency, checkpoint, provider
+policy or UI changes in this testing increment, so build/lint/checkpoints were
+not rerun; their previous passing results stand for the unchanged files.
+
+Files changed for this increment: new scripts/evaluate_personal_memory.py and two
+JSON evidence artifacts; personal_memory/storage.py and tests/test_memory.py for
+the excerpt fix/regressions; personal-memory CONTRACT.md; appended README,
+AI-USE.md and this evidence. Did not edit reframing code or its documents, stage
+files or commit. Remaining: live generated recall/grounding and real audio latency;
+lexical search cannot find meaning-only matches or examine older/out-of-excerpt
+text. A model following injected source commands is not tested by a constant mock.
+
+## November 2, 2026 — compact composer and seven-day conversation excerpts
+
+Request: Enter sends, Shift+Enter newline, sent text leaves the input immediately,
+smooth iMessage-style arrivals, and Personal memory reduced to disclosure + three
+permission controls. User subsequently selected compact excerpts for seven-day
+history and asked about cached model summaries. Explained that cached summaries
+would add a post-conversation model task and can improve future context quality;
+that task is not implemented here. No silent promotion into confirmed facts.
+
+Changes:
+- frontend/src/features/chat/composer.js, useChat.js and ChatView.vue: IME-safe
+  Enter/Shift+Enter, repeated-key suppression, draft clearing before the first
+  request await, revision-aware failure recovery and explicit Restore message.
+  Success cannot clear an identical message the user intentionally retyped.
+- ChatView.vue/styles.css: keyed TransitionGroup entrances (320 ms transform,
+  220 ms opacity, 260 ms movement), role-specific bottom-corner origin and gentle
+  translation/scale. Stable caption IDs preserve fragment behavior. OS/app reduced
+  motion removes these transitions.
+- PersonalMemoryPanel.vue/usePersonalMemory.js: removed fact/editor, search,
+  original/review and exclusion sections from the disclosure. Retained three
+  independent persisted permission switches, short provider/lifecycle text, error
+  recovery and a conditional partial-coverage count. Preferences load independently
+  of removed editor data. Existing facts/exclusions/APIs remain untouched by removal.
+- personal_memory/storage.py/domain.py/context.py: rolling 168-hour UTC saved-user
+  window, one longest literal user excerpt per chat, tie-broken by recency; all
+  eligible chats considered without keyword/top-three/200-message filtering.
+  Share the 12,000-byte budget evenly by shortening 700 down to 64 UTF-8 bytes per
+  excerpt. If even short excerpts + provenance cannot all fit, keep newest and
+  report exact included/eligible counts. Never call this a summary/full recall.
+  User-only authorship, source IDs/dates, source exclusions, independent log/fact
+  permissions, read consistency and bounded failure fallback are preserved.
+- Updated memory/backend tests and the evaluator's superseded lexical expectations;
+  new seven-day result JSON preserves previous historical raw reports. Updated
+  README/contracts/agent rules/chat docs and appended disclosure/evidence.
+
+Checks/commands:
+- backend/.venv/bin/python -m pytest -q -c backend/pytest.ini backend/tests backend/app/features — 283 passed.
+- npm --prefix frontend test — 129 passed.
+- npm --prefix frontend run build — passed (existing bundled-JS size warning).
+- From frontend: npm exec --offline -- oxlint . and npm exec --offline -- eslint . --no-cache — passed.
+- backend/.venv/bin/python scripts/verify_checkpoints.py — all three passed; .checkpoints/20261102-184549-502932/results.json; manifest unchanged.
+- backend/.venv/bin/python scripts/evaluate_personal_memory.py — 26 passed, zero unexpected failures; docs/personal-memory-seven-day-validation.json.
+- git diff --check — passed. Starlette/httpx deprecation remains.
+
+New regression scenarios: Enter vs Shift/IME/repeat; immediate clearing with a
+pending response; failure recovery without overwriting a newer/cleared draft;
+identical retyped text retained on success; compact panel has three checkboxes and
+no forms/editor/review; preferences-only load; every one of 20 recent chats gets
+an excerpt despite unrelated query text; rolling cutoff excludes old/future text;
+one user excerpt per chat; large eligible history reports partial coverage;
+Unicode shortening is marked explicitly. Existing tests initially failed because
+four assertions required the superseded keyword filtering; updated those expected
+behaviors while preserving user-only source/negation/truncation checks.
+
+Browser checks used only the labeled mock provider, separate ignored fictional
+DB and the current built app at 8018. Shift+Enter produced two draft lines without
+sending. Enter produced a matching multiline user bubble, labeled mock reply and
+empty composer. A second send showed Vue enter-from/enter-active/move classes;
+getAnimations is unavailable in the DOM proxy, so exact rendered timing was not
+measured. Expanded memory showed only short disclosure and all three toggles,
+without editor/review content. Emergency remained visible when scrolled. Screenshot:
+[compact memory and composer](chat-compact-memory.jpg).
+
+Lifecycle: mock server stopped after checks. The configured app process previously
+started by this chat on 8019 was stopped/restarted to load backend changes. Another
+process on 8000 was not touched. Existing user-tab access reported browser.user
+unavailable; a separate agent-created mock tab worked. Did not reload the user's
+page or discard their draft; asked them to reload for the built update. No real
+microphone, generated-model or paid verification was performed by this agent.
+
+Limits: excerpts are literal prefixes of a longest user message, not substantive
+model summaries or a complete account of a conversation. The longest message can
+miss other topics. Coverage is explicit and finite; 200 and 2,000-chat benchmark
+fixtures produce partial snapshots within the context budget. Cached model summaries
+need a separate task/disclosure, deletion invalidation and generated-quality checks.
+No reframing index/corpus, dependency, checkpoint scope, event allowlist, historical
+report, staging or commit changes were made here.
+
+## November 2, 2026 — cached post-chat summaries and caption removal
+
+Request: user approved cached summaries when they do not block the UX and asked
+to remove “Waiting for a reply…” beneath a sent message. Implemented a separate
+post-chat request after initial saves, gated by saved-conversation permission.
+End/navigation are synchronous; waiting for its result is owned by the feature's
+persistent-in-this-app queue. There is no summary generation on GET, cache lookup,
+ordinary reply or Voice startup. Existing excerpt fallback remains usable.
+
+Files: new backend personal_memory/summary_domain.py, summary_storage.py,
+summary_routes.py and tests/test_summaries.py; updated personal-memory registration,
+storage/context policy and provider.py's separate summarizer. Frontend changes in
+ChatView.vue, PersonalMemoryPanel.vue, api.js, useChat.js, useConversationRecords.js,
+ChatSaveNotice.vue, feature index and summary/view tests. Mock demo adds a fixed
+empty-summary classification and demo:slow for pending-state observation. Updated
+contracts/README/agent guidance/chat docs and appended disclosure/evidence. Base
+prompts.py, event permissions, reframing sources/index, dependencies and original
+checkpoint manifest are untouched.
+
+Cache: additive summary table and private preference epoch. A bounded source
+snapshot contains up to 32 saved user messages / 16,000 UTF-8 text bytes across
+seven days, tagged typed/voice and original date. Model text must be strict JSON
+substantive:boolean + summary:string, <=700 UTF-8 summary bytes, no duplicate/extra
+keys/control characters. Model instructions preserve negation/corrections/dates,
+voice uncertainty and source authority limits. Semantic substantiveness/accuracy
+remain model judgments, not deterministic or clinically validated checks.
+
+Source inserts/updates invalidate revisions; original deletion/exclusion removes
+cache; token/revision/epoch/expiry checks discard late work. Completed cache is
+read locally as role:summary/source:model_summary, not a quote or confirmed fact.
+Valid empty classifications omit small-talk-only chats. Expired/missing/failed
+cache uses a literal excerpt. Source-save Retry never calls a model, including
+when End overlaps that manual retry; Retry memory summary is a separate action.
+No automatic backfill/provider retry. Process interruption marks pending claims
+failed without resuming them. Queue/notices can be lost on reload/close; this is
+not a durable background worker. Generation may use shared provider quota; no
+claim of zero network/audio impact is established.
+
+Observed checks/commands:
+- backend/.venv/bin/python -m pytest -q -c backend/pytest.ini backend/tests backend/app/features — 306 passed.
+- backend/.venv/bin/python -m pytest -q -c backend/pytest.ini backend/app/features/personal_memory/tests/test_summaries.py — 23 passed.
+- npm --prefix frontend test — 136 passed.
+- npm --prefix frontend run build — passed; existing bundled-JS size warning.
+- From frontend: npm exec --offline -- eslint . --no-cache and npm exec --offline -- oxlint . — passed.
+- backend/.venv/bin/python scripts/verify_checkpoints.py — interface/emotion/breathing passed; .checkpoints/20261102-191125-781279/results.json; manifest unchanged.
+- git diff --check — passed. Existing Starlette/httpx deprecation remains.
+- Mock server: backend/.venv/bin/python scripts/serve_submission_demo.py --port 8018 --database backend/data/personal-memory-demo.sqlite3.
+
+Fictional cases verify: one generated result then cached POST/GET/preview reuse;
+user-only input (no assistant inventions); strict JSON/Unicode limits; off/excluded
+permission; failed task with no automatic repeat; distinct explicit Retry; late
+completion after delete, exclude/restore, source append and off/on consent; new
+source invalidation vs idempotent save; cache expiry; concurrent normal chat during
+blocked summarizer without a SQLite lock; no browser configuration; cached Voice
+context without another summary call; restart preserving completed cache and
+failing interrupted claims. Frontend verifies immediate End/disposal, pending-save
+dependencies, duplicate-End deduplication, next-chat transitions, off/empty chats,
+summary failures preserving successful saves, separate storage/model retries and
+manual save retries already in flight at End. Completed dependency bodies are
+released rather than retained for summary retries.
+
+Browser: typed demo:slow into the isolated mock app. The pending accessibility
+state showed one user bubble with no per-bubble caption, an empty editable draft
+and the Send control's pending label. Completion produced a labeled mock reply.
+Opened compact memory controls, observed the summary-transmission disclosure,
+enabled saved conversation text in this fictional DB only, then End returned Home.
+Read-only SQLite count showed one cached empty classification. The fixed mock
+classification does not evaluate a model's decision. Screenshot of the completed
+mock chat: [caption removed](chat-cached-memory.jpg). No real microphone or call
+links were selected; no credentials or real personal records were inspected.
+
+Revision: the first source-version retry test failed because its response fixture
+reused an already-closed byte stream; made a new mock response per call, then the
+full suites passed. No production workaround or weakened assertion was introduced.
+Limits: actual generated summary quality/grounding, prompt-injection resistance,
+shared provider quotas and live voice latency remain unverified. Single-process
+crash recovery, no guaranteed close delivery, no automatic old-chat backfill and
+no durable failed-summary review after reload are explicit in the contract.
+
+Runtime completion: stopped only this chat's mock process on 8018 and its configured
+app on 8019, then restarted the current app using the existing project .env:
+backend/.venv/bin/python -m uvicorn app.main:app --app-dir backend --env-file .env --host 127.0.0.1 --port 8019.
+Startup and configuration GET succeeded without a provider request. User must reload
+their existing page; no draft was discarded. No staging or commit was performed.

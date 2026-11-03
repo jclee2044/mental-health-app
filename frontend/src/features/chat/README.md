@@ -212,3 +212,41 @@ Observed: 113 frontend tests, production build, targeted ESLint and all three
 cumulative checkpoints passed. Browser checks verified persisted mute and
 controls in overlays; voice playback was mocked/DOM-verified, without real
 microphone or provider calls. Full commands and limits: docs/evidence-log.md.
+
+## Opt-in personal memory — November 2, 2026
+
+`PersonalMemoryPanel.vue` and `usePersonalMemory.js` own local permission/fact/source
+controls inside this feature; all requests remain endpoint declarations in api.js
+and use the shared transport. Default scope is absent. Saved permissions enable
+bounded server-selected context for typed requests and a single Voice startup
+snapshot; no mid-session retrieval or auto-restart. Opening controls interrupts
+voice/dictation/pending typed work, and late context/results are rejected. See
+[contract](../../../../backend/app/features/personal_memory/CONTRACT.md).
+
+## Composer and compact memory refinement — November 2, 2026
+
+Enter sends, Shift+Enter inserts a newline; composing IME text does not send.
+Draft clearing is synchronous before the request, with revision-aware failure
+restoration and an explicit Restore message action that never replaces a newer
+draft. Keyed Vue TransitionGroup arrivals use opacity/scale/translation and a
+short easing curve, with OS/app reduced-motion rules. Caption updates retain
+stable keys rather than restarting an existing bubble's entrance.
+
+Personal memory now shows only its short disclosure and three permission toggles;
+initial loading requests preferences only. The removed editor/review UI's saved
+records and backend routes are retained. Backend supplies compact literal user
+excerpts across all eligible seven-day chats; a finite snapshot may report partial
+coverage. No automatic summary/model call or reframing wiring is added here.
+
+## Post-chat summaries — November 2, 2026
+
+The feature-owned record queue now owns ended-chat summary work, separately from
+storage retries. useChat disposal queues only with loaded saved-chat consent and
+successful-record dependencies, without awaiting a model task. Repeated disposal
+is idempotent; next-chat clearing cannot lose those dependency references. Summary
+failure is a separate notice/retry. A manual chat-save Retry always requires a
+separate summary Retry, including when that save retry was already running at End.
+No automatic provider retries, page-load backfill or new voice capture. Global
+output mute/navigation/Emergency remain independent. See summary.test.js and the
+backend personal-memory summary contract. Removed the per-message waiting caption;
+the Send button still shows the pending request state.

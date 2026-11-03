@@ -1,6 +1,7 @@
 """Strict application JSON shapes; provider settings are never request fields."""
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from ..personal_memory.schemas import MemoryScope
 
 
 class TextMessage(BaseModel):
@@ -13,6 +14,7 @@ class SessionBody(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     sdp: StrictStr
     history: list[TextMessage] = Field(default_factory=list, max_length=16)
+    personal_memory: MemoryScope | None = None
 
 
 class ConfigResponse(BaseModel):
@@ -25,16 +27,19 @@ class SessionResponse(BaseModel):
     session_id: StrictStr
     sdp: StrictStr
     duration_seconds: int
+    personal_memory: dict | None = None
 
 
 class TextBody(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     message: StrictStr
     history: list[TextMessage] = Field(default_factory=list, max_length=16)
+    personal_memory: MemoryScope | None = None
 
 
 class TextResponse(BaseModel):
     reply: StrictStr
+    personal_memory: dict | None = None
 
 
 class SavedTurnBody(BaseModel):

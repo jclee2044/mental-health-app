@@ -15,8 +15,9 @@ export function browserEnvironment() {
 }
 
 export class VoiceSession {
-  constructor({ api, getAudio, onChange = () => {}, onTranscript = () => {}, getHistory = () => [], environment = browserEnvironment() }) {
+  constructor({ api, getAudio, onChange = () => {}, onTranscript = () => {}, getHistory = () => [], getPersonalMemory = () => null, onPersonalMemory = () => {}, environment = browserEnvironment() }) {
     this.api = api; this.getAudio = getAudio; this.onChange = onChange; this.onTranscript = onTranscript; this.getHistory = getHistory; this.env = environment
+    this.getPersonalMemory = getPersonalMemory; this.onPersonalMemory = onPersonalMemory
     this.run = null; this.sequence = 0; this.disposed = false
     this.state = { status: 'closed', message: 'Microphone off.', playbackBlocked: false, mutePending: false, microphoneMuted: true }
   }
@@ -46,6 +47,7 @@ export class VoiceSession {
     let stage = 'configuration'
     try {
       run.history = this.getHistory().map(message => ({ ...message }))
+      run.personalMemory = this.getPersonalMemory()
       const config = await this.api.getVoiceConfig({ signal: run.controller.signal })
       if (!this.live(run)) return
       if (config?.status !== 'configured') { this.fail(run, 'Voice is not configured on the local server. You can still type.'); return }
@@ -93,11 +95,12 @@ export class VoiceSession {
       run.creationSent = true
       // Keep an already-sent creation request bounded but readable after End, so
       // its returned session ID can be closed rather than orphaned by an abort.
-      const answer = await this.api.createVoiceSession(sdp, run.history)
+      const answer = await this.api.createVoiceSession(sdp, run.history, run.personalMemory ? { personalMemory: run.personalMemory } : undefined)
       if (typeof answer?.session_id === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(answer.session_id)) run.sessionId = answer.session_id
       if (!this.live(run)) { await this.closeProvider(run); return }
       if (typeof answer?.session_id !== 'string' || !/^[A-Za-z0-9_-]{1,128}$/.test(answer.session_id) || typeof answer.sdp !== 'string' || !answer.sdp.startsWith('v=0') || new TextEncoder().encode(answer.sdp).length > 65536 || answer.duration_seconds !== run.duration) throw new Error('Invalid answer')
       run.sessionId = answer.session_id
+      this.onPersonalMemory(answer.personal_memory)
       await run.peer.setRemoteDescription({ type: 'answer', sdp: answer.sdp })
       if (!this.live(run)) return
       run.answerApplied = true

@@ -38,12 +38,12 @@ class VoiceSettings:
         return bool(self.api_key and self.backend_model)
 
 
-def session_payload(sdp, backend_model, history=()):
+def session_payload(sdp, backend_model, history=(), personal_context=""):
     """Construct fresh policy containers; no browser configuration is merged."""
     return {
         "session": {
             "model": MODEL,
-            "instructions": LIVE_INSTRUCTIONS,
+            "instructions": LIVE_INSTRUCTIONS + personal_context,
             "audio": {"output": {"voice": "marin"}},
             "store": False,
             "input": [{
@@ -54,7 +54,7 @@ def session_payload(sdp, backend_model, history=()):
                 "type": "responses",
                 "responses": {
                     "model": backend_model,
-                    "instructions": BACKEND_INSTRUCTIONS,
+                    "instructions": BACKEND_INSTRUCTIONS + personal_context,
                     "tools": [],
                     "tool_choice": "none",
                 },

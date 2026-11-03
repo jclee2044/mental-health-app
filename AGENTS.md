@@ -196,3 +196,53 @@
 - Shared output mute covers breath/cue audio and assistant playback. Microphone
   mute and End remain independent; muting speakers does not stop capture, provider
   sessions or billing. Keep captions and fixed text/visual breathing cues usable.
+
+## Opt-in SQLite personal memory — November 2, 2026
+
+- User authorized implementing personal context without a vector database, separate
+  from the other chat's reframing corpus/cards/vector search. Follow
+  backend/app/features/personal_memory/CONTRACT.md. This supersedes no-historical-
+  context rules only for the separate, explicit emotion/chat/fact permissions.
+- Keep default permissions off, server-authoritative scope, source provenance,
+  confirmed editable facts, exclusion/deletion behavior and a bounded local lookup.
+  Voice receives one startup snapshot, no mid-session tools/lookups or automatic
+  restart. Memory failure continues chat without memory and remains visible.
+- No automatic fact extraction, embeddings, personal data in technique indexes,
+  extra model calls, dependencies or new microphone/paid verification. Opening
+  controls stops capture and cancels pending typed work; ignore late results.
+- Keep personal memory and technique material separately labeled; never use book
+  passages as personal facts or promote assistant suggestions into user evidence.
+  Changes cannot retract already-transmitted context or clear current-chat text.
+
+## Compact chat and seven-day excerpts — November 2, 2026
+
+- User requested Enter-to-send/Shift+Enter newline, immediate composer clearing,
+  iMessage-style bubble arrivals and a short Personal memory disclosure with only
+  three permissions. Preserve IME composition, new drafts during pending requests,
+  explicit failure recovery and reduced motion. Removed editor/review UI does
+  not authorize deleting existing facts or exclusions.
+- User chose compact excerpts from every chat over full transcripts. Current
+  scope uses one literal user excerpt per eligible saved chat from the last
+  rolling seven days, sharing a 12,000-byte context budget. Report partial
+  coverage if all chat excerpts cannot fit. This supersedes keyword/top-three/
+  200-message selection; it does not change separate emotion-log timing rules.
+- Cached model-written summaries were discussed as a possible next increment;
+  no automatic summary calls or fact extraction are implemented/authorized by
+  this UI change. Preserve the separate reframing corpus and voice startup-only
+  context boundary; no paid or microphone verification.
+
+## Cached memory summaries — November 2, 2026
+
+- User now explicitly authorized post-chat cached model summaries and removal of
+  the per-bubble “Waiting for a reply…” caption. This supersedes the earlier
+  no-summary-model-task rule for this separate bounded task only. Follow the
+  post-chat extension in personal_memory/CONTRACT.md.
+- Saved-chat permission gates generation and retrieval. Schedule only after End/
+  navigation and confirmed initial saves, without awaiting in the UX. No backfill,
+  generation on GET/voice startup, automatic provider retries or facts promotion.
+- Preserve source revision/token/consent-epoch checks, deletion/exclusion/expiry,
+  user-only bounded input and separate retry/error path. Storage Retry must never
+  initiate summary generation indirectly. Failure falls back to excerpts.
+- Mocked tests only; no paid calls or real microphone checks by the agent. Cached
+  summaries are unverified generated interpretations, separate from confirmed
+  user facts and the reframing corpus. No new dependencies or model settings.

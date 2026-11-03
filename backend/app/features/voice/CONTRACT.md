@@ -263,3 +263,16 @@ contract in [DICTATION.md](DICTATION.md). It adds text to the editable draft onl
 it does not create a Live/Responses conversation or persist audio. Existing voice,
 typed generation and persistence behavior remains. This supersedes earlier
 no-transcription-endpoint boundaries for this narrow increment.
+
+## Opt-in personal-memory snapshot — November 2, 2026
+
+Text and session creation now accept optional `personal_memory` scope containing
+only today's `local_date` and the current `conversation_id` UUID. Stored, explicit
+permissions control retrieval. No client context text/provider configuration is
+accepted. With scope, success adds the selected-context report; without scope the
+old request/response shapes and database-independent provider path remain valid.
+Voice receives the same bounded personal-data block in Live and delegated backend
+instruction layers at startup only. Tools, store:false, model choices, history
+bounds, event allowlists and cleanup remain unchanged. See the separate
+[personal-memory contract](../personal_memory/CONTRACT.md) for all fields, timeouts,
+fallback, consent and evidence limits. The reframing corpus remains independent.

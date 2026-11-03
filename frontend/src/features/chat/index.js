@@ -10,6 +10,6 @@ export function createFeature({ navigate, interrupted }) {
     id: 'chat', routes: { chat: ChatView, conversations: ConversationHistoryView },
     props: route => route === 'chat' ? { interrupted: interrupted(), records } : { pending: records.records.value.filter(record => record.state !== 'saved') },
     events: { navigate },
-    notice: { component: ChatSaveNotice, props: () => ({ records: records.records.value }), events: { retry: records.retry } },
+    notice: { component: ChatSaveNotice, props: () => ({ records: records.records.value, summaries: records.summaries.value }), events: { retry: records.retry, retrySummary: records.retrySummary } },
   }
 }

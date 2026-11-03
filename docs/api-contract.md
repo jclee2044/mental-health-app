@@ -28,3 +28,20 @@ batches without audio. GET history now combines typed pairs and spoken text in
 shared sequence; detail includes source metadata, but both use normal chat UI.
 DELETE removes both. See the October 27 extension in
 [the persistence contract](../backend/app/features/voice/PERSISTENCE.md).
+
+### Opt-in personal memory — November 2, 2026
+
+The separate [personal-memory contract](../backend/app/features/personal_memory/CONTRACT.md)
+defines `/api/personal-memory` permission, confirmed-fact, exclusion, preview and
+original-source endpoints. Chat/voice optionally accept a date/current-conversation
+scope; server permissions choose bounded historical personal context. Voice receives
+one startup snapshot; fallback never blocks chat. No vectors or extra model call.
+
+### Cached post-chat summary task — November 2, 2026
+
+GET/POST /api/personal-memory/conversations/{uuid}/summary expose separate cached
+status / bounded user-only generation with strict retry boolean. No generation in
+GET or chat/voice context lookup. End/navigation don't await this model task;
+initial saves must be confirmed, and manual save Retry cannot start it. See the
+[summary extension](../backend/app/features/personal_memory/CONTRACT.md) for all
+statuses/errors, version/consent/expiry checks and source labeling.

@@ -18,6 +18,7 @@ test('global sound mutes current and new assistant playback without changing mic
   const enabled = ref(false)
   const view = await setupView(new URL('../ChatView.vue', import.meta.url), [
     [/import AppIcon from [^\n]+/, 'const AppIcon = {}'],
+    [/import PersonalMemoryPanel from [^\n]+/, 'const PersonalMemoryPanel = {}'],
     [/import \{ useChat \} from [^\n]+/, 'const useChat = () => globalThis.outputChatMock'],
   ], { interrupted: false }, () => {}, { appSoundEnabled: enabled })
   try {

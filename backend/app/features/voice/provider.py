@@ -34,8 +34,8 @@ class LiveProvider:
         self.settings = settings
         self.closures = SessionClosures()
 
-    def create_session(self, sdp, history=()):
-        session_id, answer = validate_provider_response(self._post(PROVIDER_URL, session_payload(sdp, self.settings.backend_model, history), 201))
+    def create_session(self, sdp, history=(), personal_context=""):
+        session_id, answer = validate_provider_response(self._post(PROVIDER_URL, session_payload(sdp, self.settings.backend_model, history, personal_context), 201))
         try:
             self.closures.remember(session_id)
         except ValueError:
@@ -56,10 +56,10 @@ class LiveProvider:
         self.closures.finish(session_id, True)
         return "closed"
 
-    def reply_text(self, message, history):
+    def reply_text(self, message, history, personal_context=""):
         data = self._post("https://api.openai.com/v1/responses", {
             "model": self.settings.backend_model,
-            "instructions": BACKEND_INSTRUCTIONS + "\nFor this typed turn, reply to the user in text, following the conversation policy above.",
+            "instructions": BACKEND_INSTRUCTIONS + "\nFor this typed turn, reply to the user in text, following the conversation policy above." + personal_context,
             "input": [*history, {"role": "user", "content": message}],
             "store": False, "tools": [], "tool_choice": "none", "max_output_tokens": 1024,
         }, 200)
@@ -74,6 +74,15 @@ class LiveProvider:
             "store": False, "tools": [], "tool_choice": "none", "max_output_tokens": 1024,
         }, 200)
         return validate_title(validate_text_response(data))
+
+    def summarize_memory(self, context):
+        from ..personal_memory.summary_domain import SUMMARY_INSTRUCTIONS
+        data = self._post("https://api.openai.com/v1/responses", {
+            "model": self.settings.backend_model, "instructions": SUMMARY_INSTRUCTIONS,
+            "input": [{"role": "user", "content": context}],
+            "store": False, "tools": [], "tool_choice": "none", "max_output_tokens": 1024,
+        }, 200)
+        return validate_text_response(data)
 
     def transcribe(self, audio, mime, extension):
         boundary = "dictation_" + secrets.token_hex(16)

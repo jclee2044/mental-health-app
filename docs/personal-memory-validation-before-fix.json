@@ -1,0 +1,378 @@
+{
+  "evaluated_at_utc": "2026-11-02T23:22:47.118693+00:00",
+  "mode": "fictional records; real SQLite/FastAPI; fixed provider mocks; network forbidden",
+  "not_evaluated": [
+    "generated recall/grounding",
+    "provider or time-to-first-audio latency",
+    "microphone/acoustic behavior",
+    "clinical safety"
+  ],
+  "scenarios": [
+    {
+      "name": "Default-off consent",
+      "expected": {
+        "status": "off",
+        "sources": 0,
+        "provider_calls": 0
+      },
+      "observed": {
+        "status": "off",
+        "sources": 0,
+        "provider_calls": 0
+      },
+      "status": "passed",
+      "elapsed_ms": 17.834
+    },
+    {
+      "name": "Three distinct consecutive low-energy dates",
+      "expected": {
+        "days": 3,
+        "source_kind": [
+          "emotion"
+        ]
+      },
+      "observed": {
+        "days": 3,
+        "source_kind": [
+          "emotion"
+        ]
+      },
+      "status": "passed",
+      "elapsed_ms": 11.066
+    },
+    {
+      "name": "Three logs on one day are not three days",
+      "expected": {
+        "days": 1,
+        "entries_selected": 1
+      },
+      "observed": {
+        "days": 1,
+        "entries_selected": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 8.283
+    },
+    {
+      "name": "Missing date breaks the energy run",
+      "expected": {
+        "days": 1
+      },
+      "observed": {
+        "days": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 8.097
+    },
+    {
+      "name": "Latest daily entry takes precedence",
+      "expected": {
+        "days": 0,
+        "energy": 20
+      },
+      "observed": {
+        "days": 0,
+        "energy": 20
+      },
+      "status": "passed",
+      "elapsed_ms": 9.088
+    },
+    {
+      "name": "Seven-day boundary excludes older logs",
+      "expected": {
+        "sources": 1
+      },
+      "observed": {
+        "sources": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 7.596
+    },
+    {
+      "name": "User negation retained; assistant inventions excluded",
+      "expected": {
+        "negation_preserved": true,
+        "assistant_matches": 0
+      },
+      "observed": {
+        "negation_preserved": true,
+        "assistant_matches": 0
+      },
+      "status": "passed",
+      "elapsed_ms": 8.242
+    },
+    {
+      "name": "Spoken text retains approximate provenance",
+      "expected": {
+        "source": "voice",
+        "role": "user"
+      },
+      "observed": {
+        "source": "voice",
+        "role": "user"
+      },
+      "status": "passed",
+      "elapsed_ms": 7.578
+    },
+    {
+      "name": "Current chat excluded from historical retrieval",
+      "expected": {
+        "sources": 0
+      },
+      "observed": {
+        "sources": 0
+      },
+      "status": "passed",
+      "elapsed_ms": 8.107
+    },
+    {
+      "name": "Explicit fact correction replaces old text",
+      "expected": {
+        "facts": 1,
+        "corrected": true
+      },
+      "observed": {
+        "facts": 1,
+        "corrected": true
+      },
+      "status": "passed",
+      "elapsed_ms": 7.12
+    },
+    {
+      "name": "Forget linked fact suppresses original chat",
+      "expected": {
+        "sources": 0,
+        "exclusions": 1
+      },
+      "observed": {
+        "sources": 0,
+        "exclusions": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 9.255
+    },
+    {
+      "name": "Deleting original chat removes linked facts",
+      "expected": {
+        "facts": 0,
+        "sources": 0
+      },
+      "observed": {
+        "facts": 0,
+        "sources": 0
+      },
+      "status": "passed",
+      "elapsed_ms": 9.393
+    },
+    {
+      "name": "Emotion edit changes the next snapshot",
+      "expected": {
+        "energy": 30,
+        "old_note_absent": true
+      },
+      "observed": {
+        "energy": 30,
+        "old_note_absent": true
+      },
+      "status": "passed",
+      "elapsed_ms": 8.515
+    },
+    {
+      "name": "Revoking permissions strips next voice snapshot",
+      "expected": {
+        "first_has_context": true,
+        "second_has_context": false,
+        "second_status": "off"
+      },
+      "observed": {
+        "first_has_context": true,
+        "second_has_context": false,
+        "second_status": "off"
+      },
+      "status": "passed",
+      "elapsed_ms": 9.117
+    },
+    {
+      "name": "Voice setup uses one snapshot and one provider call",
+      "expected": {
+        "provider_calls": 1,
+        "source_count": 1,
+        "context_has_fact": true
+      },
+      "observed": {
+        "provider_calls": 1,
+        "source_count": 1,
+        "context_has_fact": true
+      },
+      "status": "passed",
+      "elapsed_ms": 6.819
+    },
+    {
+      "name": "Unavailable storage falls back without blocking text",
+      "expected": {
+        "status": "unavailable",
+        "provider_calls": 1,
+        "context_sent": false,
+        "private_error_exposed": false
+      },
+      "observed": {
+        "status": "unavailable",
+        "provider_calls": 1,
+        "context_sent": false,
+        "private_error_exposed": false
+      },
+      "status": "passed",
+      "elapsed_ms": 6.176
+    },
+    {
+      "name": "SQLite lock falls back without blocking voice",
+      "expected": {
+        "status": "unavailable",
+        "provider_calls": 1
+      },
+      "observed": {
+        "status": "unavailable",
+        "provider_calls": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 71.232
+    },
+    {
+      "name": "Actual app re-creation preserves permissions/facts/exclusions",
+      "expected": {
+        "permission": true,
+        "facts": 1,
+        "exclusions": 1
+      },
+      "observed": {
+        "permission": true,
+        "facts": 1,
+        "exclusions": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 17.556
+    },
+    {
+      "name": "Injected source text remains quoted data, not browser policy",
+      "expected": {
+        "quoted_exactly": true,
+        "separate_policy_present": true,
+        "provider_calls": 1
+      },
+      "observed": {
+        "quoted_exactly": true,
+        "separate_policy_present": true,
+        "provider_calls": 1
+      },
+      "status": "passed",
+      "elapsed_ms": 10.352
+    },
+    {
+      "name": "Unicode payload fits complete context JSON",
+      "expected": {
+        "valid_utf8": true,
+        "within_6000_bytes": true
+      },
+      "observed": {
+        "valid_utf8": true,
+        "within_6000_bytes": true
+      },
+      "status": "passed",
+      "elapsed_ms": 21.081
+    },
+    {
+      "name": "Meaning-only query is outside lexical search",
+      "expected": {
+        "sources": 0
+      },
+      "observed": {
+        "sources": 0
+      },
+      "status": "expected_limitation",
+      "elapsed_ms": 8.168
+    },
+    {
+      "name": "Match beyond output excerpt can be cut off",
+      "expected": {
+        "selected": true,
+        "matching_word_in_output": false
+      },
+      "observed": {
+        "selected": true,
+        "matching_word_in_output": false
+      },
+      "status": "expected_limitation",
+      "elapsed_ms": 8.155
+    }
+  ],
+  "benchmarks": [
+    {
+      "saved_conversations": 0,
+      "without_memory": {
+        "median_ms": 0.336,
+        "p95_ms": 0.379,
+        "max_ms": 0.402
+      },
+      "with_memory": {
+        "median_ms": 0.723,
+        "p95_ms": 0.797,
+        "max_ms": 0.877
+      },
+      "local_lookup": {
+        "median_ms": 0.286,
+        "p95_ms": 0.318,
+        "max_ms": 0.339
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "median_route_difference_ms": 0.387
+    },
+    {
+      "saved_conversations": 200,
+      "without_memory": {
+        "median_ms": 0.342,
+        "p95_ms": 0.373,
+        "max_ms": 0.384
+      },
+      "with_memory": {
+        "median_ms": 1.336,
+        "p95_ms": 1.43,
+        "max_ms": 1.722
+      },
+      "local_lookup": {
+        "median_ms": 1.477,
+        "p95_ms": 1.542,
+        "max_ms": 1.593
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "median_route_difference_ms": 0.995
+    },
+    {
+      "saved_conversations": 2000,
+      "without_memory": {
+        "median_ms": 0.385,
+        "p95_ms": 0.918,
+        "max_ms": 1.602
+      },
+      "with_memory": {
+        "median_ms": 3.632,
+        "p95_ms": 8.338,
+        "max_ms": 9.815
+      },
+      "local_lookup": {
+        "median_ms": 3.712,
+        "p95_ms": 8.506,
+        "max_ms": 12.311
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "median_route_difference_ms": 3.248
+    }
+  ],
+  "summary": {
+    "passed": 20,
+    "expected_limitation": 2,
+    "failed": 0
+  }
+}

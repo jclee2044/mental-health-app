@@ -1573,3 +1573,135 @@ run build; from frontend, npm exec --offline -- eslint src/App.vue --no-cache;
 git diff --check. Existing bundle-size warning remains. Tests/checkpoints were
 not rerun for this presentation-only change. No dependencies, live calls,
 microphone use, staging or commits.
+
+## November 2, 2026 — opt-in personal memory (separate chat)
+
+Codex implemented the user's approved SQLite personal-memory design without a
+vector database. The coding model identifier is not exposed in this session;
+no additional model identity is asserted. Tools: repository cat/rg/git reads,
+apply_patch/Python edits, project-owned pytest/Node tests/Vite, non-mutating lint,
+checkpoint verifier, official OpenAI documentation and CUA browser verification.
+The OpenAI Docs skill informed the existing instruction-field integration. A
+Responses reference fetch exceeded the retrieval size limit; the official text
+generation guide was fetched instead. No provider configuration/model was changed.
+
+Added the personal_memory backend feature and chat-owned memory controls:
+separate persisted opt-ins, user-confirmed editable facts, source exclusions,
+bounded current-source FTS5 retrieval, deterministic emotion-date observations,
+source inspection, one Voice startup snapshot and typed context selection. No
+extra model call prepares memory; facts are user-authored rather than automatic
+LLM extraction. Source data stays distinct from curated reframing material.
+
+Read the supplied coordination attachment and the active reframing chat's status
+read-only to avoid overlap; did not message it, alter its review/book extracts,
+choose embedding infrastructure or implement its corpus/vector work. Its existing
+AI-USE/evidence additions were retained, and this disclosure was appended.
+
+Observed: 216 backend tests, 122 frontend tests, production build, non-mutating
+Oxlint/ESLint and three cumulative checkpoint builds/checks passed. Browser used
+only a labeled mock provider and separate ignored personal-memory-demo.sqlite3;
+confirmed a fictional fact, preview, correction/reload, mocked text reply and
+independent Emergency. Screenshots contain fictional text. Mock server was
+stopped after verification. Initial sandbox localhost bind failed; the approved
+bounded localhost launch succeeded. An initial SSR test failed on the new Vue
+component import; injected it at the existing SFC test boundary and reran checks.
+A screenshot crop used inconsistent coordinates; the discarded crop was replaced
+by a viewport screenshot showing the actual controls and persistent Emergency.
+
+No dependencies, paid calls, real microphone, real call links, staging, commits,
+root Part 3.1 report changes or live generated-memory/voice-latency claims.
+
+## November 2, 2026 — simulated personal-memory testing follow-up
+
+Codex conducted the requested fictional-data evaluation using project-owned Python,
+FastAPI TestClient, SQLite, unittest mocks, perf_counter and the existing Node
+suite. Added scripts/evaluate_personal_memory.py plus before/after JSON results;
+26 API scenarios yield 24 functional passes and two demonstrated search limits.
+HTTP connections and reframing.prepare are forbidden during the evaluator; all
+provider replies/sessions are fixed local mocks. No original personal records,
+.env credentials, paid model/embedding calls, microphone or live audio were used.
+
+Testing found that a keyword could be indexed beyond the excerpt actually sent.
+Fixed storage to clip text before indexing; added ASCII/Unicode regression cases
+and updated the contract. Full regression suite now passes 279 backend and 122
+frontend tests. Local mocked voice-start benchmarks cover 0/200/2,000 fictional
+chats and both empty/topic-bearing history, 40 measured pairs per size/mode.
+Additional local median route work at 2,000 chats was about 2.4–3.0 ms in the final
+run; this excludes provider/network/audio behavior and is not a live-voice claim.
+
+Results and exact commands/changed files are in docs/evidence-log.md and
+personal-memory-validation.json. No new dependencies, runtime model configuration,
+frontend changes, reframing edits, processes, staging or commits in this follow-up.
+
+## November 2, 2026 — composer, bubble motion and compact seven-day memory
+
+User requested Enter-to-send/Shift+Enter newline, immediate input clearing,
+iMessage-style bubble arrivals, removal of the fact/editor review UI and recent
+seven-day chat context. A targeted scope question distinguished full transcripts
+from compact excerpts; the user selected compact excerpts and asked about future
+cached model summaries. Implemented literal excerpts now; no automatic model
+summary, extra provider task or automatic fact extraction was added.
+
+Frontend changes: composition-safe Enter handler, synchronous draft handoff with
+revision-aware failure restoration and explicit recovery, keyed Vue TransitionGroup
+arrivals with OS/app reduced-motion alternatives, compact memory disclosure with
+three unchanged permissions and preferences-only loading. Existing facts/exclusions
+are retained in SQLite/APIs. Backend selection now chooses one longest literal user
+excerpt per permitted saved conversation with user text in the last rolling seven
+days. Excerpts share a 12,000-byte snapshot budget; explicit coverage reports omitted
+chats when short excerpts plus provenance cannot all fit. Removed keyword/FTS/top-three/
+200-message selection. Reframing material, base prompts and event permissions remain
+separate/unchanged. No dependencies were added.
+
+Tools: cat/rg/git, apply_patch/Python, project pytest/Node/Vite, non-mutating lint,
+checkpoint verifier, fictional evaluator and CUA in an isolated mock demo. Native
+browser checks verified Shift+Enter/newline, Enter/send/empty composer, transient
+Vue entrance/move classes and compact disclosure. The browser's DOM proxy did not
+support getAnimations; exact visual/acoustic timing is not asserted. Existing user
+browser tab access was unavailable; used a separate mock tab and preserved the
+user's unsent draft by leaving refresh to them. Saved docs/chat-compact-memory.jpg.
+
+Observed: 283 backend tests, 129 frontend tests, production build, Oxlint/ESLint,
+three checkpoints and 26 fictional API scenarios pass. The revised evaluator writes
+personal-memory-seven-day-validation.json and records partial coverage for large
+history, rather than treating it as complete context. No paid call or microphone
+check was made by this agent. Stopped only the mock/current app processes started
+in this chat, and restarted its configured app on 8019 for user testing. No staging,
+commits or historical Part 3.1 report changes.
+
+## November 2, 2026 — cached post-chat summaries
+
+User explicitly approved cached model-written memory summaries if the task does
+not block chatting/navigation, and requested removal of the per-bubble waiting
+caption. Codex implemented a separate, bounded opted-in task, not a new model,
+vector service or training step. Used the OpenAI Docs skill and fetched official
+text-generation guidance for the existing Responses instructions/input pattern;
+no new SDK/dependency or tool/provider setting was added. Coding model identifier
+is not exposed in this session; no further identity is asserted.
+
+New summary_domain/storage/routes implement strict JSON validation, bounded saved
+USER-only input, seven-day scope, substantive/empty classification, version/token/
+consent-epoch cache claims, invalidation/deletion and expiry. Provider requests use
+existing server configuration/store:false/no-tools/ten-second single attempt.
+Source text is released before model I/O; current replies/voice startup never await
+the task. Valid cached summaries are labeled generated, never confirmed facts.
+Queueing is feature-owned across navigation; source-save retries cannot indirectly
+call a model. Failures have a distinct manual summary retry and excerpt fallback.
+The short disclosure/three switches remain; no fact editor/review menu was added.
+
+Verification tools: project-owned pytest and Node tests, Vite build, non-mutating
+Oxlint/ESLint, checkpoint verifier, git diff checks, CUA mock browser and read-only
+fictional SQLite cache inspection. Full suites: 306 backend, 136 frontend; 23
+summary-specific backend cases; build/lint/three checkpoints passed. Browser used
+only labeled mock replies and a fixed empty-summary classification on a separate
+ignored database. Pending AX state showed no caption beneath the sent bubble;
+End returned Home and the mock cache contained one empty classification. Screenshot
+chat-cached-memory.jpg shows the completed mock chat. This is not generated recall
+or substantive-classification quality evidence.
+
+One new test initially reused a closed BytesIO mock response across provider calls;
+changed the fixture to create a fresh response per call and reran successfully.
+No paid provider/embedding request or real microphone/call link was used by the
+agent. Actual generated summary quality, source grounding, shared provider quotas
+and voice latency remain unverified. Existing source report/corpus/reframing work,
+checkpoint scopes and prompt layers were preserved. No staging or commits.
