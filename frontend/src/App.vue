@@ -18,10 +18,12 @@ const screen = ref(readRoute())
 const splash = ref(!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches)
 const sheet = ref(null)
 const soundSlot = ref(null)
-const soundPosition = ref({})
+const modalCount = ref(0)
 const main = ref(null)
 const preferences = usePreferences()
 provide('appSoundEnabled', preferences.soundEnabled)
+provide('appSoundAnchor', soundSlot)
+provide('appModalCount', modalCount)
 const features = useFeatures({ navigate: go, interrupted: () => Boolean(sheet.value), reducedMotion: () => preferences.reducedMotion.value })
 const activeFeature = computed(() => features.find(feature => feature.routes[screen.value]))
 const title = computed(() => ({ home: 'Home', emotion: 'Emotion log', history: 'Past logs', breathing: 'Guided breathing', sessions: 'Past breathing sessions', chat: 'Support chat', conversations: 'Saved chats' })[screen.value])
@@ -32,11 +34,7 @@ function go(destination) {
   location.hash = destination
 }
 function routeChanged() { screen.value = readRoute(); features.forEach(feature => feature.onNavigate?.(screen.value)) }
-function positionSoundControl() {
-  const rect = soundSlot.value?.getBoundingClientRect()
-  if (rect) soundPosition.value = { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` }
-}
-function openSheet(name) { positionSoundControl(); sheet.value = name }
+function openSheet(name) { sheet.value = name }
 function openEmergency() { openSheet('emergency') }
 function focusMain() {
   main.value?.focus({ preventScroll: true })
@@ -46,10 +44,9 @@ watch(screen, async () => { await nextTick(); focusMain() })
 onMounted(() => {
   registerPwa(() => {})
   window.addEventListener('hashchange', routeChanged)
-  window.addEventListener('resize', positionSoundControl)
   splashTimer = setTimeout(() => { splash.value = false }, 900)
 })
-onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashchange', routeChanged); window.removeEventListener('resize', positionSoundControl) })
+onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashchange', routeChanged) })
 </script>
 
 <template>
@@ -77,11 +74,10 @@ onUnmounted(() => { clearTimeout(splashTimer); window.removeEventListener('hashc
       <span class="footer-wordmark">Make room for a moment.</span>
       <nav aria-label="Secondary navigation">
         <button @click="openSheet('appearance')"><AppIcon name="sliders" /> Appearance</button>
-        <span ref="soundSlot" class="sound-control-slot"><SoundToggle v-if="!sheet" /></span>
+        <span ref="soundSlot" class="sound-control-slot"><SoundToggle v-if="!modalCount" /></span>
       </nav>
     </footer>
     <ModalSheet v-if="sheet" :title="sheet === 'emergency' ? 'Emergency & crisis support' : 'Make it yours'" :emergency="sheet === 'emergency'" @close="sheet = null" @emergency="openEmergency">
-      <template #persistent-controls><SoundToggle class="dialog-sound-control" :style="soundPosition" /></template>
       <template v-if="sheet === 'emergency'">
         <p>United States resources. These services are separate from inspire.</p>
         <a class="resource-card" href="tel:988"><span class="resource-number">988</span><span><strong>Crisis counseling</strong><span>Suicide & Crisis Lifeline</span></span><AppIcon name="arrow-up-right" /></a>
