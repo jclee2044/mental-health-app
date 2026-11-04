@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-03",
+  "base_commit": "69e8c09b8861267d34c0d15f4afd56bfc2dc6119",
+  "runtime_worktree_changes": [
+    "frontend/src/App.vue",
+    "frontend/src/components/ModalSheet.vue"
+  ],
+  "regression": "frontend/tests/modal-sound.test.js",
+  "source_sha256": {
+    "frontend/src/App.vue": "7375ab21c4db21dcf9935ca7b100f79cded304bff36713f4b7374dda7f09dbe1",
+    "frontend/src/components/ModalSheet.vue": "dc55fcb148858f6f7be2eed3ae0065424c6e7009e61695ad51854140baccfb48",
+    "frontend/tests/modal-sound.test.js": "57b5af0b1a2633407ce0969ce97b9f0038591f0e6c1ee30d0ba0fe396be80448",
+    "scripts/checkpoints.json": "aa21b361a69826762b14527f4e0b369f8ae0adb499640b1536d4a806acf3e503"
+  },
+  "url": "http://127.0.0.1:8034/",
+  "fixture_directory": "tmp/part33-sound-fix",
+  "fixture_pid": 12724,
+  "fixture_stopped": true,
+  "tab_closed": true,
+  "live_provider_calls": 0,
+  "microphone_actions": 0,
+  "telephone_actions": 0,
+  "scope": "Desktop Chrome; no physical speaker or generated-response quality validation"
+}

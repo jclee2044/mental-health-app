@@ -2260,3 +2260,270 @@ Commands: npm test (140 passed), oxlint, ESLint, npm run build, verify_checkpoin
 real microphone or dependency for this UI increment. Existing bundle/deprecation
 warnings remain. Preview: new-chat-button.png. Latest user instruction: local commit
 only, no push.
+
+## November 3 — Part 3.3 evaluation, mocked phase
+
+Request: create the evaluation document, run mocked tests first, fill observed
+results with evidence, and leave live-model checks for later. Base application
+commit: `69e8c09b8861267d34c0d15f4afd56bfc2dc6119`; tracked files initially clean,
+with pre-existing untracked `part1-report.md` left untouched.
+
+Deliverable: [Part 3.3 evaluation](part33-evaluation.md), with 24 fictional
+scenarios, three behavior checks and exact named-test traceability. Twenty rows
+have automated evidence with explicit scope limits; four live-quality cases are
+not run. B1 Emergency visibility remains partially verified until a browser sweep;
+invoking an interruption mock is not proof of a visible/clickable button.
+
+Observed commands (full argv, UTC timestamps and exit codes are archived):
+
+- `backend/.venv/bin/python -m pytest -vv -c backend/pytest.ini backend/tests backend/app/features`
+  with project-local `--basetemp` and `--junitxml`: **350 passed**, existing
+  Starlette/httpx deprecation warning.
+- `npm --prefix frontend test -- --test-reporter=tap`: **140 passed**, zero failed,
+  skipped, cancelled or todo tests.
+- `backend/.venv/bin/python scripts/evaluate_personal_memory.py --output docs/evidence/part33/2026-11-03-mocked/personal-memory.json`:
+  **26 passed**, zero failures; six local benchmark groups. Mock provider only.
+- `npm --prefix frontend run build`: passed, existing large-bundle warning.
+
+[Archived output and metadata](evidence/part33/2026-11-03-mocked/manifest.json)
+include expected/observed JSON, backend JUnit and frontend TAP. Only local root
+paths/host identity were redacted. HTTP connection tripwires and fictional
+process settings prevented real provider use; temporary databases were confined
+to project tmp. No application DB, real microphone, provider calls, browser
+walkthrough or peer session was used. Existing tests were run unchanged.
+
+Selected finding: global output mute changed playback objects while making zero
+microphone-mute/session-stop calls. It is not an exit. Selected controlled failure:
+a failed save survived chat disposal and storage-only retry succeeded with the
+same IDs and one total mocked reply invocation. Neither observation establishes
+physical audio or provider billing behavior. Historical stop timeouts are linked
+separately rather than relabeled as current live observations.
+
+Files changed: new `docs/part33-evaluation.md`, new archived evidence directory,
+and appended `AI-USE.md`/this log. Ignored build output and temporary capture/test
+files were generated. Read-only source/status inspection and documentation link,
+named-test, artifact-hash and whitespace checks accompany the evidence. No app
+implementation, dependency, checkpoint, staging, commit or push change. Remaining:
+browser/timing/device checks, bounded separately approved live repetitions,
+mocked peer work, recordings and the final submitted commit.
+
+## November 3 — Browser evaluation of partial scenarios and Emergency
+
+Request: run browser checks for S01/S02/S10/S14/S18 and Emergency, update observed
+results, keep live-model work for later. [Browser evidence](part33-browser-checks.md)
+and the [updated matrix](part33-evaluation.md) distinguish three browser passes,
+one observed failure and one tool-blocked full-duration check. Current matrix:
+18 passing within stated scope, one partial, one failed, four live cases not run.
+
+Created a localhost-only test fixture with fixed reply/title/summary methods,
+fictional environment, disabled retrieval and outgoing-HTTP tripwires. Ran
+`backend/.venv/bin/python scripts/serve_part33_evaluation.py`. Initial sandbox
+bind failed; approved escalation started PID 2616 on port 8033. The separate
+database and fault-control JSON were under ignored `tmp/part33-browser/`.
+UI interactions used Computer Use only, at 1710 × 843 desktop screenshot size.
+
+Observed evidence:
+
+- S01: blank note/meaning, Sage and keyboard-adjusted graph 5/−5 saved and survived
+  browser reload; read-only SQLite confirmed values and the internal absence marker.
+- S10: countdown, running and paused Emergency ended the exercise; no automatic
+  resume. Three deliberately failed saves returned 503, then the same IDs saved
+  once after fault removal. Eight interrupted sessions were stored, all `ended`.
+- S14: fixed reply and “Unavailable · chat continues without it” appeared together;
+  fixture logged no personal context, and exactly one typed pair was stored.
+- S18 failure: emotion-deletion modal intercepted the global sound button's point;
+  attempted activation dismissed the dialog instead of toggling. Appearance and
+  Emergency sound controls did work; mute/reduced motion survived reload and a
+  sampled inhale used scale 1.000. No fix was made.
+- S02: requested 64,000ms input rejected by the browser tool's 30,000ms maximum.
+  Actual 25.009s sequence/22.009s active ended on release. Its 76.6026s instruction
+  measure includes tool/setup delay; it is not a completed exercise. Entry control
+  action-to-observation was 81ms including tool overhead, not precise paint timing.
+- Emergency opened in 20 listed states, including failed/pending chat, failed
+  storage/history, deletion/Appearance controls and cached-shell reload with the
+  fixture stopped. No call links, microphone or actual voice session was used.
+
+All 27 logged API requests were local. Provider activity was three fixed reply
+mock invocations, one mock title and one mock summary; zero outgoing-HTTP tripwire
+events. Late `demo:slow` work finished server-side after ~15s but did not save a new
+turn after Emergency/End. No provider-side cancellation guarantee is inferred.
+
+Artifacts: JPEG screenshots (original bytes, corrected filename extensions),
+timestamped snapshots/DOM measurements, requests.jsonl, SQL observations, run metadata
+and hashes. Native snapshot lag, ambiguous selectors and timing wait errors were
+resolved where possible or left as explicit tool limits, not marked app failures.
+
+Cleanup: approved `kill -INT 2616` stopped only this task's server, verified clean
+shutdown; task-created browser tab closed. Additional checks: project Python
+`py_compile`, SQL/artifact consistency, documentation links and `git diff --check`.
+Files: scripts/serve_part33_evaluation.py, docs/part33-browser-checks.md, browser
+evidence directory, docs/part33-evaluation.md, AI-USE.md and this log. No runtime
+application/test/dependency/checkpoint changes; no staging/commit/push. Earlier
+automated suites were not repeated. The full timing run, sound-overlay fix and
+bounded live/model/device/peer work remain pending.
+
+## November 3 — S18 sound-dialog correction verified
+
+Request: fix the emotion-deletion dialog's inaccessible global sound control, add
+a regression, verify and update the evaluation; describe the four pending live
+cases without running them. Shared ModalSheet now owns a sound button at the
+provided footer anchor; App hides its footer copy while any dialog is mounted.
+Nested Emergency remains usable with synchronized sound state.
+
+Commands run: standalone node --test tests/modal-sound.test.js; npm test; npm run
+build; npm exec --offline -- oxlint .; npm exec --offline -- eslint . --no-cache;
+backend/.venv/bin/python scripts/verify_checkpoints.py; project Python mocked
+fixture startup on port 8034 and approved kill -INT 12724; read-only SQLite export,
+artifact hashing/link checks and git diff --check. No install or fix-mode lint.
+
+Results: 141/141 frontend tests passed. Production build and both linters passed.
+Interface/emotion/breathing checkpoints respectively passed 11/14/30 frontend
+tests and emotion/breathing 8/10 backend tests, plus lint/build. Existing bundle
+size and Starlette/httpx warnings remain. Full backend/memory suites were not
+repeated; historical 350/26 results remain separately labeled.
+
+Actual Chrome: click toggled deletion sound off → on without closing; Enter also
+toggled; nested Emergency changed the shared state and returned to the deletion
+dialog. Topmost sound was hit-testable at (1315, 774.5), matching the footer. Close
+restored footer and Delete focus; Appearance worked and mute survived reload.
+Three local API requests (one PUT/two GETs), zero DELETEs/provider invocations/
+outgoing-HTTP events; one fictional emotion row retained. No console warnings or
+errors captured. No microphone, live model, speaker quality, telephone or peer
+check. The task-owned fixture and tab were closed.
+
+Files changed: frontend/src/App.vue, frontend/src/components/ModalSheet.vue, new
+frontend/tests/modal-sound.test.js; docs/part33-evaluation.md,
+docs/part33-browser-checks.md, AI-USE.md, this log and evidence under
+docs/evidence/part33/2026-11-03-sound-fix. Original failure artifacts preserved.
+S18 is now pass after fix; S02 complete browser timing and four live-model cases
+remain pending. No historical report/checkpoint manifest/dependency modification,
+staging, commit or push. No edits to the pre-existing part1-report.md.
+
+## November 3 — supplied recordings and Part Three report draft
+
+Request: file the student's two supplied screen recordings, link them from the
+Part Three report, use their earlier explanations of design changes, and leave
+the evaluation section as a stub.
+
+Created [submissions/part3.3/report.md](../submissions/part3.3/report.md) and copied
+the originals, without editing or transcoding, into its recordings directory:
+
+- [inspire-final-demo.mov](../submissions/part3.3/recordings/inspire-final-demo.mov):
+  74,169,741 bytes, 145.795 seconds, one video track, no audio track.
+- [inspire-API-failure.mov](../submissions/part3.3/recordings/inspire-API-failure.mov):
+  16,227,067 bytes, 74.826667 seconds, one video track, no audio track.
+
+The [manifest](../submissions/part3.3/recordings/manifest.json) records SHA-256,
+size, dimensions and native metadata. Both copies match the supplied files;
+Desktop originals are retained. Sampled frames, including final frames, show
+emotion/history, early-ended breathing, chat input modes, memory controls and
+theme selection in the demo; the failure clip shows HTTP 502 in Chrome console,
+draft restoration, the requested server restart and a later successful reply.
+Sampling is not a complete frame-by-frame privacy audit, acoustic assessment,
+verification of the source history behind a model reply or diagnosis of the 502.
+No full breathing completion is claimed from the demo's early-ended session.
+
+The report incorporates the student's reasons for reducing logging steps,
+responsive layout, soft theme-matched swirls/arcs, hold interaction, human breath
+and feedback sounds, and not implementing eye tracking. Intended calming,
+completion-rate and participation effects are not presented as measured outcomes.
+It flags the mismatch between their branding-page removal decision and the
+remaining 0.9-second skippable source intro, instead of modifying application
+behavior or claiming complete removal. The generated-code explanation follows
+useChat.js's revision-aware draft recovery and separate storage path. Final
+submission commit, clean-checkout run, access checks and evaluation remain TODOs.
+
+Tools/commands: cat/rg/sed, git status --short and git rev-parse HEAD; project
+Python shutil/hashlib/json for copy and manifest; apply_patch for report/logs;
+Swift/AVFoundation/AppKit for local metadata and temporary frame extraction;
+view_image for samples; local Markdown-link, hash, metadata and whitespace checks.
+The sandbox initially blocked native frame decoding (AVFoundation Cannot Decode);
+an approved retry succeeded. Temporary scripts/frames/cache are under ignored
+tmp/part33-report. No dependency was installed. An initial AI-USE append patch
+failed to match its context and made no change; the corrected append succeeded.
+
+Existing uncommitted application/evaluation edits and the historical reports
+were left unchanged. No application suites, live provider/embedding/transcription,
+real microphone, call link, source-code change, server restart, staging, commit
+or push occurred for this report increment. The recordings are student-supplied
+observations, not newly executed agent tests. AI assistance is disclosed separately
+in [AI-USE.md](../AI-USE.md).
+
+## November 3 — Authorized Part 3.3 live repetitions (24-call cap)
+
+The user explicitly authorized the four pending cases three times each with at
+most 24 total provider calls. Codex added scripts/evaluate_part33_live.py, defaulting
+to offline preflight and requiring explicit live flags and a fresh output directory.
+It loaded only existing server configuration, used a fresh fictional SQLite database
+and exercised the real typed API through TestClient with real query embeddings and
+Responses replies. No application prompt, threshold, endpoint or dependency changed.
+No browser, microphone, telephone, title, summary, storage or personal-memory task
+ran. The earlier application sound fix and unrelated existing files were preserved.
+
+The host counter reserved/flushed each attempt before transport, including failures;
+only the two approved task types were admitted and uncounted HTTP was blocked.
+Offline preflight verified the current 76-document index before any paid request.
+A mocked budget probe verified that failure counts and request 25 is rejected;
+three saved offline regressions in scripts/test_part33_live_budget.py additionally
+cover concurrent reservations, unrelated task rejection and uncounted connections.
+All three passed; no network request occurs in those tests.
+
+Live command: backend/.venv/bin/python scripts/evaluate_part33_live.py
+--execute-live --max-provider-calls 24 (exit 0). Run 23:02:42–23:03:11 UTC on
+2026-11-03. Exactly 24 provider attempts: 12 text-embedding-3-small embeddings
+(1,536 dimensions) and 12 gpt-6-luna replies (low reasoning). Every provider attempt
+returned, all twelve route requests were HTTP 200, no retries/errors or other model
+tasks. This allowance is exhausted; no additional live calls are authorized by it.
+Routine/peer checks use the saved outputs or mocks. No pricing/billing estimate was
+made; token usage is retained exactly as returned in the provider artifacts.
+
+Qualitative review against the predeclared rubric: S03 listening 3/3 pass, S05
+stopping 3/3 pass, S06 urgent fiction 3/3 pass against its narrow rubric with a
+location-qualification caveat in repeat 1. S04 two angles: one clear pass and two
+partial/borderline replies with overlapping event-versus-identity perspectives.
+Overall 10 clear passes and 2 partial results, separate from HTTP success. No
+independent human or clinical review is implied. All stop replies were identical;
+listening had two wordings; reframing and urgent fiction each had three wordings.
+Route times ranged 1.441–3.947 seconds. Retrieval supplied criteria/intention cards
+for listening-only but no_match for every explicit two-perspective request. No
+source-backed operation use is claimed for S04. Prompts/thresholds were not changed
+mid-evaluation to make outcomes pass.
+
+Saved exact fictional inputs/history, request payloads, raw responses (including
+actual model/usage), attempt ledger, source hashes, timestamps, per-repeat review,
+variation and offline guard output under docs/evidence/part33/2026-11-03-live/.
+Credentials/HTTP authorization headers are excluded. Updated docs/part33-evaluation.md:
+22 scoped scenario passes, S02 tool-blocked and S04 partial. Live sample complete;
+full breathing timing, S04 follow-up, location caveat, broader model/Voice/device/
+clinical limitations, peer work and final submission remain explicit. Original
+mock/browser evidence was preserved and not relabeled as live. No screenshot or
+Emergency recheck was performed in this live API run.
+
+Other commands: offline runner preflight; backend/.venv/bin/python
+scripts/test_part33_live_budget.py -v; project Python py_compile; ledger/response/
+request-consistency and documentation-link/hash checks; git diff --check. Existing
+Starlette/httpx warning remains. No full application-suite rerun because application
+code did not change; no dependencies, staging, commit, push, process stop or edits
+to the pre-existing part1-report.md or submissions/part3.3/ files.
+
+## November 3 — Part Three report evaluation integration
+
+At the user's request, Codex replaced the evaluation placeholder in
+submissions/part3.3/report.md with the existing 24-scenario findings, expected and
+observed results, three behavior checks, mocked/browser verification counts,
+sound-dialog failure and verified correction, and the four live cases repeated
+three times. The report distinguishes 24 provider attempts from 12 replies and
+10 clear semantic passes/2 partial results, records variation and the location
+caveat, and links raw outputs, the call ledger and other evidence. It preserves
+the earlier Part Two timing screenshot as historical evidence, separately from
+the current browser hold-duration blocker. Remaining-work and AI-use wording now
+reflect the completed evaluation section without claiming the whole submission
+is finished. Existing recordings and other report sections were preserved.
+
+Checks: project Python verified 24 unique scenario rows, all three behavior
+checks, existing local document/recording targets and agreement with the saved
+live assessment; git diff --check. Files edited: submissions/part3.3/report.md,
+AI-USE.md and docs/evidence-log.md. No new test execution, provider call, microphone,
+runtime change, dependency, recording edit, staging, commit or push. Final commit
+and externally accessible/pinned submission links remain TODOs; local link checks
+do not establish instructor access.

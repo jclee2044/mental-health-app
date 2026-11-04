@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-11-03T21:58:28.852935+00:00",
+  "report_date": "2026-11-03 America/New_York",
+  "mode": "mocked automated; no live provider or microphone",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "git_commit": "69e8c09b8861267d34c0d15f4afd56bfc2dc6119",
+  "initial_git_status": "?? part1-report.md",
+  "python": "Python 3.12.13",
+  "node": "v26.6.0",
+  "npm": "11.18.0"
+}

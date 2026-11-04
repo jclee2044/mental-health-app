@@ -1,0 +1,55 @@
+{
+  "created_at_utc": "2026-11-03T22:03:45.995773+00:00",
+  "application_commit": "69e8c09b8861267d34c0d15f4afd56bfc2dc6119",
+  "mode": "mocked automated only",
+  "redactions": [
+    "absolute project root in text logs",
+    "JUnit hostname"
+  ],
+  "files": {
+    "backend-junit.xml": {
+      "bytes": 197415,
+      "sha256": "0791013d984c067f16607bd701f6d2b9df9301cd1cd07430bfe35974f8573f54"
+    },
+    "backend-run.json": {
+      "bytes": 561,
+      "sha256": "46fa3e0dd9845bd98b478a0e4d8613939d5d408abce603c9c22b556888597832"
+    },
+    "backend.txt": {
+      "bytes": 191531,
+      "sha256": "a0a0fd9d7efc8548de6aebd9287ef45ac2ca6d9ce1b70ff3ba7f142f816cccc6"
+    },
+    "build-run.json": {
+      "bytes": 351,
+      "sha256": "ba27ac075c125edd63fc7f33ad1b94f92ec1336470e4d8dcfca30446a3d4027b"
+    },
+    "build.txt": {
+      "bytes": 805,
+      "sha256": "71cf624ad619185f83632c04daa7caadc42c6dae106e0d1c2d21d0cfd4de2914"
+    },
+    "environment.json": {
+      "bytes": 392,
+      "sha256": "03d17a118b2e867ce9c05f236fd307a286175cdb174e544a209cb3d5eacd391c"
+    },
+    "frontend-run.json": {
+      "bytes": 381,
+      "sha256": "dee4134374298efb046a9565d2b7870a3a9ecbc8104339624fd446130be4268e"
+    },
+    "frontend.txt": {
+      "bytes": 31489,
+      "sha256": "3e35bee7ec48d217001a00da9d67101e422dc62aac1dd502e8695020efb8fb1a"
+    },
+    "memory-run.json": {
+      "bytes": 445,
+      "sha256": "b731e1bfea2b71609ad096c14f65546c201cdcf117ef9df55439246f7c9f28ae"
+    },
+    "memory.txt": {
+      "bytes": 3782,
+      "sha256": "0fc9c0d800a92f35a8c10779ffd9e97e3e7551714f5f6eb94ec961d095d579a7"
+    },
+    "personal-memory.json": {
+      "bytes": 11974,
+      "sha256": "2bc1ed7c0483b130e59043bd6d46d54c3167b83ddfe2ae00d21f54a9317d6bd6"
+    }
+  }
+}

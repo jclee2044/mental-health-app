@@ -1,0 +1,14 @@
+{
+  "command": [
+    "npm",
+    "exec",
+    "--offline",
+    "--",
+    "oxlint",
+    "."
+  ],
+  "cwd": "frontend",
+  "started_utc": "2026-11-03T22:43:09.769151+00:00",
+  "ended_utc": "2026-11-03T22:43:10.408672+00:00",
+  "exit_code": 0
+}

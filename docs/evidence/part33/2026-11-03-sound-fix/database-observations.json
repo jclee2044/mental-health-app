@@ -1,0 +1,18 @@
+{
+  "query": "SELECT * FROM emotion_entries",
+  "rows": [
+    {
+      "id": "034ecc42-58fd-4d96-a815-d3bbc368bc10",
+      "feeling": 0,
+      "color": "#8fa98d",
+      "color_meaning": "",
+      "pleasantness": 0,
+      "energy": 0,
+      "note": "",
+      "recorded_at": "2026-11-03T22:43:34.410000+00:00",
+      "local_date": "2026-11-03",
+      "created_at": "2026-11-03T22:43:41.538775+00:00",
+      "updated_at": "2026-11-03T22:43:41.538775+00:00"
+    }
+  ]
+}

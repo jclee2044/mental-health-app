@@ -1,0 +1,14 @@
+Browser tab: 300641339, Title: "inspire — A moment for yourself", URL: "http://127.0.0.1:8033/".
+0 AXWebArea inspire — A moment for yourself, URL: 127.0.0.1:8033/
+	1 container Emergency & crisis support
+		3 button Close panel
+		4 heading Emergency & crisis support, Value: 2, ID: v-1
+			25 text Emergency & crisis support
+		26 text United States resources. These services are separate from inspire.
+		27 link Description: 988 Crisis counseling Suicide & Crisis Lifeline, Value: tel:988
+		28 link Description: 911 Emergency services For immediate danger or a medical emergency, Value: tel:911
+		29 text Opening this panel does not contact anyone.
+		23 button Return to what I was doing
+		24 checkbox Description: Enable app sounds, Value: 0
+
+The focused UI element is 0 AXWebArea inspire — A moment for yourself, URL: 127.0.0.1:8033/

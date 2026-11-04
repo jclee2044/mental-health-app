@@ -1,0 +1,30 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Guided breathing":
+  - heading "Settle in." [level=1]
+  - strong: Keep holding the circle.
+  - button "View past breathing sessions":
+  - paragraph: Release at any time to end the exercise.
+  - button "Hold to begin or repeat breathing; release to end" [active]
+  - generic: "3"
+  - paragraph: Starting in 3… Keep holding.
+  - timer:
+    - text: 60 seconds left
+    - generic: Getting ready · Breathing timer starts after countdown
+  - status: 3–2–1 countdown
+  - button "Pause":
+    - text: Pause
+  - button "End exercise"
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off

@@ -1,0 +1,15 @@
+{
+  "command": "backend/.venv/bin/python scripts/evaluate_part33_live.py --execute-live --max-provider-calls 24",
+  "exit_code": 0,
+  "started_utc": "2026-11-03T23:02:42.100874+00:00",
+  "ended_utc": "2026-11-03T23:03:11.869354+00:00",
+  "base_commit": "69e8c09b8861267d34c0d15f4afd56bfc2dc6119",
+  "working_tree_note": "Existing uncommitted frontend sound fix and evaluation docs retained; no application code changed for this live run.",
+  "budget_test_command": "backend/.venv/bin/python scripts/test_part33_live_budget.py -v",
+  "budget_tests": 3,
+  "budget_test_exit_code": 0,
+  "preflight": "Offline configured-service/index validation passed with zero provider calls",
+  "isolation": "Fresh fictional SQLite; no personal-memory scope, storage/title/summary/voice routes, app browser or microphone used",
+  "prompt_payloads_saved": true,
+  "credentials_or_headers_saved": false
+}

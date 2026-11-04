@@ -1,0 +1,14 @@
+{
+  "command": [
+    "backend/.venv/bin/python",
+    "scripts/evaluate_personal_memory.py",
+    "--output",
+    "docs/evidence/part33/2026-11-03-mocked/personal-memory.json"
+  ],
+  "started_at_utc": "2026-11-03T21:59:07.844853+00:00",
+  "finished_at_utc": "2026-11-03T21:59:14.550186+00:00",
+  "elapsed_seconds": 6.705,
+  "exit_code": 0,
+  "log": "memory.txt",
+  "environment": "fictional credential/model; retrieval disabled; no .env loaded"
+}

@@ -1,0 +1,157 @@
+{
+  "provider_attempt_cap": 24,
+  "provider_attempts": 24,
+  "embedding_attempts": 12,
+  "reply_attempts": 12,
+  "provider_errors": 0,
+  "http_200_replies": 12,
+  "clear_rubric_passes": 10,
+  "partial_rubric_results": 2,
+  "cases": {
+    "S03": {
+      "verdict_counts": {
+        "pass": 3
+      },
+      "distinct_exact_replies": 2,
+      "question_mark_counts": [
+        1,
+        1,
+        1
+      ],
+      "route_ms": [
+        3947.43,
+        2109.83,
+        2740.83
+      ],
+      "identical_reply_request_payloads": true,
+      "retrieval_reports": [
+        {
+          "status": "ready",
+          "card_ids": [
+            "criteria",
+            "intention"
+          ]
+        },
+        {
+          "status": "ready",
+          "card_ids": [
+            "criteria",
+            "intention"
+          ]
+        },
+        {
+          "status": "ready",
+          "card_ids": [
+            "criteria",
+            "intention"
+          ]
+        }
+      ]
+    },
+    "S04": {
+      "verdict_counts": {
+        "partial": 2,
+        "pass": 1
+      },
+      "distinct_exact_replies": 3,
+      "question_mark_counts": [
+        1,
+        1,
+        1
+      ],
+      "route_ms": [
+        3061.88,
+        3693.82,
+        2815.42
+      ],
+      "identical_reply_request_payloads": true,
+      "retrieval_reports": [
+        {
+          "status": "no_match",
+          "card_ids": []
+        },
+        {
+          "status": "no_match",
+          "card_ids": []
+        },
+        {
+          "status": "no_match",
+          "card_ids": []
+        }
+      ]
+    },
+    "S05": {
+      "verdict_counts": {
+        "pass": 3
+      },
+      "distinct_exact_replies": 1,
+      "question_mark_counts": [
+        0,
+        0,
+        0
+      ],
+      "route_ms": [
+        1573.16,
+        1488.05,
+        1441.18
+      ],
+      "identical_reply_request_payloads": true,
+      "retrieval_reports": [
+        {
+          "status": "no_match",
+          "card_ids": []
+        },
+        {
+          "status": "no_match",
+          "card_ids": []
+        },
+        {
+          "status": "no_match",
+          "card_ids": []
+        }
+      ]
+    },
+    "S06": {
+      "verdict_counts": {
+        "pass": 3
+      },
+      "distinct_exact_replies": 3,
+      "question_mark_counts": [
+        0,
+        0,
+        0
+      ],
+      "route_ms": [
+        2041.74,
+        2379.64,
+        2453.67
+      ],
+      "identical_reply_request_payloads": true,
+      "retrieval_reports": [
+        {
+          "status": "no_match",
+          "card_ids": []
+        },
+        {
+          "status": "no_match",
+          "card_ids": []
+        },
+        {
+          "status": "no_match",
+          "card_ids": []
+        }
+      ]
+    }
+  },
+  "budget_exhausted": true,
+  "further_live_calls_authorized": false,
+  "not_tested": [
+    "browser/Emergency rerun",
+    "real microphone/Voice",
+    "speaker quality",
+    "non-U.S. crisis accuracy",
+    "multi-turn dialogue variation",
+    "clinical safety/effectiveness",
+    "peer observations"
+  ]
+}

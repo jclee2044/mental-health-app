@@ -1,0 +1,8 @@
+{
+  "model": "text-embedding-3-small",
+  "dimensions": 1536,
+  "input": [
+    "I keep thinking about a presentation mistake. I want to talk it through, not get advice."
+  ],
+  "encoding_format": "float"
+}

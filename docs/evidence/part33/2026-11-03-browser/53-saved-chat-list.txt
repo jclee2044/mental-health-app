@@ -1,0 +1,25 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Saved chats" [active]:
+  - heading "Saved chats" [level=1]
+  - button "New"
+  - paragraph: Chats without titles send a short text excerpt to the configured model to create a title. Opening a chat is read-only.
+  - 'button "Mock: Fictional evaluation conversation 11/3/2026, 5:19:47 PM"':
+    - strong: "Mock: Fictional evaluation conversation"
+    - time: 11/3/2026, 5:19:47 PM
+  - button "Refresh saved chats"
+  - status: Breathing session saved.
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off
+- status: 1Password menu is available. Press down arrow to select.

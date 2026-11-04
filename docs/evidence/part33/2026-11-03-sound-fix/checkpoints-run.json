@@ -1,0 +1,10 @@
+{
+  "command": [
+    "backend/.venv/bin/python",
+    "scripts/verify_checkpoints.py"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-11-03T22:43:09.767267+00:00",
+  "ended_utc": "2026-11-03T22:43:14.670581+00:00",
+  "exit_code": 0
+}

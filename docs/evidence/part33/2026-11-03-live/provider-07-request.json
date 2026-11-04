@@ -1,0 +1,8 @@
+{
+  "model": "text-embedding-3-small",
+  "dimensions": 1536,
+  "input": [
+    "I missed one deadline and feel like I’m unreliable. Can you offer two other ways to see it?"
+  ],
+  "encoding_format": "float"
+}

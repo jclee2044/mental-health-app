@@ -1,0 +1,49 @@
+Browser tab: 300641339, Title: "inspire — A moment for yourself", URL: "http://127.0.0.1:8033/#emotion".
+1 AXWebArea inspire — A moment for yourself, URL: 127.0.0.1:8033/#emotion
+	2 container
+		3 link Description: Skip to content, Value: 127.0.0.1:8033/#main-content
+		4 button inspire home
+			5 text in
+			6 text spire
+		7 button Emergency
+		8 container Description: Emotion log, ID: main-content
+			18 container
+				19 heading How are you feeling today?, Value: 1
+					20 text How are you
+					21 text feeling today?
+				22 container Choose a color Required
+					23 container
+						24 text Choose a color  Required
+					25 checkbox Description: Sage, Value: 0
+					26 checkbox Description: Rose, Value: 0
+					27 checkbox Description: Sand, Value: 0
+					28 checkbox Description: Sky, Value: 0
+					29 checkbox Description: Lavender, Value: 0
+					30 container Custom color
+						31 color well (settable) Description: Custom color, Value: #8fa98d
+					32 text Your color, your meaning.
+				33 container
+					34 text What does this color mean to you?  Optional
+				35 text field (settable) What does this color mean to you? Optional, ID: color-meaning
+				36 container Pleasantness × energy Required
+					37 container
+						38 text Pleasantness × energy  Required
+					39 text Tap or drag to place your point.
+					40 text High energy Unpleasant
+					41 container Pleasantness and energy graph
+						42 text Place your point
+					43 text Pleasant Low energy
+					44 button (collapsed) Use sliders or keyboard, Secondary Actions: Expand
+						45 text Use sliders or keyboard
+				46 container
+					47 text Anything you’d like to add?  Optional
+				48 text entry area (settable) Anything you’d like to add? Optional, ID: entry-note
+				49 button Cancel
+				50 button Save entry
+				51 button View past logs
+		14 text Make room for a moment.
+		15 container Secondary navigation
+			16 button Appearance
+			17 checkbox Description: Enable app sounds, Value: 0
+
+The focused UI element is 8 container Description: Emotion log, ID: main-content

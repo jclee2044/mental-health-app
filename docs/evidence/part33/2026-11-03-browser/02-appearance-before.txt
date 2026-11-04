@@ -1,0 +1,28 @@
+Browser tab: 300641339, Title: "inspire — A moment for yourself", URL: "http://127.0.0.1:8033/".
+0 AXWebArea inspire — A moment for yourself, URL: 127.0.0.1:8033/
+	1 container Make it yours
+		2 button Emergency
+		3 button Close panel
+		4 heading Make it yours, Value: 2, ID: v-1
+			5 text Make it yours
+		6 text Choose what feels comfortable. You can change this any time.
+		7 container Theme color
+			8 text Theme color
+			9 checkbox Description: Violet, Value: 1
+			10 checkbox Description: Rose, Value: 0
+			11 checkbox Description: Peach, Value: 0
+			12 checkbox Description: Amber, Value: 0
+			13 checkbox Description: Light brown, Value: 0
+			14 checkbox Description: Sage, Value: 0
+			15 checkbox Description: Forest, Value: 0
+			16 checkbox Description: Ocean, Value: 0
+		17 container
+			18 text Larger text A little more room to read
+			19 checkbox (settable, integer) Description: Larger text A little more room to read, Value: 0
+		20 container
+			21 text Reduced motion Use still cues instead of animation
+			22 checkbox (settable, integer) Description: Reduced motion Use still cues instead of animation, Value: 0
+		23 button Return to app
+		24 checkbox Description: Mute all app sounds, Value: 1
+
+The focused UI element is 2 button Emergency

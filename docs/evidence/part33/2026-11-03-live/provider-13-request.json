@@ -1,0 +1,8 @@
+{
+  "model": "text-embedding-3-small",
+  "dimensions": 1536,
+  "input": [
+    "I want to stop now."
+  ],
+  "encoding_format": "float"
+}

@@ -1,0 +1,75 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Past breathing sessions":
+  - heading "Past sessions" [level=1]
+  - article:
+    - strong: Exercise ended
+    - paragraph: 0.0s breathing · 0.0s paused
+    - paragraph: 3.0s sequence · 9.9s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:19 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 5.0s breathing · 0.0s paused
+    - paragraph: 8.0s sequence · 14.3s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:18 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 15.0s breathing · 0.0s paused
+    - paragraph: 18.0s sequence · 26.2s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:17 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 17.0s breathing · 0.0s paused
+    - paragraph: 20.0s sequence · 28.2s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:16 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 9.0s breathing · 0.0s paused
+    - paragraph: 12.0s sequence · 22.1s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:16 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 0.0s breathing · 0.0s paused
+    - paragraph: 0.1s sequence · 5.4s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:16 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 0.2s breathing · 0.1s paused
+    - paragraph: 3.2s sequence · 13.0s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:15 PM
+  - article:
+    - strong: Exercise ended
+    - paragraph: 22.0s breathing · 0.0s paused
+    - paragraph: 25.0s sequence · 76.6s instruction to finish, excluding pauses
+    - paragraph: 2026-11-03 · 5:14 PM
+  - button "Guided breathing"
+  - status: Breathing session saved.
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+- dialog "Emergency & crisis support":
+  - button "Close panel" [active]:
+  - heading "Emergency & crisis support" [level=2]
+  - paragraph: United States resources. These services are separate from inspire.
+  - link "988 Crisis counseling Suicide & Crisis Lifeline":
+    - /url: tel:988
+    - generic: "988"
+    - strong: Crisis counseling
+    - generic: Suicide & Crisis Lifeline
+  - link "911 Emergency services For immediate danger or a medical emergency":
+    - /url: tel:911
+    - generic: "911"
+    - strong: Emergency services
+    - generic: For immediate danger or a medical emergency
+  - paragraph: Opening this panel does not contact anyone.
+  - button "Return to what I was doing"
+  - button "Enable app sounds":
+    - generic: Sound off

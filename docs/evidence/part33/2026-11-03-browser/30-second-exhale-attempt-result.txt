@@ -1,0 +1,25 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Guided breathing":
+  - heading "Breathing exercise ended." [level=1]
+  - paragraph: It’s okay to stop whenever you need. Take things at your own pace.
+  - button "Return home"
+  - status:
+    - text: Fictional evaluation storage failure. This session hasn’t been saved. Retry before closing the app.
+    - button "Retry session save"
+  - status:
+    - text: Fictional evaluation storage failure. This session hasn’t been saved. Retry before closing the app.
+    - button "Retry session save"
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off

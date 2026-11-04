@@ -1,0 +1,156 @@
+Validating interface: <PROJECT>/.checkpoints/20261103-174309-833661/01-interface
+
+> frontend@0.0.0 test
+> node --test
+
+✔ HTTP transport is confined to the API client (1.89375ms)
+✔ pure feature domain rules have no Vue or API imports (1.499625ms)
+✔ feature code never imports a sibling feature (0.158208ms)
+✔ arming is silent; completion plays once, with the approved buffer (0.799875ms)
+✔ mute/interruption blocks pending playback even after decoding (0.090209ms)
+✔ hidden or interrupted actions remain silent; closed cues cannot restart (1.669583ms)
+✔ decode/autoplay failure does not reject completion or queue a replay (0.320167ms)
+✔ sound preference survives reload, with safe defaults and storage failure fallback (2.417333ms)
+✔ footer and dialog controls use the same sound preference across remounts (126.8635ms)
+✔ deletion dialog owns a working sound control across nested Emergency, resize and close (52.797208ms)
+✔ offline worker intercepts only known shell assets, never API or writes (2.353542ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 295.286875
+
+> frontend@0.0.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 23 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                  0.74 kB │ gzip:  0.42 kB
+dist/sw.js                       1.13 kB
+dist/assets/index-CzWvzbUl.css  14.36 kB │ gzip:  3.91 kB
+dist/assets/index-iO1xCTN5.js   78.24 kB │ gzip: 30.91 kB
+
+✓ built in 66ms
+Validating emotion: <PROJECT>/.checkpoints/20261103-174309-833661/02-emotion
+
+> frontend@0.0.0 test
+> node --test
+
+✔ emotion cue follows successful storage only, including storage retry (20.132583ms)
+✔ tap places a point; captured drag follows outside bounds and commits release (0.673709ms)
+✔ hover, secondary pointers/buttons, cancellation and lost capture cannot move the point (0.089041ms)
+✔ HTTP transport is confined to the API client (2.320833ms)
+✔ pure feature domain rules have no Vue or API imports (0.59075ms)
+✔ feature code never imports a sibling feature (0.676ms)
+✔ arming is silent; completion plays once, with the approved buffer (1.221708ms)
+✔ mute/interruption blocks pending playback even after decoding (0.092584ms)
+✔ hidden or interrupted actions remain silent; closed cues cannot restart (0.615792ms)
+✔ decode/autoplay failure does not reject completion or queue a replay (0.140459ms)
+✔ sound preference survives reload, with safe defaults and storage failure fallback (1.161083ms)
+✔ footer and dialog controls use the same sound preference across remounts (11.72375ms)
+✔ deletion dialog owns a working sound control across nested Emergency, resize and close (25.348708ms)
+✔ offline worker intercepts only known shell assets, never API or writes (1.430834ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.109791
+
+> frontend@0.0.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.74 kB │ gzip:   0.42 kB
+dist/sw.js                          1.13 kB
+dist/assets/index-Bti9e3PM.css     19.49 kB │ gzip:   5.04 kB
+dist/assets/index-DaTvnWog.js   1,059.65 kB │ gzip: 566.29 kB
+
+✓ built in 80ms
+........                                                                 [100%]
+=============================== warnings summary ===============================
+../../../../backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  <PROJECT>/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+8 passed, 1 warning in 0.32s
+Validating breathing: <PROJECT>/.checkpoints/20261103-174309-833661/03-breathing
+
+> frontend@0.0.0 test
+> node --test
+
+✔ recorded phases resume at the matching offset and stop at the phase boundary (0.585416ms)
+✔ decode failure is retryable and leaves text/visual fallback available (0.99275ms)
+✔ closing during decoding prevents a late completion from starting sound (0.204375ms)
+✔ failed context unlock or invalid recording durations reject safely (0.2015ms)
+✔ a missing inhale recording stays silent instead of substituting an exhale (0.165083ms)
+✔ countdown, fixed 4/6 phases, exactly six cycles and completion (0.631333ms)
+✔ pause during countdown preserves phase and excludes chosen pause (0.090917ms)
+✔ pause mid-inhale, end mid-exhale, and repeated pause/end are safe (1.552291ms)
+✔ delayed frames do not accumulate timer drift (1.983125ms)
+✔ six cycles cue once independently of saving; early release shows an ended result with its own cue (28.814584ms)
+✔ pointer hold is captured, release ends during countdown or breathing, with no restart (3.590458ms)
+✔ only an uninterrupted full hold completes; releasing afterward preserves completion (0.317292ms)
+✔ Space and Enter holds ignore repeat, unrelated keys and competing pointers (0.286ms)
+✔ cancellation, focus loss or hidden-page cancellation ends once, including while paused (0.121459ms)
+✔ secondary buttons and unrelated pointer releases cannot take ownership (0.116ms)
+✔ circle focus loss ends keyboard holds; pointer holds can use Pause/Resume with another input (0.110875ms)
+✔ emotion cue follows successful storage only, including storage retry (25.751ms)
+✔ tap places a point; captured drag follows outside bounds and commits release (1.322125ms)
+✔ hover, secondary pointers/buttons, cancellation and lost capture cannot move the point (0.100708ms)
+✔ HTTP transport is confined to the API client (2.803875ms)
+✔ pure feature domain rules have no Vue or API imports (0.41575ms)
+✔ feature code never imports a sibling feature (0.722375ms)
+✔ arming is silent; completion plays once, with the approved buffer (1.297334ms)
+✔ mute/interruption blocks pending playback even after decoding (0.249125ms)
+✔ hidden or interrupted actions remain silent; closed cues cannot restart (1.139667ms)
+✔ decode/autoplay failure does not reject completion or queue a replay (0.24275ms)
+✔ sound preference survives reload, with safe defaults and storage failure fallback (1.1625ms)
+✔ footer and dialog controls use the same sound preference across remounts (12.358584ms)
+✔ deletion dialog owns a working sound control across nested Emergency, resize and close (23.583041ms)
+✔ offline worker intercepts only known shell assets, never API or writes (1.115333ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 176.835959
+
+> frontend@0.0.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 50 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.74 kB │ gzip:     0.42 kB
+dist/sw.js                          1.13 kB
+dist/assets/index-BoKna-Lh.css     22.37 kB │ gzip:     5.60 kB
+dist/assets/index-Cyv-yi87.js   2,211.55 kB │ gzip: 1,218.34 kB
+
+✓ built in 165ms
+..........                                                               [100%]
+=============================== warnings summary ===============================
+../../../../backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  <PROJECT>/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+10 passed, 1 warning in 0.19s
+Checkpoint evidence: <PROJECT>/.checkpoints/20261103-174309-833661/results.json

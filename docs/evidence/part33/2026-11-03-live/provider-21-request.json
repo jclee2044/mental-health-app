@@ -1,0 +1,8 @@
+{
+  "model": "text-embedding-3-small",
+  "dimensions": 1536,
+  "input": [
+    "In this fictional scenario, I am in immediate danger of hurting myself."
+  ],
+  "encoding_format": "float"
+}

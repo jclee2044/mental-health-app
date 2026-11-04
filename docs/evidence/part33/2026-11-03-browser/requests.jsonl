@@ -1,0 +1,38 @@
+{"utc": "2026-11-03T22:11:06.530934+00:00", "event": "fixture_start", "port": 8033, "database": "fictional.sqlite3", "outgoing_http": "forbidden"}
+{"utc": "2026-11-03T22:11:15.572518+00:00", "event": "fixture_start", "port": 8033, "database": "fictional.sqlite3", "outgoing_http": "forbidden"}
+{"utc": "2026-11-03T22:12:37.696967+00:00", "event": "request", "method": "PUT", "path": "/api/entries/68cf7e84-338a-4eb1-bb9f-9823c378c40b", "status": 201, "elapsed_ms": 8.74}
+{"utc": "2026-11-03T22:12:41.664085+00:00", "event": "request", "method": "GET", "path": "/api/entries", "status": 200, "elapsed_ms": 2.7}
+{"utc": "2026-11-03T22:12:48.892459+00:00", "event": "request", "method": "GET", "path": "/api/entries", "status": 200, "elapsed_ms": 3.12}
+{"utc": "2026-11-03T22:14:52.738901+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/1cc62497-dc32-4a0e-8aff-805d48157458", "status": 201, "elapsed_ms": 6.9}
+{"utc": "2026-11-03T22:15:28.833283+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/07263299-ee12-4a2f-a4bb-0ce318248b37", "status": 201, "elapsed_ms": 4.4}
+{"utc": "2026-11-03T22:16:07.723307+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/9ca03eed-2321-4594-99b1-c24add346d2b", "status": 201, "elapsed_ms": 7.27}
+{"utc": "2026-11-03T22:16:35.110716+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/a98ec8bb-14fe-49aa-87d8-e11a8397687d", "status": 503, "elapsed_ms": 2.92}
+{"utc": "2026-11-03T22:17:14.594003+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/b39b5c2b-105e-4981-b7e1-8132b08381f8", "status": 503, "elapsed_ms": 0.85}
+{"utc": "2026-11-03T22:18:08.152661+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/9f5ae4b3-6b45-4d19-a51d-833be4409b61", "status": 503, "elapsed_ms": 3.12}
+{"utc": "2026-11-03T22:18:23.097590+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/a98ec8bb-14fe-49aa-87d8-e11a8397687d", "status": 201, "elapsed_ms": 3.84}
+{"utc": "2026-11-03T22:18:23.356736+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/9f5ae4b3-6b45-4d19-a51d-833be4409b61", "status": 201, "elapsed_ms": 3.41}
+{"utc": "2026-11-03T22:18:29.862181+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/b39b5c2b-105e-4981-b7e1-8132b08381f8", "status": 201, "elapsed_ms": 2.83}
+{"utc": "2026-11-03T22:18:44.524794+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/7448f24f-7846-448d-b8d1-c3db74c0d262", "status": 201, "elapsed_ms": 4.79}
+{"utc": "2026-11-03T22:19:06.389508+00:00", "event": "request", "method": "PUT", "path": "/api/sessions/ec3f5c07-b9ae-4681-be37-d078b194c64e", "status": 201, "elapsed_ms": 2.82}
+{"utc": "2026-11-03T22:19:17.921945+00:00", "event": "request", "method": "GET", "path": "/api/sessions", "status": 200, "elapsed_ms": 2.18}
+{"utc": "2026-11-03T22:19:25.121075+00:00", "event": "request", "method": "GET", "path": "/api/personal-memory/preferences", "status": 200, "elapsed_ms": 1.59}
+{"utc": "2026-11-03T22:19:35.246714+00:00", "event": "request", "method": "PUT", "path": "/api/personal-memory/preferences", "status": 200, "elapsed_ms": 3.96}
+{"utc": "2026-11-03T22:19:47.049041+00:00", "event": "injected_memory_failure"}
+{"utc": "2026-11-03T22:19:47.049878+00:00", "event": "mock_reply", "message": "Fictional evaluation: my imaginary exam is next week.", "memory_present": false}
+{"utc": "2026-11-03T22:19:47.050293+00:00", "event": "request", "method": "POST", "path": "/api/chat/messages", "status": 200, "elapsed_ms": 4.04}
+{"utc": "2026-11-03T22:19:47.059194+00:00", "event": "request", "method": "PUT", "path": "/api/chat/conversations/075b3350-5462-4d54-a320-c67fa9522f8f/turns/84d7c5d3-bb91-4445-a29e-62e20d12d911", "status": 201, "elapsed_ms": 4.29}
+{"utc": "2026-11-03T22:19:56.360442+00:00", "event": "injected_memory_failure"}
+{"utc": "2026-11-03T22:19:56.360944+00:00", "event": "mock_reply", "message": "demo:fail", "memory_present": false}
+{"utc": "2026-11-03T22:19:56.361209+00:00", "event": "request", "method": "POST", "path": "/api/chat/messages", "status": 502, "elapsed_ms": 1.79}
+{"utc": "2026-11-03T22:20:06.374365+00:00", "event": "injected_memory_failure"}
+{"utc": "2026-11-03T22:20:06.374892+00:00", "event": "mock_reply", "message": "demo:slow", "memory_present": false}
+{"utc": "2026-11-03T22:20:07.580402+00:00", "event": "mock_summary"}
+{"utc": "2026-11-03T22:20:07.582323+00:00", "event": "request", "method": "POST", "path": "/api/personal-memory/conversations/075b3350-5462-4d54-a320-c67fa9522f8f/summary", "status": 200, "elapsed_ms": 7.0}
+{"utc": "2026-11-03T22:20:07.651528+00:00", "event": "request", "method": "GET", "path": "/api/personal-memory/preferences", "status": 200, "elapsed_ms": 0.71}
+{"utc": "2026-11-03T22:20:07.820671+00:00", "event": "request", "method": "GET", "path": "/api/chat/conversations", "status": 200, "elapsed_ms": 0.74}
+{"utc": "2026-11-03T22:20:07.824698+00:00", "event": "mock_title"}
+{"utc": "2026-11-03T22:20:07.826063+00:00", "event": "request", "method": "POST", "path": "/api/chat/conversations/075b3350-5462-4d54-a320-c67fa9522f8f/title", "status": 200, "elapsed_ms": 3.2}
+{"utc": "2026-11-03T22:20:18.776752+00:00", "event": "request", "method": "GET", "path": "/api/chat/conversations/075b3350-5462-4d54-a320-c67fa9522f8f", "status": 200, "elapsed_ms": 0.87}
+{"utc": "2026-11-03T22:20:21.380330+00:00", "event": "request", "method": "POST", "path": "/api/chat/messages", "status": 200, "elapsed_ms": 15006.87}
+{"utc": "2026-11-03T22:20:43.330153+00:00", "event": "request", "method": "GET", "path": "/api/chat/conversations", "status": 503, "elapsed_ms": 0.26}
+{"utc": "2026-11-03T22:21:37.622238+00:00", "event": "fixture_stop"}

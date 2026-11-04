@@ -1,0 +1,20 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Past logs" [active]:
+  - heading "Past logs" [level=1]
+  - button "New entry":
+    - text: New entry
+  - status: Loading saved moments…
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off

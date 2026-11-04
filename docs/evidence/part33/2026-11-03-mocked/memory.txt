@@ -1,0 +1,150 @@
+<project>/backend/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{
+  "summary": {
+    "passed": 26,
+    "expected_limitation": 0,
+    "failed": 0
+  },
+  "benchmarks": [
+    {
+      "saved_conversations": 0,
+      "mode": "empty_voice_start",
+      "without_memory": {
+        "median_ms": 0.546,
+        "p95_ms": 1.656,
+        "max_ms": 2.432
+      },
+      "with_memory": {
+        "median_ms": 1.406,
+        "p95_ms": 3.45,
+        "max_ms": 5.182
+      },
+      "local_lookup": {
+        "median_ms": 0.563,
+        "p95_ms": 1.407,
+        "max_ms": 1.983
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "partial_chat_snapshots": 0,
+      "median_route_difference_ms": 0.86
+    },
+    {
+      "saved_conversations": 0,
+      "mode": "voice_start_with_recent_topic",
+      "without_memory": {
+        "median_ms": 0.442,
+        "p95_ms": 0.515,
+        "max_ms": 0.734
+      },
+      "with_memory": {
+        "median_ms": 1.043,
+        "p95_ms": 1.286,
+        "max_ms": 1.379
+      },
+      "local_lookup": {
+        "median_ms": 0.46,
+        "p95_ms": 0.576,
+        "max_ms": 0.621
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "partial_chat_snapshots": 0,
+      "median_route_difference_ms": 0.601
+    },
+    {
+      "saved_conversations": 200,
+      "mode": "empty_voice_start",
+      "without_memory": {
+        "median_ms": 0.499,
+        "p95_ms": 0.962,
+        "max_ms": 1.403
+      },
+      "with_memory": {
+        "median_ms": 4.824,
+        "p95_ms": 5.389,
+        "max_ms": 13.019
+      },
+      "local_lookup": {
+        "median_ms": 3.887,
+        "p95_ms": 4.415,
+        "max_ms": 7.622
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "partial_chat_snapshots": 40,
+      "median_route_difference_ms": 4.326
+    },
+    {
+      "saved_conversations": 200,
+      "mode": "voice_start_with_recent_topic",
+      "without_memory": {
+        "median_ms": 0.456,
+        "p95_ms": 0.633,
+        "max_ms": 0.701
+      },
+      "with_memory": {
+        "median_ms": 4.474,
+        "p95_ms": 4.88,
+        "max_ms": 4.991
+      },
+      "local_lookup": {
+        "median_ms": 3.721,
+        "p95_ms": 4.134,
+        "max_ms": 4.248
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "partial_chat_snapshots": 40,
+      "median_route_difference_ms": 4.018
+    },
+    {
+      "saved_conversations": 2000,
+      "mode": "empty_voice_start",
+      "without_memory": {
+        "median_ms": 0.653,
+        "p95_ms": 0.776,
+        "max_ms": 0.937
+      },
+      "with_memory": {
+        "median_ms": 28.569,
+        "p95_ms": 29.073,
+        "max_ms": 34.38
+      },
+      "local_lookup": {
+        "median_ms": 27.416,
+        "p95_ms": 28.129,
+        "max_ms": 28.737
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "partial_chat_snapshots": 40,
+      "median_route_difference_ms": 27.916
+    },
+    {
+      "saved_conversations": 2000,
+      "mode": "voice_start_with_recent_topic",
+      "without_memory": {
+        "median_ms": 0.646,
+        "p95_ms": 0.764,
+        "max_ms": 0.865
+      },
+      "with_memory": {
+        "median_ms": 28.704,
+        "p95_ms": 29.569,
+        "max_ms": 30.37
+      },
+      "local_lookup": {
+        "median_ms": 27.86,
+        "p95_ms": 28.867,
+        "max_ms": 33.491
+      },
+      "samples_per_mode": 40,
+      "memory_fallbacks": 0,
+      "partial_chat_snapshots": 40,
+      "median_route_difference_ms": 28.058
+    }
+  ],
+  "output": "docs/evidence/part33/2026-11-03-mocked/personal-memory.json"
+}

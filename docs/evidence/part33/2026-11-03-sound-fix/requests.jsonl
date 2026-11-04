@@ -1,0 +1,5 @@
+{"utc": "2026-11-03T22:43:20.268259+00:00", "event": "fixture_start", "port": 8034, "database": "fictional.sqlite3", "outgoing_http": "forbidden"}
+{"utc": "2026-11-03T22:43:41.540983+00:00", "event": "request", "method": "PUT", "path": "/api/entries/034ecc42-58fd-4d96-a815-d3bbc368bc10", "status": 201, "elapsed_ms": 4.13}
+{"utc": "2026-11-03T22:43:47.005130+00:00", "event": "request", "method": "GET", "path": "/api/entries", "status": 200, "elapsed_ms": 2.05}
+{"utc": "2026-11-03T22:44:22.031215+00:00", "event": "request", "method": "GET", "path": "/api/entries", "status": 200, "elapsed_ms": 3.88}
+{"utc": "2026-11-03T22:44:53.793473+00:00", "event": "fixture_stop"}

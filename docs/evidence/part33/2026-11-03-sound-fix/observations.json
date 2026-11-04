@@ -1,0 +1,277 @@
+[
+  {
+    "name": "01-home",
+    "utc": "2026-11-03T22:43:30.748Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Home\":\n  - heading \"How would you like to begin?\" [level=1]:\n    - text: How would you like to\n    - emphasis: begin?\n  - paragraph: Choose the one that feels right for you right now.\n  - button \"Emotion log A color, a feeling, a moment to notice.\":\n    - strong: Emotion log\n    - generic: A color, a feeling, a moment to notice.\n  - button \"Guided breathing Follow a gentle rhythm. In, then out.\":\n    - strong: Guided breathing\n    - generic: Follow a gentle rhythm. In, then out.\n  - button \"Support chat A space for conversation.\":\n    - strong: Support chat\n    - generic: A space for conversation.\n  - complementary \"A quiet reminder\":\n    - paragraph:\n      - text: One thing\n      - text: at a time.\n    - text: There’s room to simply be.\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n    - button \"Mute all app sounds\" [pressed]:\n      - generic: Sound on"
+  },
+  {
+    "name": "02-emotion-form",
+    "utc": "2026-11-03T22:43:37.428Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Emotion log\" [active]:\n  - heading \"How are you feeling today?\" [level=1]:\n    - text: How are you\n    - emphasis: feeling today?\n  - group \"Choose a color Required\":\n    - generic: Choose a color Required\n    - button \"Sage\"\n    - button \"Rose\"\n    - button \"Sand\"\n    - button \"Sky\"\n    - button \"Lavender\"\n    - generic \"Custom color\":\n      - textbox \"Custom color\": \"#8fa98d\"\n      - generic: +\n    - paragraph: Your color, your meaning.\n  - generic: What does this color mean to you? Optional\n  - textbox \"What does this color mean to you? Optional\":\n    - /placeholder: A word or two, if you like\n  - group \"Pleasantness × energy Required\":\n    - generic: Pleasantness × energy Required\n    - paragraph: Tap or drag to place your point.\n    - generic: High energy\n    - generic: Unpleasant\n    - group \"Pleasantness and energy graph\":\n      - generic: Place your point\n    - generic: Pleasant\n    - generic: Low energy\n    - generic \"Use sliders or keyboard\"\n  - generic: Anything you’d like to add? Optional\n  - textbox \"Anything you’d like to add? Optional\":\n    - /placeholder: Leave a little note for yourself…\n  - button \"Cancel\"\n  - button \"Save entry\"\n  - button \"View past logs\":\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n    - button \"Enable app sounds\":\n      - generic: Sound off"
+  },
+  {
+    "name": "03-saved",
+    "utc": "2026-11-03T22:43:41.771Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Emotion log\":\n  - heading \"Entry saved.\" [level=1]\n  - paragraph: You can come back to it whenever you like.\n  - button \"Return home\"\n  - button \"View history\"\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n    - button \"Enable app sounds\":\n      - generic: Sound off"
+  },
+  {
+    "name": "04-history",
+    "utc": "2026-11-03T22:43:50.013Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\" [active]:\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n    - button \"Enable app sounds\":\n      - generic: Sound off"
+  },
+  {
+    "name": "footer-position",
+    "utc": "2026-11-03T22:43:56.556Z",
+    "value": {
+      "anchor": {
+        "bottom": 818.5,
+        "height": 44,
+        "left": 1315,
+        "right": 1399,
+        "top": 774.5,
+        "width": 84,
+        "x": 1315,
+        "y": 774.5
+      },
+      "buttons": [
+        {
+          "hit": true,
+          "insideModal": false,
+          "label": "Enable app sounds",
+          "modalTitle": null,
+          "rect": {
+            "bottom": 818.5,
+            "height": 44,
+            "left": 1315,
+            "right": 1390.890625,
+            "top": 774.5,
+            "width": 75.890625,
+            "x": 1315,
+            "y": 774.5
+          }
+        }
+      ],
+      "dialogs": []
+    }
+  },
+  {
+    "name": "05-delete-sound-off",
+    "utc": "2026-11-03T22:43:56.842Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\" [active]:\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Enable app sounds\":\n      - generic: Sound off\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance"
+  },
+  {
+    "name": "delete-position-and-hit",
+    "utc": "2026-11-03T22:43:56.907Z",
+    "value": {
+      "anchor": {
+        "bottom": 818.5,
+        "height": 44,
+        "left": 1315,
+        "right": 1399,
+        "top": 774.5,
+        "width": 84,
+        "x": 1315,
+        "y": 774.5
+      },
+      "buttons": [
+        {
+          "hit": true,
+          "insideModal": true,
+          "label": "Enable app sounds",
+          "modalTitle": "Delete this entry?",
+          "rect": {
+            "bottom": 818.5,
+            "height": 44,
+            "left": 1315,
+            "right": 1399,
+            "top": 774.5,
+            "width": 84,
+            "x": 1315,
+            "y": 774.5
+          }
+        }
+      ],
+      "dialogs": [
+        "Delete this entry?"
+      ]
+    }
+  },
+  {
+    "name": "06-delete-sound-on",
+    "utc": "2026-11-03T22:44:01.840Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\":\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Mute all app sounds\" [active] [pressed]:\n      - generic: Sound on\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance"
+  },
+  {
+    "name": "delete-remains-after-toggle",
+    "utc": "2026-11-03T22:44:01.901Z",
+    "value": {
+      "anchor": {
+        "bottom": 818.5,
+        "height": 44,
+        "left": 1315,
+        "right": 1399,
+        "top": 774.5,
+        "width": 84,
+        "x": 1315,
+        "y": 774.5
+      },
+      "buttons": [
+        {
+          "hit": true,
+          "insideModal": true,
+          "label": "Mute all app sounds",
+          "modalTitle": "Delete this entry?",
+          "rect": {
+            "bottom": 818.5,
+            "height": 44,
+            "left": 1315,
+            "right": 1399,
+            "top": 774.5,
+            "width": 84,
+            "x": 1315,
+            "y": 774.5
+          }
+        }
+      ],
+      "dialogs": [
+        "Delete this entry?"
+      ]
+    }
+  },
+  {
+    "name": "07-nested-emergency",
+    "utc": "2026-11-03T22:44:02.196Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\":\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Mute all app sounds\" [pressed]:\n      - generic: Sound on\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n- dialog \"Emergency & crisis support\":\n  - button \"Close panel\" [active]:\n  - heading \"Emergency & crisis support\" [level=2]\n  - paragraph: United States resources. These services are separate from inspire.\n  - link \"988 Crisis counseling Suicide & Crisis Lifeline\":\n    - /url: tel:988\n    - generic: \"988\"\n    - strong: Crisis counseling\n    - generic: Suicide & Crisis Lifeline\n  - link \"911 Emergency services For immediate danger or a medical emergency\":\n    - /url: tel:911\n    - generic: \"911\"\n    - strong: Emergency services\n    - generic: For immediate danger or a medical emergency\n  - paragraph: Opening this panel does not contact anyone.\n  - button \"Return to what I was doing\"\n  - button \"Mute all app sounds\" [pressed]:\n    - generic: Sound on"
+  },
+  {
+    "name": "nested-emergency-hit",
+    "utc": "2026-11-03T22:44:02.254Z",
+    "value": {
+      "anchor": {
+        "bottom": 818.5,
+        "height": 44,
+        "left": 1315,
+        "right": 1399,
+        "top": 774.5,
+        "width": 84,
+        "x": 1315,
+        "y": 774.5
+      },
+      "buttons": [
+        {
+          "hit": false,
+          "insideModal": true,
+          "label": "Mute all app sounds",
+          "modalTitle": "Delete this entry?",
+          "rect": {
+            "bottom": 818.5,
+            "height": 44,
+            "left": 1315,
+            "right": 1399,
+            "top": 774.5,
+            "width": 84,
+            "x": 1315,
+            "y": 774.5
+          }
+        },
+        {
+          "hit": true,
+          "insideModal": true,
+          "label": "Mute all app sounds",
+          "modalTitle": "Emergency & crisis support",
+          "rect": {
+            "bottom": 818.5,
+            "height": 44,
+            "left": 1315,
+            "right": 1399,
+            "top": 774.5,
+            "width": 84,
+            "x": 1315,
+            "y": 774.5
+          }
+        }
+      ],
+      "dialogs": [
+        "Delete this entry?",
+        "Emergency & crisis support"
+      ]
+    }
+  },
+  {
+    "name": "08-emergency-sound-off",
+    "utc": "2026-11-03T22:44:10.293Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\":\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Enable app sounds\":\n      - generic: Sound off\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n- dialog \"Emergency & crisis support\":\n  - button \"Close panel\":\n  - heading \"Emergency & crisis support\" [level=2]\n  - paragraph: United States resources. These services are separate from inspire.\n  - link \"988 Crisis counseling Suicide & Crisis Lifeline\":\n    - /url: tel:988\n    - generic: \"988\"\n    - strong: Crisis counseling\n    - generic: Suicide & Crisis Lifeline\n  - link \"911 Emergency services For immediate danger or a medical emergency\":\n    - /url: tel:911\n    - generic: \"911\"\n    - strong: Emergency services\n    - generic: For immediate danger or a medical emergency\n  - paragraph: Opening this panel does not contact anyone.\n  - button \"Return to what I was doing\"\n  - button \"Enable app sounds\" [active]:\n    - generic: Sound off"
+  },
+  {
+    "name": "09-return-to-deletion",
+    "utc": "2026-11-03T22:44:10.573Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\" [active]:\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Enable app sounds\":\n      - generic: Sound off\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance"
+  },
+  {
+    "name": "returned-deletion-hit",
+    "utc": "2026-11-03T22:44:10.589Z",
+    "value": {
+      "anchor": {
+        "bottom": 818.5,
+        "height": 44,
+        "left": 1315,
+        "right": 1399,
+        "top": 774.5,
+        "width": 84,
+        "x": 1315,
+        "y": 774.5
+      },
+      "buttons": [
+        {
+          "hit": true,
+          "insideModal": true,
+          "label": "Enable app sounds",
+          "modalTitle": "Delete this entry?",
+          "rect": {
+            "bottom": 818.5,
+            "height": 44,
+            "left": 1315,
+            "right": 1399,
+            "top": 774.5,
+            "width": 84,
+            "x": 1315,
+            "y": 774.5
+          }
+        }
+      ],
+      "dialogs": [
+        "Delete this entry?"
+      ]
+    }
+  },
+  {
+    "name": "10-deletion-keyboard-toggle",
+    "utc": "2026-11-03T22:44:10.610Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\":\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Mute all app sounds\" [active] [pressed]:\n      - generic: Sound on\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance"
+  },
+  {
+    "name": "11-footer-restored",
+    "utc": "2026-11-03T22:44:10.902Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\" [active]\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n    - button \"Mute all app sounds\" [pressed]:\n      - generic: Sound on"
+  },
+  {
+    "name": "12-appearance",
+    "utc": "2026-11-03T22:44:21.397Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n- dialog \"Make it yours\":\n  - button \"Emergency\" [active]:\n    - text: Emergency\n  - button \"Close panel\":\n  - heading \"Make it yours\" [level=2]\n  - paragraph: Choose what feels comfortable. You can change this any time.\n  - group \"Theme color\":\n    - generic: Theme color\n    - button \"Violet\" [pressed]:\n    - button \"Rose\"\n    - button \"Peach\"\n    - button \"Amber\"\n    - button \"Light brown\"\n    - button \"Sage\"\n    - button \"Forest\"\n    - button \"Ocean\"\n  - strong: Larger text\n  - generic: A little more room to read\n  - checkbox \"Larger text A little more room to read\"\n  - strong: Reduced motion\n  - generic: Use still cues instead of animation\n  - checkbox \"Reduced motion Use still cues instead of animation\"\n  - button \"Return to app\"\n  - button \"Mute all app sounds\" [pressed]:\n    - generic: Sound on"
+  },
+  {
+    "name": "13-appearance-muted",
+    "utc": "2026-11-03T22:44:21.692Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n- dialog \"Make it yours\":\n  - button \"Emergency\":\n    - text: Emergency\n  - button \"Close panel\":\n  - heading \"Make it yours\" [level=2]\n  - paragraph: Choose what feels comfortable. You can change this any time.\n  - group \"Theme color\":\n    - generic: Theme color\n    - button \"Violet\" [pressed]:\n    - button \"Rose\"\n    - button \"Peach\"\n    - button \"Amber\"\n    - button \"Light brown\"\n    - button \"Sage\"\n    - button \"Forest\"\n    - button \"Ocean\"\n  - strong: Larger text\n  - generic: A little more room to read\n  - checkbox \"Larger text A little more room to read\"\n  - strong: Reduced motion\n  - generic: Use still cues instead of animation\n  - checkbox \"Reduced motion Use still cues instead of animation\"\n  - button \"Return to app\"\n  - button \"Enable app sounds\" [active]:\n    - generic: Sound off"
+  },
+  {
+    "name": "14-reload-muted",
+    "utc": "2026-11-03T22:44:22.057Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance\n    - button \"Enable app sounds\":\n      - generic: Sound off"
+  },
+  {
+    "name": "15-reopened-deletion",
+    "utc": "2026-11-03T22:44:26.072Z",
+    "state": "- link \"Skip to content\":\n  - /url: \"#main-content\"\n- banner:\n  - button \"inspire home\":\n    - generic: in\n    - generic: spire\n  - button \"Emergency\":\n    - text: Emergency\n- main \"Past logs\":\n  - heading \"Past logs\" [level=1]\n  - button \"New entry\":\n    - text: New entry\n  - button \"Previous month\":\n  - heading \"November 2026\" [level=2]\n  - button \"Next month\":\n  - generic: Mon\n  - generic: Tue\n  - generic: Wed\n  - generic: Thu\n  - generic: Fri\n  - generic: Sat\n  - generic: Sun\n  - button \"2026-11-01, 0 entries\": \"1\"\n  - button \"2026-11-02, 0 entries\": \"2\"\n  - button \"2026-11-03, 1 entries\" [pressed]: \"3\"\n  - button \"2026-11-04, 0 entries\": \"4\"\n  - button \"2026-11-05, 0 entries\": \"5\"\n  - button \"2026-11-06, 0 entries\": \"6\"\n  - button \"2026-11-07, 0 entries\": \"7\"\n  - button \"2026-11-08, 0 entries\": \"8\"\n  - button \"2026-11-09, 0 entries\": \"9\"\n  - button \"2026-11-10, 0 entries\": \"10\"\n  - button \"2026-11-11, 0 entries\": \"11\"\n  - button \"2026-11-12, 0 entries\": \"12\"\n  - button \"2026-11-13, 0 entries\": \"13\"\n  - button \"2026-11-14, 0 entries\": \"14\"\n  - button \"2026-11-15, 0 entries\": \"15\"\n  - button \"2026-11-16, 0 entries\": \"16\"\n  - button \"2026-11-17, 0 entries\": \"17\"\n  - button \"2026-11-18, 0 entries\": \"18\"\n  - button \"2026-11-19, 0 entries\": \"19\"\n  - button \"2026-11-20, 0 entries\": \"20\"\n  - button \"2026-11-21, 0 entries\": \"21\"\n  - button \"2026-11-22, 0 entries\": \"22\"\n  - button \"2026-11-23, 0 entries\": \"23\"\n  - button \"2026-11-24, 0 entries\": \"24\"\n  - button \"2026-11-25, 0 entries\": \"25\"\n  - button \"2026-11-26, 0 entries\": \"26\"\n  - button \"2026-11-27, 0 entries\": \"27\"\n  - button \"2026-11-28, 0 entries\": \"28\"\n  - button \"2026-11-29, 0 entries\": \"29\"\n  - button \"2026-11-30, 0 entries\": \"30\"\n  - paragraph: A saved entry · your chosen color\n  - heading \"November 3, 2026\" [level=2]\n  - article:\n    - strong: Emotion log\n    - time: 5:43 PM\n    - paragraph:\n      - text: Neutral pleasantness · Middle energy\n      - text: Pleasantness 0 · Energy 0\n    - button \"Edit entry\"\n    - button \"Delete\"\n  - dialog \"Delete this entry?\":\n    - button \"Emergency\" [active]:\n      - text: Emergency\n    - button \"Close panel\":\n    - heading \"Delete this entry?\" [level=2]\n    - paragraph: This entry will be removed from your past logs. This can’t be undone in the app.\n    - button \"Delete entry\"\n    - button \"Return to app\"\n    - button \"Enable app sounds\":\n      - generic: Sound off\n- contentinfo:\n  - generic: Make room for a moment.\n  - navigation \"Secondary navigation\":\n    - button \"Appearance\":\n      - text: Appearance"
+  }
+]

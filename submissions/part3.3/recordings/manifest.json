@@ -1,0 +1,28 @@
+{
+  "recordings": [
+    {
+      "file": "inspire-final-demo.mov",
+      "bytes": 74169741,
+      "sha256": "17d64443a2d1a918522137c712584209c88ea174b2c23be74724a6cc518860c8",
+      "byte_identical_to_supplied_file": true,
+      "duration_seconds": 145.795,
+      "video_tracks": 1,
+      "audio_tracks": 0,
+      "width": 3420,
+      "height": 1920
+    },
+    {
+      "file": "inspire-API-failure.mov",
+      "bytes": 16227067,
+      "sha256": "193d09dbfcf1b5535fe202d1e12fbfcb69e1234734a22cd7d6cb428e43da0e42",
+      "byte_identical_to_supplied_file": true,
+      "duration_seconds": 74.82666666666667,
+      "video_tracks": 1,
+      "audio_tracks": 0,
+      "width": 3420,
+      "height": 1920
+    }
+  ],
+  "provenance": "Student-supplied screen recordings; copied without transcoding or editing. Originals remain on Desktop.",
+  "inspection": "Native macOS AVFoundation metadata and sampled frames, including final frames. No transcription or full-frame redaction audit. Frame samples remain in ignored project tmp; recording bytes are unchanged."
+}

@@ -1,0 +1,34 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Home":
+  - heading "How would you like to begin?" [level=1]:
+    - text: How would you like to
+    - emphasis: begin?
+  - paragraph: Choose the one that feels right for you right now.
+  - button "Emotion log A color, a feeling, a moment to notice.":
+    - strong: Emotion log
+    - generic: A color, a feeling, a moment to notice.
+  - button "Guided breathing Follow a gentle rhythm. In, then out.":
+    - strong: Guided breathing
+    - generic: Follow a gentle rhythm. In, then out.
+  - button "Support chat A space for conversation.":
+    - strong: Support chat
+    - generic: A space for conversation.
+  - complementary "A quiet reminder":
+    - paragraph:
+      - text: One thing
+      - text: at a time.
+    - text: There’s room to simply be.
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Mute all app sounds" [pressed]:
+      - generic: Sound on

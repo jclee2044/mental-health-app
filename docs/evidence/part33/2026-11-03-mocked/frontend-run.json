@@ -1,0 +1,16 @@
+{
+  "command": [
+    "npm",
+    "--prefix",
+    "frontend",
+    "test",
+    "--",
+    "--test-reporter=tap"
+  ],
+  "started_at_utc": "2026-11-03T21:58:48.601538+00:00",
+  "finished_at_utc": "2026-11-03T21:58:49.265782+00:00",
+  "elapsed_seconds": 0.664,
+  "exit_code": 0,
+  "log": "frontend.txt",
+  "environment": "fictional credential/model; retrieval disabled; no .env loaded"
+}

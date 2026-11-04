@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-03 America/New_York",
+  "application_commit": "69e8c09b8861267d34c0d15f4afd56bfc2dc6119",
+  "browser": "Chrome on macOS; exact browser version not recorded",
+  "viewport_pixels": [
+    1710,
+    843
+  ],
+  "fixture_command": "backend/.venv/bin/python scripts/serve_part33_evaluation.py",
+  "fixture_url": "http://127.0.0.1:8033/",
+  "fixture_pid": 2616,
+  "fixture_stopped": true,
+  "task_tab_closed": true,
+  "no_real_model_embedding_transcription_or_microphone": true,
+  "no_call_links_activated": true,
+  "fixture_event_counts": {
+    "fixture_start": 2,
+    "request": 27,
+    "injected_memory_failure": 3,
+    "mock_reply": 3,
+    "mock_summary": 1,
+    "mock_title": 1,
+    "fixture_stop": 1
+  },
+  "s02_input_attempt": {
+    "requested_hold_ms": 64000,
+    "tool_maximum_ms": 30000,
+    "result": "Rejected before input; full sequence not completed"
+  },
+  "scenario_followup": {
+    "S01": "pass observed browser scope",
+    "S02": "partial: full-duration hold tool-blocked",
+    "S10": "pass observed browser scope",
+    "S14": "pass observed browser scope",
+    "S18": "fail: sound control behind emotion deletion modal"
+  },
+  "emergency": "20 observed starting states passed; full completion and real voice states not exercised",
+  "artifact_notes": [
+    "Screenshots are original JPEG bytes; initial .png names corrected to .jpg without image editing.",
+    "Intermediate snapshots may show pending/old state; selected evidence is identified in docs/part33-browser-checks.md.",
+    "No runtime app change or full automated suite rerun."
+  ]
+}

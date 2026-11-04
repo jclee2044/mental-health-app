@@ -1865,3 +1865,202 @@ tests, lint/build and all original cumulative checkpoints passed. An isolated Ch
 mock check confirmed fresh transcript/draft/notice, composer focus, matching Violet/
 Sage colors and phone-width fit. No provider or microphone calls. Mock tab/server
 were closed and temporary browser sizing/theme restored. Preview: docs/new-chat-button.png.
+
+## November 3 — Part 3.3 mocked evaluation evidence
+
+The user asked Codex to create the evaluation document, run mocked tests, record
+observations with evidence, and defer live-model checks. Codex (GPT-6 agent;
+exact served model/version identifier unavailable) inspected project requirements,
+test assertions and existing evidence, then authored
+[docs/part33-evaluation.md](docs/part33-evaluation.md). It contains 24 fictional
+scenario rows (20 with automated evidence, four live-quality cases not run), three
+explicit behavior checks, test traceability, findings and pending browser/live work.
+No runtime code or test assertions changed; no subagents were used.
+
+Fresh project-environment execution: 350 backend tests, 140 frontend tests, all
+26 personal-memory scenarios and the production build passed. Named output,
+JUnit, per-command metadata and expected/observed memory JSON are archived under
+[docs/evidence/part33/2026-11-03-mocked](docs/evidence/part33/2026-11-03-mocked/manifest.json).
+The existing Starlette/httpx deprecation and Vite bundle-size warnings remain.
+Fictional credentials/models, provider doubles and backend HTTP tripwires were
+used; no .env, personal application database, live provider, real microphone,
+browser or peer session was used. The memory benchmarks are local mock timings,
+not provider-latency evidence. Existing historical live samples are explicitly
+separate; earlier paid allowances do not authorize additional calls.
+
+Tools/commands: read-only git/rg/cat/sed inspection, apply_patch, project Python
+subprocess capture, pytest -vv with JUnit, npm test with TAP, the existing
+evaluate_personal_memory.py runner and npm run build. A temporary helper under
+ignored project tmp recorded exit codes/timestamps; logs redact absolute project
+paths and JUnit hostname. Documentation/link/evidence checks and git diff --check
+were performed. No install, server restart, checkpoint change, staging, commit or
+push; the pre-existing untracked part1-report.md was left alone. Mock passes do
+not establish model behavior, physical-device accessibility, current browser
+exercise duration or clinical effectiveness.
+
+## November 3 — Part 3.3 browser follow-through
+
+The user requested browser checks for the five partial scenarios and Emergency,
+with live calls still deferred. Codex used Computer Use in a task-created Chrome
+tab at localhost:8033 and added scripts/serve_part33_evaluation.py as a repeatable
+test fixture. The production app/build was unchanged. Fictional process settings,
+fixed text/title/summary mocks, disabled retrieval and outgoing-HTTP tripwires
+kept provider work mocked; a separate ignored database contained only invented
+evaluation records. No microphone or telephone action was selected.
+
+Observed: blank-note graph entry persisted after reload (S01); countdown/running/
+paused Emergency ended breathing without automatic resume, with recoverable save
+failures (S10); memory failure left a visible unavailable notice and usable fixed
+reply (S14). S18 failed: the sound control was behind the emotion-deletion modal,
+and attempted activation dismissed the dialog without toggling sound. S02 full
+completion timing remains blocked because the browser tool caps held input at
+30 seconds; a 25.009s ended sequence is explicitly not counted as completion.
+Emergency opened in 20 observed starting states, including backend-stopped and
+cached-shell reload. Completed breathing and actual voice states remain untested.
+
+Evidence and revised results: [browser checks](docs/part33-browser-checks.md),
+[evaluation](docs/part33-evaluation.md), original screenshots/DOM observations,
+fixture request log and read-only SQL export under docs/evidence/part33/2026-11-03-browser.
+Existing 350/140/26 automated counts are historical results from the earlier pass,
+not rerun here. Tool selector/timing failures are disclosed separately from the
+actual sound-control failure. No runtime fix, generated-response claim, paid call,
+dependency, staging, commit or push. The task-owned server/tab were closed.
+
+## November 3 — S18 sound-dialog fix and regression
+
+The user authorized fixing sound access in the emotion-deletion dialog, adding a
+regression test and updating the evaluation after verification. Codex changed
+frontend/src/components/ModalSheet.vue to include SoundToggle by default and
+frontend/src/App.vue to provide its footer anchor and track mounted dialogs.
+frontend/tests/modal-sound.test.js renders the real component templates with a
+fake DOM host and checks toggling/bubbling, nested Emergency, shared state, resize,
+no deletion, focus restoration and listener/modal-count cleanup. No dependency
+or checkpoint scope changed.
+
+Observed verification: 141 frontend tests, production build, both non-mutating
+linters and all three isolated cumulative checkpoint test/lint/build checks passed.
+Chrome against the localhost:8034 fixture verified pointer and Enter toggling in
+the deletion modal, nested Emergency, footer restoration, Appearance and persisted
+mute after reload. No DELETE request occurred; the one fictional row remained.
+The sound button's center was hittable inside the topmost native dialog at the
+footer coordinates. Browser console had no captured warnings/errors.
+
+Updated docs/part33-evaluation.md and docs/part33-browser-checks.md preserve the
+original failure and separately link the passing follow-up evidence under
+docs/evidence/part33/2026-11-03-sound-fix. Current status: 19 scoped passes, one
+partial/tool-blocked timing scenario, four deferred live cases. S03–S06 remain
+planned as three independent typed repetitions each, subject to a new bounded
+allowance; no live evaluation was run. The prior full backend/memory results were
+not rerun or relabeled as new. No real microphone, telephone action, personal
+database, dependency, staging, commit or push. Task-owned PID 12724 and test tab
+were closed. Existing untracked part1-report.md was left unchanged.
+
+## November 3 — Part Three report and supplied recordings
+
+The user supplied inspire-final-demo.mov and inspire-API-failure.mov and asked
+Codex to file them, reference them in the Part Three report, incorporate their
+earlier explanations of changes from Part One, and leave evaluation as a stub.
+Codex, a GPT-6-based assistant (exact served model identifier unavailable), used
+the pages:write-page skill for repository Markdown writing; no cloud Page was
+created. Earlier user identification of GPT-6.1 Sol remains separate from this
+session's unavailable served identifier.
+
+Codex created submissions/part3.3/report.md in the established submission format,
+copied both supplied recordings unchanged into its recordings directory, and
+added a metadata/checksum manifest. Originals remain on Desktop. Project Python
+verified byte identity using SHA-256. Native macOS Swift/AVFoundation inspected
+durations, track counts and sampled video frames, including final frames. Initial
+sandbox media decoding failed; the approved native-decoding retry succeeded.
+Both videos are silent, so no narration/transcription or acoustic claim is made.
+Sampled frames guided approximate timestamps and a bounded account of HTTP 502,
+draft recovery, server restart and the final successful reply; they do not establish
+the upstream cause. This was not a complete frame-by-frame privacy audit.
+
+The draft keeps the student's design reasons in first person, frames calming and
+engagement effects as intentions, flags the remaining skippable-intro code despite
+the removal decision, explains generated send/recovery code, and leaves final
+commit, clean-checkout verification and evaluation TODOs explicit. Existing
+evaluation/source edits, historical reports and checkpoint scopes were preserved.
+Verification used local link/metadata/hash checks and git diff --check; application
+suites were not rerun for these documentation/media changes. No model, embedding,
+transcription, microphone or telephone call, dependency change, staging, commit,
+push or server restart was performed for this report-preparation increment.
+
+## November 3 — Authorized Part 3.3 live repetitions (24-call cap)
+
+The user explicitly authorized the four pending cases three times each with at
+most 24 total provider calls. Codex added scripts/evaluate_part33_live.py, defaulting
+to offline preflight and requiring explicit live flags and a fresh output directory.
+It loaded only existing server configuration, used a fresh fictional SQLite database
+and exercised the real typed API through TestClient with real query embeddings and
+Responses replies. No application prompt, threshold, endpoint or dependency changed.
+No browser, microphone, telephone, title, summary, storage or personal-memory task
+ran. The earlier application sound fix and unrelated existing files were preserved.
+
+The host counter reserved/flushed each attempt before transport, including failures;
+only the two approved task types were admitted and uncounted HTTP was blocked.
+Offline preflight verified the current 76-document index before any paid request.
+A mocked budget probe verified that failure counts and request 25 is rejected;
+three saved offline regressions in scripts/test_part33_live_budget.py additionally
+cover concurrent reservations, unrelated task rejection and uncounted connections.
+All three passed; no network request occurs in those tests.
+
+Live command: backend/.venv/bin/python scripts/evaluate_part33_live.py
+--execute-live --max-provider-calls 24 (exit 0). Run 23:02:42–23:03:11 UTC on
+2026-11-03. Exactly 24 provider attempts: 12 text-embedding-3-small embeddings
+(1,536 dimensions) and 12 gpt-6-luna replies (low reasoning). Every provider attempt
+returned, all twelve route requests were HTTP 200, no retries/errors or other model
+tasks. This allowance is exhausted; no additional live calls are authorized by it.
+Routine/peer checks use the saved outputs or mocks. No pricing/billing estimate was
+made; token usage is retained exactly as returned in the provider artifacts.
+
+Qualitative review against the predeclared rubric: S03 listening 3/3 pass, S05
+stopping 3/3 pass, S06 urgent fiction 3/3 pass against its narrow rubric with a
+location-qualification caveat in repeat 1. S04 two angles: one clear pass and two
+partial/borderline replies with overlapping event-versus-identity perspectives.
+Overall 10 clear passes and 2 partial results, separate from HTTP success. No
+independent human or clinical review is implied. All stop replies were identical;
+listening had two wordings; reframing and urgent fiction each had three wordings.
+Route times ranged 1.441–3.947 seconds. Retrieval supplied criteria/intention cards
+for listening-only but no_match for every explicit two-perspective request. No
+source-backed operation use is claimed for S04. Prompts/thresholds were not changed
+mid-evaluation to make outcomes pass.
+
+Saved exact fictional inputs/history, request payloads, raw responses (including
+actual model/usage), attempt ledger, source hashes, timestamps, per-repeat review,
+variation and offline guard output under docs/evidence/part33/2026-11-03-live/.
+Credentials/HTTP authorization headers are excluded. Updated docs/part33-evaluation.md:
+22 scoped scenario passes, S02 tool-blocked and S04 partial. Live sample complete;
+full breathing timing, S04 follow-up, location caveat, broader model/Voice/device/
+clinical limitations, peer work and final submission remain explicit. Original
+mock/browser evidence was preserved and not relabeled as live. No screenshot or
+Emergency recheck was performed in this live API run.
+
+Other commands: offline runner preflight; backend/.venv/bin/python
+scripts/test_part33_live_budget.py -v; project Python py_compile; ledger/response/
+request-consistency and documentation-link/hash checks; git diff --check. Existing
+Starlette/httpx warning remains. No full application-suite rerun because application
+code did not change; no dependencies, staging, commit, push, process stop or edits
+to the pre-existing part1-report.md or submissions/part3.3/ files.
+
+## November 3 — Part Three report evaluation integration
+
+At the user's request, Codex replaced the evaluation placeholder in
+submissions/part3.3/report.md with the existing 24-scenario findings, expected and
+observed results, three behavior checks, mocked/browser verification counts,
+sound-dialog failure and verified correction, and the four live cases repeated
+three times. The report distinguishes 24 provider attempts from 12 replies and
+10 clear semantic passes/2 partial results, records variation and the location
+caveat, and links raw outputs, the call ledger and other evidence. It preserves
+the earlier Part Two timing screenshot as historical evidence, separately from
+the current browser hold-duration blocker. Remaining-work and AI-use wording now
+reflect the completed evaluation section without claiming the whole submission
+is finished. Existing recordings and other report sections were preserved.
+
+Checks: project Python verified 24 unique scenario rows, all three behavior
+checks, existing local document/recording targets and agreement with the saved
+live assessment; git diff --check. Files edited: submissions/part3.3/report.md,
+AI-USE.md and docs/evidence-log.md. No new test execution, provider call, microphone,
+runtime change, dependency, recording edit, staging, commit or push. Final commit
+and externally accessible/pinned submission links remain TODOs; local link checks
+do not establish instructor access.

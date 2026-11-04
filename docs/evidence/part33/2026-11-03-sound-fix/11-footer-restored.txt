@@ -1,0 +1,69 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Past logs":
+  - heading "Past logs" [level=1]
+  - button "New entry":
+    - text: New entry
+  - button "Previous month":
+  - heading "November 2026" [level=2]
+  - button "Next month":
+  - generic: Mon
+  - generic: Tue
+  - generic: Wed
+  - generic: Thu
+  - generic: Fri
+  - generic: Sat
+  - generic: Sun
+  - button "2026-11-01, 0 entries": "1"
+  - button "2026-11-02, 0 entries": "2"
+  - button "2026-11-03, 1 entries" [pressed]: "3"
+  - button "2026-11-04, 0 entries": "4"
+  - button "2026-11-05, 0 entries": "5"
+  - button "2026-11-06, 0 entries": "6"
+  - button "2026-11-07, 0 entries": "7"
+  - button "2026-11-08, 0 entries": "8"
+  - button "2026-11-09, 0 entries": "9"
+  - button "2026-11-10, 0 entries": "10"
+  - button "2026-11-11, 0 entries": "11"
+  - button "2026-11-12, 0 entries": "12"
+  - button "2026-11-13, 0 entries": "13"
+  - button "2026-11-14, 0 entries": "14"
+  - button "2026-11-15, 0 entries": "15"
+  - button "2026-11-16, 0 entries": "16"
+  - button "2026-11-17, 0 entries": "17"
+  - button "2026-11-18, 0 entries": "18"
+  - button "2026-11-19, 0 entries": "19"
+  - button "2026-11-20, 0 entries": "20"
+  - button "2026-11-21, 0 entries": "21"
+  - button "2026-11-22, 0 entries": "22"
+  - button "2026-11-23, 0 entries": "23"
+  - button "2026-11-24, 0 entries": "24"
+  - button "2026-11-25, 0 entries": "25"
+  - button "2026-11-26, 0 entries": "26"
+  - button "2026-11-27, 0 entries": "27"
+  - button "2026-11-28, 0 entries": "28"
+  - button "2026-11-29, 0 entries": "29"
+  - button "2026-11-30, 0 entries": "30"
+  - paragraph: A saved entry · your chosen color
+  - heading "November 3, 2026" [level=2]
+  - article:
+    - strong: Emotion log
+    - time: 5:43 PM
+    - paragraph:
+      - text: Neutral pleasantness · Middle energy
+      - text: Pleasantness 0 · Energy 0
+    - button "Edit entry"
+    - button "Delete" [active]
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Mute all app sounds" [pressed]:
+      - generic: Sound on

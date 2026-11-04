@@ -1,0 +1,50 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Home":
+  - heading "How would you like to begin?" [level=1]:
+    - text: How would you like to
+    - emphasis: begin?
+  - paragraph: Choose the one that feels right for you right now.
+  - button "Emotion log A color, a feeling, a moment to notice.":
+    - strong: Emotion log
+    - generic: A color, a feeling, a moment to notice.
+  - button "Guided breathing Follow a gentle rhythm. In, then out.":
+    - strong: Guided breathing
+    - generic: Follow a gentle rhythm. In, then out.
+  - button "Support chat A space for conversation.":
+    - strong: Support chat
+    - generic: A space for conversation.
+  - complementary "A quiet reminder":
+    - paragraph:
+      - text: One thing
+      - text: at a time.
+    - text: There’s room to simply be.
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+- dialog "Emergency & crisis support":
+  - button "Close panel" [active]:
+  - heading "Emergency & crisis support" [level=2]
+  - paragraph: United States resources. These services are separate from inspire.
+  - link "988 Crisis counseling Suicide & Crisis Lifeline":
+    - /url: tel:988
+    - generic: "988"
+    - strong: Crisis counseling
+    - generic: Suicide & Crisis Lifeline
+  - link "911 Emergency services For immediate danger or a medical emergency":
+    - /url: tel:911
+    - generic: "911"
+    - strong: Emergency services
+    - generic: For immediate danger or a medical emergency
+  - paragraph: Opening this panel does not contact anyone.
+  - button "Return to what I was doing"
+  - button "Enable app sounds":
+    - generic: Sound off

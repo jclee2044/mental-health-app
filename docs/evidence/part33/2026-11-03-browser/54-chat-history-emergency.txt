@@ -1,0 +1,41 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Saved chats":
+  - heading "Saved chats" [level=1]
+  - button "New"
+  - paragraph: Chats without titles send a short text excerpt to the configured model to create a title. Opening a chat is read-only.
+  - 'button "Mock: Fictional evaluation conversation 11/3/2026, 5:19:47 PM"':
+    - strong: "Mock: Fictional evaluation conversation"
+    - time: 11/3/2026, 5:19:47 PM
+  - button "Refresh saved chats"
+  - status: Breathing session saved.
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+- dialog "Emergency & crisis support":
+  - button "Close panel" [active]:
+  - heading "Emergency & crisis support" [level=2]
+  - paragraph: United States resources. These services are separate from inspire.
+  - link "988 Crisis counseling Suicide & Crisis Lifeline":
+    - /url: tel:988
+    - generic: "988"
+    - strong: Crisis counseling
+    - generic: Suicide & Crisis Lifeline
+  - link "911 Emergency services For immediate danger or a medical emergency":
+    - /url: tel:911
+    - generic: "911"
+    - strong: Emergency services
+    - generic: For immediate danger or a medical emergency
+  - paragraph: Opening this panel does not contact anyone.
+  - button "Return to what I was doing"
+  - button "Enable app sounds":
+    - generic: Sound off
+- status: 1Password menu is available. Press down arrow to select.

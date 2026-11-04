@@ -1,0 +1,15 @@
+{
+  "command": [
+    "npm",
+    "--prefix",
+    "frontend",
+    "run",
+    "build"
+  ],
+  "started_at_utc": "2026-11-03T21:59:07.844726+00:00",
+  "finished_at_utc": "2026-11-03T21:59:08.544686+00:00",
+  "elapsed_seconds": 0.7,
+  "exit_code": 0,
+  "log": "build.txt",
+  "environment": "fictional credential/model; retrieval disabled; no .env loaded"
+}

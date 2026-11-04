@@ -1,0 +1,29 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Guided breathing":
+  - heading "Take your time." [level=1]
+  - strong: Keep holding while paused.
+  - button "View past breathing sessions":
+  - paragraph: Release at any time to end the exercise.
+  - button "Hold to begin or repeat breathing; release to end":
+  - paragraph: Continue whenever you’re ready.
+  - timer:
+    - text: 60 seconds left
+    - generic: Timer paused · Release to end
+  - status: Cycle 1 of 6 · 0 / 60 seconds
+  - button "Resume":
+    - text: Resume
+  - button "End exercise"
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off

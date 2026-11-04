@@ -1,0 +1,20 @@
+Browser tab: 300641339, Title: "inspire — A moment for yourself", URL: "http://127.0.0.1:8033/".
+1 AXWebArea inspire — A moment for yourself, URL: 127.0.0.1:8033/
+	2 container
+		3 link Description: Skip to content, Value: 127.0.0.1:8033/#main-content
+		4 button inspire home
+			5 text in
+			6 text spire
+		7 button Emergency
+		8 container Description: Home, ID: main-content
+			9 container
+				10 text in spire
+				11 heading A moment for yourself., Value: 1
+					12 text A moment for yourself.
+				13 button Skip introduction
+		14 text Make room for a moment.
+		15 container Secondary navigation
+			16 button Appearance
+			17 checkbox Description: Enable app sounds, Value: 0
+
+The focused UI element is 1 AXWebArea inspire — A moment for yourself, URL: 127.0.0.1:8033/

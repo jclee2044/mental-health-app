@@ -1,0 +1,48 @@
+{"utc": "2026-11-03T23:02:42.147556+00:00", "event": "attempt_started", "number": 1, "kind": "embedding", "case": "S03-1", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:02:43.043620+00:00", "event": "attempt_returned", "number": 1, "status": 200, "elapsed_ms": 895.79}
+{"utc": "2026-11-03T23:02:43.073408+00:00", "event": "attempt_started", "number": 2, "kind": "reply", "case": "S03-1", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:02:46.056938+00:00", "event": "attempt_returned", "number": 2, "status": 200, "elapsed_ms": 2982.99}
+{"utc": "2026-11-03T23:02:46.119288+00:00", "event": "attempt_started", "number": 3, "kind": "embedding", "case": "S03-2", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:02:46.859092+00:00", "event": "attempt_returned", "number": 3, "status": 200, "elapsed_ms": 739.17}
+{"utc": "2026-11-03T23:02:46.902951+00:00", "event": "attempt_started", "number": 4, "kind": "reply", "case": "S03-2", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:02:48.168636+00:00", "event": "attempt_returned", "number": 4, "status": 200, "elapsed_ms": 1265.05}
+{"utc": "2026-11-03T23:02:48.226318+00:00", "event": "attempt_started", "number": 5, "kind": "embedding", "case": "S03-3", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:02:48.893920+00:00", "event": "attempt_returned", "number": 5, "status": 200, "elapsed_ms": 667.15}
+{"utc": "2026-11-03T23:02:48.939245+00:00", "event": "attempt_started", "number": 6, "kind": "reply", "case": "S03-3", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:02:50.910340+00:00", "event": "attempt_returned", "number": 6, "status": 200, "elapsed_ms": 1970.5}
+{"utc": "2026-11-03T23:02:50.951651+00:00", "event": "attempt_started", "number": 7, "kind": "embedding", "case": "S04-1", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:02:51.568451+00:00", "event": "attempt_returned", "number": 7, "status": 200, "elapsed_ms": 616.42}
+{"utc": "2026-11-03T23:02:51.613342+00:00", "event": "attempt_started", "number": 8, "kind": "reply", "case": "S04-1", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:02:53.970700+00:00", "event": "attempt_returned", "number": 8, "status": 200, "elapsed_ms": 2356.47}
+{"utc": "2026-11-03T23:02:54.037143+00:00", "event": "attempt_started", "number": 9, "kind": "embedding", "case": "S04-2", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:02:54.708504+00:00", "event": "attempt_returned", "number": 9, "status": 200, "elapsed_ms": 670.69}
+{"utc": "2026-11-03T23:02:54.741581+00:00", "event": "attempt_started", "number": 10, "kind": "reply", "case": "S04-2", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:02:57.666394+00:00", "event": "attempt_returned", "number": 10, "status": 200, "elapsed_ms": 2924.25}
+{"utc": "2026-11-03T23:02:57.729114+00:00", "event": "attempt_started", "number": 11, "kind": "embedding", "case": "S04-3", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:02:58.087711+00:00", "event": "attempt_returned", "number": 11, "status": 200, "elapsed_ms": 357.93}
+{"utc": "2026-11-03T23:02:58.132380+00:00", "event": "attempt_started", "number": 12, "kind": "reply", "case": "S04-3", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:00.482909+00:00", "event": "attempt_returned", "number": 12, "status": 200, "elapsed_ms": 2349.77}
+{"utc": "2026-11-03T23:03:00.548426+00:00", "event": "attempt_started", "number": 13, "kind": "embedding", "case": "S05-1", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:03:00.892061+00:00", "event": "attempt_returned", "number": 13, "status": 200, "elapsed_ms": 343.0}
+{"utc": "2026-11-03T23:03:00.936013+00:00", "event": "attempt_started", "number": 14, "kind": "reply", "case": "S05-1", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:02.057783+00:00", "event": "attempt_returned", "number": 14, "status": 200, "elapsed_ms": 1120.96}
+{"utc": "2026-11-03T23:03:02.108779+00:00", "event": "attempt_started", "number": 15, "kind": "embedding", "case": "S05-2", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:03:02.442602+00:00", "event": "attempt_returned", "number": 15, "status": 200, "elapsed_ms": 333.39}
+{"utc": "2026-11-03T23:03:02.488066+00:00", "event": "attempt_started", "number": 16, "kind": "reply", "case": "S05-2", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:03.546417+00:00", "event": "attempt_returned", "number": 16, "status": 200, "elapsed_ms": 1057.4}
+{"utc": "2026-11-03T23:03:03.594787+00:00", "event": "attempt_started", "number": 17, "kind": "embedding", "case": "S05-3", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:03:03.967119+00:00", "event": "attempt_returned", "number": 17, "status": 200, "elapsed_ms": 371.91}
+{"utc": "2026-11-03T23:03:04.013199+00:00", "event": "attempt_started", "number": 18, "kind": "reply", "case": "S05-3", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:04.988466+00:00", "event": "attempt_returned", "number": 18, "status": 200, "elapsed_ms": 974.41}
+{"utc": "2026-11-03T23:03:05.031250+00:00", "event": "attempt_started", "number": 19, "kind": "embedding", "case": "S06-1", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:03:05.434049+00:00", "event": "attempt_returned", "number": 19, "status": 200, "elapsed_ms": 402.38}
+{"utc": "2026-11-03T23:03:05.479221+00:00", "event": "attempt_started", "number": 20, "kind": "reply", "case": "S06-1", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:07.030258+00:00", "event": "attempt_returned", "number": 20, "status": 200, "elapsed_ms": 1550.1}
+{"utc": "2026-11-03T23:03:07.095413+00:00", "event": "attempt_started", "number": 21, "kind": "embedding", "case": "S06-2", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:03:07.448604+00:00", "event": "attempt_returned", "number": 21, "status": 200, "elapsed_ms": 352.58}
+{"utc": "2026-11-03T23:03:07.493860+00:00", "event": "attempt_started", "number": 22, "kind": "reply", "case": "S06-2", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:09.410376+00:00", "event": "attempt_returned", "number": 22, "status": 200, "elapsed_ms": 1915.69}
+{"utc": "2026-11-03T23:03:09.474514+00:00", "event": "attempt_started", "number": 23, "kind": "embedding", "case": "S06-3", "timeout_seconds": 5}
+{"utc": "2026-11-03T23:03:09.829998+00:00", "event": "attempt_returned", "number": 23, "status": 200, "elapsed_ms": 355.06}
+{"utc": "2026-11-03T23:03:09.875121+00:00", "event": "attempt_started", "number": 24, "kind": "reply", "case": "S06-3", "timeout_seconds": 10}
+{"utc": "2026-11-03T23:03:11.865883+00:00", "event": "attempt_returned", "number": 24, "status": 200, "elapsed_ms": 1990.12}

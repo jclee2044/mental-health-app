@@ -1,0 +1,20 @@
+{
+  "command": [
+    "backend/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-vv",
+    "-c",
+    "backend/pytest.ini",
+    "backend/tests",
+    "backend/app/features",
+    "--basetemp=tmp/part33-evaluation/pytest",
+    "--junitxml=docs/evidence/part33/2026-11-03-mocked/backend-junit.xml"
+  ],
+  "started_at_utc": "2026-11-03T21:58:48.601542+00:00",
+  "finished_at_utc": "2026-11-03T21:58:52.541203+00:00",
+  "elapsed_seconds": 3.94,
+  "exit_code": 0,
+  "log": "backend.txt",
+  "environment": "fictional credential/model; retrieval disabled; no .env loaded"
+}

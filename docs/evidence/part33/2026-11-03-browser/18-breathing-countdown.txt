@@ -1,0 +1,24 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Guided breathing" [active]:
+  - heading "Take a breath, it'll help." [level=1]
+  - strong: Tap and hold the circle to start.
+  - button "View past breathing sessions":
+  - paragraph: Release at any time to end the exercise.
+  - button "Hold to begin or repeat breathing; release to end":
+    - strong: Tap & hold
+    - generic: to start
+  - timer: 6 cycles · 60 seconds of breathing
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off

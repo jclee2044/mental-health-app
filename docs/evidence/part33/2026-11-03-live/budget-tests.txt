@@ -1,0 +1,8 @@
+test_concurrent_reservations_cannot_exceed_cap (__main__.BudgetTests.test_concurrent_reservations_cannot_exceed_cap) ... ok
+test_failure_consumes_budget_and_attempt_25_is_blocked (__main__.BudgetTests.test_failure_consumes_budget_and_attempt_25_is_blocked) ... ok
+test_unrelated_tasks_and_uncounted_connections_are_blocked (__main__.BudgetTests.test_unrelated_tasks_and_uncounted_connections_are_blocked) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.020s
+
+OK

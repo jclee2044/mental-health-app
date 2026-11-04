@@ -1,0 +1,64 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Support chat":
+  - heading "What’s on your mind?" [level=1]
+  - button "View saved chats":
+  - button "New chat" [disabled]:
+  - region "Chat window":
+    - paragraph:
+      - text: Your day, something weighing on you,
+      - text: or a small win you’d like to share.
+  - generic: Message
+  - textbox "Message":
+    - /placeholder: Write what’s on your mind…
+  - generic: Enter to send. Shift and Enter for a new line.
+  - button "Dictate message" [disabled]:
+  - button "Voice mode" [disabled]:
+    - generic: Voice mode
+  - button "Send" [disabled]:
+    - text: Send
+  - generic "Personal memory On"
+  - paragraph: Choose what chat may refer to. Saved text from the last seven days, selected log details and confirmed facts are sent to OpenAI with your message or when Voice starts. With saved conversation text enabled, ending a saved chat also creates a short memory summary using OpenAI. No audio is saved here.
+  - paragraph: Opening these controls stops voice and dictation. Changes apply to future requests; start Voice again to refresh its context. They cannot retract information already sent or erase current-chat messages.
+  - group "Allow saved context":
+    - generic: Allow saved context
+    - checkbox "Use recent emotion logs"
+    - generic: Use recent emotion logs
+    - checkbox "Use saved conversation text" [checked]
+    - generic: Use saved conversation text
+    - checkbox "Use facts I confirm"
+    - generic: Use facts I confirm
+  - paragraph: Uses OpenAI. Chats are saved on this device.
+  - paragraph: When reframing references are enabled, your current typed message is also sent to OpenAI for matching. Voice receives reviewed reframing references when a session starts. Saved memory stays separate.
+  - paragraph: Dictation sends a short recording to OpenAI.
+  - generic "Privacy & saved chats"
+  - status: Breathing session saved.
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+- dialog "Emergency & crisis support":
+  - button "Close panel" [active]:
+  - heading "Emergency & crisis support" [level=2]
+  - paragraph: United States resources. These services are separate from inspire.
+  - link "988 Crisis counseling Suicide & Crisis Lifeline":
+    - /url: tel:988
+    - generic: "988"
+    - strong: Crisis counseling
+    - generic: Suicide & Crisis Lifeline
+  - link "911 Emergency services For immediate danger or a medical emergency":
+    - /url: tel:911
+    - generic: "911"
+    - strong: Emergency services
+    - generic: For immediate danger or a medical emergency
+  - paragraph: Opening this panel does not contact anyone.
+  - button "Return to what I was doing"
+  - button "Enable app sounds":
+    - generic: Sound off

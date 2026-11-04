@@ -1,0 +1,20 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - button "inspire home":
+    - generic: in
+    - generic: spire
+  - button "Emergency":
+    - text: Emergency
+- main "Emotion log":
+  - heading "Entry saved." [level=1]
+  - paragraph: You can come back to it whenever you like.
+  - button "Return home"
+  - button "View history"
+- contentinfo:
+  - generic: Make room for a moment.
+  - navigation "Secondary navigation":
+    - button "Appearance":
+      - text: Appearance
+    - button "Enable app sounds":
+      - generic: Sound off
