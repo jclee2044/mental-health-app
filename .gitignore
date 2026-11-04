@@ -49,8 +49,11 @@ Thumbs.db
 credentials.json
 service-account*.json
 
-# Historical Part One report kept locally at the user's request
+# Coursework reports kept locally at the user's request
 /report.md
+/part1-report.md
+/submissions/part3.2/report.md
+/submissions/part3.3/report.md
 
 # Local handoff documents
 /handoffs/

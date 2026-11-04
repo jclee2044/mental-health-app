@@ -314,7 +314,7 @@ are recorded separately; no live provider/microphone test is claimed by mocks.
 
 ## Documentation and remaining work
 
-- [Part Two report](submissions/part3.2/report.md), [curated prompts/screenshots](docs/part32-evidence.md),
+- [Curated prompts/screenshots](docs/part32-evidence.md),
   [earlier browser/SQLite results](docs/part32-verification.md) and
   [reproduction guide](docs/part32-validation.md). A recording is not explicitly
   required for Part Two; finished demonstration/process recordings are required
@@ -326,9 +326,10 @@ are recorded separately; no live provider/microphone test is claimed by mocks.
   and revisions supersede earlier proposals.
 - [AI-USE.md](AI-USE.md), [evidence log](docs/evidence-log.md),
   [agent rules](AGENTS.md) and [handoff](handoffs/current.md).
-- [Historical Part One report](https://github.com/jclee2044/mental-health-app/blob/3177e4d7dc037a69f3eb7d1c073d466577a822b5/report.md).
-  Root `report.md` is untracked/ignored and retained locally where present;
-  the Part Two report remains tracked. Relative links render within GitHub;
+- Coursework reports are retained locally and ignored by Git: root `report.md`,
+  `part1-report.md`, and `submissions/part3.2/report.md` and
+  `submissions/part3.3/report.md`. Earlier commits may still contain reports.
+  Relative links render within GitHub;
   a standalone uploaded report needs full published image/document URLs.
 
 Still unfinished: dynamic UI, live evaluation of personal-context retrieval, reviewed
